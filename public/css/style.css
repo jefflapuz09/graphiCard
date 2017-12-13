@@ -1,0 +1,206 @@
+.navbg{
+    background-color:#151515;
+}
+
+.navbg{
+    color:white;
+}
+
+body{
+    background-color:#efefef;
+}
+
+.sidebarhead{
+    margin-top:40px;
+}
+
+li{
+    list-style-type: none;
+}
+
+
+
+#foot{
+    background: #151515;
+    border-top:5px solid darkred;
+}
+
+.bor{
+    border-left:15px solid black;
+    height:300px;
+    background-color: maroon;
+    margin-top:100px;
+    margin-bottom:100px;
+    /* background-image url('img/bor.jpg'); */
+    /* background-image: url("{{ asset('img/bor.jpg')}}"); */
+}
+
+.bor h1{
+    font-size: 70pt;
+    font-family: "Lucida Console", Monaco, monospace;
+    color:white;
+    margin-top:40px;
+}
+
+.hed{
+    
+}
+
+.bor2{
+    border-right:15px solid black;
+    height:300px;
+    background-color: maroon;
+    margin-top:100px;
+    margin-bottom:100px;
+    /* background-image url('img/bor.jpg'); */
+    /* background-image: url("{{ asset('img/bor.jpg')}}"); */
+}
+
+
+
+footer{
+    margin-top:150px;
+}
+
+.shop:hover
+{   
+animation: shake 1s;
+animation-iteration-count: infinite; 
+
+}
+
+@keyframes shake {
+0% { transform: translate(1px, 1px) rotate(0deg); }
+10% { transform: translate(-1px, -2px)  rotate(-1deg); }
+20% { transform: translate(-3px, 0px)  rotate(1deg); }
+30% { transform: translate(3px, 2px) rotate(0deg); }
+40% { transform: translate(1px, -1px) rotate(1deg); }
+50% { transform: translate(-1px, 2px) rotate(-1deg); }
+60% { transform: translate(-3px, 1px) rotate(0deg); }
+70% { transform: translate(3px, 1px) rotate(-1deg); }
+80% { transform: translate(-1px, -1px) rotate(1deg); }
+90% { transform: translate(1px, 2px) rotate(0deg); }
+100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+header.masthead {
+    position: relative;
+    /* background-color: darkred; */
+    /* background: url("../img/bg-masthead.jpg") no-repeat center center; */
+    /* -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover; */
+    background-size: cover;
+    padding-top:1rem;
+    padding-bottom: 1rem;
+ 
+}
+
+.top{
+    /* background-image: url(""); */
+    margin-top:150px;
+    margin-bottom:150px;
+    border-left:10px solid black;
+}
+
+.top h1{
+    font-size:50pt;
+    font-family: 'Roboto', sans-serif;;
+    color:white;
+}
+
+#portfolio .portfolio-item {
+    right: 0;
+    margin: 0 0 15px; }
+    #portfolio .portfolio-item .portfolio-link {
+      position: relative;
+      display: block;
+      max-width: 400px;
+      margin: 0 auto;
+      cursor: pointer; }
+      #portfolio .portfolio-item .portfolio-link .portfolio-hover {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all ease 0.5s;
+        -moz-transition: all ease 0.5s;
+        transition: all ease 0.5s;
+        opacity: 0;
+        background: rgba(37, 37, 37, 0.9); }
+        #portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
+          opacity: 1; }
+        #portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content {
+          font-size: 20px;
+          position: absolute;
+          top: 50%;
+          width: 100%;
+          height: 20px;
+          margin-top: -12px;
+          text-align: center;
+          color: white; }
+          #portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content i {
+            margin-top: -12px; }
+          #portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content h3,
+          #portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content h4 {
+            margin: 0; }
+    #portfolio .portfolio-item .portfolio-caption {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 25px;
+      text-align: center;
+      background-color: #fff; }
+      #portfolio .portfolio-item .portfolio-caption h4 {
+        margin: 0;
+        text-transform: none; }
+      #portfolio .portfolio-item .portfolio-caption p {
+        font-size: 16px;
+        font-style: italic;
+        margin: 0;
+        font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  
+  #portfolio * {
+    z-index: 2; }
+
+@media screen and (max-width: 480px)  {
+    
+}
+
+@media screen and (max-width: 768px)  {
+    #hed{
+        margin-top:200px;
+    }
+
+    #hed2{
+        margin-top:200px;
+    }
+
+    #hed3{
+        margin-top:200px;
+    }
+
+    .bor{
+        height:650px;
+    }
+
+    .bor2{
+        height:650px;
+    }
+
+    #hedimg{
+        margin-bottom:50px;
+        margin-left: 65px;
+        
+    }
+
+    #hedimg2{
+        margin-bottom:50px;
+        margin-right: 40px;
+        
+    }
+
+    #hedimg3{
+        margin-bottom:50px;
+        margin-left: 65px;
+        
+    }
+}
