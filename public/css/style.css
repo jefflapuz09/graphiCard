@@ -1,9 +1,33 @@
+
 .navbg{
-    background-color:#151515;
+    background-color:rgba(188, 0, 0, 0.9);
+    /* red */
 }
+
+
 
 .navbg{
     color:white;
+}
+
+.custom-toggler.navbar-toggler {
+    border-color: rgb(255,255,255);
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.nav-item .dropdown-menu{
+    background: #252525;
+    
+}
+
+.nav-item .dropdown-menu a{
+    color:white;  
+}
+
+.nav-item .dropdown-menu a:hover{
+    color:maroon;  
 }
 
 body{
@@ -18,11 +42,64 @@ li{
     list-style-type: none;
 }
 
+ul.social-network {
+   
+	list-style: none;
+    display: inline;
+    margin-top:10px;
+	margin-left:0 !important;
+	padding: 0;
+}
+ul.social-network li {
+	display: inline;
+	margin: 0 5px;
+}
 
+.social-circle li a {
+	display:inline-block;
+	position:relative;
+	margin:0 auto 0 auto;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+	text-align:center;
+	width: 50px;
+	height: 50px;
+    font-size:20px;
+    background: #fff;
+   
+}
+.social-circle li i {
+	margin:0;
+	line-height:50px;
+	text-align: center;
+}
+
+.social-circle i {
+    color: maroon;
+ 
+	-webkit-transition: all 0.8s;
+	-moz-transition: all 0.8s;
+	-o-transition: all 0.8s;
+	-ms-transition: all 0.8s;
+	transition: all 0.8s;
+}
+
+.social-circle li a:hover i, .triggeredHover {
+	-moz-transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	-ms--transform: rotate(360deg);
+	transform: rotate(360deg);
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	-ms-transition: all 0.2s;
+	transition: all 0.2s;
+}
 
 #foot{
-    background: #151515;
-    border-top:5px solid darkred;
+    background: black;
+    border-top:5px solid black;
 }
 
 .bor{
@@ -126,7 +203,7 @@ header.masthead {
         -moz-transition: all ease 0.5s;
         transition: all ease 0.5s;
         opacity: 0;
-        background: rgba(37, 37, 37, 0.9); }
+        background: rgba(188, 5, 5, 0.9); }
         #portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
           opacity: 1; }
         #portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content {
@@ -161,46 +238,62 @@ header.masthead {
   #portfolio * {
     z-index: 2; }
 
+
+    #mainNav {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        font-weight: 700;
+        font-family: 'Roboto', sans-serif; }
+        #mainNav .navbar-brand {
+          color: #fff; }
+        #mainNav .navbar-nav {
+          margin-top: 1rem;
+          letter-spacing: 0.0625rem; }
+          #mainNav .navbar-nav li.nav-item a.nav-link {
+            color: #fff; }
+            #mainNav .navbar-nav li.nav-item a.nav-link:hover {
+              color: gold; }
+            #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
+              color: #fff; }
+            #mainNav .navbar-nav li.nav-item a.nav-link.active {
+              color: gold; }
+        #mainNav .navbar-toggler {
+          font-size: 80%;
+          padding: 0.8rem; }
+      
+      @media (min-width: 992px) {
+        #mainNav {
+          padding-top: 1.5rem;
+          padding-bottom: 1.5rem;
+          -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
+          -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
+          transition: padding-top 0.3s, padding-bottom 0.3s; }
+          #mainNav .navbar-brand {
+            font-size: 2em;
+            -webkit-transition: font-size 0.3s;
+            -moz-transition: font-size 0.3s;
+            transition: font-size 0.3s; }
+          #mainNav .navbar-nav {
+            margin-top: 0; }
+          #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
+            color: #fff;
+            background: #18BC9C; }
+            #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
+              color: #fff;
+              background: #18BC9C; }
+        #mainNav.navbar-shrink {
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem; }
+          #mainNav.navbar-shrink .navbar-brand {
+            font-size: 1.5em; } }
+
+          
+              
+
 @media screen and (max-width: 480px)  {
     
 }
 
 @media screen and (max-width: 768px)  {
-    #hed{
-        margin-top:200px;
-    }
 
-    #hed2{
-        margin-top:200px;
-    }
-
-    #hed3{
-        margin-top:200px;
-    }
-
-    .bor{
-        height:650px;
-    }
-
-    .bor2{
-        height:650px;
-    }
-
-    #hedimg{
-        margin-bottom:50px;
-        margin-left: 65px;
-        
-    }
-
-    #hedimg2{
-        margin-bottom:50px;
-        margin-right: 40px;
-        
-    }
-
-    #hedimg3{
-        margin-bottom:50px;
-        margin-left: 65px;
-        
-    }
 }

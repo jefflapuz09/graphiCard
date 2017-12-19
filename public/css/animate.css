@@ -120,7 +120,7 @@
 
 .rubberBand {
   animation-name: rubberBand;
-  animation-iteration-count: 3;
+  animation-iteration-count: 5;
 }
 
 @keyframes shake {

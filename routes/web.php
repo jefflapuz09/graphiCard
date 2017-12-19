@@ -17,4 +17,44 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/loginto', 'Auth\LoginController@index')->name('loginto');
+Route::get('/admin', 'adminController@index');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'HomeController@getLogout');
+Route::get('/prodDescription/{id}/{desc}', 'HomeController@prodDescription');
+
+//Service Category
+Route::get('/Category', 'categoryController@index');
+Route::get('/CategoryCreate', 'categoryController@create');
+Route::get('/CategoryShow/{id}', 'categoryController@show');
+Route::get('/CategoryUpdate/{id}', 'categoryController@edit');
+Route::get('/CategoryDeac/{id}', 'categoryController@destroy');
+Route::get('/CategorySoft', 'categoryController@soft');
+Route::get('/CategoryReactivate/{id}', 'categoryController@reactivate');
+
+Route::post('/CategoryStore', 'categoryController@store');
+Route::post('/CategoryEdit/{id}', 'categoryController@update');
+
+//Customer
+Route::get('/Customer', 'customerController@index');
+Route::get('/CustomerCreate', 'customerController@create');
+Route::get('/CustomerShow/{id}', 'customerController@show');
+Route::get('/CustomerUpdate/{id}', 'customerController@edit');
+Route::get('/CustomerDeac/{id}', 'customerController@destroy');
+Route::get('/CustomerSoft', 'customerController@soft');
+Route::get('/CustomerReactivate/{id}', 'customerController@reactivate');
+
+Route::post('/CustomerStore', 'customerController@storepost');
+Route::post('/CustomerEdit/{id}', 'customerController@update');
+
+//Service Type
+Route::get('/ServiceType', 'serviceTypeController@index');
+Route::get('/ServiceTypeCreate', 'serviceTypeController@create');
+Route::get('/ServiceTypeShow/{id}', 'serviceTypeController@show');
+Route::get('/ServiceTypeUpdate/{id}', 'serviceTypeController@edit');
+Route::get('/ServiceTypeDeac/{id}', 'serviceTypeController@destroy');
+Route::get('/ServiceTypeSoft', 'serviceTypeController@soft');
+Route::get('/ServiceTypeReactivate/{id}', 'serviceTypeController@reactivate');
+
+Route::post('/ServiceTypeStore', 'serviceTypeController@store');
+Route::post('/ServiceTypeEdit/{id}', 'serviceTypeController@update');

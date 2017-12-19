@@ -1,135 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 
-  <head>
+@extends('layouts.master')
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="{{ asset('img/logo.png') }}">
-    <title>Graphicard</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('css/modern-business.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/megamenu.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+@section('contents')
 
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/contact.css') }}" rel="stylesheet"> 
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-
-  <body>
-
-    <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top">
-      <div class="container">
-        <a class="navbar-brand" style="color:white;" href="index.html">Call us now: (02)123-456/0911-123-4567</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="glyphicon glyphicon-shopping-cart"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-           
-            <img src="{{ asset('img/cart.png') }}"  height="30px" width="30px">
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <div class="container-fluid" id="top" style="margin:0; background-color:darkred; height:30%; position:relative;">
-            <div align="center" style="color:white; line-height:5px;">
-                <img class="img-responsive imghd" height="50px" width="50px" src="{{ asset('img/logo.png') }}">
-                <h1 style="font-family: 'Roboto', sans-serif; margin-top:5px;"><span>GRAPHI</span><span style="color:#FF5733;">CARD</span></h1>
-                <p class="lead" style="margin-top:-20px;">Digital printing and graphics design</p>
-            </div>
-
-    <div class="menu-container">
-  <div class="menu">
-    <ul>
-      <li class="text-uppercase"><a href="#">Home</a></li>
-      <li class="text-uppercase"><a href="http://marioloncarek.com">About</a>
-        <ul>
-          <li><a href="#">School</a>
-            <ul>
-              <li><a href="#">Lidership</a></li>
-              <li><a href="#">History</a></li>
-              <li><a href="#">Locations</a></li>
-              <li><a href="#">Careers</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Study</a>
-            <ul>
-              <li><a href="#">Undergraduate</a></li>
-              <li><a href="#">Masters</a></li>
-              <li><a href="#">International</a></li>
-              <li><a href="#">Online</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Research</a>
-            <ul>
-              <li><a href="#">Undergraduate research</a></li>
-              <li><a href="#">Masters research</a></li>
-              <li><a href="#">Funding</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Something</a>
-            <ul>
-              <li><a href="#">Sub something</a></li>
-              <li><a href="#">Sub something</a></li>
-              <li><a href="#">Sub something</a></li>
-              <li><a href="#">Sub something</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li class="text-uppercase"><a href="#">News</a>
-        <ul>
-          <li><a href="#">Today</a></li>
-          <li><a href="#">Calendar</a></li>
-          <li><a href="#">Sport</a></li>
-        </ul>
-      </li>
-      <li class="text-uppercase"><a href="http://marioloncarek.com">Contact</a>
-        <ul>
-          <li><a href="#">School</a>
-            <ul>
-              <li><a href="#">Lidership</a></li>
-              <li><a href="#">History</a></li>
-              <li><a href="#">Locations</a></li>
-              <li><a href="#">Careers</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Study</a>
-            <ul>
-              <li><a href="#">Undergraduate</a></li>
-              <li><a href="#">Masters</a></li>
-              <li><a href="#">International</a></li>
-              <li><a href="#">Online</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Study</a>
-            <ul>
-              <li><a href="#">Undergraduate</a></li>
-              <li><a href="#">Masters</a></li>
-              <li><a href="#">International</a></li>
-              <li><a href="#">Online</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Empty sub</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
-</div>
-
-    <header>
+    <header style="margin-top:38px;">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -175,7 +52,7 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="col-xl-12 mx-auto">
-          <h1 class="headbounce bo">Personalize your own</h1>
+          <h1 class="animated rubberBand">Personalize your own</h1>
       </div>
     </div>
   </header>
@@ -211,7 +88,7 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="col-xl-12 mx-auto">
-          <h1 class="headbounce bo">Sample Products</h1>
+          <h1 class="animated rubberBand">Sample Products</h1>
       </div>
     </div>
   </header>
@@ -219,7 +96,7 @@
 
     <div class="container" style="background:;">
       <!-- Portfolio Section -->
-      <ol class="breadcrumb breadbg" style="background:maroon; ">
+      <ol class="breadcrumb breadbg" style="background:#252525; ">
         <li class="breadcrumb-item" >
           <a href="index.html" style="color:white;">Home</a>
         </li>
@@ -232,7 +109,7 @@
 
         <div class="row">
           <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+            <a class="portfolio-link"  href="{{ url('/prodDescription/6.jpg/Picture Frame') }}">
               <div class="portfolio-hover shop">
                 <div class="portfolio-hover-content">
                   <i class="fa fa-flag fa-3x"></i>
@@ -246,7 +123,7 @@
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+            <a class="portfolio-link"  href="{{ url('/prodDescription/5.jpg/Personalized WaterJug') }}">
               <div class="portfolio-hover shop">
                 <div class="portfolio-hover-content">
                   <i class="fa fa-flag fa-3x"></i>
@@ -260,7 +137,7 @@
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+            <a class="portfolio-link" href="{{ url('/prodDescription/4.jpg/Personalized Ecobag') }}">
               <div class="portfolio-hover shop">
                 <div class="portfolio-hover-content">
                   <i class="fa fa-flag fa-3x"></i>
@@ -274,7 +151,7 @@
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+            <a class="portfolio-link" href="{{ url('/prodDescription/3.jpg/Personalized Ballpen') }}">
               <div class="portfolio-hover shop">
                 <div class="portfolio-hover-content">
                   <i class="fa fa-flag fa-3x"></i>
@@ -288,7 +165,7 @@
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+            <a class="portfolio-link"  href="{{ url('/prodDescription/2.jpg/Picture Frame') }}">
               <div class="portfolio-hover shop">
                 <div class="portfolio-hover-content">
                   <i class="fa fa-flag fa-3x"></i>
@@ -302,7 +179,7 @@
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+            <a class="portfolio-link"  href="{{ url('/prodDescription/1.jpg/Personalized Mug') }}">
               <div class="portfolio-hover shop">
                 <div class="portfolio-hover-content">
                   <i class="fa fa-flag fa-3x"></i>
@@ -325,13 +202,13 @@
      
       <!-- /.row -->
 
-      <hr>
+
 
       <header class="masthead top text-white text-center" style="background-image: url('{{ asset('img/blue-pattern.png') }}')">
       <div class="overlay"></div>
       <div class="container">
           <div class="col-xl-12 mx-auto">
-            <h1 class="headbounce bo">Customer Feedback</h1>
+            <h1 class="animated rubberBand">Customer Feedback</h1>
         </div>
       </div>
     </header>
@@ -400,66 +277,49 @@
       </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="py-5" id="foot">
-      <div class="container" style="background:; color:white;">
-        <div class="row"> 
-            <div class="col-lg-6"> 
-            <div align="center" style="color:white; background:; line-height:5px;">
-                            <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;">GRAPHI<span style="color:#9E0909;">CARD</span></h1>
-                            <p class="lead" style="margin-top:-17px;">Digital printing and graphics design</p>
-                            <h3 style="color:#07D9FF;">Services Offered</h3>
-                         </div>
-                <div class="row" style="margin-left:25px;">
-                    <div class="col-sm-6">
-                    <ul>    
-                        <li>Digital offset printing</li>
-                        <li>Large format printing</li>
-                        <li>Photography</li>
-                        <li>ID cards</li>
-                    </ul>
-                    </div>
-                    <div class="col-sm-6">
-                    <ul>    
-                        <li>Novelty Items</li>
-                        <li>Xerox</li>
-                        <li>Risograph</li>
-                        <li>T-shirt printing</li>
-                    </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6"> 
-            <div align="center">
-                            <h1 style="color:#07D9FF;">Find Us</h1>
-                            <p class="lead">Third Floor, Diamond Arcade, 873 Aurora Blvd. cor. St. Mary St. Cubao
-                            Quezon City, Philippines</p>
-                            <h1 style="color:#07D9FF;">Contact Us</h1>
-                            <i class="fa fa-facebook" aria-hidden="true"></i>
-                            (02)123-456/0911-123-4567
-                        </div>
-            </div>
-        </div>
-      </div>
-      
-      <!-- /.container -->
-    </footer>
-    <div class="container-fluid" style="background:#252525; height:30px;">
-     <div align="center" style="margin-top:px;color:white;">
-                        <small class="text-uppercase"><b>&copy; 2017, Graphi<span style="color:#9E0909;">card</span></b></small>
-    </div>
-    
-    </div>
-    <!-- Bootstrap core JavaScript -->
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/megamenu.js') }}"></script>
-    <script>  
-    
-      $(document).scroll(function () {
-        $('.bo').addClass("animated rubberBand");
-       });
-    </script>
-  </body>
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
+   	<link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
+   	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+<section id="contact" style="background:url('{{ asset('img/grey-pattern.png') }}')">
+			<div class="section-content">
+				<h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> 
+        Inquire Now
+        </span></h1>
+				
 
-</html>
+			</div>
+			<div class="contact-section">
+			<div class="container">
+				<form>
+        <div class="row">
+					<div class="col-md-6 form-line">
+			  			<div class="form-group">
+			  				<label for="exampleInputUsername">Your name</label>
+					    	<input type="text" class="form-control" id="" placeholder=" Enter Name">
+				  		</div>
+				  		<div class="form-group">
+					    	<label for="exampleInputEmail">Email Address</label>
+					    	<input type="email" class="form-control" id="exampleInputEmail" placeholder=" Enter Email id">
+					  	</div>	
+					  	<div class="form-group">
+					    	<label for="telephone">Mobile No.</label>
+					    	<input type="tel" class="form-control" id="telephone" placeholder=" Enter 10-digit mobile no.">
+			  			</div>
+			  		</div>
+			  		<div class="col-md-6">
+			  			<div class="form-group">
+			  				<label for ="description"> Message</label>
+			  			 	<textarea  class="form-control" id="description" placeholder="Enter Your Message"></textarea>
+			  			</div>
+			  			<div>
+
+			  				<button type="button" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+			  			</div>
+			  			
+					</div>
+        </div>
+				</form>
+			</div>
+		</section>
+@endsection
