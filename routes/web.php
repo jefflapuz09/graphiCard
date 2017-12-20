@@ -58,3 +58,16 @@ Route::get('/ServiceTypeReactivate/{id}', 'serviceTypeController@reactivate');
 
 Route::post('/ServiceTypeStore', 'serviceTypeController@store');
 Route::post('/ServiceTypeEdit/{id}', 'serviceTypeController@update');
+
+//Post
+Route::get('/Post','postController@index');
+Route::get('/PostCreate','postController@create');
+Route::get('/PostDraft/{id}','postController@publish');
+Route::get('/PostEdit/{id}','postController@edit');
+Route::get('/PostDeactivate/{id}', 'postController@destroy');
+Route::get('/PostSoft','postController@soft');
+Route::get('/PostReactivate/{id}', 'postController@reactivate');
+Route::get('/PostShow/{id}', 'postController@show');
+
+Route::post('/PostStore', 'postController@store');
+Route::post('/PostUpdate/{id}', 'postController@update');

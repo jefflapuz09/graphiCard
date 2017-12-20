@@ -21,8 +21,9 @@
             <div class="form-group">
             <label for="sel2">Service Category</label>
             <select  class="form-control" id="sel2" name="categoryId">
+                    <option value="0">Please select service type</option>
                 @foreach($post as $posts)
-                   <option value="0">Please select service type</option>
+                   
                     <option value="{{ $posts->id }}">{{ $posts->category }}</option>
                 @endforeach
             </select>

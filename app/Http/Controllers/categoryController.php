@@ -52,7 +52,8 @@ class categoryController extends Controller
             'name' => 'required',
         ]);
         ServiceCategory::create($request->all());
-        return redirect('/Category');
+        return redirect('/Category')->withSuccess('IT WORKS!');
+        
     }
 
     /**

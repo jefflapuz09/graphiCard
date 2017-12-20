@@ -53,6 +53,9 @@
                   <a href="{{ url('/ServiceType') }}">Service Type</a>
                 </li>
               </ul>
+              <a class="nav-link" href="{{ url('/Post') }}">
+                <span class="nav-link-text">Post</span>
+              </a>
               <a class="nav-link" href="{{ url('/Customer') }}">
                 <span class="nav-link-text">Customer</span>
               </a>

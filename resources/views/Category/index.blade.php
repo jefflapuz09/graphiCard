@@ -9,6 +9,9 @@
             </a>
         </div>
     </div>
+    @if(session('success'))
+    <h1>{{session('success')}}</h1>
+@endif
      <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
