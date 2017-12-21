@@ -39,68 +39,24 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ url('/login') }}">About</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Offset Printing
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-            <a class="dropdown-item" href="">Custom Invitation</a>
-            <a class="dropdown-item" href="">Brochure</a>
-            <a class="dropdown-item" href="">Newsletter</a>
-            <a class="dropdown-item" href="">Business Card</a>
-            <a class="dropdown-item" href="">Booklet</a>
-            <a class="dropdown-item" href="">Bookmark</a>
-            <a class="dropdown-item" href="">Menu</a>
-            <a class="dropdown-item" href="">Notepad</a>
-            <a class="dropdown-item" href="">Form</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Large Format Printing
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-            <a class="dropdown-item" href="">Tarpaulin</a>
-            <a class="dropdown-item" href="">Sticker printing</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            ID Cards
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-            <a class="dropdown-item" href="">PVC ID Card</a>
-            <a class="dropdown-item" href="">ID Lace/Lanyard</a>
-            <a class="dropdown-item" href="">Proximity ID Card</a>
-            <a class="dropdown-item" href="">Name/Bag Tag</a>
-            <a class="dropdown-item" href="">Privilege Card</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Novelty Items
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-            <a class="dropdown-item" href="">Tumbler</a>
-            <a class="dropdown-item" href="">Pin/Keychain</a>
-            <a class="dropdown-item" href="">Badges</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Other Services
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-            <a class="dropdown-item" href="">Tumbler</a>
-            <a class="dropdown-item" href="">Pin/Keychain</a>
-            <a class="dropdown-item" href="">Badges</a>
-            <a class="dropdown-item" href="">T-shirt Printing</a>
-            <a class="dropdown-item" href="">Lamination</a>
-            <a class="dropdown-item" href="">Ring bind</a>
-            <a class="dropdown-item" href="">Photography</a>
-          </div>
-        </li>
-        </li>
+       @foreach($model as $post)
+            <li class="nav-item">    
+               @if(count($post->Type) > 0)
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{$post->name}}
+                      </a>          
+                  @foreach($post->Type as $type)       
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">            
+                        <a class="dropdown-item" href="">{{$type->name}}</a>
+                      </div>
+                 </li>
+                  @endforeach
+              @else
+                  <a class="nav-link" href="">{{$post->name}}</a>
+              @endif
+            </li>
+       @endforeach
       </ul>
     </div>
   </div>

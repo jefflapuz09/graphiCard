@@ -17,7 +17,7 @@ class categoryController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['except' =>['index']]);
     }
 
 
@@ -52,7 +52,7 @@ class categoryController extends Controller
             'name' => 'required',
         ]);
         ServiceCategory::create($request->all());
-        return redirect('/Category')->withSuccess('IT WORKS!');
+        return redirect('/Category')->withSuccess('Successfully inserted into the database.');
         
     }
 

@@ -24,7 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $post =DB::table('service_types')
+            ->join('service_categories', 'service_types.categoryId', '=', 'service_categories.id')
+            ->select('service_types.*', 'service_categories.name as category')
+            ->where('service_types.isActive',1)
+            ->get();
+        return view('home', compact('post'));
     }
 
     public function prodDescription($id,$desc)

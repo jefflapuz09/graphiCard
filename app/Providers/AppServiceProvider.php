@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use DB;
+use App\ServiceCategory;
+use App\ServiceType;
+use Illuminate\Support\Facades\View;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -14,6 +18,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        $nav = DB::table('service_categories')
+               ->where('isActive',1)
+               ->get();
+        $typenav = DB::table('service_types')
+                ->select('service_types.categoryId as categoryId','service_types.*')
+                ->where('isActive',1)
+                ->get();
+        $model = ServiceCategory::with('Type')
+        ->get();
+        View::share('nav',$nav);
+        View::share('model',$model);
+      
     }
 
     /**

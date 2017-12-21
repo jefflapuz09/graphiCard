@@ -3,15 +3,18 @@
 @section('content')
     <div > 
         <h3>Service Category</h3>
+            @if(session('success'))>
+                <div class="alert alert-success">
+                    {{session('success')}}
+                </div>
+            @endif
         <div class="pull-right" style="margin-bottom:15px;"> 
             <a href="{{ url('/CategoryCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                 New Record
             </a>
         </div>
     </div>
-    @if(session('success'))
-    <h1>{{session('success')}}</h1>
-@endif
+    
      <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>

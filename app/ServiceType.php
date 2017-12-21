@@ -14,4 +14,6 @@ class ServiceType extends Model
         'description',
         'isActive'
     ];
+
+    
 }
