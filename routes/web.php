@@ -69,6 +69,5 @@ Route::get('/PostDeactivate/{id}', 'postController@destroy');
 Route::get('/PostSoft','postController@soft');
 Route::get('/PostReactivate/{id}', 'postController@reactivate');
 Route::get('/PostShow/{id}', 'postController@show');
-
 Route::post('/PostStore', 'postController@store');
 Route::post('/PostUpdate/{id}', 'postController@update');
