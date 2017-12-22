@@ -46,6 +46,12 @@ class HomeController extends Controller
         return view('Home.prodDescription',compact('id','desc'));
     }
 
+    public function aboutPage()
+    {
+        
+        return view('Home.about');
+    }
+
     public function getLogout()
     {
          Auth::logout();

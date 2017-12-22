@@ -37,7 +37,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('/login') }}">About</a>
+          <a class="nav-link" href="{{ url('/about') }}">About</a>
         </li>
 
        @foreach($model as $post)
@@ -60,6 +60,9 @@
               @endif
             </li>
        @endforeach
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url('/login') }}">Login</a>
+        </li>
       </ul>
     </div>
   </div>
