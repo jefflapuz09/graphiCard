@@ -48,7 +48,7 @@ class customerController extends Controller
     public function storepost(Request $request)
     {
         request()->validate([
-            'firstName' => 'required',
+            'firstName' => 'required|unique:customers',
             'lastName' => 'required',
             'emailAddress' => 'required',
             'contactNumber' => 'required',
@@ -97,7 +97,7 @@ class customerController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'firstName' => 'required',
+            'firstName' => 'required|unique:customers',
             'lastName' => 'required',
             'emailAddress' => 'required',
             'contactNumber' => 'required',
@@ -107,7 +107,7 @@ class customerController extends Controller
             'gender' => 'required',
         ]);
         Customer::find($id)->update($request->all());
-        return redirect('/Customer');
+        return redirect('/Customer')->withError('Error!');
       
     }
 

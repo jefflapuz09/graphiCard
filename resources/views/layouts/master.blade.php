@@ -39,8 +39,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ url('/login') }}">About</a>
         </li>
+
        @foreach($model as $post)
-            <li class="nav-item">    
+            <li class="nav-item">   
                @if(count($post->Type) > 0)
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,6 +54,8 @@
                  </li>
                   @endforeach
               @else
+                             {{ $post->categoryId}}
+
                   <a class="nav-link" href="">{{$post->name}}</a>
               @endif
             </li>

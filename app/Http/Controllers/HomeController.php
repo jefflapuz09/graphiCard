@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use DB;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -29,7 +31,16 @@ class HomeController extends Controller
             ->select('service_types.*', 'service_categories.name as category')
             ->where('service_types.isActive',1)
             ->get();
-        return view('home', compact('post'));
+        $item = DB::table('posts')
+            ->join('service_types','posts.typeId','=','service_types.id')
+            ->select('posts.*','service_types.name as category')
+            ->where('posts.isActive',1)
+            ->where('posts.isDraft',1)
+            ->get();
+
+        $model2 = Post::where('isActive',1)->where('isDraft',1)->get();
+      
+        return view('Home.index', compact('post','model2','item'));
     }
 
     public function prodDescription($id,$desc)

@@ -108,6 +108,8 @@
       <div class="container">
 
         <div class="row">
+        @if(count($model2) > 0)
+        @foreach($item as $post)
           <div class="col-md-4 col-sm-6 portfolio-item">
             <a class="portfolio-link"  href="{{ url('/prodDescription/6.jpg/Picture Frame') }}">
               <div class="portfolio-hover shop">
@@ -115,83 +117,33 @@
                   <i class="fa fa-flag fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="{{ asset('img/6.jpg') }}" alt="">
+              <img class="img-fluid" style="max-height:200px;" src="{{ asset($post->image) }}" alt="">
             </a>
             <div class="portfolio-caption">
-              <h4>Picture Frame</h4>
+              <h4>{{ $post->category }}</h4>
               <p class="text-muted">See More</p>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link"  href="{{ url('/prodDescription/5.jpg/Personalized WaterJug') }}">
+          @endforeach
+          @else 
+        
+          <div class="col-md-12 col-sm-12 portfolio-item">
+            <a class="portfolio-link"  href="}">
               <div class="portfolio-hover shop">
                 <div class="portfolio-hover-content">
                   <i class="fa fa-flag fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="{{ asset('img/5.jpg') }}" alt="">
+              <img class="img-fluid" src="{{ asset('img/grey-pattern.png') }}" alt="">
             </a>
             <div class="portfolio-caption">
-              <h4>Personalized WaterJug</h4>
+              <h4>Nothing Found</h4>
               <p class="text-muted">See More</p>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" href="{{ url('/prodDescription/4.jpg/Personalized Ecobag') }}">
-              <div class="portfolio-hover shop">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-flag fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="{{ asset('img/4.jpg') }}" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Personalized Ecobag</h4>
-              <p class="text-muted">See More</p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" href="{{ url('/prodDescription/3.jpg/Personalized Ballpen') }}">
-              <div class="portfolio-hover shop">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-flag fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="{{ asset('img/3.jpg') }}" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Personalized Ballpen</h4>
-              <p class="text-muted">See More</p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link"  href="{{ url('/prodDescription/2.jpg/Picture Frame') }}">
-              <div class="portfolio-hover shop">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-flag fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="{{ asset('img/2.jpg') }}" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Picture Frame</h4>
-              <p class="text-muted">See More</p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link"  href="{{ url('/prodDescription/1.jpg/Personalized Mug') }}">
-              <div class="portfolio-hover shop">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-flag fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="{{ asset('img/1.jpg') }}" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Personalized Mug</h4>
-              <p class="text-muted">See More</p>
-            </div>
-          </div>
+
+          @endif
+          
         </div>
       </div>
     </section>
