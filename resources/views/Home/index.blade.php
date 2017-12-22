@@ -147,7 +147,7 @@
                       <i class="fa fa-flag fa-3x"></i>
                     </div>
                   </div>
-                  <img class="img-fluid" style="max-height:200px;" src="{{ asset('img/red-pattern.png') }}" alt="">
+                  <img class="img-fluid" style="max-height:200px;" src="{{ asset('img/blue-pattern.png') }}" alt="">
                 </a>
                 <div class="portfolio-caption">
                   <h4>No post available</h4>

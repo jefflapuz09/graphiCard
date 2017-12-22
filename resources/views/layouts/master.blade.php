@@ -42,17 +42,18 @@
 
        @foreach($model as $post)
             <li class="nav-item">   
-               @if(count($post->Type) > 0)
+               @if(count($post->Type) != 0)
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{$post->name}}
                       </a>          
-                  @foreach($post->Type as $type)       
-                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">            
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                  @foreach($post->Type as $type)                   
                         <a class="dropdown-item" href="">{{$type->name}}</a>
-                      </div>
-                 </li>
+                      
                   @endforeach
+                  </div>
+                 </li>
               @else
                              {{ $post->categoryId}}
 
