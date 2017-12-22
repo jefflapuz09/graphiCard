@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use App\Post;
-
+use App\ServiceCategory;
 class HomeController extends Controller
 {
     /**
@@ -34,10 +34,11 @@ class HomeController extends Controller
             ->where('posts.isActive',1)
             ->where('posts.isDraft',1)
             ->get();
-
+        $postcat = ServiceCategory::with('Post')->get();
+       
         $model2 = Post::where('isActive',1)->where('isDraft',1)->get();
       
-        return view('Home.index', compact('post','model2','item'));
+        return view('Home.index', compact('post','model2','item','postcat'));
     }
 
     public function prodDescription($id,$desc)

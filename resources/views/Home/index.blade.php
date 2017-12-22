@@ -88,67 +88,80 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="col-xl-12 mx-auto">
-          <h1 class="animated rubberBand">Sample Products</h1>
+          <h1 class="animated rubberBand">Sample Items</h1>
       </div>
     </div>
   </header>
 
-
-    <div class="container" style="background:;">
+@foreach($postcat as $cat)
+    <div class="container" style="background:; margin-top:35px;">
       <!-- Portfolio Section -->
+      
       <ol class="breadcrumb breadbg" style="background:#252525; ">
         <li class="breadcrumb-item" >
           <a href="index.html" style="color:white;">Home</a>
         </li>
-        <li class="breadcrumb-item active" style="color:white;">Miscelleanous</li>
+        <li class="breadcrumb-item active" style="color:white;">{{$cat->name}}</li>
       </ol>
+    </div>
 
+     @if(count($cat->Post) > 0) 
+       
+        <div class="container">
+          <section class="bg-light" id="portfolio">
+          <div class="container">
 
-      <section class="bg-light" id="portfolio">
-      <div class="container">
-
-        <div class="row">
-        @if(count($model2) > 0)
-        @foreach($item as $post)
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link"  href="{{ url('/prodDescription/6.jpg/Picture Frame') }}">
-              <div class="portfolio-hover shop">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-flag fa-3x"></i>
+            <div class="row">
+          @foreach($cat->Post as $post)
+              <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link"  href="{{ url('/prodDescription/6.jpg/Picture Frame') }}">
+                  <div class="portfolio-hover shop">
+                    <div class="portfolio-hover-content">
+                      <i class="fa fa-flag fa-3x"></i>
+                    </div>
+                  </div>
+                  <img class="img-fluid" style="max-height:200px;" src="{{ asset($post->image) }}" alt="">
+                </a>
+                <div class="portfolio-caption">
+                <h4>{{ $post->ServiceType->name }}</h4>
+                  <p class="text-muted">See More</p>
                 </div>
               </div>
-              <img class="img-fluid" style="max-height:200px;" src="{{ asset($post->image) }}" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>{{ $post->category }}</h4>
-              <p class="text-muted">See More</p>
-            </div>
-          </div>
           @endforeach
-          @else 
-        
-          <div class="col-md-12 col-sm-12 portfolio-item">
-            <a class="portfolio-link"  href="}">
-              <div class="portfolio-hover shop">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-flag fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="{{ asset('img/grey-pattern.png') }}" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Nothing Found</h4>
-              <p class="text-muted">See More</p>
             </div>
           </div>
+        </section>
+    
 
-          @endif
-          
-        </div>
-      </div>
-    </section>
+    @else 
+      <div class="container">
+          <section class="bg-light" id="portfolio">
+          <div class="container">
+
+            <div class="row">
+        
+              <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link"  href="{{ url('/prodDescription/6.jpg/Picture Frame') }}">
+                  <div class="portfolio-hover shop">
+                    <div class="portfolio-hover-content">
+                      <i class="fa fa-flag fa-3x"></i>
+                    </div>
+                  </div>
+                  <img class="img-fluid" style="max-height:200px;" src="{{ asset('img/red-pattern.png') }}" alt="">
+                </a>
+                <div class="portfolio-caption">
+                  <h4>No post available</h4>
+                  <p class="text-muted">See More</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+    @endif
 
      </div>
+     @endforeach
       <!-- /.row -->
     
      

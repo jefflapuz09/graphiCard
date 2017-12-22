@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div > 
+    <div> 
         <h3>Service Category</h3>
-            @if(session('success'))>
+            @if(session('success'))
                 <div class="alert alert-success">
                     {{session('success')}}
                 </div>

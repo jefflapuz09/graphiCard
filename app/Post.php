@@ -16,4 +16,12 @@ class Post extends Model
         'isDraft',
         'isActive'
     ];
+
+    public function ServiceCategory(){
+        return $this->belongsTo('App\ServiceCategory','categoryId');
+    }
+
+    public function ServiceType(){
+        return $this->belongsTo('App\ServiceType','typeId');
+    }
 }
