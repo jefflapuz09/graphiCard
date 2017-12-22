@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
                 ->select('service_types.categoryId as categoryId','service_types.*')
                 ->where('isActive',1)
                 ->get();
-        $model = ServiceCategory::with('Type')
+        $model = ServiceCategory::with('Type')->limit(4)
         ->get();
         View::share('nav',$nav);
         View::share('model',$model);
