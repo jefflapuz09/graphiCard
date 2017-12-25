@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use DB;
 use App\ServiceCategory;
 use App\ServiceType;
+use App\CompanyInfo;
 use Illuminate\Support\Facades\View;
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
                 ->get();
         $model = ServiceCategory::with('Type')->limit(4)
         ->get();
+        $comp = CompanyInfo::find(1);
+        View::share('comp',$comp);
         View::share('nav',$nav);
         View::share('model',$model);
       

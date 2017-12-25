@@ -15,7 +15,7 @@
         {{ csrf_field() }}
             <div class="form-group">
             <label for="sel2">Service Category</label>
-            <select class="form-control" id="sel2" name="categoryId">
+            <select class="form-control" id="cat" onchange="changetype(this.value)" name="categoryId">
                     <option value="0">Please Select Service Category</option>
                 @foreach($cat as $posts)   
                     <option value="{{ $posts->id }}">{{ $posts->name }}</option>
@@ -58,6 +58,20 @@
 
     <script src="{{ url('vendor/tinymce/js/tinymce/tinymce.min.js') }}"></script>
     <script>
+
+
+    function changetype(id)
+    {
+        alert(id);
+         $.ajax({
+            type: "GET",
+            url: '/PostType/'+id,
+            dataType: "JSON",
+            success:function(data){
+                alert(data);
+            }
+         });
+    }
        tinymce.init({
   selector: 'textarea',
   plugins: 'image code',

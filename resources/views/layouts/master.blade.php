@@ -30,7 +30,7 @@
 
   <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand" href="index.html"><img src="{{ asset('img/logo2.png') }}">Graphi<span style="color:gold;">Card</span></a>
+    <a class="navbar-brand" href="index.html"><img src="{{ asset($comp->company_logo) }}">{{ $comp->company_name }}</a>
     <button class="navbar-toggler navbar-toggler-right custom-toggler"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon" style="color:yellow;"></span>
     </button>
@@ -76,8 +76,8 @@
         <div class="row"> 
             <div class="col-lg-6"> 
             <div align="center" style="color:white; background:; line-height:5px;">
-                            <img src="{{ asset('img/logo2.png') }}">
-                            <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;">GRAPHI<span style="color:gold;">CARD</span></h1>
+                            <img src="{{ asset($comp->company_logo) }}">
+                            <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">{{$comp->company_name}}</h1>
                             <p class="lead" style="margin-top:-17px;">Digital printing and graphics design</p>
                             <h5 style="color:gold;">Services Offered</h5>
                          </div>
@@ -103,12 +103,11 @@
             <div class="col-lg-6" style="margin-top:20px;"> 
             <div align="center">
                             <h3 style="color:gold;">Find Us</h3>
-                            <p class="lead">Third Floor, Diamond Arcade, 873 Aurora Blvd. cor. St. Mary St. Cubao
-                            Quezon City, Philippines</p>
+                            <p class="lead">{{ $comp->street }} {{$comp->brgy}}, {{$comp->city}}</p>
                             <h3 style="color:gold;">Contact Us</h3>
-                            <i class="fa fa-facebook" aria-hidden="true"></i>
-                            (02)123-456/0911-123-4567
-                            <br>graphicard@gmail.com
+                           
+                            {{$comp->contactNumber}}
+                            <br>{{$comp->emailAddress}}
                             <div style="margin-top:10px;">
                             <ul class="social-network social-circle">
                               <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>

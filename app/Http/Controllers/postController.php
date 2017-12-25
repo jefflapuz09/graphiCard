@@ -7,6 +7,12 @@ use DB;
 use App\Post;
 use App\ServiceType;
 use App\ServiceCategory;
+use Validator;
+use Redirect;
+use Response;
+use Session;
+
+use Illuminate\Validation\Rule;
 
 class postController extends Controller
 {
@@ -166,5 +172,12 @@ class postController extends Controller
     {
         Post::find($id)->update(['isActive' => 1]);
         return redirect('/Post');
+    }
+
+    public function type($id){
+        $items [] = [];
+        $cat = ProductCategory::all();
+        $items = ProductCategory::with('Type')->get();
+        return Response()->json(['items'=>$items,'cat'=>$cat]);
     }
 }
