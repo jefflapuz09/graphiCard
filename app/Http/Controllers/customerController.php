@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Customer;
+use Validator;
+use Redirect;
 
 class customerController extends Controller
 {
@@ -47,20 +49,43 @@ class customerController extends Controller
 
     public function storepost(Request $request)
     {
-        request()->validate([
-            'firstName' => 'required|unique:customers',
-            'lastName' => 'required',
-            'emailAddress' => 'required',
-            'contactNumber' => 'required',
-            'street' => 'required',
-            'brgy' => 'required',
-            'city' => 'required',
+        $rules = [
+            'firstName' => ['required','max:50','unique:customers', 'regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'middleName' => ['nullable','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/','unique:customers'],
+            'lastName' => ['required','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'gender' => 'required',
-
-        ]);
-        Customer::create($request->all());
-        return redirect('/Customer');
-
+            'street' => 'required|max:140',
+            'brgy' => 'required|max:140',
+            'city' => 'required|max:140',
+            'contactNumber' => ['required','max:30','regex:/^[^_]+$/'],
+            'email' => 'nullable|email|max:100',
+            'gender' => 'required'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',   
+            'regex' => 'The :attribute must not contain special characters.'             
+        ];
+        $niceNames = [
+            'firstName' => 'First Name',
+            'middleName' => 'Middle Name',
+            'lastName' => 'Last Name',
+            'street' => 'No. & St./Bldg.',
+            'brgy' => 'Brgy./Subd.',
+            'city' => 'City/Municipality',
+            'contactNumber' => 'Contact No.',
+            'email' => 'Email Address'
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else{
+            Customer::create($request->all());
+            return redirect('/Customer')->withSuccess('Successfully Updated into the database.');
+        }
     }
 
     /**
@@ -96,18 +121,43 @@ class customerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        request()->validate([
-            'firstName' => 'required|unique:customers',
-            'lastName' => 'required',
-            'emailAddress' => 'required',
-            'contactNumber' => 'required',
-            'street' => 'required',
-            'brgy' => 'required',
-            'city' => 'required',
+        $rules = [
+            'firstName' => ['required','max:50','unique:customers', 'regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'middleName' => ['nullable','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/','unique:customers'],
+            'lastName' => ['required','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'gender' => 'required',
-        ]);
-        Customer::find($id)->update($request->all());
-        return redirect('/Customer')->withError('Error!');
+            'street' => 'required|max:140',
+            'brgy' => 'required|max:140',
+            'city' => 'required|max:140',
+            'contactNumber' => ['required','max:30','regex:/^[^_]+$/'],
+            'email' => 'nullable|email|max:100',
+            'gender' => 'required'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',   
+            'regex' => 'The :attribute must not contain special characters.'             
+        ];
+        $niceNames = [
+            'firstName' => 'First Name',
+            'middleName' => 'Middle Name',
+            'lastName' => 'Last Name',
+            'street' => 'No. & St./Bldg.',
+            'brgy' => 'Brgy./Subd.',
+            'city' => 'City/Municipality',
+            'contactNumber' => 'Contact No.',
+            'email' => 'Email Address'
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else{
+            Customer::find($id)->update($request->all());
+            return redirect('/Customer')->withSuccess('Successfully Updated into the database.');
+        }       
       
     }
 

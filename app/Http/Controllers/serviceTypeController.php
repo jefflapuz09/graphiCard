@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use DB;
 use App\ServiceType;
 use App\ServiceCategory;
+use Validator;
+use Redirect;
 
 class serviceTypeController extends Controller
 {
@@ -54,12 +56,29 @@ class serviceTypeController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'name' => 'required',
-            'categoryId' => 'required',
-        ]);
-        ServiceType::create($request->all());
-        return redirect('/ServiceType');
+        $rules = [
+            'name' => ['required','max:50','unique:service_types','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'categoryId' => 'required'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',
+            'regex' => 'The :attribute must not contain special characters.'              
+        ];
+        $niceNames = [
+            'name' => 'Service Type',
+            'categoryId' => 'Service Category',
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else{
+            ServiceType::create($request->all());
+            return redirect('/ServiceType')->withSuccess('Successfully inserted into the database.');
+        }
     }
 
     /**
@@ -99,12 +118,29 @@ class serviceTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        request()->validate([
-            'name' => 'required',
-            'categoryId' => 'required',
-        ]);
-        ServiceType::find($id)->update($request->all());
-        return redirect('/ServiceType');
+        $rules = [
+            'name' => ['required','max:50','unique:service_types','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'categoryId' => 'required'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',
+            'regex' => 'The :attribute must not contain special characters.'              
+        ];
+        $niceNames = [
+            'name' => 'Service Type',
+            'categoryId' => 'Service Category',
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else{
+            ServiceType::find($id)->update($request->all());
+            return redirect('/ServiceType')->withSuccess('Successfully updated into the database.');
+        }
     }
 
     /**

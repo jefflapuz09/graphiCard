@@ -59,25 +59,51 @@ class postController extends Controller
      */
     public function store(Request $request)
     {
-        $file = $request->file('image');
-        $pic = "";
-        if($file == '' || $file == null){
-            $pic = "img/grey-pattern.png";
-        }else{
-            $date = date("Ymdhis");
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $pic = "img/".$date.'.'.$extension;
-            $request->file('image')->move("img",$pic);    
-            // $request->file('photo')->move(public_path("/uploads"), $newfilename);
+        $rules = [
+            'categoryId' => 'required',
+            'typeId' => 'required',
+            'details' => 'required',
+            'image' => 'nullable'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',
+            'regex' => 'The :attribute must not contain special characters.'              
+        ];
+        $niceNames = [
+            'categoryId' => 'Service Category',
+            'typeId' => 'Service Type',
+            'details' => 'Details',
+            'image' => 'Image',
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
         }
-        $post = Post::create([
-            'categoryId' => ($request->categoryId),
-            'typeId' => ($request->typeId),
-            'details' => ($request->details),
-            'image' => $pic,
-            'isDraft' => 0,
-        ]);
-        return redirect('/Post');
+        else{
+            $file = $request->file('image');
+            $pic = "";
+            if($file == '' || $file == null){
+                $pic = "img/grey-pattern.png";
+            }else{
+                $date = date("Ymdhis");
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $pic = "img/".$date.'.'.$extension;
+                $request->file('image')->move("img",$pic);    
+                // $request->file('photo')->move(public_path("/uploads"), $newfilename);
+            }
+            $post = Post::create([
+                'categoryId' => ($request->categoryId),
+                'typeId' => ($request->typeId),
+                'details' => ($request->details),
+                'image' => $pic,
+                'isDraft' => 0,
+            ]);
+            return redirect('/Post')->withSuccess('Successfully inserted into the database.');
+        }
+    
     }
 
   
@@ -124,24 +150,50 @@ class postController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $file = $request->file('image');
-        $pic = "";
-        if($file == '' || $file == null){
-            $pic = "img/grey-pattern.png";
-        }else{
-            $date = date("Ymdhis");
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $pic = "img/".$date.'.'.$extension;
-            $request->file('image')->move("img",$pic);    
-            // $request->file('photo')->move(public_path("/uploads"), $newfilename);
+        $rules = [
+            'categoryId' => 'required',
+            'typeId' => 'required',
+            'details' => 'required',
+            'image' => 'nullable'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',
+            'regex' => 'The :attribute must not contain special characters.'              
+        ];
+        $niceNames = [
+            'categoryId' => 'Service Category',
+            'typeId' => 'Service Type',
+            'details' => 'Details',
+            'image' => 'Image',
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
         }
-        $post = Post::find($id)->update([
-            'categoryId' => ($request->categoryId),
-            'typeId' => ($request->typeId),
-            'details' => ($request->details),
-            'image' => $pic,
-        ]);
-        return redirect('/Post');
+        else{
+            $file = $request->file('image');
+            $pic = "";
+            if($file == '' || $file == null){
+                $pic = "img/grey-pattern.png";
+            }else{
+                $date = date("Ymdhis");
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $pic = "img/".$date.'.'.$extension;
+                $request->file('image')->move("img",$pic);    
+                // $request->file('photo')->move(public_path("/uploads"), $newfilename);
+            }
+            $post = Post::find($id)->update([
+                'categoryId' => ($request->categoryId),
+                'typeId' => ($request->typeId),
+                'details' => ($request->details),
+                'image' => $pic,
+            ]);
+            return redirect('/Post')->withSuccess('Successfully updated into the database.');
+        }
+       
     }
 
     /**
@@ -175,9 +227,9 @@ class postController extends Controller
     }
 
     public function type($id){
-        $items [] = [];
-        $cat = ProductCategory::all();
-        $items = ProductCategory::with('Type')->get();
-        return Response()->json(['items'=>$items,'cat'=>$cat]);
+ 
+        
+        $items = ServiceType::where('categoryId',$id)->get();
+        return Response()->json($items);
     }
 }

@@ -1,25 +1,24 @@
-@extends('layouts.admin')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
     <div class="container-fluid">
      <div>
         <h3>Customer</h3>
      </div>
-     @if ($errors->any())
+     <?php if($errors->any()): ?>
      <div class="alert alert-danger">
            <?php echo "<pre>".implode(",\n",$errors->all(':message'))."</pre>"; ?>
      </div>
-     @endif    
+     <?php endif; ?>    
     <div class="row">
     
     <div class="col-lg-6"> 
         
                     
        
-        <form action="{{ url('/CustomerStore') }}" method="post">
+        <form action="<?php echo e(url('/CustomerStore')); ?>" method="post">
 
-        {{ csrf_field() }}
+        <?php echo e(csrf_field()); ?>
+
             
             <div class="form-group">
             <label for="">First Name:</label>
@@ -74,4 +73,5 @@
     </form>
     </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
