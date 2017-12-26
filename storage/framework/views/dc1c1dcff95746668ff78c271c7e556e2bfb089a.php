@@ -7,25 +7,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>{{$comp->company_name}}</title>
+  <title><?php echo e($comp->company_name); ?></title>
   <!-- Bootstrap core CSS-->
  
-  <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="<?php echo e(asset('vendor/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Page level plugin CSS-->
   <!-- <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet"> -->
   <!-- Custom styles for this template-->
   <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-  <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/jquery.dataTables.min') }}" rel="stylesheet">
+  <link href="<?php echo e(asset('css/sb-admin.css')); ?>" rel="stylesheet">
+  <link href="<?php echo e(asset('css/jquery.dataTables.min')); ?>" rel="stylesheet">
   
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">{{$comp->company_name}}</a>
+    <a class="navbar-brand" href="index.html"><?php echo e($comp->company_name); ?></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -47,16 +47,16 @@
               <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Service</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti2">
                 <li>
-                  <a href="{{ url('/Category') }}">Service Category</a>
+                  <a href="<?php echo e(url('/Category')); ?>">Service Category</a>
                 </li>
                 <li>
-                  <a href="{{ url('/ServiceType') }}">Service Type</a>
+                  <a href="<?php echo e(url('/ServiceType')); ?>">Service Type</a>
                 </li>
               </ul>
-              <a class="nav-link" href="{{ url('/Post') }}">
+              <a class="nav-link" href="<?php echo e(url('/Post')); ?>">
                 <span class="nav-link-text">Post</span>
               </a>
-              <a class="nav-link" href="{{ url('/Customer') }}">
+              <a class="nav-link" href="<?php echo e(url('/Customer')); ?>">
                 <span class="nav-link-text">Customer</span>
               </a>
             </li>
@@ -162,7 +162,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>{{ Auth::user()->name }}</a>
+            <i class="fa fa-fw fa-sign-out"></i><?php echo e(Auth::user()->name); ?></a>
         </li>
       </ul>
     </div>
@@ -171,7 +171,7 @@
     <div class="container-fluid">
      
   
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </div>
   </div>
     <!-- /.container-fluid-->
@@ -200,17 +200,17 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="{{ route('logout') }}">Logout</a>
+            <a class="btn btn-primary" href="<?php echo e(route('logout')); ?>">Logout</a>
           </div>
         </div>
       </div>
     </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('vendor/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('vendor/bootstrap/js/jquery.dataTables.min') }}"></script>
-    <script src="{{ asset('js/sb-admin.min.js') }}"></script>
+    <script src="<?php echo e(asset('vendor/bootstrap/js/jquery.dataTables.min')); ?>"></script>
+    <script src="<?php echo e(asset('js/sb-admin.min.js')); ?>"></script>
     
 
      <script>

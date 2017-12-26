@@ -1,30 +1,30 @@
-@extends('layouts.admin')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
    <div class="container-fluid">
         <div>
                 <h3>Service Category</h3>
                 </div>
-        @if ($errors->any())
+        <?php if($errors->any()): ?>
         <div class="alert alert-danger">
-            {{ implode('', $errors->all(':message')) }}
+            <?php echo e(implode('', $errors->all(':message'))); ?>
+
         </div>                
-        @endif
+        <?php endif; ?>
     <div class="row">
     
     <div class="col-lg-6"> 
         
-        <form action="{{ url('/CategoryEdit', $post->id) }}" method="post">
+        <form action="<?php echo e(url('/CategoryEdit', $post->id)); ?>" method="post">
 
-        {{ csrf_field() }}
+        <?php echo e(csrf_field()); ?>
+
             <div class="form-group">
             <label for="">Name:</label>
-            <input type="text"   value="{{ $post->name }}" class="form-control" name="name" id="name">
+            <input type="text"   value="<?php echo e($post->name); ?>" class="form-control" name="name" id="name">
             </div>
             <div class="form-group">
             <label for="">Description:</label>
-            <textarea class="form-control"  rows="5" name="description" id="desc">{{ $post->description }}</textarea>
+            <textarea class="form-control"  rows="5" name="description" id="desc"><?php echo e($post->description); ?></textarea>
             </div>
             <div class="pull-right">
             <button type="reset" class="btn btn-success">Clear</button>
@@ -34,4 +34,5 @@
     </div> 
     </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

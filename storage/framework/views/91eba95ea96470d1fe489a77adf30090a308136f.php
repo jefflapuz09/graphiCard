@@ -1,10 +1,6 @@
+<?php $__env->startSection('contents'); ?>
 
-@extends('layouts.master')
-
-
-@section('contents')
-
-<link href="{{ asset('css/contact.css') }}" rel="stylesheet"> 
+<link href="<?php echo e(asset('css/contact.css')); ?>" rel="stylesheet"> 
 
     <header style="margin-top:38px;">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -15,21 +11,21 @@
         </ol>
         <div class="carousel-inner" role="listbox">
           <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url('{{ asset('img/banner1.jpg')}}')">
+          <div class="carousel-item active" style="background-image: url('<?php echo e(asset('img/banner1.jpg')); ?>')">
             <div class="carousel-caption d-none d-md-block">
               <!-- <h3>First Slide</h3>
               <p>This is a description for the first slide.</p> -->
             </div>
           </div>
           <!-- Slide Two - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('{{ asset('img/banner2.jpg')}}')">
+          <div class="carousel-item" style="background-image: url('<?php echo e(asset('img/banner2.jpg')); ?>')">
             <div class="carousel-caption d-none d-md-block">
               <!-- <h3>Second Slide</h3>
               <p>This is a description for the second slide.</p> -->
             </div>
           </div>
           <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('{{ asset('img/banner3.jpg')}}')">
+          <div class="carousel-item" style="background-image: url('<?php echo e(asset('img/banner3.jpg')); ?>')">
             <div class="carousel-caption d-none d-md-block">
               <!-- <h3>Third Slide</h3>
               <p>This is a description for the third slide.</p> -->
@@ -48,7 +44,7 @@
     </header>
 
 
-    <header class="masthead top text-white text-center" style="background-image: url('{{ asset('img/blue-pattern.png') }}')">
+    <header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/blue-pattern.png')); ?>')">
     <div class="overlay"></div>
     <div class="container">
         <div class="col-xl-12 mx-auto">
@@ -67,14 +63,14 @@
           ?>
         </div>
         <div class="col-lg-6">
-          <img class="img-fluid rounded" src="{{ asset('img/feature.jpg') }}" alt="">
+          <img class="img-fluid rounded" src="<?php echo e(asset('img/feature.jpg')); ?>" alt="">
         </div>
     </div>  
 
     </div>
 
     <!-- Page Content -->
-    <header class="masthead top text-white text-center" style="background-image: url('{{ asset('img/blue-pattern.png') }}')">
+    <header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/blue-pattern.png')); ?>')">
     <div class="overlay"></div>
     <div class="container">
         <div class="col-xl-12 mx-auto">
@@ -83,7 +79,7 @@
     </div>
   </header>
 
-@foreach($postcat as $cat)
+<?php $__currentLoopData = $postcat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="container" style="background:; margin-top:35px;">
       <!-- Portfolio Section -->
       
@@ -91,39 +87,39 @@
         <li class="breadcrumb-item" >
           <a href="index.html" style="color:white;">Home</a>
         </li>
-        <li class="breadcrumb-item active" style="color:white;">{{$cat->name}}</li>
+        <li class="breadcrumb-item active" style="color:white;"><?php echo e($cat->name); ?></li>
       </ol>
     </div>
 
-     @if(count($cat->Post) > 0) 
+     <?php if(count($cat->Post) > 0): ?> 
        
         <div class="container">
           <section class="bg-light" id="portfolio">
           <div class="container">
 
             <div class="row">
-          @foreach($cat->Post as $post)
+          <?php $__currentLoopData = $cat->Post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               <div class="col-md-4 col-sm-6 portfolio-item">
-                <a class="portfolio-link"  href="{{ url('/prodDescription/6.jpg/Picture Frame') }}">
+                <a class="portfolio-link"  href="<?php echo e(url('/prodDescription/6.jpg/Picture Frame')); ?>">
                   <div class="portfolio-hover shop">
                     <div class="portfolio-hover-content">
                       <i class="fa fa-flag fa-3x"></i>
                     </div>
                   </div>
-                  <img class="img-fluid" style="max-height:200px;" src="{{ asset($post->image) }}" alt="">
+                  <img class="img-fluid" style="max-height:200px;" src="<?php echo e(asset($post->image)); ?>" alt="">
                 </a>
                 <div class="portfolio-caption">
-                <h4>{{ $post->ServiceType->name }}</h4>
+                <h4><?php echo e($post->ServiceType->name); ?></h4>
                   <p class="text-muted">See More</p>
                 </div>
               </div>
-          @endforeach
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
           </div>
         </section>
     
 
-    @else 
+    <?php else: ?> 
       <div class="container">
           <section class="bg-light" id="portfolio">
           <div class="container">
@@ -131,13 +127,13 @@
             <div class="row">
         
               <div class="col-md-4 col-sm-6 portfolio-item">
-                <a class="portfolio-link"  href="{{ url('/prodDescription/6.jpg/Picture Frame') }}">
+                <a class="portfolio-link"  href="<?php echo e(url('/prodDescription/6.jpg/Picture Frame')); ?>">
                   <div class="portfolio-hover shop">
                     <div class="portfolio-hover-content">
                       <i class="fa fa-flag fa-3x"></i>
                     </div>
                   </div>
-                  <img class="img-fluid" style="max-height:200px;" src="{{ asset('img/blue-pattern.png') }}" alt="">
+                  <img class="img-fluid" style="max-height:200px;" src="<?php echo e(asset('img/blue-pattern.png')); ?>" alt="">
                 </a>
                 <div class="portfolio-caption">
                   <h4>No post available</h4>
@@ -148,10 +144,10 @@
           </div>
         </section>
 
-    @endif
+    <?php endif; ?>
 
      </div>
-     @endforeach
+     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       <!-- /.row -->
     
      
@@ -159,7 +155,7 @@
 
 
 
-      <header class="masthead top text-white text-center" style="background-image: url('{{ asset('img/blue-pattern.png') }}')">
+      <header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/blue-pattern.png')); ?>')">
       <div class="overlay"></div>
       <div class="container">
           <div class="col-xl-12 mx-auto">
@@ -236,7 +232,7 @@
    	<link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
    	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   
-<section id="contact" style="background:url('{{ asset('img/grey-pattern.png') }}')">
+<section id="contact" style="background:url('<?php echo e(asset('img/grey-pattern.png')); ?>')">
 			<div class="section-content">
 				<h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> 
         Inquire Now
@@ -277,4 +273,6 @@
 				</form>
 			</div>
 		</section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
