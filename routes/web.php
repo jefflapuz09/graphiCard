@@ -73,3 +73,8 @@ Route::get('/PostType/{id}','postController@type');
 
 Route::post('/PostStore', 'postController@store');
 Route::post('/PostUpdate/{id}', 'postController@update');
+
+//Utilities
+Route::get('/Utilities', 'UtilitiesController@index');
+
+Route::post('/UtilitiesUpdate/{id}', 'UtilitiesController@update');

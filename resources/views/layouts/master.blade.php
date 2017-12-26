@@ -63,9 +63,15 @@
               @endif
             </li>
        @endforeach
-        <li class="nav-item">
+       @if($user = Auth::user())
+   
+          
+       @elseif(Auth::guest())
+       <li class="nav-item">
           <a class="nav-link" href="{{ url('/login') }}">Login</a>
         </li>
+       @endif
+        
       </ul>
     </div>
   </div>
@@ -83,7 +89,7 @@
                 <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">{{$comp->company_name}}</h1>
                 @else
                 <img src="">
-                <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Nmae</h1>
+                <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Name</h1>
                 @endif
                             
                             
@@ -119,7 +125,7 @@
                             {{$comp->contactNumber}}
                             <br>{{$comp->emailAddress}}
                             @else
-                            <p class="lead">Street Brgy City}</p>
+                            <p class="lead">Street Brgy City</p>
                             <h3 style="color:gold;">Contact Us</h3>
                            
                             Contact Number
@@ -142,7 +148,11 @@
     </footer>
     <div class="container-fluid" style="background:#154360; height:30px;">
      <div align="center" style="margin-top:px;color:white;">
-                        <small class="text-uppercase"><b>&copy; 2017, Graphi<span style="color:gold;">card</span></b></small>
+        @if(count($comp) != 0 )
+          <small class="text-uppercase"><b>&copy; 2017, {{$comp->company_name}}</b></small>
+        @else
+          <small class="text-uppercase"><b>&copy; Company name</b></small>
+        @endif
     </div>
     
     </div>

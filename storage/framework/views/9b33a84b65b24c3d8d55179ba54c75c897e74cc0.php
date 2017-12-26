@@ -65,9 +65,15 @@
               <?php endif; ?>
             </li>
        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        <li class="nav-item">
+       <?php if($user = Auth::user()): ?>
+   
+          
+       <?php elseif(Auth::guest()): ?>
+       <li class="nav-item">
           <a class="nav-link" href="<?php echo e(url('/login')); ?>">Login</a>
         </li>
+       <?php endif; ?>
+        
       </ul>
     </div>
   </div>
@@ -85,7 +91,7 @@
                 <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase"><?php echo e($comp->company_name); ?></h1>
                 <?php else: ?>
                 <img src="">
-                <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Nmae</h1>
+                <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Name</h1>
                 <?php endif; ?>
                             
                             
@@ -123,7 +129,7 @@
                             <br><?php echo e($comp->emailAddress); ?>
 
                             <?php else: ?>
-                            <p class="lead">Street Brgy City}</p>
+                            <p class="lead">Street Brgy City</p>
                             <h3 style="color:gold;">Contact Us</h3>
                            
                             Contact Number
@@ -146,7 +152,11 @@
     </footer>
     <div class="container-fluid" style="background:#154360; height:30px;">
      <div align="center" style="margin-top:px;color:white;">
-                        <small class="text-uppercase"><b>&copy; 2017, Graphi<span style="color:gold;">card</span></b></small>
+        <?php if(count($comp) != 0 ): ?>
+          <small class="text-uppercase"><b>&copy; 2017, <?php echo e($comp->company_name); ?></b></small>
+        <?php else: ?>
+          <small class="text-uppercase"><b>&copy; Company name</b></small>
+        <?php endif; ?>
     </div>
     
     </div>
