@@ -31,12 +31,8 @@
 <?php if(count($comp) != 0 ): ?>
 <a class="navbar-brand" href="index.html"><img src="<?php echo e(asset($comp->company_logo)); ?>"><?php echo e($comp->company_name); ?></a>
 <?php else: ?>
-<a class="navbar-brand" href="index.html"><img src="">WALA!</a>
+<a class="navbar-brand" href="index.html"><img src="">Company Name</a>
 <?php endif; ?>
-
-
- 
-    
     <button class="navbar-toggler navbar-toggler-right custom-toggler"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon" style="color:yellow;"></span>
     </button>
@@ -84,7 +80,17 @@
         <div class="row"> 
             <div class="col-lg-6"> 
             <div align="center" style="color:white; background:; line-height:5px;">
+                <?php if(count($comp) != 0 ): ?>
+                <img src="<?php echo e(asset($comp->company_logo)); ?>">
+                <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase"><?php echo e($comp->company_name); ?></h1>
+                <?php else: ?>
+                <img src="">
+                <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Nmae</h1>
+                <?php endif; ?>
                             
+                            
+                            <p class="lead" style="margin-top:-17px;">Digital printing and graphics design</p>
+                            <h5 style="color:gold;">Services Offered</h5>
                          </div>
                 <div class="row" style="margin-left:25px;">
                     <div class="col-sm-6">
@@ -106,7 +112,33 @@
                 </div>
             </div>
             <div class="col-lg-6" style="margin-top:20px;"> 
-            
+            <div align="center">
+                            <h3 style="color:gold;">Find Us</h3>
+                            <?php if(count($comp) != 0 ): ?>
+                            <p class="lead"><?php echo e($comp->street); ?> <?php echo e($comp->brgy); ?>, <?php echo e($comp->city); ?></p>
+                            <h3 style="color:gold;">Contact Us</h3>
+                           
+                            <?php echo e($comp->contactNumber); ?>
+
+                            <br><?php echo e($comp->emailAddress); ?>
+
+                            <?php else: ?>
+                            <p class="lead">Street Brgy City}</p>
+                            <h3 style="color:gold;">Contact Us</h3>
+                           
+                            Contact Number
+                            <br>Email Address
+                            <?php endif; ?>
+                            
+                            <div style="margin-top:10px;">
+                            <ul class="social-network social-circle">
+                              <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                              <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                              <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>	
+                            </div>
+                        </div>
+            </div>
         </div>
       </div>
       

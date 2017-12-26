@@ -35,7 +35,9 @@ class HomeController extends Controller
             ->where('posts.isActive',1)
             ->where('posts.isDraft',1)
             ->get();
-        $postcat = ServiceCategory::with('Post')->get();
+        $postcat = ServiceCategory::with(['Post' => function($query) {
+            $query->where('isDraft', 1);}])
+            ->where('isActive',1)->limit(3)->get();
         $comp = CompanyInfo::find(1);
         $model2 = Post::where('isActive',1)->where('isDraft',1)->get();
       

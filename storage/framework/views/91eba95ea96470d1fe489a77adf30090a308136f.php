@@ -58,9 +58,13 @@
       <!-- Features Section -->
       <div class="row">
         <div class="col-lg-6">
+            <?php if(count($comp) != 0 ): ?>
           <?php 
-              
+              echo $comp->about;
           ?>
+          <?php else: ?>
+              <p class="lead">Hi! Hello! No details yet</p>
+          <?php endif; ?>
         </div>
         <div class="col-lg-6">
           <img class="img-fluid rounded" src="<?php echo e(asset('img/feature.jpg')); ?>" alt="">

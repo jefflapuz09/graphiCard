@@ -31,12 +31,8 @@
 @if(count($comp) != 0 )
 <a class="navbar-brand" href="index.html"><img src="{{ asset($comp->company_logo) }}">{{ $comp->company_name }}</a>
 @else
-<a class="navbar-brand" href="index.html"><img src="">WALA!</a>
+<a class="navbar-brand" href="index.html"><img src="">Company Name</a>
 @endif
-
-
- 
-    
     <button class="navbar-toggler navbar-toggler-right custom-toggler"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon" style="color:yellow;"></span>
     </button>
@@ -82,10 +78,17 @@
         <div class="row"> 
             <div class="col-lg-6"> 
             <div align="center" style="color:white; background:; line-height:5px;">
-                            {{--  <img src="{{ asset($comp->company_logo) }}">
-                            <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">{{$comp->company_name}}</h1>
+                @if(count($comp) != 0 )
+                <img src="{{ asset($comp->company_logo) }}">
+                <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">{{$comp->company_name}}</h1>
+                @else
+                <img src="">
+                <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Nmae</h1>
+                @endif
+                            
+                            
                             <p class="lead" style="margin-top:-17px;">Digital printing and graphics design</p>
-                            <h5 style="color:gold;">Services Offered</h5>  --}}
+                            <h5 style="color:gold;">Services Offered</h5>
                          </div>
                 <div class="row" style="margin-left:25px;">
                     <div class="col-sm-6">
@@ -107,13 +110,22 @@
                 </div>
             </div>
             <div class="col-lg-6" style="margin-top:20px;"> 
-            {{--  <div align="center">
+            <div align="center">
                             <h3 style="color:gold;">Find Us</h3>
+                            @if(count($comp) != 0 )
                             <p class="lead">{{ $comp->street }} {{$comp->brgy}}, {{$comp->city}}</p>
                             <h3 style="color:gold;">Contact Us</h3>
                            
                             {{$comp->contactNumber}}
                             <br>{{$comp->emailAddress}}
+                            @else
+                            <p class="lead">Street Brgy City}</p>
+                            <h3 style="color:gold;">Contact Us</h3>
+                           
+                            Contact Number
+                            <br>Email Address
+                            @endif
+                            
                             <div style="margin-top:10px;">
                             <ul class="social-network social-circle">
                               <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
@@ -122,7 +134,7 @@
                             </ul>	
                             </div>
                         </div>
-            </div>  --}}
+            </div>
         </div>
       </div>
       

@@ -62,9 +62,13 @@
       <!-- Features Section -->
       <div class="row">
         <div class="col-lg-6">
+            @if(count($comp) != 0 )
           <?php 
-              
+              echo $comp->about;
           ?>
+          @else
+              <p class="lead">Hi! Hello! No details yet</p>
+          @endif
         </div>
         <div class="col-lg-6">
           <img class="img-fluid rounded" src="{{ asset('img/feature.jpg') }}" alt="">
