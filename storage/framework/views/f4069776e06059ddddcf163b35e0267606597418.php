@@ -2,12 +2,18 @@
 
     <div class="container-fluid">
     
+            <div>
+                <h3>Post</h3>
+            </div>
+            <?php if($errors->any()): ?>
+            <div class="alert alert-danger">
+                  <?php echo "<pre>".implode(",\n",$errors->all(':message'))."</pre>"; ?>
+            </div>
+            <?php endif; ?> 
     <div class="row">
     
     <div class="col-lg-6"> 
-        <div>
-        <h3>Post</h3>
-        </div>
+       
         <form action="<?php echo e(url('/PostUpdate', $post->id)); ?>" method="post" enctype="multipart/form-data">
 
         <?php echo e(csrf_field()); ?>
@@ -28,7 +34,7 @@
             </select>
             </div>
             <div class="form-group">
-            <label for="sel2">Service Category</label>
+            <label for="sel2">Service Type</label>
             <select class="form-control" id="sel2" name="typeId">
                     <option value="0">Please Select Service Type</option>
                 <?php $__currentLoopData = $type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $types): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>   

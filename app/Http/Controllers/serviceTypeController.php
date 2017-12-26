@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\ServiceType;
 use App\ServiceCategory;
+use App\Post;
 use Validator;
 use Redirect;
 
@@ -151,8 +152,17 @@ class serviceTypeController extends Controller
      */
     public function destroy($id)
     {
-        ServiceType::find($id)->update(['isActive' => 0]);
-        return redirect('/ServiceType');
+        $checkPost = Post::where('typeId',$id)->get();
+        if(count($checkPost) > 0)
+        {
+            return redirect('/ServiceType')->withError('It seems that the record is still being used in other items. Deactivation failed.');
+        }
+        else
+        {   
+            ServiceType::find($id)->update(['isActive' => 0]);
+            return redirect('/ServiceType');
+        }
+        
     }
 
     public function soft()

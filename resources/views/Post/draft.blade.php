@@ -35,7 +35,7 @@
             </select>
             </div>
             <div class="form-group">
-            <label for="sel2">Service Category</label>
+            <label for="sel2">Service Type</label>
             <select class="form-control" id="sel2" name="typeId">
                     <option value="0">Please Select Service Type</option>
                 @foreach($type as $types)   

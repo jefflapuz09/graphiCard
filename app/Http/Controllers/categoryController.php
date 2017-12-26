@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\ServiceCategory;
+use App\ServiceType;
+use App\Post;
 use Validator;
 use Redirect;
 
@@ -137,10 +139,20 @@ class categoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        ServiceCategory::find($id)->update(['isActive' => 0]);
-        return redirect('/Category');
+        $checkServiceType = ServiceType::where('categoryId',$id)->get();
+        $checkPost = Post::where('categoryId',$id)->get();
+        if(count($checkServiceType) > 0 || count($checkPost) > 0)
+        {
+            return redirect('/Category')->withError('It seems that the record is still being used in other items. Deactivation failed.');
+        }
+        else
+        {
+            ServiceCategory::find($id)->update(['isActive' => 0]);
+            return redirect('/Category');
+        }
+        
     }
 
     public function soft()

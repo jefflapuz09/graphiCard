@@ -7,6 +7,12 @@
 
                 </div>
             <?php endif; ?>
+            <?php if(session('error')): ?>
+            <div class="alert alert-danger">
+                <?php echo e(session('error')); ?>
+
+            </div>
+        <?php endif; ?>
         <div class="pull-right" style="margin-bottom:15px;"> 
             <a href="<?php echo e(url('/CategoryCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                 New Record
