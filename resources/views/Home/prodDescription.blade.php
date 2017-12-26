@@ -13,24 +13,16 @@
       <a href="{{ url('/') }}" style="color:white;">Home</a>
     </li>
     <li class="breadcrumb-item active" style="color:white;"><?php echo $post->ServiceCategory->name?></li>
-    <li class="breadcrumb-item active" style="color:white;">Item</li>
+    <li class="breadcrumb-item active" style="color:white;"><?php echo $post->ServiceType->name?></li>
   </ol>
 
   <!-- Portfolio Item Row -->
   <div class="row">
 
     <div class="col-md-8">
-      <img class="img-fluid" src="<?php echo asset($post->image)?>" alt="">
+      <img class="img-fluid" src="<?php echo asset($post->image)?>" height="200px" width="" alt="">
 
-      <h3 class="my-3">Description</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-      <h3 class="my-3">Other Items</h3>
-      <ul>
-        <li>Lorem Ipsum</li>
-        <li>Dolor Sit Amet</li>
-        <li>Consectetur</li>
-        <li>Adipiscing Elit</li>
-      </ul>
+      <?php echo $post->details?>
     </div>
 
     <div class="col-md-4">

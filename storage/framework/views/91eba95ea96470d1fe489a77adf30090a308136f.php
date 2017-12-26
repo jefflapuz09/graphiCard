@@ -59,7 +59,7 @@
       <div class="row">
         <div class="col-lg-6">
           <?php 
-            echo $comp->about;
+              
           ?>
         </div>
         <div class="col-lg-6">
@@ -100,7 +100,7 @@
             <div class="row">
           <?php $__currentLoopData = $cat->Post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               <div class="col-md-4 col-sm-6 portfolio-item">
-                <a class="portfolio-link"  href="<?php echo e(url('/prodDescription/6.jpg/Picture Frame')); ?>">
+                <a class="portfolio-link"  href="<?php echo e(url('/prodDescription',$post->id)); ?>">
                   <div class="portfolio-hover shop">
                     <div class="portfolio-hover-content">
                       <i class="fa fa-flag fa-3x"></i>

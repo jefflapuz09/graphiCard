@@ -63,7 +63,7 @@
       <div class="row">
         <div class="col-lg-6">
           <?php 
-            echo $comp->about;
+              
           ?>
         </div>
         <div class="col-lg-6">

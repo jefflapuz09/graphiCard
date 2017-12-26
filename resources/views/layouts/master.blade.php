@@ -26,11 +26,17 @@
 
   <body>
 
+    <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
+      <div class="container">
+@if(count($comp) != 0 )
+<a class="navbar-brand" href="index.html"><img src="{{ asset($comp->company_logo) }}">{{ $comp->company_name }}</a>
+@else
+<a class="navbar-brand" href="index.html"><img src="">WALA!</a>
+@endif
 
 
-  <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand" href="index.html"><img src="{{ asset($comp->company_logo) }}">{{ $comp->company_name }}</a>
+ 
+    
     <button class="navbar-toggler navbar-toggler-right custom-toggler"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon" style="color:yellow;"></span>
     </button>
@@ -76,10 +82,10 @@
         <div class="row"> 
             <div class="col-lg-6"> 
             <div align="center" style="color:white; background:; line-height:5px;">
-                            <img src="{{ asset($comp->company_logo) }}">
+                            {{--  <img src="{{ asset($comp->company_logo) }}">
                             <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">{{$comp->company_name}}</h1>
                             <p class="lead" style="margin-top:-17px;">Digital printing and graphics design</p>
-                            <h5 style="color:gold;">Services Offered</h5>
+                            <h5 style="color:gold;">Services Offered</h5>  --}}
                          </div>
                 <div class="row" style="margin-left:25px;">
                     <div class="col-sm-6">
@@ -101,7 +107,7 @@
                 </div>
             </div>
             <div class="col-lg-6" style="margin-top:20px;"> 
-            <div align="center">
+            {{--  <div align="center">
                             <h3 style="color:gold;">Find Us</h3>
                             <p class="lead">{{ $comp->street }} {{$comp->brgy}}, {{$comp->city}}</p>
                             <h3 style="color:gold;">Contact Us</h3>
@@ -116,7 +122,7 @@
                             </ul>	
                             </div>
                         </div>
-            </div>
+            </div>  --}}
         </div>
       </div>
       
