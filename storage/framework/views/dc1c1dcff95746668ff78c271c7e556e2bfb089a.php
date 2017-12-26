@@ -65,6 +65,10 @@
               </a>
             </li>
           </ul>
+          <a class="nav-link" href="index.html">
+          <i class="fa fa-fw fa-cog"></i>
+          <span class="nav-link-text">Utilities</span>
+        </a>
         </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">

@@ -39,7 +39,7 @@
                 <td>{{ $posts->street }} {{ $posts->brgy }} {{ $posts->city }}</td>
                 <td> 
                         <a href="{{ url('/CustomerReactivate',$posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
-                                Reactivate
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                  
                 </td>

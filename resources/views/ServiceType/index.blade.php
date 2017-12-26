@@ -38,13 +38,13 @@
                 <td>{{ $posts->description }}</td>
                 <td> 
                         <a href="{{ url('/ServiceTypeUpdate',$posts->id) }}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
-                                Update
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
                         <a href="{{ url('/ServiceTypeShow',$posts->id) }}" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
-                                Show
+                            <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>
                         <a href="{{ url('/ServiceTypeDeac', $posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
-                                Deactivate
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                  
                 </td>
