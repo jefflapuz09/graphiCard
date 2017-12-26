@@ -1,6 +1,12 @@
 <?php $__env->startSection('content'); ?>
     <div > 
         <h3>Post</h3>
+        <?php if(session('success')): ?>
+        <div class="alert alert-success">
+            <?php echo e(session('success')); ?>
+
+        </div>
+        <?php endif; ?>
         <div class="pull-right" style="margin-bottom:15px;"> 
             <a href="<?php echo e(url('/PostCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                 New Record

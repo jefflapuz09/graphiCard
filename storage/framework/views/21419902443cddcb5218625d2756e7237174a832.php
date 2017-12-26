@@ -58,19 +58,13 @@
       <!-- Features Section -->
       <div class="row">
         <div class="col-lg-6">
-          <h2>Graphi<span style="color:darkred;">Card</span> Features</h2>
-          <p>Digital printing and Graphic Design includes:</p>
-          <ul>
-            <li>
-              Shirt Printing
-            </li>
-            <li>Stickers</li>
-            <li>Tarpaulin</li>
-            <li>Flyer</li>
-            <li>Brochure</li>
-          </ul>
-          <p class="lead text-uppercase">For your advertisement and event requirements</p>
-          <p>Tarpaulin, banner, Standee with Print, Portabooth, Event tickets, T-shirt printing, Business Cards and Company giveaways. <strong>Call us @ 709-2099</strong></p>
+            <?php if(count($comp) != 0 ): ?>
+          <?php 
+              echo $comp->about;
+          ?>
+          <?php else: ?>
+              <p class="lead">Hi! Hello! No details yet</p>
+          <?php endif; ?>
         </div>
         <div class="col-lg-6">
           <img class="img-fluid rounded" src="<?php echo e(asset('img/feature.jpg')); ?>" alt="">
