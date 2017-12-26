@@ -1,11 +1,9 @@
-@extends('layouts.master')
-
-@section('contents')
+<?php $__env->startSection('contents'); ?>
 <div class="container bg-light" style="margin-top:100px;">
 
   <div class="row">
     <div class="col-md-4">
-      <div class="carousel-item active" style="background-image: url('{{ asset('img/banner1.jpg')}}')">
+      <div class="carousel-item active" style="background-image: url('<?php echo e(asset('img/banner1.jpg')); ?>')">
             <div class="carousel-caption d-none d-md-block">
               <!-- <h3>First Slide</h3>
               <p>This is a description for the first slide.</p> -->
@@ -32,4 +30,6 @@
   </div>
 
 </div>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
