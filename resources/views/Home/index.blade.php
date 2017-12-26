@@ -114,7 +114,7 @@
             <div class="row">
           @foreach($cat->Post as $post)
               <div class="col-md-4 col-sm-6 portfolio-item">
-                <a class="portfolio-link"  href="{{ url('/prodDescription/6.jpg/Picture Frame') }}">
+                <a class="portfolio-link"  href="{{ url('/prodDescription',$post->id) }}">
                   <div class="portfolio-hover shop">
                     <div class="portfolio-hover-content">
                       <i class="fa fa-flag fa-3x"></i>

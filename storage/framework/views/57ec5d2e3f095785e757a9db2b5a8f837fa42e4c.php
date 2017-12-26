@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('contents')
+<?php $__env->startSection('contents'); ?>
 <div class="container-fluid bg-light" style="margin-top:100px; padding:20px">
 
   <!-- Page Heading/Breadcrumbs -->
@@ -10,7 +8,7 @@
 
   <ol class="breadcrumb" style="background:black;">
     <li class="breadcrumb-item">
-      <a href="{{ url('/') }}" style="color:white;">Home</a>
+      <a href="<?php echo e(url('/')); ?>" style="color:white;">Home</a>
     </li>
     <li class="breadcrumb-item active" style="color:white;"><?php echo $post->ServiceCategory->name?></li>
     <li class="breadcrumb-item active" style="color:white;">Item</li>
@@ -62,4 +60,6 @@
 
   </div>
 </div>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

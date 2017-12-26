@@ -13,7 +13,7 @@ class CompanyInfoSeeder extends Seeder
     public function run()
     {
         DB::table('company_infos')->insert([
-            'company_logo' => 'img\logo.png',
+            'company_logo' => 'img\logo2.png',
             'company_name' => 'Graphicard',
             'street' => 'Third Floor Arcade, 873 Aurora Blvd. cor. St. Mary St.',
             'brgy' => 'Cubao',

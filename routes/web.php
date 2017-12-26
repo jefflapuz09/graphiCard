@@ -22,7 +22,7 @@ Route::get('/admin', 'adminController@index');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/logout', 'HomeController@getLogout');
 Route::get('/about', 'HomeController@aboutPage');
-Route::get('/prodDescription/{id}/{desc}', 'HomeController@prodDescription');
+Route::get('/prodDescription/{id}', 'HomeController@prodDescription');
 
 //Service Category
 Route::get('/Category', 'categoryController@index');

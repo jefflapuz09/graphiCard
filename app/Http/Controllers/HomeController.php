@@ -42,10 +42,11 @@ class HomeController extends Controller
         return view('Home.index', compact('post','model2','item','postcat','comp'));
     }
 
-    public function prodDescription($id,$desc)
+    public function prodDescription($id)
     {
-        
-        return view('Home.prodDescription',compact('id','desc'));
+        $post = Post::find($id)->with('ServiceCategory','ServiceType')->first();
+        //$cat = Post::with('ServiceCategory')->where('categoryId',$catId)->get(); ->where('categoryId',$catId)->get()
+        return view('Home.prodDescription',compact('id','post'));
     }
 
     public function aboutPage()
