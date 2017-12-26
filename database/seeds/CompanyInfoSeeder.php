@@ -12,8 +12,8 @@ class CompanyInfoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('service_types')->insert([
-            'company_logo' => 'public\img\logo.png',
+        DB::table('company_infos')->insert([
+            'company_logo' => 'img\logo.png',
             'company_name' => 'Graphicard',
             'street' => 'Third Floor Arcade, 873 Aurora Blvd. cor. St. Mary St.',
             'brgy' => 'Cubao',

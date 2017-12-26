@@ -19,19 +19,19 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        $nav = DB::table('service_categories')
-               ->where('isActive',1)
-               ->get();
-        $typenav = DB::table('service_types')
-                ->select('service_types.categoryId as categoryId','service_types.*')
-                ->where('isActive',1)
-                ->get();
-        $model = ServiceCategory::with('Type')->limit(4)
-        ->get();
-        $comp = CompanyInfo::find(1);
-        View::share('comp',$comp);
-        View::share('nav',$nav);
-        View::share('model',$model);
+        // $nav = DB::table('service_categories')
+        //        ->where('isActive',1)
+        //        ->get();
+        // $typenav = DB::table('service_types')
+        //         ->select('service_types.categoryId as categoryId','service_types.*')
+        //         ->where('isActive',1)
+        //         ->get();
+        // $model = ServiceCategory::with('Type')->limit(4)
+        // ->get();
+        // $comp = CompanyInfo::find(1);
+        // View::share('comp',$comp);
+        // View::share('nav',$nav);
+        // View::share('model',$model);
       
     }
 
