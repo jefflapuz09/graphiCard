@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
+  <link rel="icon" href="<?php echo e(asset('img/logo.png')); ?>">
+  <title>Graphicard - Admin</title>
   <!-- Bootstrap core CSS-->
  
   <link href="<?php echo e(asset('vendor/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
@@ -25,7 +26,11 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+      <?php if(count($comp) != 0 ): ?>
+      <a class="navbar-brand" href="<?php echo e(url('/')); ?>" title="Go to website"><img src="<?php echo e(asset($comp->company_logo)); ?>" height="25px" style="margin-left:37px;"><?php echo e($comp->company_name); ?></a>
+      <?php else: ?>
+      <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="">Company Name</a>
+      <?php endif; ?>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -50,7 +55,7 @@
                   <a href="<?php echo e(url('/Category')); ?>">Service Category</a>
                 </li>
                 <li>
-                  <a href="<?php echo e(url('/ServiceType')); ?>">Service Type</a>
+                  <a href="<?php echo e(url('/ServiceType')); ?>">Item</a>
                 </li>
               </ul>
               <a class="nav-link" href="<?php echo e(url('/Post')); ?>">
@@ -61,6 +66,10 @@
               </a>
             </li>
           </ul>
+          <a class="nav-link" href="<?php echo e(url('/Utilities')); ?>">
+          <i class="fa fa-fw fa-cog"></i>
+          <span class="nav-link-text">Utilities</span>
+        </a>
         </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('contents')
-<div class="container-fluid bg-light" style="margin-top:100px; padding:20px">
+<div class="container-fluid bg-light" style="margin-top:100px; padding:20px;">
 
   <!-- Page Heading/Breadcrumbs -->
   <h1 class="mt-4 mb-3">
@@ -21,12 +21,6 @@
   <div class="row">
 
     <div class="col-md-8">
-      <img class="img-fluid" style="max-height:300px; max-width:500px;" src="<?php echo asset($post->image)?>" height="200px" width="" alt="">
-      
-            <?php echo $post->details?>
-      
-    </div>
-
     <div class="col-md-4">
       <div class="form-area">  
         <form role="form">
@@ -48,7 +42,7 @@
             <textarea class="form-control" type="textarea" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
           </div>
 
-          <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Submit Form</button>
+          <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Submit</button>
         </form>
       </div>
 

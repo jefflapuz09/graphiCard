@@ -26,11 +26,13 @@
 
   <body>
 
-
-
-  <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand" href="index.html"><img src="<?php echo e(asset($comp->company_logo)); ?>"><?php echo e($comp->company_name); ?></a>
+    <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
+      <div class="container">
+<?php if(count($comp) != 0 ): ?>
+<a class="navbar-brand" href="index.html"><img src="<?php echo e(asset($comp->company_logo)); ?>"><?php echo e($comp->company_name); ?></a>
+<?php else: ?>
+<a class="navbar-brand" href="index.html"><img src="">Company Name</a>
+<?php endif; ?>
     <button class="navbar-toggler navbar-toggler-right custom-toggler"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon" style="color:yellow;"></span>
     </button>
@@ -63,9 +65,15 @@
               <?php endif; ?>
             </li>
        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        <li class="nav-item">
+       <?php if($user = Auth::user()): ?>
+   
+          
+       <?php elseif(Auth::guest()): ?>
+       <li class="nav-item">
           <a class="nav-link" href="<?php echo e(url('/login')); ?>">Login</a>
         </li>
+       <?php endif; ?>
+        
       </ul>
     </div>
   </div>
@@ -78,8 +86,15 @@
         <div class="row"> 
             <div class="col-lg-6"> 
             <div align="center" style="color:white; background:; line-height:5px;">
-                            <img src="<?php echo e(asset($comp->company_logo)); ?>">
-                            <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase"><?php echo e($comp->company_name); ?></h1>
+                <?php if(count($comp) != 0 ): ?>
+                <img src="<?php echo e(asset($comp->company_logo)); ?>">
+                <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase"><?php echo e($comp->company_name); ?></h1>
+                <?php else: ?>
+                <img src="">
+                <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Name</h1>
+                <?php endif; ?>
+                            
+                            
                             <p class="lead" style="margin-top:-17px;">Digital printing and graphics design</p>
                             <h5 style="color:gold;">Services Offered</h5>
                          </div>
@@ -105,6 +120,7 @@
             <div class="col-lg-6" style="margin-top:20px;"> 
             <div align="center">
                             <h3 style="color:gold;">Find Us</h3>
+                            <?php if(count($comp) != 0 ): ?>
                             <p class="lead"><?php echo e($comp->street); ?> <?php echo e($comp->brgy); ?>, <?php echo e($comp->city); ?></p>
                             <h3 style="color:gold;">Contact Us</h3>
                            
@@ -112,6 +128,14 @@
 
                             <br><?php echo e($comp->emailAddress); ?>
 
+                            <?php else: ?>
+                            <p class="lead">Street Brgy City</p>
+                            <h3 style="color:gold;">Contact Us</h3>
+                           
+                            Contact Number
+                            <br>Email Address
+                            <?php endif; ?>
+                            
                             <div style="margin-top:10px;">
                             <ul class="social-network social-circle">
                               <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
@@ -128,7 +152,11 @@
     </footer>
     <div class="container-fluid" style="background:#154360; height:30px;">
      <div align="center" style="margin-top:px;color:white;">
-                        <small class="text-uppercase"><b>&copy; 2017, Graphi<span style="color:gold;">card</span></b></small>
+        <?php if(count($comp) != 0 ): ?>
+          <small class="text-uppercase"><b>&copy; 2017, <?php echo e($comp->company_name); ?></b></small>
+        <?php else: ?>
+          <small class="text-uppercase"><b>&copy; Company name</b></small>
+        <?php endif; ?>
     </div>
     
     </div>

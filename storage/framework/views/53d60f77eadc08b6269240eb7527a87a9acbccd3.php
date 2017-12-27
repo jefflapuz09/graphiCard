@@ -1,19 +1,24 @@
 <?php $__env->startSection('content'); ?>
 
     <div class="container-fluid">
-    
+            <div>
+                <h3>Post</h3>
+            </div>
+            <?php if($errors->any()): ?>
+            <div class="alert alert-danger">
+                  <?php echo "<pre>".implode(",\n",$errors->all(':message'))."</pre>"; ?>
+            </div>
+            <?php endif; ?> 
     <div class="row">
     
     <div class="col-lg-6"> 
-        <div>
-        <h3>Post</h3>
-        </div>
+        
         <form action="<?php echo e(url('/PostStore')); ?>" method="post" enctype="multipart/form-data">
 
         <?php echo e(csrf_field()); ?>
 
             <div class="form-group">
-            <label for="sel2">Service Category</label>
+            <b><label for="sel2">Service Category</label></b>
             <select class="form-control" id="cat" onchange="changetype(this.value)" name="categoryId">
                     <option value="0">Please Select Service Category</option>
                 <?php $__currentLoopData = $cat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>   
@@ -22,17 +27,15 @@
             </select>
             </div>
             <div class="form-group">
-            <label for="sel2">Service Category</label>
-            <select class="form-control" id="sel2" name="typeId">
+            <b><label for="sel2">Item</label></b>
+            <select class="form-control" id="Type" name="typeId">
                     <option value="0">Please Select Service Type</option>
-                <?php $__currentLoopData = $type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $types): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>   
-                    <option value="<?php echo e($types->id); ?>"><?php echo e($types->name); ?></option>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                
             </select>
             </div>
-             <div class="form-group" style="margin-top:30px;">
+             <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
                 <center><img class="img-responsive" id="pic" src="<?php echo e(URL::asset('img/grey-pattern.png')); ?>" style="max-width:300px; background-size: contain" /></center>
-                <label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label>
+                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
                 <input type="file" class="form-control-file" name="image" onChange="readURL(this)" id="exampleInputFile" aria-describedby="fileHelp">
                 <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
             </div>
@@ -41,10 +44,10 @@
            
         
     </div> 
-    <div class="col-lg-6" style="margin-top:40px;">
+    <div class="col-lg-6" style="margin-top:;">
             <div class="form-group">
-            <label for="">Post Details:</label>
-            <textarea class="form-control" rows="20" placeholder="details" name="details" id="details"></textarea>
+            <b><label for="">Description</label></b>
+            <textarea class="form-control" rows="12" name="details" id="details"></textarea>
             </div>
             <div class="pull-right">
             <button type="reset" class="btn btn-success">Clear</button>
@@ -61,13 +64,20 @@
 
     function changetype(id)
     {
-        alert(id);
-         $.ajax({
+        $.ajax({
             type: "GET",
             url: '/PostType/'+id,
             dataType: "JSON",
             success:function(data){
-                alert(data);
+
+                $('#Type').empty();
+                $("#Type").append('<option>Please Select Service Type</option>');
+                $.each(data,function(key, value)
+                {
+                    
+                    console.log(value.categoryId);
+                    $("#Type").append('<option value=' + value.id + '>' + value.name + '</option>');
+                });
             }
          });
     }

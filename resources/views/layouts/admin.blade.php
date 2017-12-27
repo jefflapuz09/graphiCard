@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Company</title>
+  <link rel="icon" href="{{ asset('img/logo.png') }}">
+  <title>Graphicard - Admin</title>
   <!-- Bootstrap core CSS-->
  
   <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -26,9 +27,9 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       @if(count($comp) != 0 )
-      <a class="navbar-brand" href="index.html"><img src="{{ asset($comp->company_logo) }}" height="25px" style="margin-left:37px;">{{ $comp->company_name }}</a>
+      <a class="navbar-brand" href="{{ url('/') }}" title="Go to website"><img src="{{ asset($comp->company_logo) }}" height="25px" style="margin-left:37px;">{{ $comp->company_name }}</a>
       @else
-      <a class="navbar-brand" href="index.html"><img src="">Company Name</a>
+      <a class="navbar-brand" href="{{ url('/') }}"><img src="">Company Name</a>
       @endif
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -54,7 +55,7 @@
                   <a href="{{ url('/Category') }}">Service Category</a>
                 </li>
                 <li>
-                  <a href="{{ url('/ServiceType') }}">Service Type</a>
+                  <a href="{{ url('/ServiceType') }}">Item</a>
                 </li>
               </ul>
               <a class="nav-link" href="{{ url('/Post') }}">
