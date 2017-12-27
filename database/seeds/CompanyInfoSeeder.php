@@ -17,7 +17,7 @@ class CompanyInfoSeeder extends Seeder
             'company_name' => 'Graphicard',
             'street' => 'Third Floor Arcade, 873 Aurora Blvd. cor. St. Mary St.',
             'brgy' => 'Cubao',
-             'city' => 'Quezon City, Philippines',
+            'city' => 'Quezon City, Philippines',
             'contactNumber' => '0911-123-4567',
             'emailAddress' => 'graphicard@gmail.com',
             'about' => 'Offers digital printing and offset printing',

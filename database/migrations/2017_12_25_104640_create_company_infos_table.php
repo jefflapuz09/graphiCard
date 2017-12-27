@@ -24,6 +24,7 @@ class CreateCompanyInfosTable extends Migration
             $table->string('emailAddress', 50);
             $table->text('about');
             $table->text('description')->nullable();
+            $table->text('services_offered');
             $table->timestamps();
         });
     }
