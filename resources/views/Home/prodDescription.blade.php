@@ -1,18 +1,20 @@
 @extends('layouts.master')
 @section('contents')
 <div class="container-fluid bg-light" style="margin-top:100px; padding:20px;">
+.
+  <div class="container-fluid col-md-12">
     <ol class="breadcrumbs breadcrumb-arrow" width="100%">
-      <li><a href="{{ url('/') }}">Home</a></li>
-      <li><a href="{{ url('/') }}">{{$post->ServiceCategory->name}}</a></li>
-      <li class="active" style=""><span>{{$post->ServiceType->name}}</span></li>
+      <li><a href="{{ url('/') }}"><b>Home</b></a></li>
+      <li><a href="{{ url('/') }}"><b>{{$post->category}}</b></a></li>
+      <li class="active" style=""><span>{{$post->type}}</span></li>
     </ol>
+  </div>
   <h1 class="mt-4 mb-3">
     {{ $post->type }}
   </h1>
   <div class="row">
     <div class="col-md-8">
-      <img class="img-fluid" style="max-height:300px; max-width:500px;" src="<?php echo asset($post->image)?>" height="200px" width="" alt="" title="{{$post->type}}">
-      <h1 class="mt-4 mb-3">Description</h1>
+      <img class="img-fluid" style="max-height:300px; max-width:500px;" src="<?php echo asset($post->image)?>" height="200px" width="" alt="">
       <?php echo $post->details?>
     </div>
     <div class="col-md-4">

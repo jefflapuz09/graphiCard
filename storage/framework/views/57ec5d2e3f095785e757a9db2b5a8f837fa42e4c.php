@@ -1,9 +1,9 @@
 <?php $__env->startSection('contents'); ?>
 <div class="container-fluid bg-light" style="margin-top:100px; padding:20px;">
     <ol class="breadcrumbs breadcrumb-arrow" width="100%">
-      <li><a href="<?php echo e(url('/')); ?>"><b>Home</b></a></li>
-      <li><a href="<?php echo e(url('/')); ?>"><b><?php echo e($post->category); ?></b></a></li>
-      <li class="active" style=""><span><b><?php echo e($post->type); ?></b></span></li>
+      <li><a href="<?php echo e(url('/')); ?>">Home</a></li>
+      <li><a href="<?php echo e(url('/')); ?>"><?php echo e($post->category); ?></a></li>
+      <li class="active" style=""><span><?php echo e($post->type); ?></span></li>
     </ol>
   <h1 class="mt-4 mb-3">
     <?php echo e($post->type); ?>
@@ -15,6 +15,8 @@
       <h1 class="mt-4 mb-3">Description</h1>
       <?php echo $post->details?>
     </div>
+
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
     <div class="col-md-4">
       <div class="form-area">  
         <form role="form">
