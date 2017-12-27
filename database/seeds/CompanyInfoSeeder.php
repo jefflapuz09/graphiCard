@@ -22,6 +22,7 @@ class CompanyInfoSeeder extends Seeder
             'emailAddress' => 'graphicard@gmail.com',
             'about' => 'Offers digital printing and offset printing',
             'description' => '',
+            'services_offered' => 'Digital Printing',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
