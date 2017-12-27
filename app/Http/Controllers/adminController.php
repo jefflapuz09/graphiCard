@@ -21,8 +21,10 @@ class adminController extends Controller
 
     public function index()
     {
-        
-        return view('layouts.admin');
+        $post =DB::table('inquiries')
+        ->select('inquiries.*')
+        ->get(); 
+        return view('inquiries.dashboard',compact('post'));
     }
 
     /**

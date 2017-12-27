@@ -20,6 +20,7 @@ class CreateInquiriesTable extends Migration
             $table->string('contact_number',30);
             $table->string('subject');
             $table->text('message');
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@
   <link rel="icon" href="<?php echo e(asset('img/logo.png')); ?>">
   <title>Graphicard - Admin</title>
   <!-- Bootstrap core CSS-->
- 
+  
   <link href="<?php echo e(asset('vendor/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -220,7 +220,7 @@
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo e(asset('vendor/bootstrap/js/jquery.dataTables.min')); ?>"></script>
     <script src="<?php echo e(asset('js/sb-admin.min.js')); ?>"></script>
-    
+
 
      <script>
         $(document).ready(function() {
