@@ -15,5 +15,7 @@ class ServiceType extends Model
         'isActive'
     ];
 
-    
+    public function Ty(){
+        return $this->hasMany('App\Post','typeId');
+    }
 }

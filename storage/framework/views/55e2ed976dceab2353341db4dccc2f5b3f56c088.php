@@ -47,7 +47,7 @@
     <div class="col-lg-6" style="margin-top:;">
             <div class="form-group">
             <label for="">Post Details:</label>
-            <textarea class="form-control" rows="12" placeholder="details" name="details" id="details"></textarea>
+            <textarea class="form-control" rows="12" name="details" id="details"></textarea>
             </div>
             <div class="pull-right">
             <button type="reset" class="btn btn-success">Clear</button>

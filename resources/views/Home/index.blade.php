@@ -127,7 +127,7 @@
         </section>
     
 
-    @else 
+    @else  
       <div class="container">
           <section class="bg-light" id="portfolio">
           <div class="container">
