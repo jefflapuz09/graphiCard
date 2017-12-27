@@ -22,6 +22,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet'>
+    <link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet'>
   </head>
 
   <body>
@@ -29,9 +31,9 @@
     <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
       <div class="container">
 @if(count($comp) != 0 )
-<a class="navbar-brand" href="index.html"><img src="{{ asset($comp->company_logo) }}">{{ $comp->company_name }}</a>
+<a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset($comp->company_logo) }}">{{ $comp->company_name }}</a>
 @else
-<a class="navbar-brand" href="index.html"><img src="">Company Name</a>
+<a class="navbar-brand" href="{{ url('/') }}"><img src="">Company Name</a>
 @endif
     <button class="navbar-toggler navbar-toggler-right custom-toggler"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon" style="color:yellow;"></span>
@@ -156,6 +158,21 @@
     </div>
     
     </div>
+    @if($user = Auth::user())
+      <div class="container-fluid" style="background:#154360; height:30px;">
+     <div align="center" style="margin-top:px;color:white;">
+        @if(count($comp) != 0 )
+          <a style="text-decoration:none; color:white" href="{{ url('/') }}" title="Go to admin"><small class="text-uppercase"><b>{{$comp->company_name}} -  Admin</b></small></a>
+        @else
+          <a style="text-decoration:none; color:white" href="{{ url('/') }}" title="Go to admin"><small class="text-uppercase"><b>Company Name - Admin</b></small></a>
+        @endif
+    </div>
+    
+    </div>
+          
+       @elseif(Auth::guest())
+
+       @endif
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

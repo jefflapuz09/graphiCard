@@ -22,6 +22,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet'>
+    <link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet'>
   </head>
 
   <body>
@@ -29,9 +31,9 @@
     <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
       <div class="container">
 <?php if(count($comp) != 0 ): ?>
-<a class="navbar-brand" href="index.html"><img src="<?php echo e(asset($comp->company_logo)); ?>"><?php echo e($comp->company_name); ?></a>
+<a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="<?php echo e(asset($comp->company_logo)); ?>"><?php echo e($comp->company_name); ?></a>
 <?php else: ?>
-<a class="navbar-brand" href="index.html"><img src="">Company Name</a>
+<a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="">Company Name</a>
 <?php endif; ?>
     <button class="navbar-toggler navbar-toggler-right custom-toggler"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon" style="color:yellow;"></span>
@@ -160,6 +162,21 @@
     </div>
     
     </div>
+    <?php if($user = Auth::user()): ?>
+      <div class="container-fluid" style="background:#154360; height:30px;">
+     <div align="center" style="margin-top:px;color:white;">
+        <?php if(count($comp) != 0 ): ?>
+          <a style="text-decoration:none; color:white" href="<?php echo e(url('/')); ?>" title="Go to admin"><small class="text-uppercase"><b><?php echo e($comp->company_name); ?> -  Admin</b></small></a>
+        <?php else: ?>
+          <a style="text-decoration:none; color:white" href="<?php echo e(url('/')); ?>" title="Go to admin"><small class="text-uppercase"><b>Company Name - Admin</b></small></a>
+        <?php endif; ?>
+    </div>
+    
+    </div>
+          
+       <?php elseif(Auth::guest()): ?>
+
+       <?php endif; ?>
     <!-- Bootstrap core JavaScript -->
     <script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
     <script src="<?php echo e(asset('vendor/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
