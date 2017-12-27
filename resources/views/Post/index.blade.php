@@ -46,7 +46,7 @@
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                     @elseif($posts->isDraft == 1)
-                        <a href="{{ url('/PostShow',$posts->id) }}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Show Post">
+                        <a href="{{ url('/prodDescription',$posts->id) }}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Show Post">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>
                          <a href="{{ url('/PostDeactivate',$posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate Post">

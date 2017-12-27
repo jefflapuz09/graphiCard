@@ -44,7 +44,7 @@
     </header>
 
 
-    <header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/blue-pattern.png')); ?>')">
+    <header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/red-pattern.jpg')); ?>')">
     <div class="overlay"></div>
     <div class="container">
         <div class="col-xl-12 mx-auto">
@@ -74,7 +74,7 @@
     </div>
 
     <!-- Page Content -->
-    <header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/blue-pattern.png')); ?>')">
+    <header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/red-pattern.jpg')); ?>')">
     <div class="overlay"></div>
     <div class="container">
         <div class="col-xl-12 mx-auto">
@@ -84,16 +84,12 @@
   </header>
 
 <?php $__currentLoopData = $postcat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <div class="container" style="background:; margin-top:35px;">
-      <!-- Portfolio Section -->
-      
-      <ol class="breadcrumb breadbg" style="background:#252525; ">
-        <li class="breadcrumb-item" >
-          <a href="index.html" style="color:white;">Home</a>
-        </li>
-        <li class="breadcrumb-item active" style="color:white;"><?php echo e($cat->name); ?></li>
-      </ol>
-    </div>
+<div class="container">
+    <ol class="breadcrumbs breadcrumb-arrow">
+		<li><a href="#"><?php echo e($cat->name); ?></a></li>
+		<li class="active" style=""><span>See More</span></li>
+	</ol>
+</div>
 
      <?php if(count($cat->Post) > 0): ?> 
        
@@ -123,7 +119,7 @@
         </section>
     
 
-    <?php else: ?> 
+    <?php else: ?>  
       <div class="container">
           <section class="bg-light" id="portfolio">
           <div class="container">
@@ -137,7 +133,7 @@
                       <i class="fa fa-flag fa-3x"></i>
                     </div>
                   </div>
-                  <img class="img-fluid" style="max-height:200px;" src="<?php echo e(asset('img/blue-pattern.png')); ?>" alt="">
+                  <img class="img-fluid" style="max-height:200px;" src="<?php echo e(asset('img/red-pattern.jpg')); ?>" alt="">
                 </a>
                 <div class="portfolio-caption">
                   <h4>No post available</h4>
@@ -159,7 +155,7 @@
 
 
 
-      <header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/blue-pattern.png')); ?>')">
+      <header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/red-pattern.jpg')); ?>')">
       <div class="overlay"></div>
       <div class="container">
           <div class="col-xl-12 mx-auto">

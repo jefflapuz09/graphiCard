@@ -8,19 +8,24 @@
     {{ $post->type }}
   </h1>
 
-  <ol class="breadcrumb" style="background:black;">
-    <li class="breadcrumb-item">
-      <a href="{{ url('/') }}" style="color:white;">Home</a>
-    </li>
-    
-      <li class="breadcrumb-item active" style="color:white;"><?php echo $post->category?></li>
-    <li class="breadcrumb-item active" style="color:white;"><?php echo $post->type?></li>
-  </ol> 
+  <div class="container-fluid">
+      <ol class="breadcrumbs breadcrumb-arrow">
+      <li><a href="{{ url('/') }}">Home</a></li>
+      <li><a href="{{ url('/') }}">{{$post->category}}</a></li>
+      <li class="active" style=""><span>{{$post->type}}</span></li>
+    </ol>
+  </div>
+
+
 
   <!-- Portfolio Item Row -->
   <div class="row">
 
     <div class="col-md-8">
+        <img class="img-fluid" style="max-height:300px; max-width:500px;" src="<?php echo asset($post->image)?>" height="200px" width="" alt="">
+        
+              <?php echo $post->details?>
+    </div>
     <div class="col-md-4">
       <div class="form-area">  
         <form role="form">
