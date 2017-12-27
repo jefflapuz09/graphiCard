@@ -48,7 +48,7 @@
     </header>
 
 
-    <header class="masthead top text-white text-center" style="background-image: url('{{ asset('img/blue-pattern.png') }}')">
+    <header class="masthead top text-white text-center" style="background-image: url('{{ asset('img/red-pattern.jpg') }}')">
     <div class="overlay"></div>
     <div class="container">
         <div class="col-xl-12 mx-auto">
@@ -78,7 +78,7 @@
     </div>
 
     <!-- Page Content -->
-    <header class="masthead top text-white text-center" style="background-image: url('{{ asset('img/blue-pattern.png') }}')">
+    <header class="masthead top text-white text-center" style="background-image: url('{{ asset('img/red-pattern.jpg') }}')">
     <div class="overlay"></div>
     <div class="container">
         <div class="col-xl-12 mx-auto">
@@ -141,7 +141,7 @@
                       <i class="fa fa-flag fa-3x"></i>
                     </div>
                   </div>
-                  <img class="img-fluid" style="max-height:200px;" src="{{ asset('img/blue-pattern.png') }}" alt="">
+                  <img class="img-fluid" style="max-height:200px;" src="{{ asset('img/red-pattern.jpg') }}" alt="">
                 </a>
                 <div class="portfolio-caption">
                   <h4>No post available</h4>
@@ -163,7 +163,7 @@
 
 
 
-      <header class="masthead top text-white text-center" style="background-image: url('{{ asset('img/blue-pattern.png') }}')">
+      <header class="masthead top text-white text-center" style="background-image: url('{{ asset('img/red-pattern.jpg') }}')">
       <div class="overlay"></div>
       <div class="container">
           <div class="col-xl-12 mx-auto">
