@@ -1,5 +1,6 @@
 <Style>
  
+  
 </style>
 
 <?php $__env->startSection('contents'); ?>
@@ -114,13 +115,14 @@
                       <i class="fa fa-flag fa-3x"></i>
                     </div>
                   </div>
-                  <img class="img-fluid" style="max-height:200px;" src="<?php echo e(asset($post->image)); ?>" alt="">
+                  <img class="img-responsive" style="max-width:100%; max-height:100%;" height="300px" src="<?php echo e(asset($post->image)); ?>" alt="">
                 </a>
                 <div class="portfolio-caption">
                 <h4><?php echo e($post->ServiceType->name); ?></h4>
                   <p class="text-muted">See More</p>
                 </div>
               </div>
+              
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
           </div>

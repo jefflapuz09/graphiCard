@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Inquiries;
+use Mail;
 
 class InquiryController extends Controller
 {
@@ -35,30 +36,23 @@ class InquiryController extends Controller
      */
     public function store(Request $request)
     {
+
+        $data = array(
+            'name' => $request->name,
+            'email' => $request->email,
+            'contact_numer' =>$request->contact_number,
+            'subject' => $request->subject,
+            'body' => $request->message
+        );
        Inquiries::create($request->all());
+
+    //    Mail::send('layouts.email', $data, function($message) use ($data){
+    //         $message->from($data['email']);
+    //         $message->to('hello@gmail.com');
+    //         $message->subject($data['subject']);
+    //    });
         return redirect('/prodDescription/1')->withSuccess('Your inquiry has been sent. You will receieve a reply as soon as we checked your inquiry');
-        //return redirect('/prodDescription/1')->withSuccess('message', 'Message sent!');
-       // $rules = [
-       //      'name' => ['required','max:50','unique:service_categories','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/']
-       //  ];
-       //  $messages = [
-       //      'unique' => ':attribute already exists.',
-       //      'required' => 'The :attribute field is required.',
-       //      'max' => 'The :attribute field must be no longer than :max characters.',
-       //      'regex' => 'The :attribute must not contain special characters.'              
-       //  ];
-       //  $niceNames = [
-       //      'name' => 'Service Category',
-       //  ];
-       //  $validator = Validator::make($request->all(),$rules,$messages);
-       //  $validator->setAttributeNames($niceNames); 
-       //  if ($validator->fails()) {
-       //      return Redirect::back()->withErrors($validator)->withInput();
-       //  }
-       //  else{
-       //      Inquiry::create($request->all());
-       //      return redirect('/')->withSuccess('Your inquiry has been sent. You will receieve a reply as soon as we checked your inquiry');
-       //  }
+       
     }
 
     /**
