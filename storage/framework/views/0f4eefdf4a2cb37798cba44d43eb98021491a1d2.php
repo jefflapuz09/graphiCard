@@ -19,7 +19,7 @@
             <tr>
                 <th width="120px">Post Details</th>
                 <th width="200px">Image</th>
-                <th>Details</th>
+                <th>Description</th>
                 <th width="300px">Actions</th>
             </tr>
         </thead>
@@ -36,20 +36,20 @@
 
                     <?php if($posts->isDraft == 0): ?>
                         <a href="<?php echo e(url('/PostEdit',$posts->id)); ?>" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
-                                Update
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
                         <a href="<?php echo e(url('/PostDraft',$posts->id)); ?>" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Publish Post">
-                                Publish Post
+                            <i class="fa fa-clipboard" aria-hidden="true"></i>
                         </a>
                          <a href="<?php echo e(url('/PostDeactivate',$posts->id)); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate Post">
-                                Deactivate Post
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                     <?php elseif($posts->isDraft == 1): ?>
                         <a href="<?php echo e(url('/PostShow',$posts->id)); ?>" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Show Post">
-                                Show Post
+                            <i class="fa fa-eye" aria-hidden="true"></i
                         </a>
                          <a href="<?php echo e(url('/PostDeactivate',$posts->id)); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate Post">
-                                Deactivate Post
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                     <?php endif; ?>
                 </td>

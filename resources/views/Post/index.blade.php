@@ -20,7 +20,7 @@
             <tr>
                 <th width="120px">Post Details</th>
                 <th width="200px">Image</th>
-                <th>Details</th>
+                <th>Description</th>
                 <th width="300px">Actions</th>
             </tr>
         </thead>

@@ -44,7 +44,7 @@
     </header>
 
 
-    <header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/red-pattern.png')); ?>')">
+    <header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/red-pattern.jpg')); ?>')">
     <div class="overlay"></div>
     <div class="container">
         <div class="col-xl-12 mx-auto">

@@ -19,7 +19,7 @@
         <?php echo e(csrf_field()); ?>
 
             <div class="form-group">
-            <label for="sel2">Service Category</label>
+            <b><label for="sel2">Service Category</label></b>
             <select class="form-control" id="sel2" name="categoryId">
                     <option value="0">Please Select Service Category</option>
                 <?php $__currentLoopData = $cat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>   
@@ -34,7 +34,7 @@
             </select>
             </div>
             <div class="form-group">
-            <label for="sel2">Service Type</label>
+            <b><label for="sel2">Item</label></b>
             <select class="form-control" id="sel2" name="typeId">
                     <option value="0">Please Select Service Type</option>
                 <?php $__currentLoopData = $type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $types): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>   
@@ -48,20 +48,17 @@
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </select>
             </div>
-             <div class="form-group" style="margin-top:30px;">
+             <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px; padding-bottom: 20px;" >
                 <center><img class="img-responsive" id="pic" src="<?php echo e(URL::asset( $post->image )); ?>" style="max-width:300px; background-size: contain" /></center>
-                <label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label>
+                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
                 <input type="file" class="form-control-file" name="image" onChange="readURL(this)" id="exampleInputFile" aria-describedby="fileHelp">
-                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                <!-- small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small> -->
             </div>
             
-            
-           
-        
     </div> 
-    <div class="col-lg-6" style="margin-top:40px;">
+    <div class="col-lg-6" style="margin-top:;">
             <div class="form-group">
-            <label for="">Post Details:</label>
+            <b><label for="">Description</label></b>
             <textarea class="form-control" rows="5" placeholder="details" name="details" id="details"><?php echo e($post->details); ?></textarea>
             </div>
             <div class="pull-right">
