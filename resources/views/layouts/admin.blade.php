@@ -10,7 +10,7 @@
   <link rel="icon" href="{{ asset('img/logo.png') }}">
   <title>Graphicard - Admin</title>
   <!-- Bootstrap core CSS-->
-  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  
   <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -220,7 +220,7 @@
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('vendor/bootstrap/js/jquery.dataTables.min') }}"></script>
     <script src="{{ asset('js/sb-admin.min.js') }}"></script>
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 
      <script>
         $(document).ready(function() {

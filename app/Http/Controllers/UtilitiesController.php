@@ -119,13 +119,15 @@ class UtilitiesController extends Controller
                 $request->file('company_logo')->move("img",$pic);    
                 // $request->file('photo')->move(public_path("/uploads"), $newfilename);
             }
+            $checkComp = CompanyInfo::all();
+            if(count($checkComp)!=0){
             CompanyInfo::find(1)->update([
                 'company_logo' => $pic,
                 'company_name' => ($request->company_name),
                 'street' => ($request->street),
                 'brgy' => ($request->street),
                 'city' => ($request->city),
-                'contactNumber' => ($request->emailAddress),
+                'contactNumber' => ($request->contactNumber),
                 'emailAddress' => ($request->emailAddress),
                 'about' => ($request->about),
                 'services_offered' => ($request->services_offered),
@@ -133,6 +135,23 @@ class UtilitiesController extends Controller
                 
             ]);
             return redirect('/Utilities')->withSuccess('Successfully Updated into the database.');
+            }
+            else{
+                CompanyInfo::create([
+                    'company_logo' => $pic,
+                    'company_name' => ($request->company_name),
+                    'street' => ($request->street),
+                    'brgy' => ($request->street),
+                    'city' => ($request->city),
+                    'contactNumber' => ($request->contactNumber),
+                    'emailAddress' => ($request->emailAddress),
+                    'about' => ($request->about),
+                    'services_offered' => ($request->services_offered),
+                    'description' => ($request->description),
+                    
+                ]);
+                return redirect('/Utilities')->withSuccess('Successfully Updated into the database.');
+            }
         }
     }
 

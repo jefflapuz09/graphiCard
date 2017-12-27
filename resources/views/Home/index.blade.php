@@ -88,7 +88,7 @@
       </div>
     </div>
   </header>
-
+@if(count($postcat)!=0)
 @foreach($postcat as $cat)
     <div class="container" style="background:; margin-top:35px;">
       <!-- Portfolio Section -->
@@ -158,6 +158,15 @@
 
      </div>
      @endforeach
+     @else
+
+     <div class="jumbotron" style="background-color:#ff3030; color:white;">
+        <div class="col-lg-12" align="center">
+        <h1>NO SERVICE CATEGORY AVAILABLE!<h1>
+        </div>
+      </div>
+
+     @endif
       <!-- /.row -->
     
      

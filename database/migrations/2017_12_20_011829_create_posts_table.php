@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->string('image', 100);
             $table->boolean('isDraft')->default(1);
             $table->boolean('isActive')->default(1);
+            $table->boolean('isFeatured')->default(1);
             $table->timestamps();
         });
     }

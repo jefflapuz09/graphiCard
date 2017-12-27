@@ -21,7 +21,7 @@
                 <div align="center" class="checkbox">
                 <label>
                   <input type="checkbox" data-toggle="toggle">
-                  Featured Post
+                  <b>Featured Post</b>
                 </label>
                 </div>
             </div>

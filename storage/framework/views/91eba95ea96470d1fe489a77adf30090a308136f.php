@@ -86,7 +86,7 @@
       </div>
     </div>
   </header>
-
+<?php if(count($postcat)!=0): ?>
 <?php $__currentLoopData = $postcat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="container" style="background:; margin-top:35px;">
       <!-- Portfolio Section -->
@@ -156,6 +156,15 @@
 
      </div>
      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+     <?php else: ?>
+
+     <div class="jumbotron" style="background-color:#ff3030; color:white;">
+        <div class="col-lg-12" align="center">
+        <h1>NO SERVICE CATEGORY AVAILABLE!<h1>
+        </div>
+      </div>
+
+     <?php endif; ?>
       <!-- /.row -->
     
      
