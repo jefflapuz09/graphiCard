@@ -18,6 +18,14 @@
         <?php echo e(csrf_field()); ?>
 
             <div class="form-group">
+                <div align="center" class="checkbox">
+                <label>
+                  <input type="checkbox" data-toggle="toggle">
+                  Featured Post
+                </label>
+                </div>
+            </div>
+            <div class="form-group">
             <b><label for="sel2">Service Category</label></b>
             <select class="form-control" id="cat" onchange="changetype(this.value)" name="categoryId">
                     <option value="0">Please Select Service Category</option>
@@ -49,6 +57,7 @@
             <b><label for="">Description</label></b>
             <textarea class="form-control" rows="12" name="details" id="details"></textarea>
             </div>
+            
             <div class="pull-right">
             <button type="reset" class="btn btn-success">Clear</button>
             <button type="submit" class="btn btn-primary">Save as Draft</button>

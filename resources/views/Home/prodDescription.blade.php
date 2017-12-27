@@ -2,9 +2,9 @@
 @section('contents')
 <div class="container-fluid bg-light" style="margin-top:100px; padding:20px;">
     <ol class="breadcrumbs breadcrumb-arrow" width="100%">
-      <li><a href="{{ url('/') }}"><b>Home</b></a></li>
-      <li><a href="{{ url('/') }}"><b>{{$post->category}}</b></a></li>
-      <li class="active" style=""><span><b>{{$post->type}}</b></span></li>
+      <li><a href="{{ url('/') }}">Home</a></li>
+      <li><a href="{{ url('/') }}">{{$post->ServiceCategory->name}}</a></li>
+      <li class="active" style=""><span>{{$post->ServiceType->name}}</span></li>
     </ol>
   <h1 class="mt-4 mb-3">
     {{ $post->type }}

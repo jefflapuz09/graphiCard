@@ -93,14 +93,14 @@
     <div class="container" style="background:; margin-top:35px;">
       <!-- Portfolio Section -->
       
-      <ol class="breadcrumb breadbg" style="background:#252525; ">
-        <li class="breadcrumb-item" >
-          <a href="index.html" style="color:white;">Home</a>
-        </li>
-        <li class="breadcrumb-item active" style="color:white;">{{$cat->name}}</li>
-      </ol>
-    </div>
-
+          <div class="container">
+            <ol class="breadcrumbs breadcrumb-arrow">
+        		<li><a href="#">{{$cat->name}}</a></li>
+        		<li class="active" style=""><span>See More</span></li>
+          	</ol>
+          </div>
+    
+        </div>
      @if(count($cat->Post) > 0) 
        
         <div class="container">

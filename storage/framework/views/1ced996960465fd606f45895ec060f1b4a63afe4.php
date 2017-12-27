@@ -1,29 +1,19 @@
 <?php $__env->startSection('contents'); ?>
 <div class="container-fluid bg-light" style="margin-top:100px; padding:20px;">
-
-  <!-- Page Heading/Breadcrumbs -->
+    <ol class="breadcrumbs breadcrumb-arrow" width="100%">
+      <li><a href="<?php echo e(url('/')); ?>">Home</a></li>
+      <li><a href="<?php echo e(url('/')); ?>"><?php echo e($post->ServiceCategory->name); ?></a></li>
+      <li class="active" style=""><span><?php echo e($post->ServiceType->name); ?></span></li>
+    </ol>
   <h1 class="mt-4 mb-3">
     <?php echo e($post->type); ?>
 
   </h1>
-
-  <div class="container-fluid">
-      <ol class="breadcrumbs breadcrumb-arrow">
-      <li><a href="<?php echo e(url('/')); ?>">Home</a></li>
-      <li><a href="<?php echo e(url('/')); ?>"><?php echo e($post->category); ?></a></li>
-      <li class="active" style=""><span><?php echo e($post->type); ?></span></li>
-    </ol>
-  </div>
-
-
-
-  <!-- Portfolio Item Row -->
   <div class="row">
-
     <div class="col-md-8">
-        <img class="img-fluid" style="max-height:300px; max-width:500px;" src="<?php echo asset($post->image)?>" height="200px" width="" alt="">
-        
-              <?php echo $post->details?>
+      <img class="img-fluid" style="max-height:300px; max-width:500px;" src="<?php echo asset($post->image)?>" height="200px" width="" alt="" title="<?php echo e($post->type); ?>">
+      <h1 class="mt-4 mb-3">Description</h1>
+      <?php echo $post->details?>
     </div>
     <div class="col-md-4">
       <div class="form-area">  

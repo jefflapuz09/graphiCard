@@ -88,13 +88,17 @@
   </header>
 
 <?php $__currentLoopData = $postcat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-<div class="container">
-    <ol class="breadcrumbs breadcrumb-arrow">
-		<li><a href="#"><?php echo e($cat->name); ?></a></li>
-		<li class="active" style=""><span>See More</span></li>
-	</ol>
-</div>
-
+    <div class="container" style="background:; margin-top:35px;">
+      <!-- Portfolio Section -->
+      
+          <div class="container">
+            <ol class="breadcrumbs breadcrumb-arrow">
+        		<li><a href="#"><?php echo e($cat->name); ?></a></li>
+        		<li class="active" style=""><span>See More</span></li>
+          	</ol>
+          </div>
+    
+        </div>
      <?php if(count($cat->Post) > 0): ?> 
        
         <div class="container">
