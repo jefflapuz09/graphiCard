@@ -1,6 +1,8 @@
 
 @extends('layouts.master')
-
+<Style>
+ 
+</style>
 
 @section('contents')
 
@@ -102,7 +104,7 @@
      @if(count($cat->Post) > 0) 
        
         <div class="container">
-          <section class="bg-light" id="portfolio">
+          <section class="" id="portfolio">
           <div class="container">
 
             <div class="row">
@@ -180,57 +182,77 @@
      <!-- Marketing Icons Section -->
      <div class="row">
         <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header text-center">Review</h4>
-            <div class="card-body">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <p class="lead text-center">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span
-                    <span class="fa fa-star"></span>
-               </p>
-            </div>
-          </div>
+           
+            
+            <div class="card card-01">
+                
+                <div class="profile-box">
+                    <h3 class="text-center mb-5" style="color:darkorange;">Customer # 1</h3>
+                    <img class="card-img-top rounded-circle" src="{{ asset('img/steve.jpg') }}" alt="Card image cap">
+                </div>
+                <div class="card-body text-center">
+                  <span class="badge-box"><i class="fa fa-user"></i></span>
+                  <h4 class="card-title">Mike Parker</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <span class="social-box">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </span>
+                </div>
+              </div>
+            
+            
         </div>
         <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header  text-center">Review</h4>
-            <div class="card-body">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
-            </div>
-            <div class="card-footer">
-            <p class="lead text-center">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span
-                    <span class="fa fa-star"></span>
-               </p>
-            </div>
-          </div>
+         
+            
+            <div class="card card-01">
+               
+                <div class="profile-box">
+                    <h3 class="text-center mb-5" style="color:darkorange;">Customer # 2</h3>
+                    <img class="card-img-top rounded-circle" src="{{ asset('img/steve.jpg') }}" alt="Card image cap">
+                </div>
+                <div class="card-body text-center">
+                  <span class="badge-box"><i class="fa fa-user"></i></span>
+                  <h4 class="card-title">Mike Parker</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <span class="social-box">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </span>
+                </div>
+              </div>
+
         </div>
         <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header  text-center">Review</h4>
-            <div class="card-body">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-            <p class="lead text-center">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span
-                    <span class="fa fa-star"></span>
-               </p>
-            </div>
+            
+            <div class="card card-01">
+                <div class="profile-box">
+                    <h3 class="text-center mb-5" style="color:darkorange;">Customer # 3</h3>
+                    <img class="card-img-top rounded-circle" src="{{ asset('img/steve.jpg') }}" alt="Card image cap">
+                </div>
+                <div class="card-body text-center">
+                  <span class="badge-box"><i class="fa fa-user"></i></span>
+                  <h4 class="card-title">Mike Parker</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <span class="social-box">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </span>
+                </div>
+              </div>
           </div>
         </div>
       </div>
@@ -240,7 +262,7 @@
    	<link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
    	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   
-<section id="contact" style="background:url('{{ asset('img/grey-pattern.png') }}')">
+      <section id="contact" style="background:url('{{ asset('img/grey-pattern.png') }}'); width:100%;">
 			<div class="section-content">
 				<h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> 
         Inquire Now
