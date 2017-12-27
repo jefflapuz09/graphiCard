@@ -20,7 +20,7 @@
             <tr>
                 <th width="120px">Post Details</th>
                 <th width="200px">Image</th>
-                <th>Description</th>
+                <th>Featured Post</th>
                 <th width="300px">Actions</th>
             </tr>
         </thead>
@@ -32,7 +32,13 @@
                     <li>{{ $posts->type }}</li>
                 </td>
                 <td><img class="img-responsive" src="{{ asset($posts->image)}}" style="max-width:200px; max-height:200px;"></td>
-                <td><?php echo $posts->details  ?></td>
+                <td>
+                    @if($posts->isDraft == 1)
+                    Featured Post
+                    @elseif($posts->isDraft == 0)
+                    Default Post 
+                    @endif
+                </td>
                 <td> 
 
                     @if($posts->isDraft == 0)

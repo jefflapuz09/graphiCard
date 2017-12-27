@@ -9,6 +9,12 @@
                   <?php echo "<pre>".implode(",\n",$errors->all(':message'))."</pre>"; ?>
             </div>
             <?php endif; ?> 
+            <?php if(session('error')): ?>
+            <div class="alert alert-danger">
+                <?php echo e(session('error')); ?>
+
+            </div>
+            <?php endif; ?>
     <div class="row">
     
     <div class="col-lg-6"> 
@@ -20,7 +26,7 @@
             <div class="form-group">
                 <div align="center" class="checkbox">
                 <label>
-                  <input type="checkbox" data-toggle="toggle">
+                  <input type="checkbox" name="isFeatured" value="0">
                   <b>Featured Post</b>
                 </label>
                 </div>

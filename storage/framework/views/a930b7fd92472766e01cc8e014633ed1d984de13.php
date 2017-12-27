@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
     <div > 
-        <h3>Service Type</h3>
+        <h3>Item</h3>
         <?php if(session('success')): ?>
         <div class="alert alert-success">
             <?php echo e(session('success')); ?>
@@ -15,14 +15,14 @@
          <?php endif; ?>
         <div class="pull-right" style="margin-bottom:15px;"> 
             <a href="<?php echo e(url('/ServiceTypeCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
-                New Record
+                New Item
             </a>
         </div>
     </div>
      <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <th>Service Category</th>
                 <th>Name</th>
                 <th>Description</th>
@@ -40,9 +40,9 @@
                         <a href="<?php echo e(url('/ServiceTypeUpdate',$posts->id)); ?>" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
-                        <a href="<?php echo e(url('/ServiceTypeShow',$posts->id)); ?>" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
+                        <!-- <a href="<?php echo e(url('/ServiceTypeShow',$posts->id)); ?>" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Show Record">
                             <i class="fa fa-eye" aria-hidden="true"></i>
-                        </a>
+                        </a> -->
                         <a href="<?php echo e(url('/ServiceTypeDeac', $posts->id)); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>

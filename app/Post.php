@@ -14,7 +14,8 @@ class Post extends Model
         'details',
         'image',
         'isDraft',
-        'isActive'
+        'isActive',
+        'isFeatured'
     ];
 
     public function ServiceCategory(){

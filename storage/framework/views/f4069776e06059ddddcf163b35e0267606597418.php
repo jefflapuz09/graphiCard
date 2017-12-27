@@ -10,6 +10,12 @@
                   <?php echo "<pre>".implode(",\n",$errors->all(':message'))."</pre>"; ?>
             </div>
             <?php endif; ?> 
+            <?php if(session('error')): ?>
+            <div class="alert alert-danger">
+                <?php echo e(session('error')); ?>
+
+            </div>
+            <?php endif; ?>
     <div class="row">
     
     <div class="col-lg-6"> 
@@ -18,6 +24,18 @@
 
         <?php echo e(csrf_field()); ?>
 
+            <div class="form-group">
+                <div align="center" class="checkbox">
+                <label>
+                  <?php if($post->isFeatured == 0): ?>
+                  <input type="checkbox" checked name="isFeatured" value="0">
+                  <?php elseif($post->isFeatured == 1): ?>
+                  <input type="checkbox" name="isFeatured" value="0">
+                  <?php endif; ?>
+                  <b>Featured Post</b>
+                </label>
+                </div>
+            </div>
             <div class="form-group">
             <b><label for="sel2">Service Category</label></b>
             <select class="form-control" id="sel2" name="categoryId">
@@ -49,7 +67,7 @@
             </select>
             </div>
              <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px; padding-bottom: 20px;" >
-                <center><img class="img-responsive" id="pic" src="<?php echo e(URL::asset( $post->image )); ?>" style="max-width:300px; background-size: contain" /></center>
+                <center><img class="img-responsive" id="pic" src="<?php echo URL::asset( $post->image )?>" style="max-width:300px; background-size: contain" /></center>
                 <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
                 <input type="file" class="form-control-file" name="image" onChange="readURL(this)" id="exampleInputFile" aria-describedby="fileHelp">
                 <!-- small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small> -->

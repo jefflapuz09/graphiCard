@@ -120,7 +120,7 @@ class serviceTypeController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => ['required','max:50','unique:service_types','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'name' => ['required','max:50','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'categoryId' => 'required'
         ];
         $messages = [

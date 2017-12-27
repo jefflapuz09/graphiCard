@@ -63,7 +63,8 @@ class postController extends Controller
             'categoryId' => 'required',
             'typeId' => 'required',
             'details' => 'required',
-            'image' => 'nullable'
+            'image' => 'nullable',
+            'isFeatured' => 'nullable'
         ];
         $messages = [
             'unique' => ':attribute already exists.',
@@ -83,25 +84,47 @@ class postController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
-            $file = $request->file('image');
-            $pic = "";
-            if($file == '' || $file == null){
-                $pic = "img/grey-pattern.png";
-            }else{
-                $date = date("Ymdhis");
-                $extension = $request->file('image')->getClientOriginalExtension();
-                $pic = "img/".$date.'.'.$extension;
-                $request->file('image')->move("img",$pic);    
-                // $request->file('photo')->move(public_path("/uploads"), $newfilename);
+            $feat = $request->isFeatured;
+            if($feat == null || $feat == '') {
+                $feat = 1;
             }
-            $post = Post::create([
-                'categoryId' => ($request->categoryId),
-                'typeId' => ($request->typeId),
-                'details' => ($request->details),
-                'image' => $pic,
-                'isDraft' => 0,
-            ]);
-            return redirect('/Post')->withSuccess('Successfully inserted into the database.');
+            $checkFeatured = Post::with('ServiceCategory')
+                ->where('isActive',1)
+                ->where('isDraft', 1)
+                ->where('isFeatured', 0)
+                ->where('categoryId', $request->categoryId)
+                ->get();
+
+              
+            if(count($checkFeatured) >= 3 && $feat == 0)
+            {
+            return Redirect::back()->withError('It seems there are already 3 featured published post on that certain category.');
+            }
+            else
+            {
+                $file = $request->file('image');
+                $pic = "";
+                if($file == '' || $file == null){
+                    $pic = "img/grey-pattern.png";
+                }else{
+                    $date = date("Ymdhis");
+                    $extension = $request->file('image')->getClientOriginalExtension();
+                    $pic = "img/".$date.'.'.$extension;
+                    $request->file('image')->move("img",$pic);    
+                    // $request->file('photo')->move(public_path("/uploads"), $newfilename);
+                }
+                
+                $post = Post::create([
+                    'categoryId' => ($request->categoryId),
+                    'typeId' => ($request->typeId),
+                    'details' => ($request->details),
+                    'image' => $pic,
+                    'isDraft' => 0,
+                    'isFeatured' => $feat
+                ]);
+                $post = $post->refresh();
+                return redirect('/Post')->withSuccess('Successfully inserted into the database.');
+            }
         }
     
     }
@@ -174,10 +197,30 @@ class postController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
+            $feat = $request->isFeatured;
+            if($feat == null || $feat == '') {
+                $feat = 1;
+            }
+            $checkFeatured = Post::with('ServiceCategory')
+                ->where('isActive',1)
+                ->where('isDraft', 1)
+                ->where('isFeatured', 0)
+                ->where('categoryId', $request->categoryId)
+                ->get();
+
+              
+            if(count($checkFeatured) >= 3 && $feat == 0)
+            {
+            return Redirect::back()->withError('It seems there are already 3 featured published post on that certain category.');
+            }
+            else
+            {
             $file = $request->file('image');
             $pic = "";
             if($file == '' || $file == null){
-                $pic = "img/grey-pattern.png";
+                $nullpic = Post::find($id);
+                $pic = $nullpic->image;
+               
             }else{
                 $date = date("Ymdhis");
                 $extension = $request->file('image')->getClientOriginalExtension();
@@ -190,8 +233,10 @@ class postController extends Controller
                 'typeId' => ($request->typeId),
                 'details' => ($request->details),
                 'image' => $pic,
+                'isFeatured' => $feat
             ]);
             return redirect('/Post')->withSuccess('Successfully updated into the database.');
+            }
         }
        
     }

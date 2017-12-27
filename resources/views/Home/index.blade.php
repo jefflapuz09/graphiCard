@@ -131,28 +131,12 @@
 
     @else  
       <div class="container">
-          <section class="bg-light" id="portfolio">
-          <div class="container">
-
-            <div class="row">
-        
-              <div class="col-md-4 col-sm-6 portfolio-item">
-                <a class="portfolio-link"  href="{{ url('/prodDescription/6.jpg/Picture Frame') }}">
-                  <div class="portfolio-hover shop">
-                    <div class="portfolio-hover-content">
-                      <i class="fa fa-flag fa-3x"></i>
-                    </div>
-                  </div>
-                  <img class="img-fluid" style="max-height:200px;" src="{{ asset('img/red-pattern.jpg') }}" alt="">
-                </a>
-                <div class="portfolio-caption">
-                  <h4>No post available</h4>
-                  <p class="text-muted">See More</p>
-                </div>
+          <div class="jumbotron" style="background-color:darkorange; color:white;">
+              <div class="col-lg-12" align="center">
+              <h1>NO ITEM AVAILABLE!<h1>
               </div>
             </div>
           </div>
-        </section>
 
     @endif
 
