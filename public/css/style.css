@@ -134,7 +134,7 @@ ul.social-network li {
 }
 
 .breadcrumb-arrow {
-    height: 50px;
+    height: 60px;
     padding: 0;
     line-height: 36px;
     list-style: none;
@@ -160,9 +160,9 @@ ul.social-network li {
     padding: 0 10px
 }
 .breadcrumb-arrow li a, .breadcrumb-arrow li:not(:first-child) span {
-    height: 50px;
+    height: 60px;
     padding: 0 10px 0 25px;
-    line-height: 50px
+    line-height: 60px
 }
 .breadcrumb-arrow li:first-child a {
     padding: 0 10px
@@ -181,10 +181,10 @@ ul.social-network li {
     position: absolute;
     top: -1px;
     width: 0;
-    height: 50px;
+    height: 60px;
     content: '';
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent
 }
 .breadcrumb-arrow li a:before {
     right: -10px;
@@ -213,8 +213,19 @@ ul.social-network li {
     border-left-color: rgb(73, 4, 4);
 }
 .breadcrumb-arrow li span {
-    color: yellow;
+    color: orangered;
 }
+
+.card{box-shadow:2px 2px 20px rgba(0,0,0,0.3); border:none; margin-bottom:30px;}
+.card-01 .card-body{position:relative; padding-top:40px;}
+.card-01 .badge-box{position:absolute; top:-20px; left:50%; width:100px; height:100px;margin-left:-50px; text-align:center;}
+.card-01 .badge-box i{background:darkorange; color:#fff; border-radius:50%;  width:50px; height:50px; line-height:50px; text-align:center; font-size:20px;}
+.card-01.height-fix{height:455px; overflow:hidden;}
+.card-01.height-fix .card-img-top{width:auto!important;}
+
+.profile-box{background-size:cover; background:#252525; float:left; width:100%; text-align:center; padding:30px 0; position:relative; overflow:hidden;}
+.profile-box:before{filter: blur(10px);background:url("https://images.pexels.com/photos/195825/pexels-photo-195825.jpeg?h=350&auto=compress&cs=tinysrgb") no-repeat; background-size:cover; width:120%; position:absolute; content:""; height:120%; left:-10%;top:0;z-index:0;}
+.profile-box img{width:170px; height:170px; position:relative; border:5px solid #fff;}
 
 footer{
     margin-top:150px;
