@@ -12,7 +12,7 @@ use App\Banner;
 use App\User;
 use Validator;
 use Redirect;
-
+use Carbon\Carbon as Carbon;
 
 class HomeController extends Controller
 {
@@ -53,7 +53,7 @@ class HomeController extends Controller
 
     public function prodDescription($id)
     {
-        $post = Post::with('ServiceCategory','ServiceType')->where('id', $id)->first();
+        $post = Post::with('ServiceCategory','ServiceType','User')->where('id', $id)->first();
         // $post = DB::table('posts as p')
         //         ->join('service_categories as sc','sc.id','=','p.categoryId')
         //         ->join('service_types as st','st.id','=','p.typeId')
@@ -81,7 +81,7 @@ class HomeController extends Controller
     {   
         
         $mod = ServiceCategory::with(['Post' => function($query) {
-            $query->where('isDraft', 1)->where('isFeatured', 1);}])
+            $query->where('isDraft', 1);}])
             ->where('id',$id)->get();
         return view('Home.serviceitem',compact('mod'));
     }

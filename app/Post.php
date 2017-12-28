@@ -26,4 +26,8 @@ class Post extends Model
     public function ServiceType(){
         return $this->belongsTo('App\ServiceType','typeId');
     }
+
+    public function User(){
+        return $this->belongsTo('App\User','userId');
+    }
 }
