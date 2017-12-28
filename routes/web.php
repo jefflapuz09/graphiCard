@@ -90,8 +90,19 @@ Route::post('/InquiryUpdate/{id}','InquiryController@update');
 
 Route::get('/ServiceItem/{id}', 'HomeController@item');
 
-//
+//User
 Route::get('/User','HomeController@user');
 Route::get('/UserCreate','HomeController@usercreate');
 
 Route::post('/UserStore','HomeController@userstore');
+
+//Customer Feedback
+Route::get('/Feedback','FeedbackController@index');
+Route::get('/FeedbackCreate','FeedbackController@create');
+Route::get('/FeedbackUpdate/{id}', 'FeedbackController@edit');
+Route::get('/FeedbackDeactivate/{id}', 'FeedbackController@destroy');
+Route::get('/FeedbackSoft', 'FeedbackController@soft');
+Route::get('/FeedbackReactivate/{id}', 'FeedbackController@reactivate');
+
+Route::post('FeedbackStore', 'FeedbackController@store');
+Route::post('FeedbackEdit/{id}', 'FeedbackController@update');

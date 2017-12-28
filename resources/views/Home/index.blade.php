@@ -201,80 +201,107 @@
   <div class="container">
     <!-- Marketing Icons Section -->
     <div class="row">
+      @if(count($feed)!=0)
+      @foreach($feed as $feedback)
       <div class="col-lg-4 mb-4">
-
-
         <div class="card card-01">
 
           <div class="profile-box">
-            <h3 class="text-center mb-5" style="color:darkorange;">Customer # 1</h3>
-            <img class="card-img-top rounded-circle" src="{{ asset('img/steve.jpg') }}" alt="Card image cap">
+            <h3 class="text-center mb-5" style="color:darkorange;"></h3>
+          {{--  loob ng h3 header  --}}
+            <img class="card-img-top rounded-circle" src="{{ asset($feedback->image) }}" alt="Card image cap">
           </div>
           <div class="card-body text-center">
             <span class="badge-box"><i class="fa fa-user"></i></span>
-            <h4 class="card-title">Mike Parker</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h4 class="card-title">{{$feedback->name}}</h4>
+            <p class="card-text">{{$feedback->description}}</p>
             <span class="social-box">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
+              @for($i = 0; $i < $feedback->rating; $i++)
+                <span class="fa fa-star checked"></span>
+              @endfor            
             </span>
           </div>
         </div>
 
 
       </div>
+      @endforeach
+      @else 
       <div class="col-lg-4 mb-4">
-
-
-        <div class="card card-01">
-
-          <div class="profile-box">
-            <h3 class="text-center mb-5" style="color:darkorange;">Customer # 2</h3>
-            <img class="card-img-top rounded-circle" src="{{ asset('img/steve.jpg') }}" alt="Card image cap">
-          </div>
-          <div class="card-body text-center">
-            <span class="badge-box"><i class="fa fa-user"></i></span>
-            <h4 class="card-title">Mike Parker</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <span class="social-box">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-            </span>
+          <div class="card card-01">
+  
+            <div class="profile-box">
+              <h3 class="text-center mb-5" style="color:darkorange;">Customer#</h3>
+            {{--  loob ng h3 header  --}}
+              <img class="card-img-top rounded-circle" src="{{ asset('img/steve.jpg') }}" alt="Card image cap">
+            </div>
+            <div class="card-body text-center">
+              <span class="badge-box"><i class="fa fa-user"></i></span>
+              <h4 class="card-title">Customer Name</h4>
+              <p class="card-text">Customer Description</p>
+              <span class="social-box">
+        
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                       
+              </span>
+            </div>
           </div>
         </div>
-
-      </div>
-      <div class="col-lg-4 mb-4">
-
-        <div class="card card-01">
-          <div class="profile-box">
-            <h3 class="text-center mb-5" style="color:darkorange;">Customer # 3</h3>
-            <img class="card-img-top rounded-circle" src="{{ asset('img/steve.jpg') }}" alt="Card image cap">
+        <div class="col-lg-4 mb-4">
+            <div class="card card-01">
+    
+              <div class="profile-box">
+                <h3 class="text-center mb-5" style="color:darkorange;">Customer#</h3>
+              {{--  loob ng h3 header  --}}
+                <img class="card-img-top rounded-circle" src="{{ asset('img/steve.jpg') }}" alt="Card image cap">
+              </div>
+              <div class="card-body text-center">
+                <span class="badge-box"><i class="fa fa-user"></i></span>
+                <h4 class="card-title">Customer Name</h4>
+                <p class="card-text">Customer Description</p>
+                <span class="social-box">
+          
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                         
+                </span>
+              </div>
+            </div>
           </div>
-          <div class="card-body text-center">
-            <span class="badge-box"><i class="fa fa-user"></i></span>
-            <h4 class="card-title">Mike Parker</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <span class="social-box">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+          <div class="col-lg-4 mb-4">
+              <div class="card card-01">
+      
+                <div class="profile-box">
+                  <h3 class="text-center mb-5" style="color:darkorange;">Customer#</h3>
+                {{--  loob ng h3 header  --}}
+                  <img class="card-img-top rounded-circle" src="{{ asset('img/steve.jpg') }}" alt="Card image cap">
+                </div>
+                <div class="card-body text-center">
+                  <span class="badge-box"><i class="fa fa-user"></i></span>
+                  <h4 class="card-title">Customer Name</h4>
+                  <p class="card-text">Customer Description</p>
+                  <span class="social-box">
+            
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                           
+                  </span>
+                </div>
+              </div>
+            </div>
+      @endif
+
+    
   </div>
 </div>
 
