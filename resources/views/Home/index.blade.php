@@ -17,7 +17,7 @@
     </ol>
     <div class="carousel-inner" role="listbox">
       
-      
+      @if(count($ban)!=0)
       <!-- Slide One - Set the background image for this slide in the line below -->
       <div class="carousel-item active" style="background-image: url('{{ asset($ban->banner)}}'); background-size: 1600px 420px;  ">
         <div class="carousel-caption d-none d-md-block">
@@ -38,7 +38,29 @@
       <!-- <h3>Third Slide</h3>
         <p>This is a description for the third slide.</p> -->
       </div>
-    </div>
+      </div>
+      @elseif(count($ban)==0)
+      <div class="carousel-item active" style="background-image: url('img/grey-pattern.png'); background-size: 1600px 420px;  ">
+          <div class="carousel-caption d-none d-md-block">
+        <!-- <h3>First Slide</h3>
+          <p>This is a description for the first slide.</p> -->
+        </div>
+        </div>
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('img/grey-pattern.png'); background-size: 1600px 420px;">
+          <div class="carousel-caption d-none d-md-block">
+        <!-- <h3>Second Slide</h3>
+          <p>This is a description for the second slide.</p> -->
+        </div>
+        </div>
+        <!-- Slide Three - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('img/grey-pattern.png'); background-size: 1600px 420px;">
+          <div class="carousel-caption d-none d-md-block">
+        <!-- <h3>Third Slide</h3>
+          <p>This is a description for the third slide.</p> -->
+        </div>
+      </div>
+      @endif
     </div>
 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
