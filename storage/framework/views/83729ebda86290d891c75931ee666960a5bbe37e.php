@@ -8,7 +8,7 @@
                 Company Information
               </a>
             </div>
-            <div id="collapseOne" class="collapse ">
+            <div id="collapseOne" class="collapse show">
               <div class="card-body">
                     <?php if($errors->any()): ?>
                     <div class="alert alert-danger">
@@ -167,7 +167,7 @@
                         Banner
                       </a>
                     </div>
-                    <div id="collapseTwo" class="collapse show">
+                    <div id="collapseTwo" class="collapse">
                       <div class="card-body">
                             <form action="<?php echo e(url('/UtilityStore')); ?>" method="post" enctype="multipart/form-data">
                                 
