@@ -18,7 +18,7 @@
 
        
 
-        <form action="{{ route('register') }}" method="post">
+        <form action="{{ url('/UserStore') }}" method="post">
 
         {{ csrf_field() }}
             

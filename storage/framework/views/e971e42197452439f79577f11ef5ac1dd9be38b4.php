@@ -17,7 +17,7 @@
 
        
 
-        <form action="<?php echo e(route('register')); ?>" method="post">
+        <form action="<?php echo e(url('/UserStore')); ?>" method="post">
 
         <?php echo e(csrf_field()); ?>
 

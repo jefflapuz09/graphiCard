@@ -10,6 +10,9 @@ use App\CompanyInfo;
 use App\ServiceCategory;
 use App\Banner;
 use App\User;
+use Validator;
+use Redirect;
+
 
 class HomeController extends Controller
 {
@@ -97,5 +100,49 @@ class HomeController extends Controller
     public function usercreate()
     {
         return view('User.create');
+    }
+
+    public function userstore(Request $request)
+    {
+        $rules = [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',
+            'regex' => 'The :attribute must not contain special characters.'              
+        ];
+        $niceNames = [
+            'name' => 'Name',
+            'email' => 'Email Address',
+            'password' => 'Password'
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else{
+            $cpass = $request->password_confirmation;
+            $pass = $request->password;
+            if($cpass == $pass)
+            {
+             
+                User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password)
+                ]);
+                return redirect('/User')->withSuccess('Successfully inserted into the database.');
+            }
+            else
+            {
+                return Redirect::back()->withErrors($validator);
+            }
+            
+        }
     }
 }
