@@ -11,7 +11,7 @@
                 Company Information
               </a>
             </div>
-            <div id="collapseOne" class="collapse ">
+            <div id="collapseOne" class="collapse show">
               <div class="card-body">
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -165,15 +165,36 @@
                   <div class="card" style="border-color:maroon;">
                     <div class="card-header" style="background-color:maroon;">
                       <a class="card-link" style="color:white;" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                        Carousel
+                        Banner
                       </a>
                     </div>
-                    <div id="collapseTwo" class="collapse show">
+                    <div id="collapseTwo" class="collapse">
                       <div class="card-body">
                             <form action="{{ url('/UtilityStore') }}" method="post" enctype="multipart/form-data">
                                 
                                         {{ csrf_field() }}
+                                    @if(count($ban)!=0)
+                                        <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
+                                                <center><img class="img-responsive" id="pic2" src="{{ URL::asset($ban->banner)}}" style="max-width:500px; max-height:100%; background-size: contain" /></center>
+                                                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
+                                                <input type="file" class="form-control-file" name="banner1" onChange="readURL2(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
 
+                                        <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
+                                                <center><img class="img-responsive" id="pic3" src="{{ URL::asset($ban->banner2)}}" style="max-width:500px; background-size: contain" /></center>
+                                                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
+                                                <input type="file" class="form-control-file" name="banner2" onChange="readURL3(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
+
+                                        <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
+                                                <center><img class="img-responsive" id="pic4" src="{{ URL::asset($ban->banner3)}}" style="max-width:500px; background-size: contain" /></center>
+                                                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
+                                                <input type="file" class="form-control-file" name="banner3" onChange="readURL4(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
+                                    @else
                                         <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
                                                 <center><img class="img-responsive" id="pic2" src="{{ URL::asset('img/grey-pattern.png')}}" style="max-width:500px; max-height:100%; background-size: contain" /></center>
                                                 <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
@@ -193,6 +214,11 @@
                                                 <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
                                                 <input type="file" class="form-control-file" name="banner3" onChange="readURL4(this)" id="exampleInputFile" aria-describedby="fileHelp">
                                                 <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
+                                    @endif
+                                        <div class="pull-right" style="margin-bottom: 15px;">
+                                        <button type="reset" class="btn btn-success">Clear</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                             </form>
                       </div>

@@ -55,6 +55,9 @@
                         <a href="{{ url('/prodDescription',$posts->id) }}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Show Post">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>
+                        <a href="{{ url('/PostUnpub',$posts->id) }}" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Unpublish Post">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
                          <a href="{{ url('/PostDeactivate',$posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate Post">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>

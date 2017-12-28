@@ -8,6 +8,7 @@ use DB;
 use App\Post;
 use App\CompanyInfo;
 use App\ServiceCategory;
+use App\Banner;
 class HomeController extends Controller
 {
     /**
@@ -40,8 +41,9 @@ class HomeController extends Controller
             ->where('isActive',1)->get();
         $comp = CompanyInfo::find(1);
         $model2 = Post::where('isActive',1)->where('isDraft',1)->get();
-      
-        return view('Home.index', compact('post','model2','item','postcat','comp'));
+        $ban = Banner::all()->first();
+        //dd($ban);
+        return view('Home.index', compact('post','model2','item','postcat','comp','ban'));
     }
 
     public function prodDescription($id)
@@ -72,8 +74,10 @@ class HomeController extends Controller
 
     public function item($id)
     {   
-        $mod = ServiceCategory::with('Post')->where('id',$id)->where('isDraft',1)
-        ->get();
+        
+        $mod = ServiceCategory::with(['Post' => function($query) {
+            $query->where('isDraft', 1)->where('isFeatured', 1);}])
+            ->where('id',$id)->get();
         return view('Home.serviceitem',compact('mod'));
     }
 }

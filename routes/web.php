@@ -64,6 +64,7 @@ Route::post('/ServiceTypeEdit/{id}', 'serviceTypeController@update');
 Route::get('/Post','postController@index');
 Route::get('/PostCreate','postController@create');
 Route::get('/PostDraft/{id}','postController@publish');
+Route::get('/PostUnpub/{id}','postController@unpublish');
 Route::get('/PostEdit/{id}','postController@edit');
 Route::get('/PostDeactivate/{id}', 'postController@destroy');
 Route::get('/PostSoft','postController@soft');

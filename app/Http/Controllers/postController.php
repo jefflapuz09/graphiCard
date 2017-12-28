@@ -138,6 +138,12 @@ class postController extends Controller
         return redirect('/Post');
     }
 
+    public function unpublish($id)
+    {
+        Post::find($id)->update(['isDraft' => 0]);
+        return redirect('/Post');
+    }
+
     /**
      * Display the specified resource.
      *

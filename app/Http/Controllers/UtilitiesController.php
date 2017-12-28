@@ -18,7 +18,8 @@ class UtilitiesController extends Controller
     public function index()
     {
         $post = CompanyInfo::find(1);
-        return view('Utilities.index',compact('post'));
+        $ban = Banner::first();
+        return view('Utilities.index',compact('post','ban'));
     }
 
     /**
@@ -39,37 +40,75 @@ class UtilitiesController extends Controller
      */
     public function store(Request $request)
     {
-        $file = $request->file('banner1');
-        $file2 = $request->file('banner2');
-        $file3 = $request->file('banner3');
-        $pic = "";
-        $pic2 = "";
-        $pic3= "";
-        if($file == '' || $file == null || $file2 = '' || $file2 = null || $file3 = '' || $file3 = null){
-            $pic = "img/grey-pattern.png";
-            $pic2 = "img/grey-pattern.png";
-            $pic3 = "img/grey-pattern.png";
-        }else{
-            $date = date("Ymdhis");
-            $extension = $request->file('banner1')->getClientOriginalExtension();
-            $extension2 = $request->file('banner2')->getClientOriginalExtension();
-            $extension3 = $request->file('banner3')->getClientOriginalExtension();
-            $pic = "img/".$date.'.'.$extension;
-            $pic2 = "img/".$date.'.'.$extension2;
-            $pic3 = "img/".$date.'.'.$extension3;
-            $request->file('banner1')->move("img",$pic);   
-            $request->file('banner2')->move("img",$pic);  
-            $request->file('banner3')->move("img",$pic); 
-            // $request->file('photo')->move(public_path("/uploads"), $newfilename);
+        $chkBan = Banner::all();
+        if(count($chkBan)!=0)
+        {
+            $file = $request->file('banner1');
+            $file2 = $request->file('banner2');
+            $file3 = $request->file('banner3');
+            $pic = "";
+            $pic2 = "";
+            $pic3= "";
+            if($file == '' || $file == null || $file2 = '' || $file2 = null || $file3 = '' || $file3 = null){
+                $pic = "img/grey-pattern.png";
+                $pic2 = "img/grey-pattern.png";
+                $pic3 = "img/grey-pattern.png";
+            }else{
+                $date = date("Ymdhis");
+                $extension = $request->file('banner1')->getClientOriginalExtension();
+                $extension2 = $request->file('banner2')->getClientOriginalExtension();
+                $extension3 = $request->file('banner3')->getClientOriginalExtension();
+                $pic = "img/a".$date.'.'.$extension;
+                $pic2 = "img/b".$date.'.'.$extension2;
+                $pic3 = "img/c".$date.'.'.$extension3;
+                $request->file('banner1')->move("img",$pic);   
+                $request->file('banner2')->move("img",$pic2);  
+                $request->file('banner3')->move("img",$pic3); 
+                // $request->file('photo')->move(public_path("/uploads"), $newfilename);
+            }
+            
+            $post = Banner::first()->update([
+                'banner' => $pic,
+                'banner2' => $pic2,
+                'banner3' => $pic3
+            ]);
+            
+            return redirect('/Utilities')->withSuccess('Successfully updated into the database.');
         }
-        
-        $post = Banner::create([
-            'banner' => $pic,
-            'banner2' => $pic2,
-            'banner3' => $pic3
-        ]);
-        $post = $post->refresh();
-        return redirect('/Post')->withSuccess('Successfully inserted into the database.');
+        else
+        {
+            $file = $request->file('banner1');
+            $file2 = $request->file('banner2');
+            $file3 = $request->file('banner3');
+            $pic = "";
+            $pic2 = "";
+            $pic3= "";
+            if($file == '' || $file == null || $file2 = '' || $file2 = null || $file3 = '' || $file3 = null){
+                $pic = "img/grey-pattern.png";
+                $pic2 = "img/grey-pattern.png";
+                $pic3 = "img/grey-pattern.png";
+            }else{
+                $date = date("Ymdhis");
+                $extension = $request->file('banner1')->getClientOriginalExtension();
+                $extension2 = $request->file('banner2')->getClientOriginalExtension();
+                $extension3 = $request->file('banner3')->getClientOriginalExtension();
+                $pic = "img/a".$date.'.'.$extension;
+                $pic2 = "img/b".$date.'.'.$extension2;
+                $pic3 = "img/c".$date.'.'.$extension3;
+                $request->file('banner1')->move("img",$pic);   
+                $request->file('banner2')->move("img",$pic2);  
+                $request->file('banner3')->move("img",$pic3); 
+                // $request->file('photo')->move(public_path("/uploads"), $newfilename);
+            }
+            
+            $post = Banner::create([
+                'banner' => $pic,
+                'banner2' => $pic2,
+                'banner3' => $pic3
+            ]);
+            $post = $post->refresh();
+            return redirect('/Utilities')->withSuccess('Successfully inserted into the database.');
+        }
     }
 
     /**
