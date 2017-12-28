@@ -82,7 +82,8 @@ Route::post('/UtilityStore', 'UtilitiesController@store');
 
 //Inquiry
 Route::post('/InquirySend','InquiryController@store');
-Route::post('/InquiryView/{id}','InquiryController@show');
+Route::get('/InquiryView/{id}','InquiryController@show');
+Route::post('/InquiryUpdate/{id}','InquiryController@update');
 
 //ServiceItem
 

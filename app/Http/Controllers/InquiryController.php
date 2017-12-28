@@ -59,7 +59,7 @@ class InquiryController extends Controller
        //      $message->subject($data['subject']);
        // });
        //  return redirect()->back()->withSuccess('Your inquiry has been sent. You will receieve a reply as soon as we checked your inquiry');
-        return Redirect::to(URL::previous() . "#inquiry-form")->withSuccess('Your inquiry has been sent. You will recieve a reply as soon as we checked your inquiry');
+        return Redirect::to(URL::previous() . "#inquiry-form")->withSuccess('Your inquiry has been sent. You will receieve a reply as soon as we checked your inquiry');
        
     }
 
@@ -71,8 +71,8 @@ class InquiryController extends Controller
      */
     public function show($id)
     {
-        $inq = Inquiries::find($id);
-        return view('inquiries.display', compact('inq'));
+        $post = Inquiries::find($id);
+        return view('inquiries.display', compact('post'));
     }
 
     /**
@@ -95,7 +95,15 @@ class InquiryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //echo "sdhsd";
+        $value = $request->status;
+        if($value == null){
+            return redirect('/admin')->withErrors('Failed to update.');
+        }
+        else{
+            Inquiries::find($id)->update(['status' => $value]);
+            return redirect('/admin')->withSuccess('Successfully updated into the database.');
+        }
     }
 
     /**

@@ -13,6 +13,7 @@ class Inquiries extends Model
         'email',
         'contact_number',
         'subject',
-        'message'
+        'message',
+        'status'
     ];
 }

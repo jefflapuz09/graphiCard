@@ -14,9 +14,9 @@
     <thead>
         <tr>
             <th>ID</th>
+            <th>Date Inquired</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Contact Number</th>
             <th>Subject</th>
             <th>Actions</th>
         </tr>

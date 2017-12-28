@@ -54,7 +54,7 @@
                       </a>          
                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                   <?php $__currentLoopData = $post->Type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                   
-                        <a class="dropdown-item" href=""><?php echo e($type->name); ?></a>
+                        <a class="dropdown-item" href="<?php echo e(url('/ServiceItem', $post->id)); ?>"><?php echo e($type->name); ?></a>
                       
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </div>
@@ -63,7 +63,7 @@
                              <?php echo e($post->categoryId); ?>
 
 
-                  <a class="nav-link" href=""><?php echo e($post->name); ?></a>
+                  <a class="nav-link" href="<?php echo e(url('/ServiceItem', $post->id)); ?>"><?php echo e($post->name); ?></a>
               <?php endif; ?>
             </li>
        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -23,6 +23,7 @@ class adminController extends Controller
     {
         $post =DB::table('inquiries')
         ->select('inquiries.*')
+        ->where('inquiries.status',0)
         ->get(); 
         return view('inquiries.dashboard',compact('post'));
     }
