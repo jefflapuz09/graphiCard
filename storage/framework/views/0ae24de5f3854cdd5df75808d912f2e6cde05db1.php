@@ -36,7 +36,8 @@
                     <td>
                         <?php if($user->role==1): ?>
                         Administrator
-                        <?php else: ?>
+                        <?php elseif($user->role==2): ?>
+                        Contributor
                         <?php endif; ?>
                     </td>
                 </tr>

@@ -46,6 +46,8 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
+
+        <?php if((Auth::user()->role)==1): ?>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-sitemap"></i>
@@ -85,6 +87,14 @@
                     <span class="nav-link-text">User</span>
                   </a>
           </li>
+          <?php elseif((Auth::user()->role)==2): ?>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <a class="nav-link" href="<?php echo e(url('/Post')); ?>">
+              <i class="fa fa-paste"></i>
+              <span class="nav-link-text">Post</span>
+            </a>
+          </li>
+          <?php endif; ?>
           </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">

@@ -36,7 +36,8 @@
                     <td>
                         @if($user->role==1)
                         Administrator
-                        @else
+                        @elseif($user->role==2)
+                        Contributor
                         @endif
                     </td>
                 </tr>

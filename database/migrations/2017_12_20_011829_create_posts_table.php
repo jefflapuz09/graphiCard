@@ -19,6 +19,8 @@ class CreatePostsTable extends Migration
             $table->foreign('categoryId')->references('id')->on('service_categories');
             $table->integer('typeId')->unsigned();	
             $table->foreign('typeId')->references('id')->on('service_types');
+            $table->integer('userId')->unsigned();
+            $table->foreign('userId')->references('id')->on('users');
             $table->text('details');
             $table->string('image', 100);
             $table->boolean('isDraft')->default(1);

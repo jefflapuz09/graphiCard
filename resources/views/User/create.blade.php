@@ -21,7 +21,7 @@
         <form action="{{ url('/UserStore') }}" method="post">
 
         {{ csrf_field() }}
-            
+        
             <div class="form-group">
             <label for="">Name:</label>
             <input type="text" placeholder="Name" value="" class="form-control" name="name">
@@ -38,6 +38,13 @@
             <label for="">Confirm Password:</label>
             <input type="password" placeholder="Confirm Password" value="" class="form-control" name="password_confirmation">
             </div>
+            <div class="form-group">
+                <label for="sel1">Role:</label>
+                <select class="form-control" name="role" id="sel1">
+                  <option value='1'>Administrator</option>
+                  <option value='2'>Contributor</option>
+                </select>
+              </div>
             <div class="pull-right">
             <button type="reset" class="btn btn-success">Clear</button>
             <button type="submit" class="btn btn-primary">Submit</button>

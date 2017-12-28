@@ -134,7 +134,8 @@ class HomeController extends Controller
                 User::create([
                     'name' => $request->name,
                     'email' => $request->email,
-                    'password' => bcrypt($request->password)
+                    'password' => bcrypt($request->password),
+                    'role' => ($request->role)
                 ]);
                 return redirect('/User')->withSuccess('Successfully inserted into the database.');
             }

@@ -32,7 +32,8 @@ class postController extends Controller
         $post = DB::table('posts')
                 ->join('service_types','posts.typeId','=','service_types.id')
                 ->join('service_categories','posts.categoryId','=','service_categories.id')
-                ->select('posts.*','service_types.name as type', 'service_categories.name as category')
+                ->join('users as u','u.id','=','posts.userId')
+                ->select('posts.*','service_types.name as type', 'service_categories.name as category','u.name as userName')
                 ->orderBy('posts.id','Asc')
                 ->where('posts.isActive',1)
                 ->get();
@@ -117,6 +118,7 @@ class postController extends Controller
                 $post = Post::create([
                     'categoryId' => ($request->categoryId),
                     'typeId' => ($request->typeId),
+                    'userId' => ($request->userId),
                     'details' => ($request->details),
                     'image' => $pic,
                     'isDraft' => 0,
@@ -237,6 +239,7 @@ class postController extends Controller
             $post = Post::find($id)->update([
                 'categoryId' => ($request->categoryId),
                 'typeId' => ($request->typeId),
+                'userId' => ($request->userId),
                 'details' => ($request->details),
                 'image' => $pic,
                 'isFeatured' => $feat

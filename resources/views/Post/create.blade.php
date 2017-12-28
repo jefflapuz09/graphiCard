@@ -23,6 +23,7 @@
         <form action="{{ url('/PostStore') }}" method="post" enctype="multipart/form-data">
 
         {{ csrf_field() }}
+            <input type="hidden" name="userId" value="{{Auth::user()->id}}">
             <div class="form-group">
                 <div align="center" class="checkbox">
                 <label>
