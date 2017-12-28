@@ -44,14 +44,15 @@ class InquiryController extends Controller
             'subject' => $request->subject,
             'body' => $request->message
         );
-       Inquiries::create($request->all());
+
+       //Inquiries::create($request->all());
 
     //    Mail::send('layouts.email', $data, function($message) use ($data){
     //         $message->from($data['email']);
     //         $message->to('hello@gmail.com');
     //         $message->subject($data['subject']);
     //    });
-        return redirect('/prodDescription/1')->withSuccess('Your inquiry has been sent. You will receieve a reply as soon as we checked your inquiry');
+        return redirect()->back()->withSuccess('Your inquiry has been sent. You will receieve a reply as soon as we checked your inquiry');
        
     }
 

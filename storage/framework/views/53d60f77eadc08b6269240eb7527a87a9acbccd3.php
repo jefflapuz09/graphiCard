@@ -9,6 +9,12 @@
                   <?php echo "<pre>".implode(",\n",$errors->all(':message'))."</pre>"; ?>
             </div>
             <?php endif; ?> 
+            <?php if(session('error')): ?>
+            <div class="alert alert-danger">
+                <?php echo e(session('error')); ?>
+
+            </div>
+            <?php endif; ?>
     <div class="row">
     
     <div class="col-lg-6"> 
@@ -17,6 +23,14 @@
 
         <?php echo e(csrf_field()); ?>
 
+            <div class="form-group">
+                <div align="center" class="checkbox">
+                <label>
+                  <input type="checkbox" name="isFeatured" value="0">
+                  <b>Featured Post</b>
+                </label>
+                </div>
+            </div>
             <div class="form-group">
             <b><label for="sel2">Service Category</label></b>
             <select class="form-control" id="cat" onchange="changetype(this.value)" name="categoryId">
@@ -49,6 +63,7 @@
             <b><label for="">Description</label></b>
             <textarea class="form-control" rows="12" name="details" id="details"></textarea>
             </div>
+            
             <div class="pull-right">
             <button type="reset" class="btn btn-success">Clear</button>
             <button type="submit" class="btn btn-primary">Save as Draft</button>

@@ -162,9 +162,9 @@
       <div class="container-fluid" style="background:#154360; height:30px;">
      <div align="center" style="margin-top:px;color:white;">
         @if(count($comp) != 0 )
-          <a style="text-decoration:none; color:white" href="{{ url('/') }}" title="Go to admin"><small class="text-uppercase"><b>{{$comp->company_name}} -  Admin</b></small></a>
+          <a style="text-decoration:none; color:white" href="{{ url('/admin') }}" title="Go to admin"><small class="text-uppercase"><b>{{$comp->company_name}} -  Admin</b></small></a>
         @else
-          <a style="text-decoration:none; color:white" href="{{ url('/') }}" title="Go to admin"><small class="text-uppercase"><b>Company Name - Admin</b></small></a>
+          <a style="text-decoration:none; color:white" href="{{ url('/admin') }}" title="Go to admin"><small class="text-uppercase"><b>Company Name - Admin</b></small></a>
         @endif
     </div>
     

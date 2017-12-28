@@ -166,9 +166,9 @@
       <div class="container-fluid" style="background:#154360; height:30px;">
      <div align="center" style="margin-top:px;color:white;">
         <?php if(count($comp) != 0 ): ?>
-          <a style="text-decoration:none; color:white" href="<?php echo e(url('/')); ?>" title="Go to admin"><small class="text-uppercase"><b><?php echo e($comp->company_name); ?> -  Admin</b></small></a>
+          <a style="text-decoration:none; color:white" href="<?php echo e(url('/admin')); ?>" title="Go to admin"><small class="text-uppercase"><b><?php echo e($comp->company_name); ?> -  Admin</b></small></a>
         <?php else: ?>
-          <a style="text-decoration:none; color:white" href="<?php echo e(url('/')); ?>" title="Go to admin"><small class="text-uppercase"><b>Company Name - Admin</b></small></a>
+          <a style="text-decoration:none; color:white" href="<?php echo e(url('/admin')); ?>" title="Go to admin"><small class="text-uppercase"><b>Company Name - Admin</b></small></a>
         <?php endif; ?>
     </div>
     
