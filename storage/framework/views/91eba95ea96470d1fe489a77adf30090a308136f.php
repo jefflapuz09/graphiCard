@@ -94,7 +94,7 @@
 
   <div class="container">
     <ol class="breadcrumbs breadcrumb-arrow">
-      <li><a href="#"><?php echo e($cat->name); ?></a></li>
+      <li><a href="<?php echo e(url('/ServiceItem', $cat->id)); ?>"><?php echo e($cat->name); ?></a></li>
       <li class="active" style=""><span>See More</span></li>
     </ol>
   </div>
@@ -260,7 +260,7 @@
     <h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> 
       Inquire Now
     </span></h1>
-    <?php if(session('success')): ?>
+<?php if(session('success')): ?>
                 <div class="alert alert-success">
                     <?php echo e(session('success')); ?>
 
@@ -270,7 +270,7 @@
   </div>
   <div class="contact-section">
     <div class="container">
-      <form method="post" action="<?php echo e(url('/InquirySend')); ?>">
+      <form method="post" action="<?php echo e(url('/InquirySend')); ?>" id="inquiry-form">
         <?php echo e(csrf_field()); ?>
 
         <div class="row">

@@ -59,7 +59,7 @@ class InquiryController extends Controller
        //      $message->subject($data['subject']);
        // });
        //  return redirect()->back()->withSuccess('Your inquiry has been sent. You will receieve a reply as soon as we checked your inquiry');
-        return Redirect::to(URL::previous() . "#inquiry-form")->withSuccess('Your inquiry has been sent. You will receieve a reply as soon as we checked your inquiry');
+        return Redirect::to(URL::previous() . "#inquiry-form")->withSuccess('Your inquiry has been sent. You will recieve a reply as soon as we checked your inquiry');
        
     }
 

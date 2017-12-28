@@ -3,13 +3,13 @@
 <div class="container-fluid bg-light" style="margin-top:100px; padding:20px;">
   <ol class="breadcrumbs breadcrumb-arrow" width="100%">
     <li><a href="{{ url('/') }}">Home</a></li>
-    <li><a href="{{ url('/') }}">{{$post->ServiceCategory->name}}</a></li>
+    <li><a href="{{ url('/ServiceItem', $post->ServiceCategory->id) }}">{{$post->ServiceCategory->name}}</a></li>
     <li class="active" style=""><span><b>{{$post->ServiceType->name}}</b></span></li>
   </ol>
   <div class="row" style="padding:10px;">
-    <div class="col-md-7 form-line">
+    <div class="col-md-7 form-line" style="margin-top:50px;">
       <!-- <h1 class="mt-4 mb-3" style="text-align:center">{{ $post->ServiceType->name }}</h1> -->
-      <img class="img-fluid" style="max-height:500px; max-width:800px;" src="<?php echo asset($post->image)?>" height="200px" width="100%" alt="No image available">
+      <div align="center"><img class="img-responsive" style="max-height:100%; max-width:100%;" src="<?php echo asset($post->image)?>" height="400px"  alt="No image available"></div>
       <h2 class="mt-4 mb-3">Description</h2>
       <?php echo $post->details?>
     </div>
