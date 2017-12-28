@@ -32,7 +32,7 @@
                         <textarea  class="form-control" id="message" name="message" disabled><?php echo e($post->message); ?></textarea>
                     </div>
                     <div class="form-group">
-                        <label><input type="checkbox" name="status" value="1" class="status"> Already responded to the inquiry? Mark as <b>READ?</b></label>
+                        <label><input type="checkbox" name="status" value="1" class="status" onclick="enableBtn(this.value)"> Already responded to the inquiry? Mark as <b>READ?</b></label>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-default submit pull-right" id="btnSubmit" disabled><i class="fa fa-paper-plane" aria-hidden="true"></i>  Submit</button>
@@ -43,17 +43,18 @@
     </div>
 </div>
 
-<script>
-        $(".status").on("change", function(){
-            alert("jdgs");
-            var val = $(".status").val();
-            if(val=="1"){
-              $("#btnSubmit").prop('disabled', true);
-          }
-          else{
-              $("#btnSubmit").prop('disabled', false);  
-          }
-      });
+<script type="text/javascript">
+function enableBtn(){
+$(document).ready(function(){
+    var val = $("input[name='status']:checked").val();
+    if(val=="1"){
+      $("#btnSubmit").prop('disabled',false);
+    }
+    else{
+      $("#btnSubmit").prop('disabled',true);  
+    }
+});
+}
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

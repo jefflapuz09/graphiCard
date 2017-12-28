@@ -25,13 +25,13 @@
         @foreach ($post as $posts)
         <tr>
             <td>{{ $posts->id }}</td>
+            <td>{{ \Carbon\Carbon::parse($posts->created_at)->format('F m,Y')}}</td>
             <td>{{ $posts->name }}</td>
             <td>{{ $posts->email }}</td>
-            <td>{{ $posts->contact_number }}</td>
             <td>{{ $posts->subject }}</td>
             <td> 
-                <a href="{{ url('/InquiryView',$posts->id) }}" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                <a href="{{ url('/InquiryView',$posts->id) }}" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="View Inquiry">
+                    <i class="fa fa-eye" aria-hidden="true"></i> View Inquiry
                 </a>
             </td>
         </tr>
