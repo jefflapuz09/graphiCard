@@ -262,7 +262,7 @@
     <h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> 
       Inquire Now
     </span></h1>
-    @if(session('success'))
+@if(session('success'))
                 <div class="alert alert-success">
                     {{session('success')}}
                 </div>
@@ -271,7 +271,7 @@
   </div>
   <div class="contact-section">
     <div class="container">
-      <form method="post" action="{{ url('/InquirySend') }}">
+      <form method="post" action="{{ url('/InquirySend') }}" id="inquiry-form">
         {{ csrf_field() }}
         <div class="row">
           <div class="col-md-6 form-line"> 

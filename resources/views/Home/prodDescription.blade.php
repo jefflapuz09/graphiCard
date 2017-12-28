@@ -4,13 +4,13 @@
   <ol class="breadcrumbs breadcrumb-arrow" width="100%">
     <li><a href="{{ url('/') }}">Home</a></li>
     <li><a href="{{ url('/') }}">{{$post->ServiceCategory->name}}</a></li>
-    <li class="active" style=""><span>{{$post->ServiceType->name}}</span></li>
+    <li class="active" style=""><span><b>{{$post->ServiceType->name}}</b></span></li>
   </ol>
   <div class="row" style="padding:10px;">
     <div class="col-md-7 form-line">
-      <h1 class="mt-4 mb-3" style="text-align:center">{{ $post->ServiceType->name }}</h1>
+      <!-- <h1 class="mt-4 mb-3" style="text-align:center">{{ $post->ServiceType->name }}</h1> -->
       <img class="img-fluid" style="max-height:500px; max-width:800px;" src="<?php echo asset($post->image)?>" height="200px" width="100%" alt="No image available">
-      <h1 class="mt-4 mb-3">Description</h1>
+      <h2 class="mt-4 mb-3">Description</h2>
       <?php echo $post->details?>
     </div>
 
@@ -24,7 +24,7 @@
             @endif
       <section id="contact" style="background:url('{{ asset('img/grey-pattern.png') }}'); width:100%; padding:10px; margin-bottom:20px; ">
         <div class="form-area" style="background-image: url('{{ asset('img/grey-pattern.jpg') }}');">  
-          <form role="form" method="post" action="{{ url('/InquirySend') }}">
+          <form role="form" method="post" action="{{ url('/InquirySend') }}" id="inquiry-form">
 
             {{ csrf_field() }}
             <br style="clear:both">
@@ -45,7 +45,7 @@
               <textarea class="form-control" type="textarea" id="message" name="message" placeholder="Message" maxlength="140" rows="7"></textarea>
             </div>
             <div class="float-right">
-              <button type="submit" class="btn btn-default submit" style="color:maroon"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+              <button type="submit" class="btn btn-link submit" style="color:maroon; hover:text-underline:none;"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
             </div>
             <div style="clear:both ">
           </form>

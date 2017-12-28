@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 use App\Inquiries;
+use App\Mail\InquirySent;
 use Mail;
 
 class InquiryController extends Controller
@@ -37,22 +40,26 @@ class InquiryController extends Controller
     public function store(Request $request)
     {
 
-        $data = array(
-            'name' => $request->name,
-            'email' => $request->email,
-            'contact_numer' =>$request->contact_number,
-            'subject' => $request->subject,
-            'body' => $request->message
-        );
+        // $data = array(
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'contact_numer' =>$request->contact_number,
+        //     'subject' => $request->subject,
+        //     'body' => $request->message
+        // );
 
-       //Inquiries::create($request->all());
+       $inq = Inquiries::create($request->all());
 
-    //    Mail::send('layouts.email', $data, function($message) use ($data){
-    //         $message->from($data['email']);
-    //         $message->to('hello@gmail.com');
-    //         $message->subject($data['subject']);
-    //    });
-        return redirect()->back()->withSuccess('Your inquiry has been sent. You will receieve a reply as soon as we checked your inquiry');
+        \Mail::to($inq)->send(new InquirySent);
+        //\Mail::to($inq)->send(new InquirySent($inq));
+
+       // Mail::send('layouts.email', $data, function($message) use ($data){
+       //      $message->from($data['email']);
+       //      $message->to('hello@gmail.com');
+       //      $message->subject($data['subject']);
+       // });
+       //  return redirect()->back()->withSuccess('Your inquiry has been sent. You will receieve a reply as soon as we checked your inquiry');
+        return Redirect::to(URL::previous() . "#inquiry-form")->withSuccess('Your inquiry has been sent. You will receieve a reply as soon as we checked your inquiry');
        
     }
 
