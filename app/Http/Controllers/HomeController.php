@@ -69,4 +69,11 @@ class HomeController extends Controller
          Auth::logout();
          return Redirect('/');
     }
+
+    public function item($id)
+    {   
+        $mod = ServiceCategory::with('Post')->where('id',$id)
+        ->get();
+        return view('Home.serviceitem',compact('mod'));
+    }
 }

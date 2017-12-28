@@ -54,7 +54,7 @@
                       </a>          
                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                   <?php $__currentLoopData = $post->Type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                   
-                        <a class="dropdown-item" href=""><?php echo e($type->name); ?></a>
+                        <a class="dropdown-item" href="<?php echo e(url('/ServiceItem', $post->id)); ?>"><?php echo e($type->name); ?></a>
                       
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </div>
@@ -63,7 +63,7 @@
                              <?php echo e($post->categoryId); ?>
 
 
-                  <a class="nav-link" href=""><?php echo e($post->name); ?></a>
+                  <a class="nav-link" href="<?php echo e(url('/ServiceItem', $post->id)); ?>"><?php echo e($post->name); ?></a>
               <?php endif; ?>
             </li>
        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -166,9 +166,9 @@
       <div class="container-fluid" style="background:#154360; height:30px;">
      <div align="center" style="margin-top:px;color:white;">
         <?php if(count($comp) != 0 ): ?>
-          <a style="text-decoration:none; color:white" href="<?php echo e(url('/')); ?>" title="Go to admin"><small class="text-uppercase"><b><?php echo e($comp->company_name); ?> -  Admin</b></small></a>
+          <a style="text-decoration:none; color:white" href="<?php echo e(url('/admin')); ?>" title="Go to admin"><small class="text-uppercase"><b><?php echo e($comp->company_name); ?> -  Admin</b></small></a>
         <?php else: ?>
-          <a style="text-decoration:none; color:white" href="<?php echo e(url('/')); ?>" title="Go to admin"><small class="text-uppercase"><b>Company Name - Admin</b></small></a>
+          <a style="text-decoration:none; color:white" href="<?php echo e(url('/admin')); ?>" title="Go to admin"><small class="text-uppercase"><b>Company Name - Admin</b></small></a>
         <?php endif; ?>
     </div>
     

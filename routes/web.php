@@ -78,6 +78,11 @@ Route::post('/PostUpdate/{id}', 'postController@update');
 Route::get('/Utilities', 'UtilitiesController@index');
 
 Route::post('/UtilitiesUpdate/{id}', 'UtilitiesController@update');
+
 //Inquiry
 Route::post('/InquirySend','InquiryController@store');
 Route::post('/InquiryView/{id}','InquiryController@show');
+
+//ServiceItem
+
+Route::get('/ServiceItem/{id}', 'HomeController@item');
