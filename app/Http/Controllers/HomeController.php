@@ -72,7 +72,7 @@ class HomeController extends Controller
 
     public function item($id)
     {   
-        $mod = ServiceCategory::with('Post')->where('id',$id)
+        $mod = ServiceCategory::with('Post')->where('id',$id)->where('isDraft',1)
         ->get();
         return view('Home.serviceitem',compact('mod'));
     }

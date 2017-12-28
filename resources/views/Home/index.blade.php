@@ -1,9 +1,8 @@
 
 @extends('layouts.master')
-<Style>
-
-
-</style>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poiret+One');
+  </style>
 
 @section('contents')
 
@@ -18,21 +17,21 @@
     </ol>
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image: url('{{ asset('img/banner1.jpg')}}')">
+      <div class="carousel-item active" style="background-image: url('{{ asset('img/112.jpg')}}'); background-size: 1600px 420px;  ">
         <div class="carousel-caption d-none d-md-block">
 <!-- <h3>First Slide</h3>
   <p>This is a description for the first slide.</p> -->
 </div>
 </div>
 <!-- Slide Two - Set the background image for this slide in the line below -->
-<div class="carousel-item" style="background-image: url('{{ asset('img/banner2.jpg')}}')">
+<div class="carousel-item" style="background-image: url('{{ asset('img/banner2.jpg')}}'); background-size: 1600px 420px;">
   <div class="carousel-caption d-none d-md-block">
 <!-- <h3>Second Slide</h3>
   <p>This is a description for the second slide.</p> -->
 </div>
 </div>
 <!-- Slide Three - Set the background image for this slide in the line below -->
-<div class="carousel-item" style="background-image: url('{{ asset('img/banner3.jpg')}}')">
+<div class="carousel-item" style="background-image: url('{{ asset('img/banner3.jpg')}}'); background-size: 1600px 420px;">
   <div class="carousel-caption d-none d-md-block">
 <!-- <h3>Third Slide</h3>
   <p>This is a description for the third slide.</p> -->
@@ -64,18 +63,20 @@
 <div class="container">
   <!-- Features Section -->
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-12" style="margin-top:20px; margin-bottom:20px;">
       @if(count($comp) != 0 )
-      <?php 
-      echo $comp->about;
-      ?>
+        <div align="center">
+          <h1 style="font-family: 'Poiret One', cursive; color:black;">
+          <?php 
+          echo $comp->description;
+          ?>
+          </h1>
+        </div>
       @else
       <p class="lead">Hi! Hello! No details yet</p>
       @endif
     </div>
-    <div class="col-lg-6">
-      <img class="img-fluid rounded" src="{{ asset('img/feature.jpg') }}" alt="">
-    </div>
+    
   </div>  
 
 </div>

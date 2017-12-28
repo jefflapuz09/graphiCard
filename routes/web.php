@@ -78,6 +78,7 @@ Route::post('/PostUpdate/{id}', 'postController@update');
 Route::get('/Utilities', 'UtilitiesController@index');
 
 Route::post('/UtilitiesUpdate/{id}', 'UtilitiesController@update');
+Route::post('/UtilityStore', 'UtilitiesController@store');
 
 //Inquiry
 Route::post('/InquirySend','InquiryController@store');

@@ -32,9 +32,9 @@
                 </td>
                 <td><img class="img-responsive" src="<?php echo e(asset($posts->image)); ?>" style="max-width:200px; max-height:200px;"></td>
                 <td>
-                    <?php if($posts->isDraft == 1): ?>
+                    <?php if($posts->isFeatured == 0): ?>
                     Featured Post
-                    <?php elseif($posts->isDraft == 0): ?>
+                    <?php elseif($posts->isFeatured == 1): ?>
                     Default Post 
                     <?php endif; ?>
                 </td>

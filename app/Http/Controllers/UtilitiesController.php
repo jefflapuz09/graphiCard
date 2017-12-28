@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CompanyInfo;
+use App\Banner;
 use Validator;
 use Redirect;
 
@@ -38,7 +39,37 @@ class UtilitiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->file('banner1');
+        $file2 = $request->file('banner2');
+        $file3 = $request->file('banner3');
+        $pic = "";
+        $pic2 = "";
+        $pic3= "";
+        if($file == '' || $file == null || $file2 = '' || $file2 = null || $file3 = '' || $file3 = null){
+            $pic = "img/grey-pattern.png";
+            $pic2 = "img/grey-pattern.png";
+            $pic3 = "img/grey-pattern.png";
+        }else{
+            $date = date("Ymdhis");
+            $extension = $request->file('banner1')->getClientOriginalExtension();
+            $extension2 = $request->file('banner2')->getClientOriginalExtension();
+            $extension3 = $request->file('banner3')->getClientOriginalExtension();
+            $pic = "img/".$date.'.'.$extension;
+            $pic2 = "img/".$date.'.'.$extension2;
+            $pic3 = "img/".$date.'.'.$extension3;
+            $request->file('banner1')->move("img",$pic);   
+            $request->file('banner2')->move("img",$pic);  
+            $request->file('banner3')->move("img",$pic); 
+            // $request->file('photo')->move(public_path("/uploads"), $newfilename);
+        }
+        
+        $post = Banner::create([
+            'banner' => $pic,
+            'banner2' => $pic2,
+            'banner3' => $pic3
+        ]);
+        $post = $post->refresh();
+        return redirect('/Post')->withSuccess('Successfully inserted into the database.');
     }
 
     /**

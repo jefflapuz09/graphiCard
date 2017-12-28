@@ -11,7 +11,7 @@
                 Company Information
               </a>
             </div>
-            <div id="collapseOne" class="collapse show">
+            <div id="collapseOne" class="collapse ">
               <div class="card-body">
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -26,7 +26,7 @@
                         
                                 {{ csrf_field() }}
                                     
-                                     <div class="form-group" style="margin-top:px;">
+                                     <div class="form-group" style="margin-top:px; ">
                                         <p class="lead">Company Logo</p>
                                         <center><img class="img-responsive" id="pic" src="
                                             {{ URL::asset($post->company_logo)}}" style="max-width:200px; background-size: contain" /></center>
@@ -155,11 +155,51 @@
                         </div>
               </div>
             </div>
-          </div>
-        
-          
+          </div>      
         
         </div>
+        
+
+        <div id="accordion2" style="margin-top:20px;">
+                
+                  <div class="card" style="border-color:maroon;">
+                    <div class="card-header" style="background-color:maroon;">
+                      <a class="card-link" style="color:white;" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                        Carousel
+                      </a>
+                    </div>
+                    <div id="collapseTwo" class="collapse show">
+                      <div class="card-body">
+                            <form action="{{ url('/UtilityStore') }}" method="post" enctype="multipart/form-data">
+                                
+                                        {{ csrf_field() }}
+
+                                        <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
+                                                <center><img class="img-responsive" id="pic2" src="{{ URL::asset('img/grey-pattern.png')}}" style="max-width:500px; max-height:100%; background-size: contain" /></center>
+                                                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
+                                                <input type="file" class="form-control-file" name="banner1" onChange="readURL2(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
+
+                                        <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
+                                                <center><img class="img-responsive" id="pic3" src="{{ URL::asset('img/grey-pattern.png')}}" style="max-width:500px; background-size: contain" /></center>
+                                                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
+                                                <input type="file" class="form-control-file" name="banner2" onChange="readURL3(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
+
+                                        <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
+                                                <center><img class="img-responsive" id="pic4" src="{{ URL::asset('img/grey-pattern.png')}}" style="max-width:500px; background-size: contain" /></center>
+                                                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
+                                                <input type="file" class="form-control-file" name="banner3" onChange="readURL4(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
+                            </form>
+                      </div>
+                    </div>
+                  </div>      
+                
+            </div>
 
     <script src="{{ url('vendor/tinymce/js/tinymce/tinymce.min.js') }}"></script>
     <script>
@@ -220,6 +260,41 @@
                 var reader = new FileReader();
                     reader.onload = function (e) {
                         $('#pic')
+                        .attr('src', e.target.result)
+                        .width(300);
+                    };
+                reader.readAsDataURL(input.files[0]);
+            }
+            }
+            function readURL2(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $('#pic2')
+                            .attr('src', e.target.result)
+                            .width(300);
+                        };
+                    reader.readAsDataURL(input.files[0]);
+                }
+                }
+
+                function readURL3(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                            reader.onload = function (e) {
+                                $('#pic3')
+                                .attr('src', e.target.result)
+                                .width(300);
+                            };
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                    }
+
+                function readURL4(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#pic4')
                         .attr('src', e.target.result)
                         .width(300);
                     };

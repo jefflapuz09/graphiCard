@@ -33,9 +33,9 @@
                 </td>
                 <td><img class="img-responsive" src="{{ asset($posts->image)}}" style="max-width:200px; max-height:200px;"></td>
                 <td>
-                    @if($posts->isDraft == 1)
+                    @if($posts->isFeatured == 0)
                     Featured Post
-                    @elseif($posts->isDraft == 0)
+                    @elseif($posts->isFeatured == 1)
                     Default Post 
                     @endif
                 </td>
