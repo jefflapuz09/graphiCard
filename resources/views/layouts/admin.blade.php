@@ -47,7 +47,7 @@
             <i class="fa fa-fw fa-sitemap"></i>
             <span class="nav-link-text">Maintenance</span>
           </a>
-          <ul class="sidenav-second-level " id="collapseMulti">
+          <ul class="sidenav-second-level collapse" id="collapseMulti">
             <li>
               <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Service</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti2">
@@ -58,18 +58,19 @@
                   <a href="{{ url('/ServiceType') }}">Item</a>
                 </li>
               </ul>
-              <a class="nav-link" href="{{ url('/Post') }}">
-                <span class="nav-link-text">Post</span>
-              </a>
               <a class="nav-link" href="{{ url('/Customer') }}">
                 <span class="nav-link-text">Customer</span>
               </a>
             </li>
           </ul>
+          <a class="nav-link" href="{{ url('/Post') }}">
+            <i class="fa fa-paste"></i>
+            <span class="nav-link-text">Post</span>
+            </a>
           <a class="nav-link" href="{{ url('/Utilities') }}">
           <i class="fa fa-fw fa-cog"></i>
           <span class="nav-link-text">Utilities</span>
-        </a>
+          </a>
         </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
