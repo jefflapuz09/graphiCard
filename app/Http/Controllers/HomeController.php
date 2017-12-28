@@ -9,6 +9,8 @@ use App\Post;
 use App\CompanyInfo;
 use App\ServiceCategory;
 use App\Banner;
+use App\User;
+
 class HomeController extends Controller
 {
     /**
@@ -79,5 +81,21 @@ class HomeController extends Controller
             $query->where('isDraft', 1)->where('isFeatured', 1);}])
             ->where('id',$id)->get();
         return view('Home.serviceitem',compact('mod'));
+    }
+
+    public function register()
+    {
+        return view('auth.register');
+    }
+
+    public function user()
+    {
+        $post = User::all();
+        return view('User.index',compact('post'));
+    }
+
+    public function usercreate()
+    {
+        return view('User.create');
     }
 }

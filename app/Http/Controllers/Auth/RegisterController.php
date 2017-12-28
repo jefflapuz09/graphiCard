@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/loginto';
+    protected $redirectTo = '/User';
 
     /**
      * Create a new controller instance.
@@ -36,7 +36,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        // $this->middleware('guest');
     }
 
     /**
@@ -45,6 +45,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
     protected function validator(array $data)
     {
         return Validator::make($data, [

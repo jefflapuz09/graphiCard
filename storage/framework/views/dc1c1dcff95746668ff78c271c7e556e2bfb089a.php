@@ -67,15 +67,25 @@
               </a>
             </li>
           </ul>
-          <a class="nav-link" href="<?php echo e(url('/Post')); ?>">
-            <i class="fa fa-paste"></i>
-            <span class="nav-link-text">Post</span>
-            </a>
-          <a class="nav-link" href="<?php echo e(url('/Utilities')); ?>">
-          <i class="fa fa-fw fa-cog"></i>
-          <span class="nav-link-text">Utilities</span>
-          </a>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+              <a class="nav-link" href="<?php echo e(url('/Post')); ?>">
+                <i class="fa fa-paste"></i>
+                <span class="nav-link-text">Post</span>
+              </a>
         </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" href="<?php echo e(url('/Utilities')); ?>">
+                  <i class="fa fa-cog"></i>
+                  <span class="nav-link-text">Utilities</span>
+                </a>
+          </li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                  <a class="nav-link" href="<?php echo e(url('/User')); ?>">
+                    <i class="fa fa-user"></i>
+                    <span class="nav-link-text">User</span>
+                  </a>
+          </li>
+          </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
@@ -107,7 +117,11 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
+          <?php if(count($comp) != 0 ): ?>
           <small>Copyright © <?php echo e($comp->company_name); ?></small>
+          <?php else: ?>
+          <small>Copyright © Company Name</small>
+          <?php endif; ?>
         </div>
       </div>
     </footer>

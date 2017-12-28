@@ -67,15 +67,25 @@
               </a>
             </li>
           </ul>
-          <a class="nav-link" href="{{ url('/Post') }}">
-            <i class="fa fa-paste"></i>
-            <span class="nav-link-text">Post</span>
-            </a>
-          <a class="nav-link" href="{{ url('/Utilities') }}">
-          <i class="fa fa-fw fa-cog"></i>
-          <span class="nav-link-text">Utilities</span>
-          </a>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+              <a class="nav-link" href="{{ url('/Post') }}">
+                <i class="fa fa-paste"></i>
+                <span class="nav-link-text">Post</span>
+              </a>
         </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" href="{{ url('/Utilities') }}">
+                  <i class="fa fa-cog"></i>
+                  <span class="nav-link-text">Utilities</span>
+                </a>
+          </li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                  <a class="nav-link" href="{{ url('/User') }}">
+                    <i class="fa fa-user"></i>
+                    <span class="nav-link-text">User</span>
+                  </a>
+          </li>
+          </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
