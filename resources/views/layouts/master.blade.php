@@ -7,8 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ asset('img/logo.png') }}">
-    <title>Graphicard</title>
+    @if(count($comp) != 0 )
+    <link rel="icon" href="{{ asset($comp->company_logo) }}">
+   
+    <title>{{$comp->company_name}}</title>
+    @else 
+    
+    @endif
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/modern-business.css') }}" rel="stylesheet">
@@ -31,7 +36,7 @@
     <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
       <div class="container">
 @if(count($comp) != 0 )
-<a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset($comp->company_logo) }}">{{ $comp->company_name }}</a>
+<a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset($comp->company_logo) }}" style="max-width:50px; max-height:50px;">{{ $comp->company_name }}</a>
 @else
 <a class="navbar-brand" href="{{ url('/') }}"><img src="">Company Name</a>
 @endif

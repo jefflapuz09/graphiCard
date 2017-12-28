@@ -7,8 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="<?php echo e(asset('img/logo.png')); ?>">
-  <title>Graphicard - Admin</title>
+  <?php if(count($comp) != 0 ): ?>
+  <link rel="icon" href="<?php echo e(asset($comp->company_logo)); ?>">
+  <title><?php echo e($comp->company_name); ?>-Admin</title>
+  <?php else: ?> 
+  <title>Admin</title>
+  <?php endif; ?>
   <!-- Bootstrap core CSS-->
   
   <link href="<?php echo e(asset('vendor/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
@@ -27,7 +31,7 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <?php if(count($comp) != 0 ): ?>
-      <a class="navbar-brand" href="<?php echo e(url('/')); ?>" title="Go to website"><img src="<?php echo e(asset($comp->company_logo)); ?>" height="25px" style="margin-left:37px;"><?php echo e($comp->company_name); ?></a>
+      <a class="navbar-brand" href="<?php echo e(url('/')); ?>" title="Go to website"><img src="<?php echo e(asset($comp->company_logo)); ?>" height="25px" style="margin-left:37px;  max-height:25px;"><?php echo e($comp->company_name); ?></a>
       <?php else: ?>
       <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="">Company Name</a>
       <?php endif; ?>
@@ -103,7 +107,7 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © GRAPHICARD 2017</small>
+          <small>Copyright © <?php echo e($comp->company_name); ?></small>
         </div>
       </div>
     </footer>

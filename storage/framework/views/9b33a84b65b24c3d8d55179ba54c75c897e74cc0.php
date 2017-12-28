@@ -7,8 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="<?php echo e(asset('img/logo.png')); ?>">
-    <title>Graphicard</title>
+    <?php if(count($comp) != 0 ): ?>
+    <link rel="icon" href="<?php echo e(asset($comp->company_logo)); ?>">
+   
+    <title><?php echo e($comp->company_name); ?></title>
+    <?php else: ?> 
+    
+    <?php endif; ?>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo e(asset('css/modern-business.css')); ?>" rel="stylesheet">
@@ -31,7 +36,7 @@
     <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
       <div class="container">
 <?php if(count($comp) != 0 ): ?>
-<a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="<?php echo e(asset($comp->company_logo)); ?>"><?php echo e($comp->company_name); ?></a>
+<a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="<?php echo e(asset($comp->company_logo)); ?>" style="max-width:50px; max-height:50px;"><?php echo e($comp->company_name); ?></a>
 <?php else: ?>
 <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="">Company Name</a>
 <?php endif; ?>

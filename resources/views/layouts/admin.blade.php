@@ -7,8 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="{{ asset('img/logo.png') }}">
-  <title>Graphicard - Admin</title>
+  @if(count($comp) != 0 )
+  <link rel="icon" href="{{ asset($comp->company_logo) }}">
+  <title>{{$comp->company_name}}-Admin</title>
+  @else 
+  <title>Admin</title>
+  @endif
   <!-- Bootstrap core CSS-->
   
   <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -27,7 +31,7 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       @if(count($comp) != 0 )
-      <a class="navbar-brand" href="{{ url('/') }}" title="Go to website"><img src="{{ asset($comp->company_logo) }}" height="25px" style="margin-left:37px;">{{ $comp->company_name }}</a>
+      <a class="navbar-brand" href="{{ url('/') }}" title="Go to website"><img src="{{ asset($comp->company_logo) }}" height="25px" style="margin-left:37px;  max-height:25px;">{{ $comp->company_name }}</a>
       @else
       <a class="navbar-brand" href="{{ url('/') }}"><img src="">Company Name</a>
       @endif
@@ -103,7 +107,11 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © GRAPHICARD 2017</small>
+          @if(count($comp) != 0 )
+          <small>Copyright © {{$comp->company_name}}</small>
+          @else
+          <small>Copyright © Company Name</small>
+          @endif
         </div>
       </div>
     </footer>
