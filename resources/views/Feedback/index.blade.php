@@ -26,6 +26,8 @@
                 <th>Name</th>
                 <th>Image</th>
                 <th>Rating</th>
+                <th>Featured Post</th>
+                <th>Posted</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -40,12 +42,41 @@
                     @endfor
                 </td>
                 <td>
+                        @if($posts->isSelected == 0)
+                        Featured Post
+                        @elseif($posts->isSelected == 1)
+                        Default Post 
+                        @endif
+                </td>
+                <td>
+                    @if($posts->isPublish == 1)
+                    Not yet posted
+                    @else
+                    Posted
+                    @endif
+                </td>
+                <td>
+                    @if($posts->isPublish == 1)
                     <a href="{{ url('/FeedbackUpdate',$posts->id) }}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <a href="{{ url('/FeedbackPost',$posts->id) }}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Publish Post">
+                        <i class="fa fa-clipboard" aria-hidden="true"></i>
                     </a>
                     <a href="{{ url('/FeedbackDeactivate', $posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
+                    @else
+                    <a href="{{ url('/FeedbackUpdate',$posts->id) }}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <a href="{{ url('/FeedbackUnpublish',$posts->id) }}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Unpublish Post">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                    <a href="{{ url('/FeedbackDeactivate', $posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                    @endif
                 </td>
             </tr>
             @endforeach

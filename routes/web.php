@@ -106,6 +106,8 @@ Route::get('/FeedbackUpdate/{id}', 'FeedbackController@edit');
 Route::get('/FeedbackDeactivate/{id}', 'FeedbackController@destroy');
 Route::get('/FeedbackSoft', 'FeedbackController@soft');
 Route::get('/FeedbackReactivate/{id}', 'FeedbackController@reactivate');
+Route::get('/FeedbackPost/{id}', 'FeedbackController@publish');
+Route::get('/FeedbackUnpublish/{id}', 'FeedbackController@unpublish');
 
 Route::post('FeedbackStore', 'FeedbackController@store');
 Route::post('FeedbackEdit/{id}', 'FeedbackController@update');

@@ -20,6 +20,7 @@ class CreateFeedbackTable extends Migration
             $table->integer('rating');
             $table->text('description');
             $table->boolean('isSelected')->default(1);
+            $table->boolean('isPublish')->default(1);
             $table->boolean('isActive')->default(1);
             $table->timestamps();
         });

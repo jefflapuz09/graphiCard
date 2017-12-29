@@ -29,6 +29,17 @@ class feedbackController extends Controller
         return view('Feedback.create');
     }
 
+    public function publish($id)
+    {
+            Feedback::find($id)->update(['isPublish' => 0]);
+            return redirect('/Feedback');
+    }
+
+    public function unpublish($id)
+    {
+            Feedback::find($id)->update(['isPublish' => 1]);
+            return redirect('/Feedback');
+    }
     /**
      * Store a newly created resource in storage.
      *

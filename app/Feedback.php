@@ -14,6 +14,7 @@ class Feedback extends Model
         'description',
         'rating',
         'isSelected',
+        'isPublish',
         'isActive'
     ];
 }

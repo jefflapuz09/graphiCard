@@ -48,7 +48,7 @@ class HomeController extends Controller
         $comp = CompanyInfo::find(1);
         $model2 = Post::where('isActive',1)->where('isDraft',1)->get();
         $ban = Banner::all()->first();
-        $feed = Feedback::where('isSelected',0)->get();
+        $feed = Feedback::where('isSelected',0)->where('isPublish',0)->where('isActive',1)->get();
         //dd($ban);
         return view('Home.index', compact('post','model2','item','postcat','comp','ban','feed'));
     }
@@ -151,7 +151,7 @@ class HomeController extends Controller
 
     public function testimonial()
     {
-        $feed = Feedback::all();
+        $feed = Feedback::where('isActive',1)->where('isPublish',0)->get();
         return view('Home.testimonial',compact('feed'));
     }
 }
