@@ -148,4 +148,10 @@ class HomeController extends Controller
             
         }
     }
+
+    public function testimonial()
+    {
+        $feed = Feedback::all();
+        return view('Home.testimonial',compact('feed'));
+    }
 }
