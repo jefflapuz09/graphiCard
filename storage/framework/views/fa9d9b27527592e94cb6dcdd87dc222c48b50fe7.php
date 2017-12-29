@@ -102,16 +102,17 @@
                 <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Name</h1>
                 <?php endif; ?>
                             
-                            
-                            <p class="lead" style="margin-top:-17px;">Digital printing and graphics design</p>
+
                             <h5 style="color:gold;">Services Offered</h5>
                          </div>
+
+              <?php if(count($comp) != 0 ): ?>
               <?php 
               $sample = explode("</p>",$comp->services_offered);
               $ctr = count($sample);
               $limit = $ctr/2;
-              $col1 = "";
-              $col2 = "";
+              $col1 = "Digital Printing";
+              $col2 = "Large Format Printing";
               for($x=0;$x<$ctr;$x++){
                 if($x>$limit-1){ //2nd column
                   $col2 = $col2 . "<li>". $sample[$x] . "</li>";
@@ -137,6 +138,20 @@
                     </ul>
                     </div>
                 </div>
+                <?php else: ?>
+                <div class="row" style="margin-left:25px;">
+                    <div class="col-sm-6">
+                    <ul>
+                        <li>Sample Service</li>
+                    </ul>
+                    </div>
+                    <div class="col-sm-6">
+                    <ul>
+                        <li>Sample Service</li>
+                    </ul>
+                    </div>
+                </div>
+                <?php endif; ?>
             </div>
             <div class="col-lg-6" style="margin-top:20px;"> 
             <div align="center">

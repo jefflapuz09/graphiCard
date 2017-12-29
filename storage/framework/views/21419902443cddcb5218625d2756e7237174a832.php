@@ -95,7 +95,11 @@
         </h1>
       </div>
       <?php else: ?>
-      <p class="lead">Hi! Hello! No details yet</p>
+      <div align="center">
+        <h1 style="font-family: 'Poiret One', cursive; color:black;">
+          Company Description here!
+        </h1>
+      </div>
       <?php endif; ?>
     </div>
     

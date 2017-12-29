@@ -97,7 +97,11 @@
         </h1>
       </div>
       @else
-      <p class="lead">Hi! Hello! No details yet</p>
+      <div align="center">
+        <h1 style="font-family: 'Poiret One', cursive; color:black;">
+          Say something here!
+        </h1>
+      </div>
       @endif
     </div>
     
