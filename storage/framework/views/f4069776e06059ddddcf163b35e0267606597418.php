@@ -24,6 +24,7 @@
 
         <?php echo e(csrf_field()); ?>
 
+            <input type="hidden" name="userId" value="<?php echo e(Auth::user()->id); ?>">
             <div class="form-group">
                 <div align="center" class="checkbox">
                 <label>

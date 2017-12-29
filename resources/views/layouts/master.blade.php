@@ -109,8 +109,8 @@
               $sample = explode("</p>",$comp->services_offered);
               $ctr = count($sample);
               $limit = $ctr/2;
-              $col1 = "Digital Printing";
-              $col2 = "Large Format Printing";
+              $col1 = "";
+              $col2 = "";
               for($x=0;$x<$ctr;$x++){
                 if($x>$limit-1){ //2nd column
                   $col2 = $col2 . "<li>". $sample[$x] . "</li>";

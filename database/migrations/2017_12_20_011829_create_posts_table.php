@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->integer('categoryId')->unsigned();	
             $table->foreign('categoryId')->references('id')->on('service_categories');
             $table->integer('typeId')->unsigned();	
-            $table->foreign('typeId')->references('id')->on('service_types');
+            $table->foreign('typeId')->references('id')->on('service_subcategory');
             $table->integer('userId')->unsigned();
             $table->foreign('userId')->references('id')->on('users');
             $table->text('details');

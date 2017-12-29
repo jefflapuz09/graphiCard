@@ -12,7 +12,7 @@ class ItemSeeder extends Seeder
      */
     public function run()
     {
-         DB::table('service_types')->insert([
+         DB::table('service_subcategory')->insert([
             'name' => 'Mug',
             'categoryId' => 1,
             'description' => 'Sample description here.',
@@ -20,7 +20,7 @@ class ItemSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('service_types')->insert([
+        DB::table('service_subcategory')->insert([
             'name' => 'T-Shirt',
             'categoryId' => 1,
             'description' => 'Sample description here.',
@@ -28,7 +28,7 @@ class ItemSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('service_types')->insert([
+        DB::table('service_subcategory')->insert([
             'name' => 'Notepad',
             'categoryId' => 1,
             'description' => 'Sample description here.',

@@ -95,7 +95,11 @@
         </h1>
       </div>
       <?php else: ?>
-      <p class="lead">Hi! Hello! No details yet</p>
+      <div align="center">
+        <h1 style="font-family: 'Poiret One', cursive; color:black;">
+          Say something here!
+        </h1>
+      </div>
       <?php endif; ?>
     </div>
     
@@ -119,8 +123,8 @@
 
   <div class="container">
     <ol class="breadcrumbs breadcrumb-arrow">
-      <li><span style="color:white;padding:5px;margin:10px;margin-top:5px;" ><?php echo e($cat->name); ?></span></li>
-      <li class="active"><a href="<?php echo e(url('/ServiceItem', $cat->id)); ?>"><span style="color:white;"><b>See More</b></span></a></li>
+      <li><a href="<?php echo e(url('/ServiceItem', $cat->id)); ?>"><span style="color:white;" ><?php echo e($cat->name); ?></span></a></li>
+      <li class="active"><span style="color:white;"><b>See More</b></span></li>
     </ol>
   </div>
 

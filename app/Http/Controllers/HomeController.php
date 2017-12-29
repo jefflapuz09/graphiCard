@@ -31,14 +31,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $post =DB::table('service_types')
-            ->join('service_categories', 'service_types.categoryId', '=', 'service_categories.id')
-            ->select('service_types.*', 'service_categories.name as category')
-            ->where('service_types.isActive',1)
+        $post =DB::table('service_subcategory')
+            ->join('service_categories', 'service_subcategory.categoryId', '=', 'service_categories.id')
+            ->select('service_subcategory.*', 'service_categories.name as category')
+            ->where('service_subcategory.isActive',1)
             ->get();
         $item = DB::table('posts')
-            ->join('service_types','posts.typeId','=','service_types.id')
-            ->select('posts.*','service_types.name as category')
+            ->join('service_subcategory','posts.typeId','=','service_subcategory.id')
+            ->select('posts.*','service_subcategory.name as category')
             ->where('posts.isActive',1)
             ->where('posts.isDraft',1)
             ->get();

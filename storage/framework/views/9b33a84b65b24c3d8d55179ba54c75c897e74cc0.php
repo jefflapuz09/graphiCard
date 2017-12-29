@@ -105,6 +105,8 @@
 
                             <h5 style="color:gold;">Services Offered</h5>
                          </div>
+
+              <?php if(count($comp) != 0 ): ?>
               <?php 
               $sample = explode("</p>",$comp->services_offered);
               $ctr = count($sample);
@@ -136,6 +138,20 @@
                     </ul>
                     </div>
                 </div>
+                <?php else: ?>
+                <div class="row" style="margin-left:25px;">
+                    <div class="col-sm-6">
+                    <ul>
+                        <li>Sample Service</li>
+                    </ul>
+                    </div>
+                    <div class="col-sm-6">
+                    <ul>
+                        <li>Sample Service</li>
+                    </ul>
+                    </div>
+                </div>
+                <?php endif; ?>
             </div>
             <div class="col-lg-6" style="margin-top:20px;"> 
             <div align="center">

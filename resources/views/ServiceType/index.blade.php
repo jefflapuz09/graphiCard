@@ -2,7 +2,7 @@
 
 @section('content')
     <div > 
-        <h3>Item</h3>
+        <h3>Subcategory</h3>
         @if(session('success'))
         <div class="alert alert-success">
             {{session('success')}}

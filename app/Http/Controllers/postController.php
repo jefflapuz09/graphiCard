@@ -30,10 +30,10 @@ class postController extends Controller
     public function index()
     {
         $post = DB::table('posts')
-                ->join('service_types','posts.typeId','=','service_types.id')
+                ->join('service_subcategory','posts.typeId','=','service_subcategory.id')
                 ->join('service_categories','posts.categoryId','=','service_categories.id')
                 ->join('users as u','u.id','=','posts.userId')
-                ->select('posts.*','service_types.name as type', 'service_categories.name as category','u.name as userName')
+                ->select('posts.*','service_subcategory.name as type', 'service_categories.name as category','u.name as userName')
                 ->orderBy('posts.id','Asc')
                 ->where('posts.isActive',1)
                 ->get();
@@ -265,9 +265,9 @@ class postController extends Controller
     public function soft()
     {
         $post = DB::table('posts')
-                ->join('service_types','posts.typeId','=','service_types.id')
+                ->join('service_subcategory','posts.typeId','=','service_subcategory.id')
                 ->join('service_categories','posts.categoryId','=','service_categories.id')
-                ->select('posts.*','service_types.name as type', 'service_categories.name as category')
+                ->select('posts.*','service_subcategory.name as type', 'service_categories.name as category')
                 ->orderBy('posts.id','Asc')
                 ->where('posts.isActive',0)
                 ->get();

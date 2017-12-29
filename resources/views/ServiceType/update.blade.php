@@ -10,7 +10,7 @@
     
     <div class="col-lg-6"> 
         <div>
-        <h3>Service Type </h3>
+        <h3>Service Subcategory </h3>
         </div>
         @if ($errors->any())
         <div class="alert alert-danger">

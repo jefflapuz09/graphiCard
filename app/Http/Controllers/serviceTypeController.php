@@ -25,10 +25,10 @@ class serviceTypeController extends Controller
 
     public function index()
     {
-        $post =DB::table('service_types')
-        ->join('service_categories', 'service_types.categoryId', '=', 'service_categories.id')
-        ->select('service_types.*', 'service_categories.name as category')
-        ->where('service_types.isActive',1)
+        $post =DB::table('service_subcategory')
+        ->join('service_categories', 'service_subcategory.categoryId', '=', 'service_categories.id')
+        ->select('service_subcategory.*', 'service_categories.name as category')
+        ->where('service_subcategory.isActive',1)
         ->get();
          return view('ServiceType.index', compact('post'));
 
@@ -58,7 +58,7 @@ class serviceTypeController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'name' => ['required','max:50','unique:service_types','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'name' => ['required','max:50','unique:service_subcategory','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'categoryId' => 'required'
         ];
         $messages = [
@@ -167,10 +167,10 @@ class serviceTypeController extends Controller
 
     public function soft()
     {
-        $post =DB::table('service_types')
-        ->join('service_categories', 'service_types.categoryId', '=', 'service_categories.id')
-        ->select('service_types.*', 'service_categories.name as category')
-        ->where('service_types.isActive',0)
+        $post =DB::table('service_subcategory')
+        ->join('service_categories', 'service_subcategory.categoryId', '=', 'service_categories.id')
+        ->select('service_subcategory.*', 'service_categories.name as category')
+        ->where('service_subcategory.isActive',0)
         ->get();
          return view('ServiceType.soft', compact('post'));
     }

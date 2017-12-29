@@ -125,8 +125,8 @@
 
   <div class="container">
     <ol class="breadcrumbs breadcrumb-arrow">
-      <li><span style="color:white;padding:5px;margin:10px;margin-top:5px;" >{{$cat->name}}</span></li>
-      <li class="active"><a href="{{ url('/ServiceItem', $cat->id) }}"><span style="color:white;"><b>See More</b></span></a></li>
+      <li><a href="{{ url('/ServiceItem', $cat->id) }}"><span style="color:white;" >{{$cat->name}}</span></a></li>
+      <li class="active"><span style="color:white;"><b>See More</b></span></li>
     </ol>
   </div>
 

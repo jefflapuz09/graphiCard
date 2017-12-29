@@ -9,7 +9,7 @@
     
     <div class="col-lg-6"> 
         <div>
-        <h3>Service Category</h3>
+        <h3>Service Subcategory</h3>
         </div>
         <form action="" method="">
 

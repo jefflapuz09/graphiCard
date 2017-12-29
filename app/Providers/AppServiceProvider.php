@@ -22,8 +22,8 @@ class AppServiceProvider extends ServiceProvider
         $nav = DB::table('service_categories')
                ->where('isActive',1)
                ->get();
-        $typenav = DB::table('service_types')
-                ->select('service_types.categoryId as categoryId','service_types.*')
+        $typenav = DB::table('service_subcategory')
+                ->select('service_subcategory.categoryId as categoryId','service_subcategory.*')
                 ->where('isActive',1)
                 ->get();
         $model = ServiceCategory::with('Type')->where('isActive',1)->limit(4)
