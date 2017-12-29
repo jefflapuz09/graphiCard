@@ -102,8 +102,7 @@
                 <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Name</h1>
                 <?php endif; ?>
                             
-                            
-                            <p class="lead" style="margin-top:-17px;">Digital printing and graphics design</p>
+
                             <h5 style="color:gold;">Services Offered</h5>
                          </div>
               <?php 
