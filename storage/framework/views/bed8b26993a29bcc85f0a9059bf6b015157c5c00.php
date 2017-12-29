@@ -20,8 +20,8 @@
     </div>
     
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
-    <div class="col-md-4" style="background-color:#b5b3b3; padding-bottom:10px" >
-      <div class="form-area" style="background-image: url('<?php echo e(asset('img/grey-pattern.jpg')); ?>');">  
+    <div class="col-md-4" style="background-image:url('img/grey-pattern.png'); padding-bottom:10px" >
+      <div class="form-area" style="">  
           <form role="form" method="post" action="<?php echo e(url('/InquirySend')); ?>" id="inquiry-form">
 
             <?php echo e(csrf_field()); ?>
@@ -51,7 +51,7 @@
         </div>
     </div>
   </div>
-
+</div>
 </div>
 <?php $__env->stopSection(); ?>
 

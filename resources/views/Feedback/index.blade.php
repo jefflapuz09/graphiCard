@@ -2,7 +2,7 @@
 
 @section('content')
     <div> 
-        <h3>Customer Feedback</h3>
+        <h3>Customer Feedbacks</h3>
             @if(session('success'))
                 <div class="alert alert-success">
                     {{session('success')}}
@@ -13,11 +13,11 @@
                 {{session('error')}}
             </div>
              @endif
-        <div class="pull-right" style="margin-bottom:15px;"> 
+        <!-- <div class="pull-right" style="margin-bottom:15px;"> 
             <a href="{{ url('/FeedbackCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                 New Record
             </a>
-        </div>
+        </div> -->
     </div>
     
      <table id="example" class="display" cellspacing="0" width="100%">

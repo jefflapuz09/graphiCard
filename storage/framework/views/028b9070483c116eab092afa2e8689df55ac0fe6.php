@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('contents')
+<?php $__env->startSection('contents'); ?>
 <!-- <style>
 #formModal {
 left:50%;
@@ -19,11 +17,12 @@ outline: none;
         <div class="modal-body">
           <div class="row">
             <div class="col-md-12"> 
-              <form action="{{ url('/FeedbackStore') }}" method="post" enctype="multipart/form-data">
+              <form action="<?php echo e(url('/FeedbackStore')); ?>" method="post" enctype="multipart/form-data">
 
-                {{ csrf_field() }}
+                <?php echo e(csrf_field()); ?>
+
                 <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
-                  <center><img class="img-responsive" id="pic" src="{{ URL::asset('img/grey-pattern.png')}}" style="max-width:300px; background-size: contain" /></center>
+                  <center><img class="img-responsive" id="pic" src="<?php echo e(URL::asset('img/grey-pattern.png')); ?>" style="max-width:300px; background-size: contain" /></center>
                   <b><label style="margin-top:20px;" for="exampleInputFile">Upload a photo</label></b>
                   <input type="file" class="form-control-file" name="image" onChange="readURL(this)" id="exampleInputFile" aria-describedby="fileHelp">
                 </div>
@@ -69,16 +68,18 @@ outline: none;
     <div class="row">
       <div class="col-md-12">
         <div class="pull-left">
-          @if ($errors->any())
+          <?php if($errors->any()): ?>
           <div class="alert alert-danger">
-            {{ implode('', $errors->all(':message')) }}
+            <?php echo e(implode('', $errors->all(':message'))); ?>
+
           </div>                
-          @endif
-          @if(session('error'))
+          <?php endif; ?>
+          <?php if(session('error')): ?>
           <div class="alert alert-danger">
-            {{session('error')}}
+            <?php echo e(session('error')); ?>
+
           </div>
-          @endif
+          <?php endif; ?>
 
         </div>
         <div class="pull-right">
@@ -89,39 +90,39 @@ outline: none;
   </div>
   <br>
   <div class="row">
-    @if(count($feed)!=0)
-    @foreach($feed as $feedback)
+    <?php if(count($feed)!=0): ?>
+    <?php $__currentLoopData = $feed; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $feedback): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="col-lg-3 mb-4">
       <div class="card card-01">
 
         <div class="profile-box">
           <h3 class="text-center mb-5" style="color:darkorange;"></h3>
-          {{--  loob ng h3 header  --}}
-          <img class="card-img-top rounded-circle" src="{{ asset($feedback->image) }}" alt="Card image cap">
+          
+          <img class="card-img-top rounded-circle" src="<?php echo e(asset($feedback->image)); ?>" alt="Card image cap">
         </div>
         <div class="card-body text-center">
           <span class="badge-box"><i class="fa fa-user"></i></span>
-          <h4 class="card-title">{{$feedback->name}}</h4>
-          <p class="card-text">{{$feedback->description}}</p>
+          <h4 class="card-title"><?php echo e($feedback->name); ?></h4>
+          <p class="card-text"><?php echo e($feedback->description); ?></p>
           <span class="social-box">
-            @for($i = 0; $i < $feedback->rating; $i++)
+            <?php for($i = 0; $i < $feedback->rating; $i++): ?>
             <span class="fa fa-star checked"></span>
-            @endfor            
+            <?php endfor; ?>            
           </span>
         </div>
       </div>
 
 
     </div>
-    @endforeach
-    @else 
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    <?php else: ?> 
     <div class="col-lg-3 mb-4">
       <div class="card card-01">
 
         <div class="profile-box">
           <h3 class="text-center mb-5" style="color:darkorange;">Customer#</h3>
-          {{--  loob ng h3 header  --}}
-          <img class="card-img-top rounded-circle" src="{{ asset('img/steve.jpg') }}" alt="Card image cap">
+          
+          <img class="card-img-top rounded-circle" src="<?php echo e(asset('img/steve.jpg')); ?>" alt="Card image cap">
         </div>
         <div class="card-body text-center">
           <span class="badge-box"><i class="fa fa-user"></i></span>
@@ -144,8 +145,8 @@ outline: none;
 
         <div class="profile-box">
           <h3 class="text-center mb-5" style="color:darkorange;">Customer#</h3>
-          {{--  loob ng h3 header  --}}
-          <img class="card-img-top rounded-circle" src="{{ asset('img/steve.jpg') }}" alt="Card image cap">
+          
+          <img class="card-img-top rounded-circle" src="<?php echo e(asset('img/steve.jpg')); ?>" alt="Card image cap">
         </div>
         <div class="card-body text-center">
           <span class="badge-box"><i class="fa fa-user"></i></span>
@@ -168,8 +169,8 @@ outline: none;
 
         <div class="profile-box">
           <h3 class="text-center mb-5" style="color:darkorange;">Customer#</h3>
-          {{--  loob ng h3 header  --}}
-          <img class="card-img-top rounded-circle" src="{{ asset('img/steve.jpg') }}" alt="Card image cap">
+          
+          <img class="card-img-top rounded-circle" src="<?php echo e(asset('img/steve.jpg')); ?>" alt="Card image cap">
         </div>
         <div class="card-body text-center">
           <span class="badge-box"><i class="fa fa-user"></i></span>
@@ -193,8 +194,8 @@ outline: none;
 
         <div class="profile-box">
           <h3 class="text-center mb-5" style="color:darkorange;">Customer#</h3>
-          {{--  loob ng h3 header  --}}
-          <img class="card-img-top rounded-circle" src="{{ asset('img/steve.jpg') }}" alt="Card image cap">
+          
+          <img class="card-img-top rounded-circle" src="<?php echo e(asset('img/steve.jpg')); ?>" alt="Card image cap">
         </div>
         <div class="card-body text-center">
           <span class="badge-box"><i class="fa fa-user"></i></span>
@@ -212,11 +213,12 @@ outline: none;
         </div>
       </div>
     </div>
-    @endif
+    <?php endif; ?>
 
 
   </div>
 
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

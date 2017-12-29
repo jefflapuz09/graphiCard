@@ -72,7 +72,7 @@ class feedbackController extends Controller
                 'isSelected' => $sel
             ]);
             $post = $post->refresh();
-            return redirect('/Feedback')->withSuccess('Successfully inserted into the database.');
+            return redirect('/Testimonial')->withSuccess('Your feedback has been received. Thank you');
         }
     }
 

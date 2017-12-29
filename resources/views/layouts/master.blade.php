@@ -20,6 +20,7 @@
     <link href="{{ asset('css/megamenu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">  
+    <link href="{{ asset('css/button.css') }}" rel="stylesheet">  
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -141,7 +142,6 @@
                             @if(count($comp) != 0 )
                             <p class="lead">{{ $comp->street }} {{$comp->brgy}}, {{$comp->city}}</p>
                             <h3 style="color:gold;">Contact Us</h3>
-                           
                             {{$comp->contactNumber}}
                             <br>{{$comp->emailAddress}}
                             @else

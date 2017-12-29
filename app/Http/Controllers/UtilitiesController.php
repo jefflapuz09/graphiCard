@@ -143,7 +143,7 @@ class UtilitiesController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'company_logo' => 'required',
+            'company_logo' => 'nullable',
             'company_name' => ['required','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'street' => 'required',
             'brgy' => 'required',
@@ -178,10 +178,11 @@ class UtilitiesController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
-            $file = $request->file('company_logo');
+            $file = $request->file('company_logo'); 
             $pic = "";
             if($file == '' || $file == null){
-                $pic = "img/grey-pattern.png";
+                $nullpic = CompanyInfo::find(1);
+                $pic = $nullpic->company_logo;
             }else{
                 $date = date("Ymdhis");
                 $extension = $request->file('company_logo')->getClientOriginalExtension();

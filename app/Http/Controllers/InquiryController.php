@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\URL;
 use App\Inquiries;
 use App\Mail\InquirySent;
 use Mail;
+use DB;
 
 class InquiryController extends Controller
 {
@@ -21,6 +22,14 @@ class InquiryController extends Controller
         //
     }
 
+    public function read()
+    {
+        $post =DB::table('inquiries')
+        ->select('inquiries.*')
+        ->where('inquiries.status',1)
+        ->get(); 
+        return view('inquiries.read',compact('post'));
+    }
     /**
      * Show the form for creating a new resource.
      *
