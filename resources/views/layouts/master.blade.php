@@ -103,21 +103,34 @@
                             <p class="lead" style="margin-top:-17px;">Digital printing and graphics design</p>
                             <h5 style="color:gold;">Services Offered</h5>
                          </div>
+              <?php 
+              $sample = explode("</p>",$comp->services_offered);
+              $ctr = count($sample);
+              $limit = $ctr/2;
+              $col1 = "";
+              $col2 = "";
+              for($x=0;$x<$ctr;$x++){
+                if($x>$limit-1){ //2nd column
+                  $col2 = $col2 . "<li>". $sample[$x] . "</li>";
+                }
+                else{
+                  $col1 = $col1 . "<li>". $sample[$x] . "</li>";
+                }
+              }
+              ?>
                 <div class="row" style="margin-left:25px;">
                     <div class="col-sm-6">
-                    <ul>    
-                        <li>Digital offset printing</li>
-                        <li>Large format printing</li>
-                        <li>Photography</li>
-                        <li>ID cards</li>
+                    <ul>
+                        <?php
+                          echo $col1;
+                        ?>
                     </ul>
                     </div>
                     <div class="col-sm-6">
                     <ul>    
-                        <li>Novelty Items</li>
-                        <li>Xerox</li>
-                        <li>Risograph</li>
-                        <li>T-shirt printing</li>
+                      <?php
+                          echo $col2;
+                        ?>
                     </ul>
                     </div>
                 </div>

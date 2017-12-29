@@ -14,28 +14,52 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
+      
+      <?php if(count($ban)!=0): ?>
       <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image: url('<?php echo e(asset('img/112.jpg')); ?>'); background-size: 1600px 420px;  ">
+      <div class="carousel-item active" style="background-image: url('<?php echo e(asset($ban->banner)); ?>'); background-size: 1600px 420px;  ">
         <div class="carousel-caption d-none d-md-block">
-<!-- <h3>First Slide</h3>
-  <p>This is a description for the first slide.</p> -->
-</div>
-</div>
-<!-- Slide Two - Set the background image for this slide in the line below -->
-<div class="carousel-item" style="background-image: url('<?php echo e(asset('img/banner2.jpg')); ?>'); background-size: 1600px 420px;">
-  <div class="carousel-caption d-none d-md-block">
-<!-- <h3>Second Slide</h3>
-  <p>This is a description for the second slide.</p> -->
-</div>
-</div>
-<!-- Slide Three - Set the background image for this slide in the line below -->
-<div class="carousel-item" style="background-image: url('<?php echo e(asset('img/banner3.jpg')); ?>'); background-size: 1600px 420px;">
-  <div class="carousel-caption d-none d-md-block">
-<!-- <h3>Third Slide</h3>
-  <p>This is a description for the third slide.</p> -->
-</div>
-</div>
-</div>
+      <!-- <h3>First Slide</h3>
+        <p>This is a description for the first slide.</p> -->
+      </div>
+      </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('<?php echo e(asset($ban->banner2)); ?>'); background-size: 1600px 420px;">
+        <div class="carousel-caption d-none d-md-block">
+      <!-- <h3>Second Slide</h3>
+        <p>This is a description for the second slide.</p> -->
+      </div>
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('<?php echo e(asset($ban->banner3)); ?>'); background-size: 1600px 420px;">
+        <div class="carousel-caption d-none d-md-block">
+      <!-- <h3>Third Slide</h3>
+        <p>This is a description for the third slide.</p> -->
+      </div>
+      </div>
+      <?php elseif(count($ban)==0): ?>
+      <div class="carousel-item active" style="background-image: url('img/grey-pattern.png'); background-size: 1600px 420px;  ">
+          <div class="carousel-caption d-none d-md-block">
+        <!-- <h3>First Slide</h3>
+          <p>This is a description for the first slide.</p> -->
+        </div>
+        </div>
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('img/grey-pattern.png'); background-size: 1600px 420px;">
+          <div class="carousel-caption d-none d-md-block">
+        <!-- <h3>Second Slide</h3>
+          <p>This is a description for the second slide.</p> -->
+        </div>
+        </div>
+        <!-- Slide Three - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('img/grey-pattern.png'); background-size: 1600px 420px;">
+          <div class="carousel-caption d-none d-md-block">
+        <!-- <h3>Third Slide</h3>
+          <p>This is a description for the third slide.</p> -->
+        </div>
+      </div>
+      <?php endif; ?>
+    </div>
 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
   <span class="sr-only">Previous</span>
@@ -96,7 +120,7 @@
   <div class="container">
     <ol class="breadcrumbs breadcrumb-arrow">
       <li><a href="<?php echo e(url('/ServiceItem', $cat->id)); ?>"><?php echo e($cat->name); ?></a></li>
-      <li class="active" style=""><span>See More</span></li>
+      <li class="active" style=""><span><b>See More</b></span></li>
     </ol>
   </div>
 
@@ -175,80 +199,107 @@
   <div class="container">
     <!-- Marketing Icons Section -->
     <div class="row">
+      <?php if(count($feed)!=0): ?>
+      <?php $__currentLoopData = $feed; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $feedback): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <div class="col-lg-4 mb-4">
-
-
         <div class="card card-01">
 
           <div class="profile-box">
-            <h3 class="text-center mb-5" style="color:darkorange;">Customer # 1</h3>
-            <img class="card-img-top rounded-circle" src="<?php echo e(asset('img/steve.jpg')); ?>" alt="Card image cap">
+            <h3 class="text-center mb-5" style="color:darkorange;"></h3>
+          
+            <img class="card-img-top rounded-circle" src="<?php echo e(asset($feedback->image)); ?>" alt="Card image cap">
           </div>
           <div class="card-body text-center">
             <span class="badge-box"><i class="fa fa-user"></i></span>
-            <h4 class="card-title">Mike Parker</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h4 class="card-title"><?php echo e($feedback->name); ?></h4>
+            <p class="card-text"><?php echo e($feedback->description); ?></p>
             <span class="social-box">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
+              <?php for($i = 0; $i < $feedback->rating; $i++): ?>
+                <span class="fa fa-star checked"></span>
+              <?php endfor; ?>            
             </span>
           </div>
         </div>
 
 
       </div>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      <?php else: ?> 
       <div class="col-lg-4 mb-4">
-
-
-        <div class="card card-01">
-
-          <div class="profile-box">
-            <h3 class="text-center mb-5" style="color:darkorange;">Customer # 2</h3>
-            <img class="card-img-top rounded-circle" src="<?php echo e(asset('img/steve.jpg')); ?>" alt="Card image cap">
-          </div>
-          <div class="card-body text-center">
-            <span class="badge-box"><i class="fa fa-user"></i></span>
-            <h4 class="card-title">Mike Parker</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <span class="social-box">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-            </span>
+          <div class="card card-01">
+  
+            <div class="profile-box">
+              <h3 class="text-center mb-5" style="color:darkorange;">Customer#</h3>
+            
+              <img class="card-img-top rounded-circle" src="<?php echo e(asset('img/steve.jpg')); ?>" alt="Card image cap">
+            </div>
+            <div class="card-body text-center">
+              <span class="badge-box"><i class="fa fa-user"></i></span>
+              <h4 class="card-title">Customer Name</h4>
+              <p class="card-text">Customer Description</p>
+              <span class="social-box">
+        
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                       
+              </span>
+            </div>
           </div>
         </div>
-
-      </div>
-      <div class="col-lg-4 mb-4">
-
-        <div class="card card-01">
-          <div class="profile-box">
-            <h3 class="text-center mb-5" style="color:darkorange;">Customer # 3</h3>
-            <img class="card-img-top rounded-circle" src="<?php echo e(asset('img/steve.jpg')); ?>" alt="Card image cap">
+        <div class="col-lg-4 mb-4">
+            <div class="card card-01">
+    
+              <div class="profile-box">
+                <h3 class="text-center mb-5" style="color:darkorange;">Customer#</h3>
+              
+                <img class="card-img-top rounded-circle" src="<?php echo e(asset('img/steve.jpg')); ?>" alt="Card image cap">
+              </div>
+              <div class="card-body text-center">
+                <span class="badge-box"><i class="fa fa-user"></i></span>
+                <h4 class="card-title">Customer Name</h4>
+                <p class="card-text">Customer Description</p>
+                <span class="social-box">
+          
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                         
+                </span>
+              </div>
+            </div>
           </div>
-          <div class="card-body text-center">
-            <span class="badge-box"><i class="fa fa-user"></i></span>
-            <h4 class="card-title">Mike Parker</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <span class="social-box">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+          <div class="col-lg-4 mb-4">
+              <div class="card card-01">
+      
+                <div class="profile-box">
+                  <h3 class="text-center mb-5" style="color:darkorange;">Customer#</h3>
+                
+                  <img class="card-img-top rounded-circle" src="<?php echo e(asset('img/steve.jpg')); ?>" alt="Card image cap">
+                </div>
+                <div class="card-body text-center">
+                  <span class="badge-box"><i class="fa fa-user"></i></span>
+                  <h4 class="card-title">Customer Name</h4>
+                  <p class="card-text">Customer Description</p>
+                  <span class="social-box">
+            
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                           
+                  </span>
+                </div>
+              </div>
+            </div>
+      <?php endif; ?>
+
+    
   </div>
 </div>
 

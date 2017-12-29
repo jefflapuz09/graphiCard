@@ -7,8 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="<?php echo e(asset('img/logo.png')); ?>">
-    <title>Graphicard</title>
+    <?php if(count($comp) != 0 ): ?>
+    <link rel="icon" href="<?php echo e(asset($comp->company_logo)); ?>">
+   
+    <title><?php echo e($comp->company_name); ?></title>
+    <?php else: ?> 
+    
+    <?php endif; ?>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo e(asset('css/modern-business.css')); ?>" rel="stylesheet">
@@ -31,7 +36,7 @@
     <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
       <div class="container">
 <?php if(count($comp) != 0 ): ?>
-<a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="<?php echo e(asset($comp->company_logo)); ?>"><?php echo e($comp->company_name); ?></a>
+<a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="<?php echo e(asset($comp->company_logo)); ?>" style="max-width:50px; max-height:50px;"><?php echo e($comp->company_name); ?></a>
 <?php else: ?>
 <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="">Company Name</a>
 <?php endif; ?>
@@ -100,21 +105,34 @@
                             <p class="lead" style="margin-top:-17px;">Digital printing and graphics design</p>
                             <h5 style="color:gold;">Services Offered</h5>
                          </div>
+              <?php 
+              $sample = explode("</p>",$comp->services_offered);
+              $ctr = count($sample);
+              $limit = $ctr/2;
+              $col1 = "";
+              $col2 = "";
+              for($x=0;$x<$ctr;$x++){
+                if($x>$limit-1){ //2nd column
+                  $col2 = $col2 . "<li>". $sample[$x] . "</li>";
+                }
+                else{
+                  $col1 = $col1 . "<li>". $sample[$x] . "</li>";
+                }
+              }
+              ?>
                 <div class="row" style="margin-left:25px;">
                     <div class="col-sm-6">
-                    <ul>    
-                        <li>Digital offset printing</li>
-                        <li>Large format printing</li>
-                        <li>Photography</li>
-                        <li>ID cards</li>
+                    <ul>
+                        <?php
+                          echo $col1;
+                        ?>
                     </ul>
                     </div>
                     <div class="col-sm-6">
                     <ul>    
-                        <li>Novelty Items</li>
-                        <li>Xerox</li>
-                        <li>Risograph</li>
-                        <li>T-shirt printing</li>
+                      <?php
+                          echo $col2;
+                        ?>
                     </ul>
                     </div>
                 </div>

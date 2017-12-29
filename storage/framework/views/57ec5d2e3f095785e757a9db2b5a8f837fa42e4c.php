@@ -9,6 +9,11 @@
     <div class="col-md-7 form-line" style="margin-top:50px;">
       <!-- <h1 class="mt-4 mb-3" style="text-align:center"><?php echo e($post->ServiceType->name); ?></h1> -->
       <div align="center"><img class="img-responsive" style="max-height:100%; max-width:100%;" src="<?php echo asset($post->image)?>" height="400px"  alt="No image available"></div>
+      <div class="pull-right" style="margin-right:35px; margin-top:10px;">
+         <small> <?php echo e($post->User->name); ?>
+
+          <?php echo e(date('F j, Y - H:i:s',strtotime($post->updated_at))); ?> </small>
+      </div>
       <h2 class="mt-4 mb-3">Description</h2>
       <?php echo $post->details?>
     </div>

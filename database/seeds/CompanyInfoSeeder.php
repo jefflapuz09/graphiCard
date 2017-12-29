@@ -24,7 +24,7 @@ class CompanyInfoSeeder extends Seeder
             'description' => '<p>Want to personalize your item? We can print personalized designs for you! Just order the items here, then send us your design.</p>
                               <p>Want something for a simple present this christmas, a customized one that will really appreciate someone when they received it. Call us now at #graphicard with telephone number (02) 709-2099/ 0933-923-6785.</p>
                               <p>Think of your own design and we will do it for you.</p>',
-            'services_offered' => 'Digital Printing',
+            'services_offered' => 'Digital and Offset Printing, Large Format Printing, Photography, ID Cards, Novelty Items, Xerox, Risograph, T-Shirt printing',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

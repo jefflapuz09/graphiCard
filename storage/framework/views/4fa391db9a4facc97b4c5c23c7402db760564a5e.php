@@ -16,7 +16,7 @@
                     </div>
                     <?php endif; ?> 
                     <div class="row">
-                            
+                        <?php if(count($post)!=0): ?>
                             <div class="col-lg-6"> 
                                 
                                 <form action="<?php echo e(url('/UtilitiesUpdate', 1)); ?>" method="post" enctype="multipart/form-data">
@@ -24,9 +24,10 @@
                                 <?php echo e(csrf_field()); ?>
 
                                     
-                                     <div class="form-group" style="margin-top:px;">
+                                     <div class="form-group" style="margin-top:px; ">
                                         <p class="lead">Company Logo</p>
-                                        <center><img class="img-responsive" id="pic" src="<?php echo e(URL::asset($post->company_logo)); ?>" style="max-width:300px; background-size: contain" /></center>
+                                        <center><img class="img-responsive" id="pic" src="
+                                            <?php echo e(URL::asset($post->company_logo)); ?>" style="max-width:200px; background-size: contain" /></center>
                                         <label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label>
                                         <input type="file" class="form-control-file" name="company_logo" onChange="readURL(this)" id="exampleInputFile" aria-describedby="fileHelp">
                                         <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
@@ -82,14 +83,149 @@
                                     </div>
                             </div>
                             </form>
-                            </div>
+                            <?php else: ?> 
+                            <div class="col-lg-6"> 
+                                    
+                                    <form action="<?php echo e(url('/UtilitiesUpdate', 1)); ?>" method="post" enctype="multipart/form-data">
+                            
+                                    <?php echo e(csrf_field()); ?>
+
+                                        
+                                         <div class="form-group" style="margin-top:px;">
+                                            <p class="lead">Company Logo</p>
+                                            <center><img class="img-responsive" id="pic" src="
+                                                <?php echo e(URL::asset('img/steve.jpg')); ?>" style="max-width:200px; background-size: contain" /></center>
+                                            <label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label>
+                                            <input type="file" class="form-control-file" name="company_logo" onChange="readURL(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                            <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="">Company Name:</label>
+                                            <input type="text" value="Company Name" class="form-control" name="company_name" id="name">
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="">Street No./Bldg No.:</label>
+                                        <input type="text"  value="Street No./Bldg No." class="form-control" name="street" id="name">
+                                        </div>
+                                                
+                                        <div class="form-group">
+                                        <label for="">Brgy No./Subd.:</label>
+                                        <input type="text" value="Brgy." class="form-control" name="brgy" id="name">
+                                        </div>
+    
+                                        <div class="form-group">
+                                        <label for="">City:</label>
+                                        <input type="text"  value="City" class="form-control" name="city" id="name">
+                                        </div>
+    
+                                        <div class="form-group">
+                                        <label for="">Contact Number:</label>
+                                        <input type="text" value="Contact Number" class="form-control" name="contactNumber" id="name">
+                                        </div>
+    
+                                        <div class="form-group">
+                                        <label for="">Email Address:</label>
+                                        <input type="text" value="Email Address" class="form-control" name="emailAddress" id="name">
+                                        </div>
+                                       
+                                    
+                                </div> 
+                                <div class="col-lg-6" style="margin-top:px;">
+                                        <div class="form-group">
+                                        <label for="">Company About:</label>
+                                        <textarea class="form-control" rows="5"  name="about" id="details"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="">Services Offered:</label>
+                                        <textarea class="form-control" rows="5"  name="services_offered" id="details"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="">Company Description:</label>
+                                        <textarea class="form-control" rows="5"  name="description" id="details"></textarea>
+                                        </div>
+                                        <div class="pull-right">
+                                        <button type="reset" class="btn btn-success">Clear</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                </div>
+                                </form>
+                            <?php endif; ?>
+                        </div>
               </div>
             </div>
-          </div>
-        
-          
+          </div>      
         
         </div>
+        
+
+        <div id="accordion2" style="margin-top:20px;">
+                
+                  <div class="card" style="border-color:maroon;">
+                    <div class="card-header" style="background-color:maroon;">
+                      <a class="card-link" style="color:white;" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                        Banner
+                      </a>
+                    </div>
+                    <div id="collapseTwo" class="collapse">
+                      <div class="card-body">
+                            <form action="<?php echo e(url('/UtilityStore')); ?>" method="post" enctype="multipart/form-data">
+                                
+                                        <?php echo e(csrf_field()); ?>
+
+                                    <?php if(count($ban)!=0): ?>
+                                        <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
+                                                <center><img class="img-responsive" id="pic2" src="<?php echo e(URL::asset($ban->banner)); ?>" style="max-width:500px; max-height:100%; background-size: contain" /></center>
+                                                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
+                                                <input type="file" class="form-control-file" name="banner1" onChange="readURL2(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
+
+                                        <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
+                                                <center><img class="img-responsive" id="pic3" src="<?php echo e(URL::asset($ban->banner2)); ?>" style="max-width:500px; background-size: contain" /></center>
+                                                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
+                                                <input type="file" class="form-control-file" name="banner2" onChange="readURL3(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
+
+                                        <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
+                                                <center><img class="img-responsive" id="pic4" src="<?php echo e(URL::asset($ban->banner3)); ?>" style="max-width:500px; background-size: contain" /></center>
+                                                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
+                                                <input type="file" class="form-control-file" name="banner3" onChange="readURL4(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
+                                                <center><img class="img-responsive" id="pic2" src="<?php echo e(URL::asset('img/grey-pattern.png')); ?>" style="max-width:500px; max-height:100%; background-size: contain" /></center>
+                                                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
+                                                <input type="file" class="form-control-file" name="banner1" onChange="readURL2(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
+
+                                        <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
+                                                <center><img class="img-responsive" id="pic3" src="<?php echo e(URL::asset('img/grey-pattern.png')); ?>" style="max-width:500px; background-size: contain" /></center>
+                                                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
+                                                <input type="file" class="form-control-file" name="banner2" onChange="readURL3(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
+
+                                        <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
+                                                <center><img class="img-responsive" id="pic4" src="<?php echo e(URL::asset('img/grey-pattern.png')); ?>" style="max-width:500px; background-size: contain" /></center>
+                                                <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
+                                                <input type="file" class="form-control-file" name="banner3" onChange="readURL4(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                        </div>
+                                    <?php endif; ?>
+                                        <div class="pull-right" style="margin-bottom: 15px;">
+                                        <button type="reset" class="btn btn-success">Clear</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                            </form>
+                      </div>
+                    </div>
+                  </div>      
+                
+            </div>
 
     <script src="<?php echo e(url('vendor/tinymce/js/tinymce/tinymce.min.js')); ?>"></script>
     <script>
@@ -150,6 +286,41 @@
                 var reader = new FileReader();
                     reader.onload = function (e) {
                         $('#pic')
+                        .attr('src', e.target.result)
+                        .width(300);
+                    };
+                reader.readAsDataURL(input.files[0]);
+            }
+            }
+            function readURL2(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $('#pic2')
+                            .attr('src', e.target.result)
+                            .width(300);
+                        };
+                    reader.readAsDataURL(input.files[0]);
+                }
+                }
+
+                function readURL3(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                            reader.onload = function (e) {
+                                $('#pic3')
+                                .attr('src', e.target.result)
+                                .width(300);
+                            };
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                    }
+
+                function readURL4(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#pic4')
                         .attr('src', e.target.result)
                         .width(300);
                     };

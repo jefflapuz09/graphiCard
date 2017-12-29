@@ -7,8 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="<?php echo e(asset('img/logo.png')); ?>">
-  <title>Graphicard - Admin</title>
+  <?php if(count($comp) != 0 ): ?>
+  <link rel="icon" href="<?php echo e(asset($comp->company_logo)); ?>">
+  <title><?php echo e($comp->company_name); ?>-Admin</title>
+  <?php else: ?> 
+  <title>Admin</title>
+  <?php endif; ?>
   <!-- Bootstrap core CSS-->
   
   <link href="<?php echo e(asset('vendor/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
@@ -27,7 +31,7 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <?php if(count($comp) != 0 ): ?>
-      <a class="navbar-brand" href="<?php echo e(url('/')); ?>" title="Go to website"><img src="<?php echo e(asset($comp->company_logo)); ?>" height="25px" style="margin-left:37px;"><?php echo e($comp->company_name); ?></a>
+      <a class="navbar-brand" href="<?php echo e(url('/')); ?>" title="Go to website"><img src="<?php echo e(asset($comp->company_logo)); ?>" height="25px" style="margin-left:37px;  max-height:25px;"><?php echo e($comp->company_name); ?></a>
       <?php else: ?>
       <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="">Company Name</a>
       <?php endif; ?>
@@ -42,12 +46,14 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
+
+        <?php if((Auth::user()->role)==1): ?>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-sitemap"></i>
             <span class="nav-link-text">Maintenance</span>
           </a>
-          <ul class="sidenav-second-level " id="collapseMulti">
+          <ul class="sidenav-second-level collapse" id="collapseMulti">
             <li>
               <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Service</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti2">
@@ -58,19 +64,38 @@
                   <a href="<?php echo e(url('/ServiceType')); ?>">Item</a>
                 </li>
               </ul>
-              <a class="nav-link" href="<?php echo e(url('/Post')); ?>">
-                <span class="nav-link-text">Post</span>
-              </a>
               <a class="nav-link" href="<?php echo e(url('/Customer')); ?>">
                 <span class="nav-link-text">Customer</span>
               </a>
             </li>
           </ul>
-          <a class="nav-link" href="<?php echo e(url('/Utilities')); ?>">
-          <i class="fa fa-fw fa-cog"></i>
-          <span class="nav-link-text">Utilities</span>
-        </a>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+              <a class="nav-link" href="<?php echo e(url('/Post')); ?>">
+                <i class="fa fa-paste"></i>
+                <span class="nav-link-text">Post</span>
+              </a>
         </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" href="<?php echo e(url('/Utilities')); ?>">
+                  <i class="fa fa-cog"></i>
+                  <span class="nav-link-text">Utilities</span>
+                </a>
+          </li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                  <a class="nav-link" href="<?php echo e(url('/User')); ?>">
+                    <i class="fa fa-user"></i>
+                    <span class="nav-link-text">User</span>
+                  </a>
+          </li>
+          <?php elseif((Auth::user()->role)==2): ?>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <a class="nav-link" href="<?php echo e(url('/Post')); ?>">
+              <i class="fa fa-paste"></i>
+              <span class="nav-link-text">Post</span>
+            </a>
+          </li>
+          <?php endif; ?>
+          </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
@@ -102,7 +127,11 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © GRAPHICARD 2017</small>
+          <?php if(count($comp) != 0 ): ?>
+          <small>Copyright © <?php echo e($comp->company_name); ?></small>
+          <?php else: ?>
+          <small>Copyright © Company Name</small>
+          <?php endif; ?>
         </div>
       </div>
     </footer>
