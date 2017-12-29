@@ -219,4 +219,18 @@ outline: none;
 
 </div>
 
+<script>
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+              reader.onload = function (e) {
+                  $('#pic')
+                  .attr('src', e.target.result)
+                  .width(300);
+              };
+          reader.readAsDataURL(input.files[0]);
+      }
+      }
+</script>
+
 @endsection

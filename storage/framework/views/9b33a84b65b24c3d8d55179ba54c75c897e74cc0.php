@@ -20,6 +20,7 @@
     <link href="<?php echo e(asset('css/megamenu.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/animate.css')); ?>" rel="stylesheet">  
+    <link href="<?php echo e(asset('css/button.css')); ?>" rel="stylesheet">  
 
     <!-- Custom styles for this template -->
     <link href="<?php echo e(asset('vendor/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
@@ -143,7 +144,6 @@
                             <?php if(count($comp) != 0 ): ?>
                             <p class="lead"><?php echo e($comp->street); ?> <?php echo e($comp->brgy); ?>, <?php echo e($comp->city); ?></p>
                             <h3 style="color:gold;">Contact Us</h3>
-                           
                             <?php echo e($comp->contactNumber); ?>
 
                             <br><?php echo e($comp->emailAddress); ?>
