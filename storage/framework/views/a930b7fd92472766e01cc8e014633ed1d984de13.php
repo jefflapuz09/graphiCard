@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
     <div > 
-        <h3>Item</h3>
+        <h3>Subcategory</h3>
         <?php if(session('success')): ?>
         <div class="alert alert-success">
             <?php echo e(session('success')); ?>

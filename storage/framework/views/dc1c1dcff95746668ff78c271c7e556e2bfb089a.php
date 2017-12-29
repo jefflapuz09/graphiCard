@@ -67,12 +67,12 @@
                   <a href="<?php echo e(url('/Category')); ?>">Service Category</a>
                 </li>
                 <li>
-                  <a href="<?php echo e(url('/ServiceType')); ?>">Item</a>
+                  <a href="<?php echo e(url('/ServiceType')); ?>">Service Subcategory</a>
+                </li>
+                <li>
+                  <a href="<?php echo e(url('/Item')); ?>">Service Item</a>
                 </li>
               </ul>
-              <a class="nav-link" href="<?php echo e(url('/Customer')); ?>">
-                <span class="nav-link-text">Customer</span>
-              </a>
             </li>
           </ul>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
@@ -92,6 +92,12 @@
                     <i class="fa fa-user"></i>
                     <span class="nav-link-text">User</span>
                   </a>
+          </li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+              <a class="nav-link" href="<?php echo e(url('/Customer')); ?>">
+                <i class="fa fa-users"></i>
+                <span class="nav-link-text">Customer</span>
+              </a>
           </li>
           <?php elseif((Auth::user()->role)==2): ?>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">

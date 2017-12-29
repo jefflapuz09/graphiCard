@@ -49,7 +49,7 @@ Route::get('/CustomerReactivate/{id}', 'customerController@reactivate');
 Route::post('/CustomerStore', 'customerController@storepost');
 Route::post('/CustomerEdit/{id}', 'customerController@update');
 
-//Service Type
+//Service Subcategory
 Route::get('/ServiceType', 'serviceTypeController@index');
 Route::get('/ServiceTypeCreate', 'serviceTypeController@create');
 Route::get('/ServiceTypeShow/{id}', 'serviceTypeController@show');
@@ -90,8 +90,8 @@ Route::get('/InquiryView/{id}','InquiryController@show');
 Route::post('/InquiryUpdate/{id}','InquiryController@update');
 
 //ServiceItem
-
 Route::get('/ServiceItem/{id}', 'HomeController@item');
+Route::get('/Item','serviceItemController@index');
 
 //User
 Route::get('/User','HomeController@user');
@@ -111,3 +111,4 @@ Route::get('/FeedbackUnpublish/{id}', 'FeedbackController@unpublish');
 
 Route::post('FeedbackStore', 'FeedbackController@store');
 Route::post('FeedbackEdit/{id}', 'FeedbackController@update');
+

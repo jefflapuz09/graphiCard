@@ -67,12 +67,12 @@
                   <a href="{{ url('/Category') }}">Service Category</a>
                 </li>
                 <li>
-                  <a href="{{ url('/ServiceType') }}">Item</a>
+                  <a href="{{ url('/ServiceType') }}">Service Subcategory</a>
+                </li>
+                <li>
+                  <a href="{{ url('/Item') }}">Service Item</a>
                 </li>
               </ul>
-              <a class="nav-link" href="{{ url('/Customer') }}">
-                <span class="nav-link-text">Customer</span>
-              </a>
             </li>
           </ul>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
@@ -92,6 +92,12 @@
                     <i class="fa fa-user"></i>
                     <span class="nav-link-text">User</span>
                   </a>
+          </li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+              <a class="nav-link" href="{{ url('/Customer') }}">
+                <i class="fa fa-users"></i>
+                <span class="nav-link-text">Customer</span>
+              </a>
           </li>
           @elseif((Auth::user()->role)==2)
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
