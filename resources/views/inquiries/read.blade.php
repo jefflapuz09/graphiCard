@@ -40,7 +40,7 @@
     </tbody>
 </table>
 <div class="form-group pull-right">
-    <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/InquiryRead') }}';" id="showDeactivated"> Show read inquiries</label>
+    <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/admin') }}';" id="showDeactivated"> Show unread inquiries</label>
 </div>
 
 <script>

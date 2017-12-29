@@ -48,6 +48,12 @@
         </li>
 
         @if((Auth::user()->role)==1)
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <a class="nav-link" href="{{ url('/Feedback') }}">
+              <i class="fa fa-comments"></i>
+              <span class="nav-link-text">Feedback</span>
+            </a>
+        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-sitemap"></i>

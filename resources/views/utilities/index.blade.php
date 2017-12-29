@@ -28,10 +28,9 @@
                                     
                                      <div class="form-group" style="margin-top:px; ">
                                         <p class="lead">Company Logo</p>
-                                        <center><img class="img-responsive" id="pic" src="
-                                            {{ URL::asset($post->company_logo)}}" style="max-width:200px; background-size: contain" /></center>
+                                        <center><img class="img-responsive" id="pic" src="<?php echo $post->company_logo ?>" style="max-width:200px; background-size: contain" /></center>
                                         <label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label>
-                                        <input type="file" class="form-control-file" name="company_logo" onChange="readURL(this)" id="exampleInputFile" aria-describedby="fileHelp">
+                                        <input type="file"  class="form-control-file" name="company_logo" onChange="readURL(this)" id="exampleInputFile" aria-describedby="fileHelp">
                                         <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
                                     </div>
                                     
