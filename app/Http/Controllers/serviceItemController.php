@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ServiceItem;
+use App\ServiceType;
+use Redirect;
+use Validator;
 
 class serviceItemController extends Controller
 {
@@ -25,7 +28,8 @@ class serviceItemController extends Controller
      */
     public function create()
     {
-        //
+        $subcat = ServiceType::all();
+        return view('ServiceItem.create',compact('subcat'));
     }
 
     /**
@@ -36,7 +40,30 @@ class serviceItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => ['required','max:50','unique:service_subcategory','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'subcategoryId' => 'required',
+            'description' => 'nullable'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',
+            'regex' => 'The :attribute must not contain special characters.'              
+        ];
+        $niceNames = [
+            'name' => 'Service Type',
+            'subcategoryId' => 'Service Subcategory',
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else{
+            ServiceItem::create($request->all());
+            return redirect('/Item')->withSuccess('Successfully inserted into the database.');
+        }
     }
 
     /**

@@ -92,6 +92,9 @@ Route::post('/InquiryUpdate/{id}','InquiryController@update');
 //ServiceItem
 Route::get('/ServiceItem/{id}', 'HomeController@item');
 Route::get('/Item','serviceItemController@index');
+Route::get('/ItemCreate','serviceItemController@create');
+
+Route::post('/ItemStore', 'serviceItemController@store');
 
 //User
 Route::get('/User','HomeController@user');
