@@ -14,6 +14,7 @@ class CreateServiceItemsTable extends Migration
     public function up()
     {
         Schema::create('service_items', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('subcategoryId')->unsigned();	
             $table->foreign('subcategoryId')->references('id')->on('service_subcategory');

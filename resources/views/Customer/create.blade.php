@@ -49,7 +49,7 @@
            
         
     </div> 
-    <div class="col-lg-6" style="margin-top:40px;">
+    <div class="col-lg-6" style="margin-top:0px;">
             <div class="form-group">
             <label for="">Email Address:</label>
             <input type="text" placeholder="Email Address" value="" class="form-control" name="emailAddress" id="name">

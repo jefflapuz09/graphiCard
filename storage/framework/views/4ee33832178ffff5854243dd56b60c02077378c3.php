@@ -41,7 +41,7 @@
                         </a>
                         <!-- <a href="<?php echo e(url('/CategoryShow',$posts->id)); ?>" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                             <i class="fa fa-eye" aria-hidden="true"></i> -->
-                        </a>
+                        
                         <a href="<?php echo e(url('/CategoryDeac', $posts->id)); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>

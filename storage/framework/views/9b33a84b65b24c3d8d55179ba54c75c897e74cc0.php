@@ -21,10 +21,10 @@
     <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/animate.css')); ?>" rel="stylesheet">  
     <link href="<?php echo e(asset('css/button.css')); ?>" rel="stylesheet">  
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="<?php echo e(asset('vendor/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
-
+    <?php echo $__env->yieldContent('style'); ?>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -214,8 +214,9 @@
     <script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
     <script src="<?php echo e(asset('vendor/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
     <script src="<?php echo e(asset('js/megamenu.js')); ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
     <script src="<?php echo e(asset('js/navscroll.js')); ?>"></script>
-   
+    <?php echo $__env->yieldContent('script'); ?>
   </body>
 
 </html>

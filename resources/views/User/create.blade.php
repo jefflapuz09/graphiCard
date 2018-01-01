@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('style')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet">
+@stop
+
 @section('content')
 
     <div class="container-fluid">
@@ -40,7 +44,7 @@
             </div>
             <div class="form-group">
                 <label for="sel1">Role:</label>
-                <select class="form-control" name="role" id="sel1">
+                <select class="select2 form-control" name="role" id="sel1">
                   <option value='1'>Administrator</option>
                   <option value='2'>Contributor</option>
                 </select>
@@ -54,3 +58,14 @@
     </div>
     </div>
 @endsection
+
+@section('script')
+
+        <script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+        <script>
+        $( document ).ready(function() {
+            $('.select2').select2();
+        });
+        </script>
+@stop

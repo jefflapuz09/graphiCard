@@ -21,6 +21,7 @@
   <!-- Page level plugin CSS-->
   <!-- <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet"> -->
   <!-- Custom styles for this template-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet">
   <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
   <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
   <link href="{{ asset('css/jquery.dataTables.min') }}" rel="stylesheet">
@@ -174,9 +175,8 @@
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('vendor/bootstrap/js/jquery.dataTables.min') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
     <script src="{{ asset('js/sb-admin.min.js') }}"></script>
-
-
      <script>
         $(document).ready(function() {
           $('#example').DataTable( {
@@ -185,6 +185,7 @@
         } );
 
     </script>
+    @yield('script')
   </div>
 </body>
 

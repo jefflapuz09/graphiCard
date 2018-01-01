@@ -14,6 +14,7 @@ class CreateCompanyInfosTable extends Migration
     public function up()
     {
         Schema::create('company_infos', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('company_logo', 100);
             $table->string('company_name', 100);

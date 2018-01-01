@@ -61,6 +61,7 @@ class serviceItemController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
+            
             ServiceItem::create($request->all());
             return redirect('/Item')->withSuccess('Successfully inserted into the database.');
         }

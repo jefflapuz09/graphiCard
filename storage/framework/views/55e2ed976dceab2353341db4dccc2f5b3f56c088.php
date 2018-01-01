@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
             <b><label for="sel2">Service Category</label></b>
-            <select class="form-control" id="cat" onchange="changetype(this.value)" name="categoryId">
+            <select class="select2 form-control" id="cat" onchange="changetype(this.value)" name="categoryId">
                     <option value="0">Please Select Service Category</option>
                 <?php $__currentLoopData = $cat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>   
                     <option value="<?php echo e($posts->id); ?>"><?php echo e($posts->name); ?></option>
@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
             <b><label for="sel2">Item</label></b>
-            <select class="form-control" id="Type" name="typeId">
+            <select class="select2 form-control" id="Type" name="typeId">
                     <option value="0">Please Select Service Type</option>
                 
             </select>
@@ -73,72 +73,83 @@
     </form>
     </div>
     </div>
-
-    <script src="<?php echo e(url('vendor/tinymce/js/tinymce/tinymce.min.js')); ?>"></script>
-    <script>
-
-
-    function changetype(id)
-    {
-        $.ajax({
-            type: "GET",
-            url: '/PostType/'+id,
-            dataType: "JSON",
-            success:function(data){
-
-                $('#Type').empty();
-                $("#Type").append('<option>Please Select Service Type</option>');
-                $.each(data,function(key, value)
-                {
-                    
-                    console.log(value.categoryId);
-                    $("#Type").append('<option value=' + value.id + '>' + value.name + '</option>');
-                });
-            }
-         });
-    }
-       tinymce.init({
-  selector: 'textarea',
-  plugins: 'image code',
-  toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | undo redo | code',
-  image_title: true, 
-  automatic_uploads: true,
-  file_picker_types: 'image', 
-  file_picker_callback: function(cb, value, meta) {
-    var input = document.createElement('input');
-    input.setAttribute('type', 'file');
-    input.setAttribute('accept', 'image/*');
-    input.onchange = function() {
-      var file = this.files[0];
-      
-      var reader = new FileReader();
-      reader.onload = function () {
-
-        var id = 'blobid' + (new Date()).getTime();
-        var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
-        var base64 = reader.result.split(',')[1];
-        var blobInfo = blobCache.create(id, file, base64);
-        blobCache.add(blobInfo);
-        cb(blobInfo.blobUri(), { title: file.name });
-      };
-      reader.readAsDataURL(file);
-    };
     
-    input.click();
-  }
-});
+<?php $__env->stopSection(); ?>
 
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                    reader.onload = function (e) {
-                        $('#pic')
-                        .attr('src', e.target.result)
-                        .width(300);
-                    };
-                reader.readAsDataURL(input.files[0]);
-            }
-            }
-    </script>
+<?php $__env->startSection('script'); ?>
+
+        <script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+        <script>
+        $( document ).ready(function() {
+            $('.select2').select2();
+        });
+        </script>
+        <script src="<?php echo e(url('vendor/tinymce/js/tinymce/tinymce.min.js')); ?>"></script>
+        <script>
+    
+    
+        function changetype(id)
+        {
+            $.ajax({
+                type: "GET",
+                url: '/PostType/'+id,
+                dataType: "JSON",
+                success:function(data){
+    
+                    $('#Type').empty();
+                    $("#Type").append('<option>Please Select Service Type</option>');
+                    $.each(data,function(key, value)
+                    {
+                        
+                        console.log(value.categoryId);
+                        $("#Type").append('<option value=' + value.id + '>' + value.name + '</option>');
+                    });
+                }
+             });
+        }
+           tinymce.init({
+      selector: 'textarea',
+      plugins: 'image code',
+      toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | undo redo | code',
+      image_title: true, 
+      automatic_uploads: true,
+      file_picker_types: 'image', 
+      file_picker_callback: function(cb, value, meta) {
+        var input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+        input.onchange = function() {
+          var file = this.files[0];
+          
+          var reader = new FileReader();
+          reader.onload = function () {
+    
+            var id = 'blobid' + (new Date()).getTime();
+            var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+            var base64 = reader.result.split(',')[1];
+            var blobInfo = blobCache.create(id, file, base64);
+            blobCache.add(blobInfo);
+            cb(blobInfo.blobUri(), { title: file.name });
+          };
+          reader.readAsDataURL(file);
+        };
+        
+        input.click();
+      }
+    });
+    
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $('#pic')
+                            .attr('src', e.target.result)
+                            .width(300);
+                        };
+                    reader.readAsDataURL(input.files[0]);
+                }
+                }
+        </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
