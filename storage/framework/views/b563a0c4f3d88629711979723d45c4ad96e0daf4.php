@@ -24,7 +24,7 @@
             
             <div class="form-group">
             <label for="sel2">Service Subcategory</label>
-            <select class="sel2 form-control" required id="sel2" name="subcategoryId[]">
+            <select class="sel2 form-control" required id="sel2" name="subcategoryId">
                 <option value="0">Please Select Subcategory</option>
                 <?php $__currentLoopData = $subcat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                    
