@@ -74,14 +74,14 @@ class AdvisoryController extends Controller
     {
         $status = 0;
         if($request->advisory == null){
-        $a = Advisory::find($id);
-        $a->isActive = $status;
-        $a->save();
-        return Redirect::to(URL::previous())->withSuccess('Your advisory has been removed');
+            $a = Advisory::find($id);
+            $a->isActive = $status;
+            $a->save();
+            return Redirect::to(URL::previous())->withSuccess('Your advisory has been removed');
         }
         else{
-        Advisory::create($request->all());
-        return Redirect::to(URL::previous())->withSuccess('Your advisory has been posted');
+            Advisory::create($request->all());
+            return Redirect::to(URL::previous())->withSuccess('Your advisory has been posted');
         }
     }
 

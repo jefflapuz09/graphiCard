@@ -30,6 +30,7 @@
                 <td>
                     <li><?php echo e($posts->category); ?></li>
                     <li><?php echo e($posts->type); ?></li>
+                    <li><?php echo e($posts->item); ?></li>
                 </td>
                 <td><?php echo e($posts->userName); ?></td>
                 <td><img class="img-responsive" src="<?php echo e(asset($posts->image)); ?>" style="max-width:200px; max-height:200px;"></td>
@@ -87,7 +88,8 @@
         
         $(document).ready(function() {
           $('#example').DataTable( {
-              "scrollX": true
+              "scrollX": true,
+              responsive: true
           } );
 
           
