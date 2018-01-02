@@ -85,9 +85,11 @@ class HomeController extends Controller
     public function item($id)
     {   
         
-        $mod = ServiceType::with(['Post' => function($query) {
+        $mod = ServiceType::with(['item','post' => function($query) {
             $query->where('isDraft', 1);}])
             ->where('id',$id)->get();
+
+        // dd($mod);
         return view('Home.serviceitem',compact('mod'));
     }
 

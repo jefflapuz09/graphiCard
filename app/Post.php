@@ -31,4 +31,8 @@ class Post extends Model
     public function User(){
         return $this->belongsTo('App\User','userId');
     }
+
+    public function Item(){
+        return $this->belongsTo('App\ServiceItem','itemId');
+    }
 }

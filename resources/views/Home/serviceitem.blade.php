@@ -5,7 +5,7 @@
 
 
 @foreach($mod as $post)
-@if(count($post->Type)!=0)
+@if(count($post->Post)!=0)
 <div class="container" style="background:; margin-top:100px;">
   <!-- Portfolio Section -->
 
@@ -20,7 +20,7 @@
         <section class="" id="portfolio"> 
           <div class="container">
                 <div class="row">
-                        @foreach($post->Post as $item)
+                        @foreach($post->post as $item)
                            
                                 <div class="col-md-3 col-sm-6 portfolio-item">
                                 <a class="portfolio-link"  href="{{ url('/prodDescription',$item->id) }}">
@@ -32,7 +32,7 @@
                                     <img class="img-responsive" style="max-width:100%; max-height:100%;" height="200px" src="{{ asset($item->image) }}" alt="">
                                 </a>
                                 <div class="portfolio-caption">
-                                    <h4>{{ $item->ServiceType->name }}</h4>
+                                    <h4>{{ $item->item->name }}</h4>
                                     <p class="text-muted">See More</p>
                                 </div>
                                 </div>

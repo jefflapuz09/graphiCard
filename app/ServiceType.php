@@ -22,4 +22,8 @@ class ServiceType extends Model
     public function post(){
         return $this->hasMany('App\Post','typeId');
     }
+
+    public function item(){
+        return $this->hasMany('App\ServiceItem','subcategoryId');
+    }
 }
