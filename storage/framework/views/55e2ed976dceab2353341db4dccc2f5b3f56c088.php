@@ -42,12 +42,19 @@
             </select>
             </div>
             <div class="form-group">
-            <b><label for="sel2">Item</label></b>
-            <select class="select2 form-control" id="Type" name="typeId">
-                    <option value="0">Please Select Service Type</option>
-                
+            <b><label for="sel2">Service Subcategory</label></b>
+            <select class="select2 form-control" onchange="changesub(this.value)" id="Type" name="typeId">
+                    <option value="0">Please Select Service Subcategory</option>
+              
             </select>
             </div>
+            <div class="form-group">
+                    <b><label for="sel2">Service Item</label></b>
+                    <select class="select2 form-control" id="item" name="itemId">
+                            <option value="0">Please Select Service Item</option>
+                 
+                    </select>
+                    </div>
              <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
                 <center><img class="img-responsive" id="pic" src="<?php echo e(URL::asset('img/grey-pattern.png')); ?>" style="max-width:300px; background-size: contain" /></center>
                 <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
@@ -98,12 +105,32 @@
                 success:function(data){
     
                     $('#Type').empty();
-                    $("#Type").append('<option>Please Select Service Type</option>');
+                    $("#Type").append('<option>Please Select Service Subcategory</option>');
                     $.each(data,function(key, value)
                     {
                         
                         console.log(value.categoryId);
                         $("#Type").append('<option value=' + value.id + '>' + value.name + '</option>');
+                    });
+                }
+             });
+        }
+
+        function changesub(id)
+        {
+            $.ajax({
+                type: "GET",
+                url: '/PostSub/'+id,
+                dataType: "JSON",
+                success:function(data){
+    
+                    $('#item').empty();
+                    $("#item").append('<option>Please Select Service Item</option>');
+                    $.each(data,function(key, value)
+                    {
+                        
+                        console.log(value.itemId);
+                        $("#item").append('<option value=' + value.id + '>' + value.name + '</option>');
                     });
                 }
              });

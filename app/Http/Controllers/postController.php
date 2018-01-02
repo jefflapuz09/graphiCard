@@ -7,6 +7,7 @@ use DB;
 use App\Post;
 use App\ServiceType;
 use App\ServiceCategory;
+use App\ServiceItem;
 use Validator;
 use Redirect;
 use Response;
@@ -33,7 +34,8 @@ class postController extends Controller
                 ->join('service_subcategory','posts.typeId','=','service_subcategory.id')
                 ->join('service_categories','posts.categoryId','=','service_categories.id')
                 ->join('users as u','u.id','=','posts.userId')
-                ->select('posts.*','service_subcategory.name as type', 'service_categories.name as category','u.name as userName')
+                ->join('service_items','service_items.id','=','posts.itemId')
+                ->select('posts.*','service_subcategory.name as type', 'service_categories.name as category','u.name as userName','service_items.name as item')
                 ->orderBy('posts.id','Asc')
                 ->where('posts.isActive',1)
                 ->get();
@@ -63,8 +65,9 @@ class postController extends Controller
         $rules = [
             'categoryId' => 'required',
             'typeId' => 'required',
+            'itemId' => 'required',
             'details' => 'required',
-            'image' => 'nullable',
+            'image' => 'nullable|mimes:jpeg,png,jpg,svg',
             'isFeatured' => 'nullable'
         ];
         $messages = [
@@ -78,6 +81,7 @@ class postController extends Controller
             'typeId' => 'Service Type',
             'details' => 'Details',
             'image' => 'Image',
+            'itemId' => 'Service Item'
         ];
         $validator = Validator::make($request->all(),$rules,$messages);
         $validator->setAttributeNames($niceNames); 
@@ -118,6 +122,7 @@ class postController extends Controller
                 $post = Post::create([
                     'categoryId' => ($request->categoryId),
                     'typeId' => ($request->typeId),
+                    'itemId' => ($request->itemId),
                     'userId' => ($request->userId),
                     'details' => ($request->details),
                     'image' => $pic,
@@ -184,8 +189,10 @@ class postController extends Controller
         $rules = [
             'categoryId' => 'required',
             'typeId' => 'required',
+            'itemId' => 'required',
             'details' => 'required',
-            'image' => 'nullable'
+            'image' => 'nullable|mimes:jpeg,png,jpg,svg',
+            'isFeatured' => 'nullable'
         ];
         $messages = [
             'unique' => ':attribute already exists.',
@@ -198,6 +205,7 @@ class postController extends Controller
             'typeId' => 'Service Type',
             'details' => 'Details',
             'image' => 'Image',
+            'itemId' => 'Service Item'
         ];
         $validator = Validator::make($request->all(),$rules,$messages);
         $validator->setAttributeNames($niceNames); 
@@ -239,6 +247,7 @@ class postController extends Controller
             $post = Post::find($id)->update([
                 'categoryId' => ($request->categoryId),
                 'typeId' => ($request->typeId),
+                'itemId' => ($request->itemId),
                 'userId' => ($request->userId),
                 'details' => ($request->details),
                 'image' => $pic,
@@ -283,7 +292,13 @@ class postController extends Controller
     public function type($id){
  
         
-        $items = ServiceType::where('categoryId',$id)->get();
+        $subcat = ServiceType::where('categoryId',$id)->get();
+        return Response()->json($subcat);
+    }
+
+    public function sub($id){
+
+        $items = ServiceItem::where('subcategoryId',$id)->get();
         return Response()->json($items);
     }
 }

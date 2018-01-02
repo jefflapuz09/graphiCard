@@ -18,4 +18,6 @@ class ServiceItem extends Model
     public function Subcategory(){
         return $this->belongsTo('App\ServiceType','subcategoryId');
     }
+
+    
 }

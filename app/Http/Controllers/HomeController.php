@@ -8,6 +8,7 @@ use DB;
 use App\Post;
 use App\CompanyInfo;
 use App\ServiceCategory;
+use App\ServiceType;
 use App\Banner;
 use App\User;
 use App\Feedback;
@@ -82,7 +83,7 @@ class HomeController extends Controller
     public function item($id)
     {   
         
-        $mod = ServiceCategory::with(['Post' => function($query) {
+        $mod = ServiceType::with(['Post' => function($query) {
             $query->where('isDraft', 1);}])
             ->where('id',$id)->get();
         return view('Home.serviceitem',compact('mod'));

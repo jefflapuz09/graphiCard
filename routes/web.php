@@ -72,6 +72,7 @@ Route::get('/PostSoft','postController@soft');
 Route::get('/PostReactivate/{id}', 'postController@reactivate');
 Route::get('/PostShow/{id}', 'postController@show');
 Route::get('/PostType/{id}','postController@type');
+Route::get('/PostSub/{id}','postController@sub');
 
 Route::post('/PostStore', 'postController@store');
 Route::post('/PostUpdate/{id}', 'postController@update');

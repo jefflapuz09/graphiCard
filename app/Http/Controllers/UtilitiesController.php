@@ -143,7 +143,7 @@ class UtilitiesController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'company_logo' => 'nullable',
+            'company_logo' => 'nullable|mimes:jpeg,png,jpg,svg',
             'company_name' => ['required','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'street' => 'required',
             'brgy' => 'required',

@@ -18,4 +18,8 @@ class ServiceType extends Model
     public function Ty(){
         return $this->hasMany('App\Post','typeId');
     }
+
+    public function post(){
+        return $this->hasMany('App\Post','typeId');
+    }
 }

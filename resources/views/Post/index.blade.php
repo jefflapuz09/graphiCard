@@ -31,6 +31,7 @@
                 <td>
                     <li>{{ $posts->category }}</li>
                     <li>{{ $posts->type }}</li>
+                    <li>{{ $posts->item }}</li>
                 </td>
                 <td>{{$posts->userName}}</td>
                 <td><img class="img-responsive" src="{{ asset($posts->image)}}" style="max-width:200px; max-height:200px;"></td>
@@ -88,7 +89,8 @@
         
         $(document).ready(function() {
           $('#example').DataTable( {
-              "scrollX": true
+              "scrollX": true,
+              responsive: true
           } );
 
           

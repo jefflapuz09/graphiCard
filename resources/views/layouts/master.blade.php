@@ -59,7 +59,7 @@
                       </a>          
                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                   @foreach($post->Type as $type)                   
-                        <a class="dropdown-item" href="{{ url('/ServiceItem', $post->id) }}">{{$type->name}}</a>
+                        <a class="dropdown-item" href="{{ url('/ServiceItem', $type->id) }}">{{$type->name}}</a>
                       
                   @endforeach
                   </div>
