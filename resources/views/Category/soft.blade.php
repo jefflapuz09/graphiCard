@@ -25,7 +25,7 @@
                 <td>{{ $posts->name }}</td>
                 <td>{{ $posts->description }}</td>
                 <td> 
-                        <a href="{{ url('/CategoryReactivate', $posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
+                        <a href="{{ url('/CategoryReactivate', $posts->id) }}"  onclick="return reacForm()"  type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
                             <i class="fa fa-recycle" aria-hidden="true"></i>
                         </a>
                  
@@ -38,6 +38,8 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox" onclick="document.location='{{ url('/Category') }}';" id="showDeactivated"> Show records</label>
     </div>
+
+   
 <script>
         
 
@@ -45,9 +47,16 @@
           $('#example').DataTable( {
               "scrollX": true
           } );
-
-          
         } );
+
+        function reacForm(){
+            var x = confirm("Are you sure you want to reactivate this record?");
+            if (x)
+              return true;
+            else
+              return false;
+         }
+
 
     </script>
 @endsection

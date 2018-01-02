@@ -37,10 +37,10 @@
                 <td><?php echo e($posts->description); ?></td>
                 <td>
 
-                        <a href="<?php echo e(url('/ItemEdit',$posts->id)); ?>" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
+                        <a href="<?php echo e(url('/ItemEdit',$posts->id)); ?>" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
-                        <a href="<?php echo e(url('/ItemDeactivate', $posts->id)); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
+                        <a href="<?php echo e(url('/ItemDeactivate', $posts->id)); ?>" onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                 </td>
@@ -59,9 +59,23 @@
               "scrollX": true,
               responsive: true
           } );
-
-          
         } );
+
+        function updateForm(){
+            var x = confirm("Are you sure you want to alter this record?");
+            if (x)
+              return true;
+            else
+              return false;
+         }
+
+         function deleteForm(){
+            var x = confirm("Are you sure you want to deactivate this record? All items included in this record will also be deactivated.");
+            if (x)
+              return true;
+            else
+              return false;
+         }
 
     </script>
 <?php $__env->stopSection(); ?>

@@ -10,7 +10,7 @@
     
     <div class="col-lg-6"> 
         <div>
-        <h3>Service Type </h3>
+        <h3>Service Subcategory </h3>
         </div>
         <?php if($errors->any()): ?>
         <div class="alert alert-danger">
@@ -22,10 +22,6 @@
         <?php echo e(csrf_field()); ?>
 
             
-            <div class="form-group">
-            <label for="">Name:</label>
-            <input type="text" placeholder=""  value="<?php echo e($cat->name); ?>" class="form-control" name="name" id="name">
-            </div>
             <div class="form-group">
             <label for="sel2">Service Category</label>
 
@@ -43,6 +39,10 @@
                     <?php echo e($posts->name); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </select>
+            </div>
+            <div class="form-group">
+            <label for="">Name:</label>
+            <input type="text" placeholder=""  value="<?php echo e($cat->name); ?>" class="form-control" name="name" id="name">
             </div>
             <div class="form-group">
             <label for="">Description:</label>

@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
     <div > 
-        <h3>Service Type</h3>
+        <h3>Service Subcategory</h3>
         <div class="pull-right" style="margin-bottom:15px;"> 
             <a href="<?php echo e(url('/ServiceTypeCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                 New Record
@@ -25,8 +25,8 @@
                 <td><?php echo e($posts->name); ?></td>
                 <td><?php echo e($posts->description); ?></td>
                 <td> 
-                        <a href="<?php echo e(url('/ServiceTypeReactivate',$posts->id)); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
-                                Reactivate
+                        <a href="<?php echo e(url('/ServiceTypeReactivate', $posts->id)); ?>" onclick="return reacForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
+                            <i class="fa fa-recycle" aria-hidden="true"></i>
                         </a>
                 </td>
             </tr>
@@ -44,9 +44,16 @@
           $('#example').DataTable( {
               "scrollX": true
           } );
-
-          
         } );
+
+        function reacForm(){
+            var x = confirm("Are you sure you want to reactivate this record?");
+            if (x)
+              return true;
+            else
+              return false;
+         }
+ 
 
     </script>
 <?php $__env->stopSection(); ?>

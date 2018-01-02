@@ -22,10 +22,6 @@
         {{ csrf_field() }}
             
             <div class="form-group">
-            <label for="">Name:</label>
-            <input type="text" placeholder=""  value="{{ $cat->name }}" class="form-control" name="name" id="name">
-            </div>
-            <div class="form-group">
             <label for="sel2">Service Category</label>
 
             <select class="form-control" required id="sel" name="categoryId">
@@ -42,6 +38,10 @@
                     {{ $posts->name }}</option>
                 @endforeach
             </select>
+            </div>
+            <div class="form-group">
+            <label for="">Name:</label>
+            <input type="text" placeholder=""  value="{{ $cat->name }}" class="form-control" name="name" id="name">
             </div>
             <div class="form-group">
             <label for="">Description:</label>

@@ -26,10 +26,6 @@
         {{ csrf_field() }}
             
             <div class="form-group">
-            <label for="">Name:</label>
-            <input type="text" placeholder="Service Category Name" value="" class="form-control" name="name" id="name">
-            </div>
-            <div class="form-group">
             <label for="sel2">Service Category</label>
             <select  class="form-control" required id="sel2" name="categoryId">
                     <option value="0" disabled>Please select service type</option>
@@ -38,6 +34,10 @@
                     <option value="{{ $posts->id }}">{{ $posts->category }}</option>
                 @endforeach
             </select>
+            </div>
+            <div class="form-group">
+            <label for="">Name:</label>
+            <input type="text" placeholder="Service Category Name" value="" class="form-control" name="name" id="name">
             </div>
             <div class="form-group">
             <label for="">Description:</label>

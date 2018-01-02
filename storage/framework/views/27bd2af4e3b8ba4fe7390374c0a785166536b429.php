@@ -23,8 +23,8 @@
                 <td><?php echo e($posts->name); ?></td>
                 <td><?php echo e($posts->description); ?></td>
                 <td> 
-                        <a href="<?php echo e(url('/CategoryReactivate', $posts->id)); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
-                                Reactivate
+                        <a href="<?php echo e(url('/CategoryReactivate', $posts->id)); ?>"  onclick="return reacForm()"  type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
+                            <i class="fa fa-recycle" aria-hidden="true"></i>
                         </a>
                  
                 </td>
@@ -36,6 +36,8 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox" onclick="document.location='<?php echo e(url('/Category')); ?>';" id="showDeactivated"> Show records</label>
     </div>
+
+   
 <script>
         
 
@@ -43,9 +45,16 @@
           $('#example').DataTable( {
               "scrollX": true
           } );
-
-          
         } );
+
+        function reacForm(){
+            var x = confirm("Are you sure you want to alter this record?");
+            if (x)
+              return true;
+            else
+              return false;
+         }
+
 
     </script>
 <?php $__env->stopSection(); ?>
