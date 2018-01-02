@@ -46,7 +46,11 @@
 
         <div class="form-group">
             <h4>Advisory (Make it short) </h4>
-            <textarea class="form-control" rows="5"  name="services_offered" id="details"></textarea>
+            <?php if(count($adv)!=0): ?>
+            <textarea class="form-control" rows="5"  name="advisory" id="advisory"><?php echo $adv->advisory ?></textarea>
+            <?php else: ?>
+            <textarea class="form-control" rows="5"  name="advisory" id="advisory"></textarea>
+            <?php endif; ?>
         </div>
         <div class="pull-right">
             <button type="reset" class="btn btn-success">Clear</button>

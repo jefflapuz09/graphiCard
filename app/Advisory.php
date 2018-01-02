@@ -9,6 +9,6 @@ class Advisory extends Model
     protected $table = 'advisories';
 
     protected $fillable = [
-        'advisory',
+        'advisory'
     ];
 }

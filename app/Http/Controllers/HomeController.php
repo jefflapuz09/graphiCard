@@ -12,6 +12,7 @@ use App\ServiceType;
 use App\Banner;
 use App\User;
 use App\Feedback;
+use App\Advisory;
 use Validator;
 use Redirect;
 use Carbon\Carbon as Carbon;
@@ -50,8 +51,9 @@ class HomeController extends Controller
         $model2 = Post::where('isActive',1)->where('isDraft',1)->get();
         $ban = Banner::all()->first();
         $feed = Feedback::where('isSelected',0)->where('isPublish',0)->where('isActive',1)->get();
+        $adv =Advisory::where('isActive',1)->first();
         //dd($ban);
-        return view('Home.index', compact('post','model2','item','postcat','comp','ban','feed'));
+        return view('Home.index', compact('post','model2','item','postcat','comp','ban','feed','adv'));
     }
 
     public function prodDescription($id)

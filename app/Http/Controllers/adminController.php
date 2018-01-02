@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Advisory;
 
 class adminController extends Controller
 {
@@ -25,7 +26,9 @@ class adminController extends Controller
         ->select('inquiries.*')
         ->where('inquiries.status',0)
         ->get(); 
-        return view('inquiries.dashboard',compact('post'));
+
+        $adv =Advisory::where('isActive',1)->first();
+        return view('inquiries.dashboard',compact('post','adv'));
     }
 
     /**

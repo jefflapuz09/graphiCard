@@ -5,13 +5,22 @@
 <?php $__env->startSection('contents'); ?>
 
 <link href="<?php echo e(asset('css/contact.css')); ?>" rel="stylesheet"> 
+<?php if(count($adv)!=0): ?>
 <div class="container-fluid" style="background-color: yellow; margin-top:60px;">
-  <p style="text-align: center">An advisory here.</p>
+  <p style="text-align: center"><?php echo $adv->advisory ?></p>
 </div>
+<?php else: ?>
+<!-- <div class="container-fluid" style="background-color: yellow; margin-top:60px;">
+  <p style="text-align: center">An advisory here.</p>
+</div> -->
+<div class="container-fluid" style="margin-top:60px;">
+  <p style="text-align: center"></p>
+</div>
+<?php endif; ?>
 <!-- <div class="row" style="margin-top:5px; margin-bottom">
   <img class="img-responsive" style="max-width:100%; max-height:10%;" height="150px" width="100%" src="<?php echo e(asset('img/promo-banner.png')); ?>" alt="">
 </div> -->
-<header style="margin-top:38px;">
+<header style="margin-top:10px;">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

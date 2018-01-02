@@ -121,3 +121,6 @@ Route::get('/FeedbackUnpublish/{id}', 'FeedbackController@unpublish');
 Route::post('FeedbackStore', 'FeedbackController@store');
 Route::post('FeedbackEdit/{id}', 'FeedbackController@update');
 
+//Advisory
+Route::post('/AdvisoryNew','AdvisoryController@store');
+
