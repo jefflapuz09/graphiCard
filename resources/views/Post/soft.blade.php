@@ -32,7 +32,7 @@
 
                   
                         <a href="{{ url('/PostReactivate',$posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
+                            <i class="fa fa-recycle" aria-hidden="true"></i>
                         </a>
                 </td>
             </tr>

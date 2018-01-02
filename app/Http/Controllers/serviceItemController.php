@@ -86,7 +86,9 @@ class serviceItemController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = ServiceItem::find($id);
+        $subcat = ServiceType::all();
+        return view('ServiceItem.update',compact('post','subcat'));
     }
 
     /**
@@ -98,7 +100,31 @@ class serviceItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'name' => ['required','max:50','unique:service_subcategory','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'subcategoryId' => 'required',
+            'description' => 'nullable'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',
+            'regex' => 'The :attribute must not contain special characters.'              
+        ];
+        $niceNames = [
+            'name' => 'Service Type',
+            'subcategoryId' => 'Service Subcategory',
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else{
+            
+            ServiceItem::find($id)->update($request->all());
+            return redirect('/Item')->withSuccess('Successfully updated into the database.');
+        }
     }
 
     /**
@@ -109,6 +135,19 @@ class serviceItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+            ServiceItem::find($id)->update(['isActive' => 0]);
+            return redirect('/Item');
+    }
+
+    public function soft()
+    {
+        $post = ServiceItem::with('Subcategory')->where('isActive',0)->get();
+        return view('ServiceItem.soft',compact('post'));
+    }
+
+    public function reactivate($id)
+    {
+            ServiceItem::find($id)->update(['isActive' => 1]);
+            return redirect('/Item');
     }
 }

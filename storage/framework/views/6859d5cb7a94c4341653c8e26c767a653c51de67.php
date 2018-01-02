@@ -37,11 +37,8 @@
                 <td><?php echo e($posts->description); ?></td>
                 <td>
 
-                        <a href="<?php echo e(url('/ItemEdit',$posts->id)); ?>" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </a>
-                        <a href="<?php echo e(url('/ItemDeactivate', $posts->id)); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        <a href="<?php echo e(url('/ItemReactivate', $posts->id)); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
+                            <i class="fa fa-recycle" aria-hidden="true"></i>
                         </a>
                 </td>
             </tr>
@@ -49,7 +46,7 @@
         </tbody>
     </table>
     <div class="form-group pull-right">
-            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/ItemSoft')); ?>';" id="showDeactivated"> Show deactivated records</label>
+            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/Item')); ?>';" id="showDeactivated"> Show records</label>
     </div>
 <script>
         

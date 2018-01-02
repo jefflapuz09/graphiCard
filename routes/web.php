@@ -93,8 +93,13 @@ Route::post('/InquiryUpdate/{id}','InquiryController@update');
 Route::get('/ServiceItem/{id}', 'HomeController@item');
 Route::get('/Item','serviceItemController@index');
 Route::get('/ItemCreate','serviceItemController@create');
+Route::get('/ItemEdit/{id}','serviceItemController@edit');
+Route::get('/ItemDeactivate/{id}', 'serviceItemController@destroy');
+Route::get('/ItemReactivate/{id}', 'serviceItemController@reactivate');
+Route::get('/ItemSoft', 'serviceItemController@soft');
 
 Route::post('/ItemStore', 'serviceItemController@store');
+Route::post('/ItemUpdate/{id}', 'serviceItemController@update');
 
 //User
 Route::get('/User','HomeController@user');

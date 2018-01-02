@@ -2,7 +2,7 @@
 
 @section('content')
     <div> 
-        <h3>Customer Feedback</h3>
+        <h3>Service Item</h3>
             @if(session('success'))
                 <div class="alert alert-success">
                     {{session('success')}}
@@ -14,7 +14,7 @@
             </div>
              @endif
         <div class="pull-right" style="margin-bottom:15px;"> 
-            <a href="{{ url('/FeedbackCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
+            <a href="{{ url('/ItemCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                 New Record
             </a>
         </div>
@@ -23,34 +23,30 @@
      <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
+                <th>Subcategory</th>
                 <th>Name</th>
-                <th>Image</th>
-                <th>Rating</th>
+                <th>Description</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach($post as $posts)
             <tr>
+                <td>{{$posts->Subcategory->name}}</td>
                 <td>{{$posts->name}}</td>
-                <td><img class="img-responsive" src="{{ asset($posts->image)}}" style="max-width:200px; max-height:200px;"></td>
+                <td>{{$posts->description}}</td>
                 <td>
-                    @for ($i = 0; $i < $posts->rating; $i++)
-                    <span class="fa fa-star checked"></span>
-                    @endfor
-                </td>
-                <td>
-                    <a href="{{ url('/FeedbackReactivate', $posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
-                        <i class="fa fa-recycle" aria-hidden="true"></i>
-                    </a>
+
+                        <a href="{{ url('/ItemReactivate', $posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
+                            <i class="fa fa-recycle" aria-hidden="true"></i>
+                        </a>
                 </td>
             </tr>
             @endforeach
-   
         </tbody>
     </table>
     <div class="form-group pull-right">
-            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/Feedback') }}';" id="showDeactivated"> Show records</label>
+            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/Item') }}';" id="showDeactivated"> Show records</label>
     </div>
 <script>
         

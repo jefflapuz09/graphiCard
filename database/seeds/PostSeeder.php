@@ -12,14 +12,15 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('posts')->insert([
-            'categoryId' => 1,
-            'typeId' => 1,
-            'userId' => 1,
-            'details' => 'Sample Details here',
-            'image' => 'img/20171226023537.jpg',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
+        // DB::table('posts')->insert([
+        //     'categoryId' => 1,
+        //     'typeId' => 1,
+        //     'userId' => 1,
+        //     'itemId' => 1,
+        //     'details' => 'Sample Details here',
+        //     'image' => 'img/20171226023537.jpg',
+        //     'created_at' => Carbon::now(),
+        //     'updated_at' => Carbon::now(),
+        // ]);
     }
 }

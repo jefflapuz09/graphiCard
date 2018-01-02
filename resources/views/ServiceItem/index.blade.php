@@ -14,7 +14,7 @@
             </div>
              @endif
         <div class="pull-right" style="margin-bottom:15px;"> 
-            <a href="{{ url('/CategoryCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
+            <a href="{{ url('/ItemCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                 New Record
             </a>
         </div>
@@ -37,10 +37,10 @@
                 <td>{{$posts->description}}</td>
                 <td>
 
-                        <a href="{{ url('/CategoryUpdate',$posts->id) }}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
+                        <a href="{{ url('/ItemEdit',$posts->id) }}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
-                        <a href="{{ url('/CategoryDeac', $posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
+                        <a href="{{ url('/ItemDeactivate', $posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                 </td>
@@ -49,7 +49,7 @@
         </tbody>
     </table>
     <div class="form-group pull-right">
-            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/CategorySoft') }}';" id="showDeactivated"> Show deactivated records</label>
+            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/ItemSoft') }}';" id="showDeactivated"> Show deactivated records</label>
     </div>
 <script>
         
