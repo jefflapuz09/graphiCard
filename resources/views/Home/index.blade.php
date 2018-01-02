@@ -9,12 +9,9 @@
 <link href="{{ asset('css/contact.css') }}" rel="stylesheet"> 
 @if(count($adv)!=0)
 <div class="container-fluid" style="background-color: yellow; margin-top:60px;">
-  <p style="text-align: center"><?php echo $adv->advisory ?></p>
+  <?php echo $adv->advisory ?>
 </div>
 @else(count($adv)==0)
-<!-- <div class="container-fluid" style="background-color: yellow; margin-top:60px;">
-  <p style="text-align: center">An advisory here.</p>
-</div> -->
 <div class="container-fluid" style="margin-top:60px;">
   <p style="text-align: center"></p>
 </div>

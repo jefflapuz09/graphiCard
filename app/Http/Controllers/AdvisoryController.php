@@ -37,8 +37,7 @@ class AdvisoryController extends Controller
      */
     public function store(Request $request)
     {
-        Advisory::create($request->all());
-        return Redirect::to(URL::previous())->withSuccess('Your advisory has been posted');
+        //
     }
 
     /**
@@ -72,7 +71,12 @@ class AdvisoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $status = 0;
+        $a = Advisory::find($id);
+        $a->isActive = $status;
+        $a->save();
+        Advisory::create($request->all());
+        return Redirect::to(URL::previous())->withSuccess('Your advisory has been posted');
     }
 
     /**

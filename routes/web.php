@@ -122,5 +122,5 @@ Route::post('FeedbackStore', 'FeedbackController@store');
 Route::post('FeedbackEdit/{id}', 'FeedbackController@update');
 
 //Advisory
-Route::post('/AdvisoryNew','AdvisoryController@store');
+Route::post('/AdvisoryNew/{id}','AdvisoryController@update');
 

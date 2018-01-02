@@ -42,10 +42,11 @@
         </div>
     </div>
     <div class="col-md-6">
-     <form action="{{ url('/AdvisoryNew') }}" method="post">
+     <form action="{{ url('/AdvisoryNew',$adv->id) }}" method="post">
         {{ csrf_field() }}
         <div class="form-group">
             <h4>Advisory (Make it short) </h4>
+            <input type="hidden" name="status" value="0">
             @if(count($adv)!=0)
             <textarea class="form-control" rows="5"  name="advisory" id="advisory"><?php echo $adv->advisory ?></textarea>
             @else(count($adv)==0)

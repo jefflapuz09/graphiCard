@@ -7,12 +7,9 @@
 <link href="<?php echo e(asset('css/contact.css')); ?>" rel="stylesheet"> 
 <?php if(count($adv)!=0): ?>
 <div class="container-fluid" style="background-color: yellow; margin-top:60px;">
-  <p style="text-align: center"><?php echo $adv->advisory ?></p>
+  <?php echo $adv->advisory ?>
 </div>
 <?php else: ?>
-<!-- <div class="container-fluid" style="background-color: yellow; margin-top:60px;">
-  <p style="text-align: center">An advisory here.</p>
-</div> -->
 <div class="container-fluid" style="margin-top:60px;">
   <p style="text-align: center"></p>
 </div>
