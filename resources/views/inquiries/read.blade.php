@@ -13,10 +13,8 @@
 <table id="example" class="display" cellspacing="0" width="100%">
     <thead>
         <tr>
-            <th>ID</th>
             <th>Date Inquired</th>
             <th>Name</th>
-            <th>Email</th>
             <th>Subject</th>
             <th>Actions</th>
         </tr>
@@ -27,7 +25,6 @@
             <td>{{ $posts->id }}</td>
             <td>{{ \Carbon\Carbon::parse($posts->created_at)->format('F m,Y')}}</td>
             <td>{{ $posts->name }}</td>
-            <td>{{ $posts->email }}</td>
             <td>{{ $posts->subject }}</td>
             <td> 
                 <a href="{{ url('/InquiryView',$posts->id) }}" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="View Inquiry">

@@ -7,7 +7,12 @@
 @section('contents')
 
 <link href="{{ asset('css/contact.css') }}" rel="stylesheet"> 
-
+<div class="container-fluid" style="background-color: yellow; margin-top:60px;">
+  <p style="text-align: center">An advisory here.</p>
+</div>
+<!-- <div class="row" style="margin-top:5px; margin-bottom">
+  <img class="img-responsive" style="max-width:100%; max-height:10%;" height="150px" width="100%" src="{{ asset('img/promo-banner.png') }}" alt="">
+</div> -->
 <header style="margin-top:38px;">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -16,7 +21,6 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
-
       @if(count($ban)!=0)
       <!-- Slide One - Set the background image for this slide in the line below -->
       <div class="carousel-item active" style="background-image: url('{{ asset($ban->banner)}}'); background-size: 1600px 420px;  ">

@@ -5,7 +5,12 @@
 <?php $__env->startSection('contents'); ?>
 
 <link href="<?php echo e(asset('css/contact.css')); ?>" rel="stylesheet"> 
-
+<div class="container-fluid" style="background-color: yellow; margin-top:60px;">
+  <p style="text-align: center">An advisory here.</p>
+</div>
+<!-- <div class="row" style="margin-top:5px; margin-bottom">
+  <img class="img-responsive" style="max-width:100%; max-height:10%;" height="150px" width="100%" src="<?php echo e(asset('img/promo-banner.png')); ?>" alt="">
+</div> -->
 <header style="margin-top:38px;">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -14,7 +19,6 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
-
       <?php if(count($ban)!=0): ?>
       <!-- Slide One - Set the background image for this slide in the line below -->
       <div class="carousel-item active" style="background-image: url('<?php echo e(asset($ban->banner)); ?>'); background-size: 1600px 420px;  ">
@@ -97,7 +101,7 @@
       <?php else: ?>
       <div align="center">
         <h1 style="font-family: 'Poiret One', cursive; color:black;">
-          Company Description here!
+          Say something here!
         </h1>
       </div>
       <?php endif; ?>
@@ -123,8 +127,8 @@
 
   <div class="container">
     <ol class="breadcrumbs breadcrumb-arrow">
-      <li><span style="color:white;padding:5px;margin:10px;margin-top:5px;" ><?php echo e($cat->name); ?></span></li>
-      <li class="active"><a href="<?php echo e(url('/ServiceItem', $cat->id)); ?>"><span style="color:white;"><b>See More</b></span></a></li>
+      <li><a href="<?php echo e(url('/ServiceItem', $cat->id)); ?>"><span style="color:white;" ><?php echo e($cat->name); ?></span></a></li>
+      <li class="active"><span style="color:white;"><b>See More</b></span></li>
     </ol>
   </div>
 

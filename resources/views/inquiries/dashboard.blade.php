@@ -1,8 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div > 
-    <h3>Inquiries</h3>
+<div >
     @if(session('success'))
     <div class="alert alert-success">
         {{session('success')}}
@@ -10,39 +9,52 @@
     @endif
 </div>
 
-<table id="example" class="display" cellspacing="0" width="100%">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Date Inquired</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Subject</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($post as $posts)
-        <tr>
-            <td>{{ $posts->id }}</td>
-            <td>{{ \Carbon\Carbon::parse($posts->created_at)->format('F m,Y')}}</td>
-            <td>{{ $posts->name }}</td>
-            <td>{{ $posts->email }}</td>
-            <td>{{ $posts->subject }}</td>
-            <td> 
-                <a href="{{ url('/InquiryView',$posts->id) }}" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="View Inquiry">
-                    <i class="fa fa-eye" aria-hidden="true"></i> View Inquiry
-                </a>
-            </td>
-        </tr>
+<div class="row">
+    <div class="col-md-6">
+        <h4>Inquiries</h4>
+        <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Date Inquired</th>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($post as $posts)
+                <tr>
+                    <td>{{ \Carbon\Carbon::parse($posts->created_at)->format('F m,Y')}}</td>
+                    <td>{{ $posts->name }}</td>
+                    <td>{{ $posts->subject }}</td>
+                    <td> 
+                        <a href="{{ url('/InquiryView',$posts->id) }}" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="View Inquiry">
+                            <i class="fa fa-eye" aria-hidden="true"></i> View Inquiry
+                        </a>
+                    </td>
+                </tr>
 
-        @endforeach
-    </tbody>
-</table>
-<div class="form-group pull-right">
-    <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/InquiryRead') }}';" id="showDeactivated"> Show read inquiries</label>
+                @endforeach
+            </tbody>
+        </table>
+        <div class="form-group pull-right">
+            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/InquiryRead') }}';" id="showDeactivated"> Show read inquiries</label>
+        </div>
+    </div>
+    <div class="col-md-6">
+     <form action="{{ url('/AdvisoryNew') }}" method="post">
+        {{ csrf_field() }}
+        <div class="form-group">
+            <h4>Advisory (Make it short) </h4>
+            <textarea class="form-control" rows="5"  name="services_offered" id="details"></textarea>
+        </div>
+        <div class="pull-right">
+            <button type="reset" class="btn btn-success">Clear</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
 </div>
-
+</div>
 <script>
 
 
@@ -54,6 +66,109 @@
 
   } );
 
+</script>
+
+
+<script src="{{ url('vendor/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+<script>
+
+
+    function changetype(id)
+    {
+        $.ajax({
+            type: "GET",
+            url: '/PostType/'+id,
+            dataType: "JSON",
+            success:function(data){
+
+                $('#Type').empty();
+                $("#Type").append('<option>Please select service Type</option>');
+                $.each(data,function(key, value)
+                {
+
+                    console.log(value.categoryId);
+                    $("#Type").append('<option value=' + value.id + '>' + value.name + '</option>');
+                });
+            }
+        });
+    }
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'image code',
+      toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | undo redo | code',
+      image_title: true, 
+      automatic_uploads: true,
+      file_picker_types: 'image', 
+      file_picker_callback: function(cb, value, meta) {
+        var input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+        input.onchange = function() {
+          var file = this.files[0];
+
+          var reader = new FileReader();
+          reader.onload = function () {
+
+            var id = 'blobid' + (new Date()).getTime();
+            var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+            var base64 = reader.result.split(',')[1];
+            var blobInfo = blobCache.create(id, file, base64);
+            blobCache.add(blobInfo);
+            cb(blobInfo.blobUri(), { title: file.name });
+        };
+        reader.readAsDataURL(file);
+    };
+    
+    input.click();
+}
+});
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#pic')
+                .attr('src', e.target.result)
+                .width(300);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function readURL2(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#pic2')
+                .attr('src', e.target.result)
+                .width(300);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function readURL3(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#pic3')
+                .attr('src', e.target.result)
+                .width(300);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function readURL4(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#pic4')
+                .attr('src', e.target.result)
+                .width(300);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>
 @endsection
 

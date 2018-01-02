@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
     <div> 
-        <h3>Service Category</h3>
+        <h3>Service Item</h3>
             <?php if(session('success')): ?>
                 <div class="alert alert-success">
                     <?php echo e(session('success')); ?>
@@ -23,33 +23,29 @@
      <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Subcategory</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
-                <td><?php echo e($posts->id); ?></td>
+                <td><?php echo e($posts->Subcategory->name); ?></td>
                 <td><?php echo e($posts->name); ?></td>
                 <td><?php echo e($posts->description); ?></td>
-                <td> 
+                <td>
+
                         <a href="<?php echo e(url('/CategoryUpdate',$posts->id)); ?>" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
-                        <!-- <a href="<?php echo e(url('/CategoryShow',$posts->id)); ?>" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
-                            <i class="fa fa-eye" aria-hidden="true"></i> -->
-                        
                         <a href="<?php echo e(url('/CategoryDeac', $posts->id)); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
-                 
                 </td>
             </tr>
-
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
     </table>
     <div class="form-group pull-right">

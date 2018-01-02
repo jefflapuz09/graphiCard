@@ -83,7 +83,7 @@ outline: none;
 
         </div>
         <div class="pull-right">
-          <a href="" data-toggle="modal" data-target="#formModal"><button class="btn btn-link" style="font-size:15pt; color:black; text-decoration:none; border:1px solid black;"><i class="fa fa-heart-o" aria-hidden="true"></i> Loved your product? Give us a Feedback! > </button></a>
+          <a href="" data-toggle="modal" data-target="#formModal"><button class="btn btn-link" style="font-size:15pt; color:black; text-decoration:none; border:1px solid black;"><i class="fa fa-heart-o" aria-hidden="true"></i> Loved our product? Give us a Feedback! > </button></a>
         </div>
       </div>   
     </div>
@@ -219,6 +219,20 @@ outline: none;
   </div>
 
 </div>
+
+<script>
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+              reader.onload = function (e) {
+                  $('#pic')
+                  .attr('src', e.target.result)
+                  .width(300);
+              };
+          reader.readAsDataURL(input.files[0]);
+      }
+      }
+</script>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
