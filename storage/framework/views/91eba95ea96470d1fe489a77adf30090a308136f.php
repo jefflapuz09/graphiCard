@@ -149,9 +149,10 @@
         <?php $__currentLoopData = $cat->Post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="col-md-4 col-sm-6 portfolio-item">
           <a class="portfolio-link"  href="<?php echo e(url('/prodDescription',$post->id)); ?>">
-            <div class="portfolio-hover shop">
+            <div class="portfolio-hover">
               <div class="portfolio-hover-content">
-                <i class="fa fa-flag fa-3x"></i>
+                  <i class="fa fa-flag fa-3x"></i>  
+                    
               </div>
             </div>
             <img class="img-responsive" style="max-width:100%; max-height:100%;" height="300px" src="<?php echo e(asset($post->image)); ?>" alt="">
@@ -342,12 +343,12 @@
       <?php endif; ?>
 
     </div>
-    <div class="contact-section">
-      <div class="container">
+    <div class="contact-section" style="">
+      <div class="container" style="">
         <form method="post" action="<?php echo e(url('/InquirySend')); ?>" id="inquiry-form">
           <?php echo e(csrf_field()); ?>
 
-          <div class="row">
+          <div class="row" style="">
             <div class="col-md-6 form-line"> 
               <div class="form-group">
                 <label for="exampleInputUsername">Your Name</label>
@@ -355,7 +356,7 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail">Email Address</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder=" Enter Email id">
+                <input type="email" class="form-control" id="email" name="email" placeholder=" Enter Email Address">
               </div>	
               <div class="form-group">
                 <label for="telephone">Mobile No.</label>
@@ -364,9 +365,9 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for ="description"> Subject</label>
-                <input type="tel" class="form-control" id="subject" name="subject" placeholder=" Enter a subject">
-              </div>
+                  <label for ="description"> Subject</label>
+                  <input type="text" class="form-control" id="subject" name="subject" placeholder=" Enter a subject">
+                </div>
               <div class="form-group">
                 <label for ="description"> Message</label>
                 <textarea  class="form-control" id="message" name="message" placeholder="Enter Your Message"></textarea>
@@ -379,6 +380,14 @@
         </form>
       </div>
     </section>
+    <?php $__env->stopSection(); ?>
+
+    <?php $__env->startSection('script'); ?>
+    <script>
+        $( document ).ready(function() {
+          $('.select2').select2();
+      });
+    </script>  
     <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

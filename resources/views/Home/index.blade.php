@@ -151,9 +151,14 @@
         @foreach($cat->Post as $post)
         <div class="col-md-4 col-sm-6 portfolio-item">
           <a class="portfolio-link"  href="{{ url('/prodDescription',$post->id) }}">
-            <div class="portfolio-hover shop">
+            <div class="portfolio-hover">
               <div class="portfolio-hover-content">
-                <i class="fa fa-flag fa-3x"></i>
+                  <i class="fa fa-flag fa-3x"></i>  
+                    {{--  <ul class="social-network social-circle">
+                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                      </ul>	  --}}
               </div>
             </div>
             <img class="img-responsive" style="max-width:100%; max-height:100%;" height="300px" src="{{ asset($post->image) }}" alt="">
@@ -343,11 +348,11 @@
       @endif
 
     </div>
-    <div class="contact-section">
-      <div class="container">
+    <div class="contact-section" style="">
+      <div class="container" style="">
         <form method="post" action="{{ url('/InquirySend') }}" id="inquiry-form">
           {{ csrf_field() }}
-          <div class="row">
+          <div class="row" style="">
             <div class="col-md-6 form-line"> 
               <div class="form-group">
                 <label for="exampleInputUsername">Your Name</label>
@@ -355,7 +360,7 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail">Email Address</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder=" Enter Email id">
+                <input type="email" class="form-control" id="email" name="email" placeholder=" Enter Email Address">
               </div>	
               <div class="form-group">
                 <label for="telephone">Mobile No.</label>
@@ -364,9 +369,9 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for ="description"> Subject</label>
-                <input type="tel" class="form-control" id="subject" name="subject" placeholder=" Enter a subject">
-              </div>
+                  <label for ="description"> Subject</label>
+                  <input type="text" class="form-control" id="subject" name="subject" placeholder=" Enter a subject">
+                </div>
               <div class="form-group">
                 <label for ="description"> Message</label>
                 <textarea  class="form-control" id="message" name="message" placeholder="Enter Your Message"></textarea>
@@ -380,3 +385,11 @@
       </div>
     </section>
     @endsection
+
+    @section('script')
+    <script>
+        $( document ).ready(function() {
+          $('.select2').select2();
+      });
+    </script>  
+    @stop

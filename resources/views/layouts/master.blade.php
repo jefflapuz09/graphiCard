@@ -21,6 +21,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">  
     <link href="{{ asset('css/button.css') }}" rel="stylesheet">  
+    <link rel="stylesheet" href="{{  asset('vendor/social/dist/css/social-share-kit.css')  }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -84,6 +85,13 @@
     </div>
   </div>
 </nav>
+<div class="ssk-sticky ssk-right ssk-center ssk-lg">
+    <a href="" class="ssk ssk-facebook"></a>
+    <a href="" class="ssk ssk-twitter"></a>
+    <a href="" class="ssk ssk-linkedin"></a>
+    <a href="" class="ssk ssk-email"></a>
+</div>
+
 @yield('contents');
 
     <!-- Footer -->
@@ -212,6 +220,10 @@
     <script src="{{ asset('js/megamenu.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
     <script src="{{ asset('js/navscroll.js') }}"></script>
+    <script src="{{ asset('vendor/social/dist/js/social-share-kit.js') }}"></script>
+    <script>
+        SocialShareKit.init();
+    </script>
     @yield('script')
   </body>
 
