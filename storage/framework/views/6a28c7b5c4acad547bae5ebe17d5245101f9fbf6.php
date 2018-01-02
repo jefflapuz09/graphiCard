@@ -41,24 +41,37 @@
         </div>
     </div>
     <div class="col-md-6">
-     <form action="<?php echo e(url('/AdvisoryNew',$adv->id)); ?>" method="post">
-        <?php echo e(csrf_field()); ?>
+        <?php if(count($adv)!=0): ?>
+        <form action="<?php echo e(url('/AdvisoryUpdate',$adv->id)); ?>" method="post">
+            <?php echo e(csrf_field()); ?>
 
-        <div class="form-group">
-            <h4>Advisory (Make it short) </h4>
-            <input type="hidden" name="status" value="0">
-            <?php if(count($adv)!=0): ?>
-            <textarea class="form-control" rows="5"  name="advisory" id="advisory"><?php echo $adv->advisory ?></textarea>
-            <?php else: ?>
-            <textarea class="form-control" rows="5"  name="advisory" id="advisory"></textarea>
-            <?php endif; ?>
-        </div>
-        <div class="pull-right">
-            <button type="reset" class="btn btn-success">Clear</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
-</div>
+            <div class="form-group">
+                <h4>Advisory (Make it short) </h4>
+                <input type="hidden" name="status" value="0">
+                <textarea class="form-control" rows="5"  name="advisory" id="advisory"><?php echo $adv->advisory ?></textarea>
+            </div>
+            <div class="pull-right">
+                <button type="reset" class="btn btn-success">Clear</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <?php else: ?>
+        <form action="<?php echo e(url('/AdvisoryNew')); ?>" method="post">
+            <?php echo e(csrf_field()); ?>
+
+            <div class="form-group">
+                <h4>Advisory (Make it short) </h4>
+                <input type="hidden" name="status" value="0">
+                <textarea class="form-control" rows="5"  name="advisory" id="advisory"></textarea>
+            </div>
+            <div class="pull-right">
+                <button type="reset" class="btn btn-success">Clear</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <?php endif; ?>
+
+    </div>
 </div>
 <script>
 

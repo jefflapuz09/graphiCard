@@ -16,7 +16,7 @@ class CreateTableAdvisory extends Migration
         Schema::create('advisories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->text('advisory');
+            $table->text('advisory')->nullable();
             $table->boolean('isActive')->default(1);
             $table->timestamps();
         });

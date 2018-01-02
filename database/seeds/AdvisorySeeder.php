@@ -13,7 +13,7 @@ class AdvisorySeeder extends Seeder
     public function run()
     {
         DB::table('advisories')->insert([
-            'advisory' => 'An Advisory',
+            'advisory' => '<p style="text-align: center;">An advisory</p>',
             'isActive' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
