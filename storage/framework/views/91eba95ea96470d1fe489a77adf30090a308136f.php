@@ -1,10 +1,35 @@
 <style>
 @import  url('https://fonts.googleapis.com/css?family=Poiret+One');
+@import  url('https://fonts.googleapis.com/css?family=Montserrat');
+</style>
+<style>
+    
+    .se-pre-con {
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background: url('<?php echo e(asset('img/Preloader_3.gif')); ?>') center no-repeat #fff;
+    }
+
+    .titleload h1
+    {
+      margin-top:200px;
+    }
 </style>
 
 <?php $__env->startSection('contents'); ?>
 
 <link href="<?php echo e(asset('css/contact.css')); ?>" rel="stylesheet"> 
+
+<div class="se-pre-con">
+  <div class="titleload">
+      <h1 class="text-center animated tada" style="font-family: 'Montserrat', sans-serif; font-size:30pt; color:darkorange">Please wait, <span style="color:maroon;">loading</span><span style="color:black;">...</span></h1>
+  </div>
+</div>
+
 <?php if(count($adv)!=0): ?>
 <div class="container-fluid" style="background-color: yellow; margin-top:60px;">
   <?php echo $adv->advisory ?>
@@ -386,6 +411,8 @@
     <script>
         $( document ).ready(function() {
           $('.select2').select2();
+
+          $( ".se-pre-con" ).delay(3000).fadeOut( "slow")
       });
     </script>  
     <?php $__env->stopSection(); ?>

@@ -1,6 +1,13 @@
 @extends('layouts.admin')
 
+@section('style')
+       
+@stop
+
 @section('content')
+
+
+
     <div > 
         <h3>Post</h3>
         @if(session('success'))
@@ -92,10 +99,7 @@
               "scrollX": true,
               responsive: true
           } );
-
-          
         } );
-
     </script>
 @endsection
 

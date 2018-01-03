@@ -91,7 +91,8 @@
 
         $(document).ready(function() {
           $('#example').DataTable( {
-              "scrollX": true
+              "scrollX": true,
+              responsive: true
           } );
 
           

@@ -4,18 +4,22 @@
   <ol class="breadcrumbs breadcrumb-arrow" width="100%">
     <li><a href="{{ url('/') }}">Home</a></li>
     <li><a href="{{ url('/ServiceItem', $post->ServiceCategory->id) }}">{{$post->ServiceCategory->name}}</a></li>
-    <li class="active" style=""><span><b>{{$post->ServiceType->name}}</b></span></li>
+    <li class="" style=""><a href="{{ url('/ServiceItem', $post->ServiceCategory->id) }}">{{$post->ServiceType->name}}</a></li>
+    <li class="active" style=""><span><b>{{$post->Item->name}}</b></span></li>
   </ol>
   <div class="row" style="padding:10px;">
     <div class="col-md-7 form-line" style="margin-top:50px;">
       <!-- <h1 class="mt-4 mb-3" style="text-align:center">{{ $post->ServiceType->name }}</h1> -->
       <div align="center"><img class="img-responsive" style="max-height:100%; max-width:100%;" src="<?php echo asset($post->image)?>" height="400px"  alt="No image available"></div>
       <div class="pull-right" style="margin-right:35px; margin-top:10px;">
-         <small> {{$post->User->name}}
+         <small> {{$post->User->name}} - 
           {{date('F j, Y - H:i:s',strtotime($post->updated_at))}} </small>
       </div>
       <h2 class="mt-4 mb-3">Description</h2>
-      <?php echo $post->details?>
+      <div class=""><?php echo $post->details?></div>
+      <div class="pull-right">
+          <a href="" data-toggle="modal" data-target="#myModal"><button class="btn btn-link" style="font-size:15pt; color:black; text-decoration:none; border:1px solid black;"><i class="fa fa-heart-o" aria-hidden="true"></i> Give us a Review! > </button></a>
+      </div>
     </div>
 
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
@@ -59,4 +63,24 @@
 
   </div>
 </div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Header</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
 @stop

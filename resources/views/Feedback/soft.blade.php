@@ -26,6 +26,8 @@
                 <th>Name</th>
                 <th>Image</th>
                 <th>Rating</th>
+                <th>Featured Post</th>
+                <th>Posted</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -38,6 +40,20 @@
                     @for ($i = 0; $i < $posts->rating; $i++)
                     <span class="fa fa-star checked"></span>
                     @endfor
+                </td>
+                <td>
+                        @if($posts->isSelected == 0)
+                        Featured Post
+                        @elseif($posts->isSelected == 1)
+                        Default Post 
+                        @endif
+                </td>
+                <td>
+                    @if($posts->isPublish == 1)
+                    Not yet posted
+                    @else
+                    Posted
+                    @endif
                 </td>
                 <td>
                     <a href="{{ url('/FeedbackReactivate', $posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">

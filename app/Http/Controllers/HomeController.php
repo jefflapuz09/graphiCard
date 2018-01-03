@@ -58,7 +58,7 @@ class HomeController extends Controller
 
     public function prodDescription($id)
     {
-        $post = Post::with('ServiceCategory','ServiceType','User')->where('id', $id)->first();
+        $post = Post::with('ServiceCategory','ServiceType','Item','User')->where('id', $id)->first();
         // $post = DB::table('posts as p')
         //         ->join('service_categories as sc','sc.id','=','p.categoryId')
         //         ->join('service_types as st','st.id','=','p.typeId')

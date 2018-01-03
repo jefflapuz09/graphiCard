@@ -26,6 +26,8 @@
                 <th>Name</th>
                 <th>Image</th>
                 <th>Rating</th>
+                <th>Featured Post</th>
+                <th>Posted</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -40,8 +42,22 @@
                     <?php endfor; ?>
                 </td>
                 <td>
+                        <?php if($posts->isSelected == 0): ?>
+                        Featured Post
+                        <?php elseif($posts->isSelected == 1): ?>
+                        Default Post 
+                        <?php endif; ?>
+                </td>
+                <td>
+                    <?php if($posts->isPublish == 1): ?>
+                    Not yet posted
+                    <?php else: ?>
+                    Posted
+                    <?php endif; ?>
+                </td>
+                <td>
                     <a href="<?php echo e(url('/FeedbackReactivate', $posts->id)); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        <i class="fa fa-recycle" aria-hidden="true"></i>
                     </a>
                 </td>
             </tr>
