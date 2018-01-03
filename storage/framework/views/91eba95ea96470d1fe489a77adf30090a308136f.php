@@ -14,7 +14,7 @@
       background: url('<?php echo e(asset('img/Preloader_3.gif')); ?>') center no-repeat #fff;
     }
 
-     #titleload{
+     .titleload{
       position: relative;
       left:0;
       right:0;
@@ -28,8 +28,8 @@
 <link href="<?php echo e(asset('css/contact.css')); ?>" rel="stylesheet"> 
 
 <div class="se-pre-con">
-  
-      <h1 id="titleload" class="text-center animated tada" style="font-family: 'Montserrat', sans-serif; font-size:30pt; color:darkorange">Please wait, <span style="color:maroon;">loading</span><span style="color:black;">...</span></h1>
+      
+      
 
 </div>
 
@@ -432,7 +432,7 @@
         $( document ).ready(function() {
           $('.select2').select2();
 
-          $( ".se-pre-con" ).delay(1000).fadeOut( "slow")
+          $( ".se-pre-con" ).delay(2000).fadeOut("slow")
       });
     </script>  
     <?php $__env->stopSection(); ?>
