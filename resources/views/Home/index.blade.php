@@ -194,9 +194,19 @@
           <div class="portfolio-caption">
             <h4>{{ $post->Item->name }}</h4>
             @if(count($post->Item->RateItem)!=0)
-              @for ($i = 0; $i < $post->Item->RateItem[0]['rating']; $i++)
-              <span class="fa fa-star checked"></span>
+              <?php
+                  $count = count($post->Item->RateItem);
+                  $sum = 0;
+                  foreach($post->Item->RateItem as $r)
+                  {
+                    $sum += $r->rating;
+                  }
+                  $ave = $sum/$count;
+              ?>
+              @for($y=0;$y<$ave;$y++)
+                <span class="fa fa-star checked"></span>
               @endfor
+            
             @else
             <p class="text-muted">No ratings yet.</p>
             @endif
