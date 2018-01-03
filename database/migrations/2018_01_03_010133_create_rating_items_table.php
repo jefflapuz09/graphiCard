@@ -15,8 +15,7 @@ class CreateRatingItemsTable extends Migration
     {
         Schema::create('rating_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('customerId')->unsigned();	
-            $table->foreign('customerId')->references('id')->on('customers');
+            $table->string('name');
             $table->integer('itemId')->unsigned();	
             $table->foreign('itemId')->references('id')->on('service_items');
             $table->integer('rating');

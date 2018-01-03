@@ -125,3 +125,7 @@ Route::post('FeedbackEdit/{id}', 'FeedbackController@update');
 Route::post('/AdvisoryUpdate/{id}','AdvisoryController@update');
 Route::post('/AdvisoryNew','AdvisoryController@store');
 
+//Review
+Route::get('/Review', 'FeedbackController@indexReview');
+
+Route::post('/ReviewStore', 'FeedbackController@review');

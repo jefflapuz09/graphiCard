@@ -19,5 +19,9 @@ class ServiceItem extends Model
         return $this->belongsTo('App\ServiceType','subcategoryId');
     }
 
+    public function RateItem(){
+        return $this->hasMany('App\RatingItem','itemId');
+    }
+
     
 }

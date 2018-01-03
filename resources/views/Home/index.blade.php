@@ -16,9 +16,12 @@
       background: url('{{ asset('img/Preloader_3.gif') }}') center no-repeat #fff;
     }
 
-    .titleload h1
-    {
-      margin-top:200px;
+     #titleload{
+      position: relative;
+      left:0;
+      right:0;
+      top: 100px;
+
     }
 </style>
 
@@ -27,9 +30,9 @@
 <link href="{{ asset('css/contact.css') }}" rel="stylesheet"> 
 
 <div class="se-pre-con">
-  <div class="titleload">
-      <h1 class="text-center animated tada" style="font-family: 'Montserrat', sans-serif; font-size:30pt; color:darkorange">Please wait, <span style="color:maroon;">loading</span><span style="color:black;">...</span></h1>
-  </div>
+  
+      <h1 id="titleload" class="text-center animated tada" style="font-family: 'Montserrat', sans-serif; font-size:30pt; color:darkorange">Please wait, <span style="color:maroon;">loading</span><span style="color:black;">...</span></h1>
+
 </div>
 
 @if(count($adv)!=0)
@@ -189,8 +192,15 @@
             <img class="img-responsive" style="max-width:100%; max-height:100%;" height="300px" src="{{ asset($post->image) }}" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4>{{ $post->ServiceType->name }}</h4>
-            <p class="text-muted">See More</p>
+            <h4>{{ $post->Item->name }}</h4>
+            @if(count($post->Item->RateItem)!=0)
+              @for ($i = 0; $i < $post->Item->RateItem[0]['rating']; $i++)
+              <span class="fa fa-star checked"></span>
+              @endfor
+            @else
+            <p class="text-muted">No ratings yet.</p>
+            @endif
+            
           </div>
         </div>
 
@@ -416,7 +426,7 @@
         $( document ).ready(function() {
           $('.select2').select2();
 
-          $( ".se-pre-con" ).delay(3000).fadeOut( "slow")
+          $( ".se-pre-con" ).delay(1000).fadeOut( "slow")
       });
     </script>  
     @stop

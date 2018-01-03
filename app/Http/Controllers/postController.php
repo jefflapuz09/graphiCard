@@ -65,7 +65,7 @@ class postController extends Controller
         $rules = [
             'categoryId' => 'required',
             'typeId' => 'required',
-            'itemId' => 'required',
+            'itemId' => 'required|unique:posts',
             'details' => 'required',
             'image' => 'nullable|mimes:jpeg,png,jpg,svg',
             'isFeatured' => 'nullable'
@@ -93,17 +93,17 @@ class postController extends Controller
             if($feat == null || $feat == '') {
                 $feat = 1;
             }
-            $checkFeatured = Post::with('ServiceCategory')
+            $checkFeatured = Post::with('ServiceType')
                 ->where('isActive',1)
                 ->where('isDraft', 1)
                 ->where('isFeatured', 0)
-                ->where('categoryId', $request->categoryId)
+                ->where('typeId', $request->typeId)
                 ->get();
 
               
             if(count($checkFeatured) >= 3 && $feat == 0)
             {
-            return Redirect::back()->withError('It seems there are already 3 featured published post on that certain category.');
+            return Redirect::back()->withError('It seems there are already 3 featured published post on that certain item.');
             }
             else
             {
@@ -189,7 +189,7 @@ class postController extends Controller
         $rules = [
             'categoryId' => 'required',
             'typeId' => 'required',
-            'itemId' => 'required',
+            'itemId' => 'required|unique:posts',
             'details' => 'required',
             'image' => 'nullable|mimes:jpeg,png,jpg,svg',
             'isFeatured' => 'nullable'
@@ -217,17 +217,17 @@ class postController extends Controller
             if($feat == null || $feat == '') {
                 $feat = 1;
             }
-            $checkFeatured = Post::with('ServiceCategory')
+            $checkFeatured = Post::with('ServiceType')
                 ->where('isActive',1)
                 ->where('isDraft', 1)
                 ->where('isFeatured', 0)
-                ->where('categoryId', $request->categoryId)
+                ->where('typeId', $request->typeId)
                 ->get();
 
               
             if(count($checkFeatured) >= 3 && $feat == 0)
             {
-            return Redirect::back()->withError('It seems there are already 3 featured published post on that certain category.');
+            return Redirect::back()->withError('It seems there are already 3 featured published post on that certain item.');
             }
             else
             {

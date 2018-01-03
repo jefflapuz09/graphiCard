@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Feedback;
+use App\RatingItem;
 use Redirect;
 
 class feedbackController extends Controller
@@ -24,6 +25,18 @@ class feedbackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function review(Request $request){
+        RatingItem::create($request->all());
+        return redirect('/');
+     }
+
+     public function indexReview()
+     {
+         $post = RatingItem::with('Item')->get();
+        return view('Reviews.index',compact('post'));
+     }
+
     public function create()
     {
         return view('Feedback.create');

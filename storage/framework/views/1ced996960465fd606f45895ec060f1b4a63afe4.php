@@ -1,3 +1,7 @@
+<?php $__env->startSection('styles'); ?>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('contents'); ?>
 <div class="container-fluid bg-light" style="margin-top:100px; padding:20px;">
   <ol class="breadcrumbs breadcrumb-arrow" width="100%">
@@ -71,19 +75,56 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title"><i class="fa fa-smile-o" aria-hidden="true"></i> Give us a Review</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+             <form action="<?php echo e(url('/ReviewStore')); ?>" method="post" enctype="multipart/form-data">
+
+                <?php echo e(csrf_field()); ?>
+
+                <input type="hidden" name="itemId" value="<?php echo e($post->Item->id); ?>">
+                <div class="form-group">
+                  <label for=""><b>Your Name</b></label>
+                  <input type="text" placeholder="Name" value="" class="form-control" name="name" id="name">
+                </div>
+                <div class="form-group">
+                  <label for=""><b>Your comments</b></label>
+                  <textarea class="form-control" rows="5" placeholder="Description" name="description" id="desc"></textarea>
+                </div>
+                <div class="form-group">
+                  <div data-role="rangeslider">
+                    <label for="price-max"><b>Rate us! ( 1-5 ) </b></label>
+                    <input type="range"  name="rating" id="price-max" value="3" min="1" max="5">
+                  </div>
+                </div>
+                <div class="pull-right">
+                  <button type="submit" class="btn btn-link" style="font-size:13pt; color:black; text-decoration:none; border:1px solid black;">Submit</button>
+                </div>
+              </form>
         </div>
       </div>
   
     </div>
   </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    var customers = [
+      'a','b','c','d'
+  ];    
+
+  $(document).ready(function(){
+    $('#fname').keyup(function(){
+      $('#fname').autocomplete({source: customers});
+    });
+  });
+
+  
+</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

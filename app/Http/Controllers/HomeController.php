@@ -52,21 +52,13 @@ class HomeController extends Controller
         $ban = Banner::all()->first();
         $feed = Feedback::where('isSelected',0)->where('isPublish',0)->where('isActive',1)->get();
         $adv =Advisory::where('isActive',1)->first();
-        //dd($ban);
+        // dd($postcat[0]->Post[0]->Item->RateItem[0]['name']);
         return view('Home.index', compact('post','model2','item','postcat','comp','ban','feed','adv'));
     }
 
     public function prodDescription($id)
     {
         $post = Post::with('ServiceCategory','ServiceType','Item','User')->where('id', $id)->first();
-        // $post = DB::table('posts as p')
-        //         ->join('service_categories as sc','sc.id','=','p.categoryId')
-        //         ->join('service_types as st','st.id','=','p.typeId')
-        //         ->select('p.*','st.name as type','sc.name as category')
-        //         ->where('p.id',$id)
-        //         ->first();
-        //dd($post);
-        //$cat = Post::with('ServiceCategory')->where('categoryId',$catId)->get(); ->where('categoryId',$catId)->get()
         return view('Home.prodDescription',compact('id','post'));
     }
 

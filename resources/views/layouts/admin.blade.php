@@ -21,10 +21,11 @@
   <!-- Page level plugin CSS-->
   <!-- <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet"> -->
   <!-- Custom styles for this template-->
+  @yield('styles')
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet">
   <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
   <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/jquery.dataTables.min') }}" rel="stylesheet">
+  <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
   
 </head>
 
@@ -51,8 +52,14 @@
         @if((Auth::user()->role)==1)
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <a class="nav-link" href="{{ url('/Feedback') }}">
-              <i class="fa fa-comments"></i>
+              <i class="fa fa-handshake-o"></i>
               <span class="nav-link-text">Feedback</span>
+            </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <a class="nav-link" href="{{ url('/Review') }}">
+              <i class="fa fa-comments"></i>
+              <span class="nav-link-text">Review</span>
             </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
@@ -82,12 +89,12 @@
                 <span class="nav-link-text">Post</span>
               </a>
         </li>
-         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="{{ url('/Utilities') }}">
-                  <i class="fa fa-cog"></i>
-                  <span class="nav-link-text">Utilities</span>
-                </a>
-          </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <a class="nav-link" href="{{ url('/Customer') }}">
+              <i class="fa fa-users"></i>
+              <span class="nav-link-text">Customer</span>
+            </a>
+        </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                   <a class="nav-link" href="{{ url('/User') }}">
                     <i class="fa fa-user"></i>
@@ -95,9 +102,9 @@
                   </a>
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-              <a class="nav-link" href="{{ url('/Customer') }}">
-                <i class="fa fa-users"></i>
-                <span class="nav-link-text">Customer</span>
+              <a class="nav-link" href="{{ url('/Utilities') }}">
+                <i class="fa fa-cog"></i>
+                <span class="nav-link-text">Utilities</span>
               </a>
           </li>
           @elseif((Auth::user()->role)==2)

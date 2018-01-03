@@ -1,21 +1,10 @@
 <?php $__env->startSection('style'); ?>
-        <style>
-        
-        .se-pre-con {
-          position: fixed;
-          left: 0px;
-          top: 0px;
-          width: 100%;
-          height: 100%;
-          z-index: 9999;
-          background: url('<?php echo e(asset('img/Preloader_3.gif')); ?>') center no-repeat #fff;
-        }
-    </style>
+       
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
 
-<div class="se-pre-con"></div>
+
 
     <div > 
         <h3>Post</h3>
@@ -109,8 +98,6 @@
               "scrollX": true,
               responsive: true
           } );
-
-          $( ".se-pre-con" ).delay(3000).fadeOut( "slow")
         } );
     </script>
 <?php $__env->stopSection(); ?>
