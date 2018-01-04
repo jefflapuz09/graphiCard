@@ -1,12 +1,19 @@
 @extends('layouts.admin')
 
+@section('styles')
+<link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+@stop
 
 @section('content')
-@if(session('error'))
-<div class="alert alert-danger">
-    {{session('error')}}
-</div>
- @endif
+<script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
+<script src="{{  asset('js/toastr.js')  }}"></script>
+    @if(session('error'))
+    <div class="alert alert-danger">
+        <script type="text/javascript">
+            toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+        </script>
+    </div>
+    @endif
 <div id="accordion" role="tablist">
     <div class="card" style="border-color:maroon;">
       <div class="card-header" style="background-color:maroon;" role="tab" id="headingOne">

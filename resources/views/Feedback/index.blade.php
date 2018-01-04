@@ -1,22 +1,26 @@
 @extends('layouts.admin')
 
 @section('styles')
-    
+<link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
 @stop
 
 @section('content')
+<script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
+<script src="{{  asset('js/toastr.js')  }}"></script>
     <div> 
         <h3>Customer Feedbacks</h3>
-            @if(session('success'))
-                <div class="alert alert-success">
-                    {{session('success')}}
-                </div>
-            @endif
-            @if(session('error'))
-            <div class="alert alert-danger">
-                {{session('error')}}
-            </div>
-             @endif
+        @if(session('success'))
+        <script type="text/javascript">
+            toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
+        </script>
+        @endif
+        @if(session('error'))
+        <div class="alert alert-danger">
+            <script type="text/javascript">
+                toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+            </script>
+        </div>
+        @endif
         <!-- <div class="pull-right" style="margin-bottom:15px;"> 
             <a href="{{ url('/FeedbackCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                 New Record

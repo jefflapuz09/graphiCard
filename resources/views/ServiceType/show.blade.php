@@ -1,5 +1,9 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 @extends('layouts.admin')
+
+@section('styles')
+<link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+@stop
 
 @section('content')
 

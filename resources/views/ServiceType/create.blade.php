@@ -1,21 +1,31 @@
 @extends('layouts.admin')
 
-@section('style')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet">
+@section('styles')
+<link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
 @stop
 
 
 @section('content')
-
+<script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
+<script src="{{  asset('js/toastr.js')  }}"></script>
     <div class="container-fluid">
             <div>
                 <h3>Service Subcategory</h3>
              </div>
              @if ($errors->any())
              <div class="alert alert-danger">
-                   <?php echo "<pre>".implode(",\n",$errors->all(':message'))."</pre>"; ?>
-             </div>
+                 <script type="text/javascript">
+                     toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong")
+                 </script>
+             </div>                
              @endif  
+             @if(session('error'))
+             <div class="alert alert-danger">
+                 <script type="text/javascript">
+                     toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+                 </script>
+             </div>
+             @endif 
     <div class="row">
     
     <div class="col-lg-6"> 

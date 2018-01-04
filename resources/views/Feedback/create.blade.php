@@ -1,21 +1,30 @@
 @extends('layouts.admin')
 
-@section('content')
+@section('styles')
+<link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+@stop
 
+@section('content')
+<script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
+<script src="{{  asset('js/toastr.js')  }}"></script>
     <div class="container-fluid">
     <div>
         <h3>Customer Feedback</h3>
     </div>
     @if ($errors->any())
     <div class="alert alert-danger">
-        {{ implode('', $errors->all(':message')) }}
+        <script type="text/javascript">
+            toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong")
+        </script>
     </div>                
-    @endif
+    @endif  
     @if(session('error'))
     <div class="alert alert-danger">
-        {{session('error')}}
+        <script type="text/javascript">
+            toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+        </script>
     </div>
-     @endif
+    @endif
     <div class="row">
     
     <div class="col-lg-6"> 

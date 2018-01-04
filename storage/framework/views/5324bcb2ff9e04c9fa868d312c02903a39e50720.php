@@ -5,18 +5,18 @@
 <?php $__env->startSection('content'); ?>
     <div> 
         <h3>Customer Feedbacks</h3>
-            <?php if(session('success')): ?>
-                <div class="alert alert-success">
-                    <?php echo e(session('success')); ?>
-
-                </div>
-            <?php endif; ?>
-            <?php if(session('error')): ?>
-            <div class="alert alert-danger">
-                <?php echo e(session('error')); ?>
-
-            </div>
-             <?php endif; ?>
+        <?php if(session('success')): ?>
+        <script type="text/javascript">
+            toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
+        </script>
+        <?php endif; ?>
+        <?php if(session('error')): ?>
+        <div class="alert alert-danger">
+            <script type="text/javascript">
+                toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+            </script>
+        </div>
+        <?php endif; ?>
         <!-- <div class="pull-right" style="margin-bottom:15px;"> 
             <a href="<?php echo e(url('/FeedbackCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                 New Record
