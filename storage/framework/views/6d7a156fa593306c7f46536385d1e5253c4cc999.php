@@ -1,25 +1,26 @@
-<?php $__env->startSection('style'); ?>
-       
+<?php $__env->startSection('styles'); ?>
+<link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-
+<script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
 
 
     <div > 
         <h3>Post</h3>
         <?php if(session('success')): ?>
-        <div class="alert alert-success">
-            <?php echo e(session('success')); ?>
-
-        </div>
+        <script type="text/javascript">
+            toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
+        </script>
         <?php endif; ?>
         <?php if(session('error')): ?>
         <div class="alert alert-danger">
-            <?php echo e(session('error')); ?>
-
+            <script type="text/javascript">
+                toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+            </script>
         </div>
-         <?php endif; ?>
+        <?php endif; ?>
         <div class="pull-right" style="margin-bottom:15px;"> 
             <a href="<?php echo e(url('/PostCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                 New Record

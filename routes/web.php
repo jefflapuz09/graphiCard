@@ -17,13 +17,21 @@
 
 Auth::routes();
 
+//website
 Route::get('/loginto', 'Auth\LoginController@index')->name('loginto');
-Route::get('/admin', 'adminController@index');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/logout', 'HomeController@getLogout');
 Route::get('/about', 'HomeController@aboutPage');
 Route::get('/prodDescription/{id}', 'HomeController@prodDescription');
 Route::get('/Testimonial','HomeController@testimonial');
+Route::get('/ServiceItem/{id}', 'HomeController@item');
+
+//error
+Route::get('/Restricted','Homecontroller@error');
+
+Route::group(['middleware' => 'App\Http\Middleware\adminMiddleware'], function () {
+    
+Route::get('/admin', 'adminController@index');
 
 //Service Category
 Route::get('/Category', 'categoryController@index');
@@ -91,7 +99,6 @@ Route::get('/InquiryView/{id}','InquiryController@show');
 Route::post('/InquiryUpdate/{id}','InquiryController@update');
 
 //ServiceItem
-Route::get('/ServiceItem/{id}', 'HomeController@item');
 Route::get('/Item','serviceItemController@index');
 Route::get('/ItemCreate','serviceItemController@create');
 Route::get('/ItemEdit/{id}','serviceItemController@edit');
@@ -129,3 +136,32 @@ Route::post('/AdvisoryNew','AdvisoryController@store');
 Route::get('/Review', 'FeedbackController@indexReview');
 
 Route::post('/ReviewStore', 'FeedbackController@review');
+});
+
+Route::group(['middleware' => 'App\Http\Middleware\contributorMiddleware'], function () {
+
+Route::get('/admin', 'adminController@index');
+
+//post
+Route::get('/Post','postController@index');
+Route::get('/PostCreate','postController@create');
+Route::get('/PostDraft/{id}','postController@publish');
+Route::get('/PostUnpub/{id}','postController@unpublish');
+Route::get('/PostEdit/{id}','postController@edit');
+Route::get('/PostDeactivate/{id}', 'postController@destroy');
+Route::get('/PostSoft','postController@soft');
+Route::get('/PostReactivate/{id}', 'postController@reactivate');
+Route::get('/PostShow/{id}', 'postController@show');
+Route::get('/PostType/{id}','postController@type');
+Route::get('/PostSub/{id}','postController@sub');
+
+Route::post('/PostStore', 'postController@store');
+Route::post('/PostUpdate/{id}', 'postController@update');
+
+//Inquiry
+Route::get('/InquiryRead','InquiryController@read');
+
+Route::post('/InquirySend','InquiryController@store');
+Route::get('/InquiryView/{id}','InquiryController@show');
+Route::post('/InquiryUpdate/{id}','InquiryController@update');
+});

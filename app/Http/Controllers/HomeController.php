@@ -74,6 +74,11 @@ class HomeController extends Controller
          return Redirect('/');
     }
 
+    public function error()
+    {
+        return view('errors.notauth');
+    }
+    
     public function item($id)
     {   
         

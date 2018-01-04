@@ -1,8 +1,10 @@
 <?php $__env->startSection('styles'); ?>
-    
+<link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
+<script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
     <div> 
         <h3>Customer Feedbacks</h3>
         <?php if(session('success')): ?>
