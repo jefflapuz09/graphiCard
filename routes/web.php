@@ -25,13 +25,15 @@ Route::get('/about', 'HomeController@aboutPage');
 Route::get('/prodDescription/{id}', 'HomeController@prodDescription');
 Route::get('/Testimonial','HomeController@testimonial');
 Route::get('/ServiceItem/{id}', 'HomeController@item');
+Route::get('/admin', 'adminController@index');
 
 //error
 Route::get('/Restricted','Homecontroller@error');
+Route::get('/RestrictedAuth','Homecontroller@error2');
 
 Route::group(['middleware' => 'App\Http\Middleware\adminMiddleware'], function () {
     
-Route::get('/admin', 'adminController@index');
+
 
 //Service Category
 Route::get('/Category', 'categoryController@index');
@@ -140,7 +142,7 @@ Route::post('/ReviewStore', 'FeedbackController@review');
 
 Route::group(['middleware' => 'App\Http\Middleware\contributorMiddleware'], function () {
 
-Route::get('/admin', 'adminController@index');
+
 
 //post
 Route::get('/Post','postController@index');

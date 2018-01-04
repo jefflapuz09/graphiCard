@@ -78,6 +78,11 @@ class HomeController extends Controller
     {
         return view('errors.notauth');
     }
+
+    public function error2()
+    {
+        return view('errors.notallowed');
+    }
     
     public function item($id)
     {   
