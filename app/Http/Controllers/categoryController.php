@@ -70,7 +70,13 @@ class categoryController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
+            try{
             ServiceCategory::create($request->all());
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                return Redirect::back()->withError($errMess);
+            }
             return redirect('/Category')->withSuccess('Successfully inserted into the database.');
         }
         
@@ -128,7 +134,13 @@ class categoryController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
+            try{
             ServiceCategory::find($id)->update($request->all());
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                return Redirect::back()->withError($errMess);
+            }
             return redirect('/Category')->withSuccess('Successfully Updated into the database.');
         }
     }

@@ -7,6 +7,7 @@ use App\ServiceItem;
 use App\ServiceType;
 use Redirect;
 use Validator;
+use DB;
 
 class serviceItemController extends Controller
 {
@@ -61,8 +62,13 @@ class serviceItemController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
-            
+            try{
             ServiceItem::create($request->all());
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                return Redirect::back()->withError($errMess);
+            }
             return redirect('/Item')->withSuccess('Successfully inserted into the database.');
         }
     }
@@ -121,8 +127,13 @@ class serviceItemController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
-            
+            try{
             ServiceItem::find($id)->update($request->all());
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                return Redirect::back()->withError($errMess);
+            }
             return redirect('/Item')->withSuccess('Successfully updated into the database.');
         }
     }

@@ -2,7 +2,11 @@
 
 
 @section('content')
-
+@if(session('error'))
+<div class="alert alert-danger">
+    {{session('error')}}
+</div>
+ @endif
 <div id="accordion" role="tablist">
     <div class="card" style="border-color:maroon;">
       <div class="card-header" style="background-color:maroon;" role="tab" id="headingOne">

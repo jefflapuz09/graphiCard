@@ -77,7 +77,13 @@ class serviceTypeController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
+            try{
             ServiceType::create($request->all());
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                return Redirect::back()->withError($errMess);
+            }
             return redirect('/ServiceType')->withSuccess('Successfully inserted into the database.');
         }
     }
@@ -139,7 +145,13 @@ class serviceTypeController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
+            try{
             ServiceType::find($id)->update($request->all());
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                return Redirect::back()->withError($errMess);
+            }
             return redirect('/ServiceType')->withSuccess('Successfully updated into the database.');
         }
     }

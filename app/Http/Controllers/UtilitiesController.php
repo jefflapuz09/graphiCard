@@ -7,6 +7,7 @@ use App\CompanyInfo;
 use App\Banner;
 use Validator;
 use Redirect;
+use DB;
 
 class UtilitiesController extends Controller
 {
@@ -43,6 +44,7 @@ class UtilitiesController extends Controller
         $chkBan = Banner::all();
         if(count($chkBan)!=0)
         {
+            try{
             $file = $request->file('banner1');
             $file2 = $request->file('banner2');
             $file3 = $request->file('banner3');
@@ -72,11 +74,16 @@ class UtilitiesController extends Controller
                 'banner2' => $pic2,
                 'banner3' => $pic3
             ]);
-            
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                return Redirect::back()->withError($errMess);
+            }
             return redirect('/Utilities')->withSuccess('Successfully updated into the database.');
         }
         else
         {
+            try{
             $file = $request->file('banner1');
             $file2 = $request->file('banner2');
             $file3 = $request->file('banner3');
@@ -107,6 +114,11 @@ class UtilitiesController extends Controller
                 'banner3' => $pic3
             ]);
             $post = $post->refresh();
+            }catch(\Illuminate\Database\QueryException $e){
+                    DB::rollBack();
+                    $errMess = $e->getMessage();
+                    return Redirect::back()->withError($errMess);
+                }
             return redirect('/Utilities')->withSuccess('Successfully inserted into the database.');
         }
     }

@@ -129,13 +129,18 @@ class HomeController extends Controller
             $pass = $request->password;
             if($cpass == $pass)
             {
-             
+                try{
                 User::create([
                     'name' => $request->name,
                     'email' => $request->email,
                     'password' => bcrypt($request->password),
                     'role' => ($request->role)
                 ]);
+                }catch(\Illuminate\Database\QueryException $e){
+                    DB::rollBack();
+                    $errMess = $e->getMessage();
+                    return Redirect::back()->withError($errMess);
+                }
                 return redirect('/User')->withSuccess('Successfully inserted into the database.');
             }
             else

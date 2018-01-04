@@ -15,6 +15,11 @@
             {{session('success')}}
         </div>
         @endif
+        @if(session('error'))
+        <div class="alert alert-danger">
+            {{session('error')}}
+        </div>
+         @endif
         <div class="pull-right" style="margin-bottom:15px;"> 
             <a href="{{ url('/PostCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                 New Record

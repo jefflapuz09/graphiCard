@@ -83,7 +83,13 @@ class customerController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
+            try{
             Customer::create($request->all());
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                return Redirect::back()->withError($errMess);
+            }
             return redirect('/Customer')->withSuccess('Successfully Updated into the database.');
         }
     }
@@ -155,7 +161,13 @@ class customerController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
+            try{
             Customer::find($id)->update($request->all());
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                return Redirect::back()->withError($errMess);
+            }
             return redirect('/Customer')->withSuccess('Successfully Updated into the database.');
         }       
       

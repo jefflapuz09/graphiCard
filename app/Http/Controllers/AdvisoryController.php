@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use App\Advisory;
+use DB;
+
 
 class AdvisoryController extends Controller
 {
@@ -37,7 +39,13 @@ class AdvisoryController extends Controller
      */
     public function store(Request $request)
     {
+        try{
         Advisory::create($request->all());
+        }catch(\Illuminate\Database\QueryException $e){
+            DB::rollBack();
+            $errMess = $e->getMessage();
+            return Redirect::back()->withError($errMess);
+        }
         return Redirect::to(URL::previous())->withSuccess('Your advisory has been posted');
     }
 

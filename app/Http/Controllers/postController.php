@@ -106,7 +106,8 @@ class postController extends Controller
             return Redirect::back()->withError('It seems there are already 3 featured published post on that certain item.');
             }
             else
-            {
+            {   
+                try{
                 $file = $request->file('image');
                 $pic = "";
                 if($file == '' || $file == null){
@@ -130,6 +131,11 @@ class postController extends Controller
                     'isFeatured' => $feat
                 ]);
                 $post = $post->refresh();
+                }catch(\Illuminate\Database\QueryException $e){
+                    DB::rollBack();
+                    $errMess = $e->getMessage();
+                    return Redirect::back()->withError($errMess);
+                }
                 return redirect('/Post')->withSuccess('Successfully inserted into the database.');
             }
         }
@@ -231,29 +237,35 @@ class postController extends Controller
             }
             else
             {
-            $file = $request->file('image');
-            $pic = "";
-            if($file == '' || $file == null){
-                $nullpic = Post::find($id);
-                $pic = $nullpic->image;
-               
-            }else{
-                $date = date("Ymdhis");
-                $extension = $request->file('image')->getClientOriginalExtension();
-                $pic = "img/".$date.'.'.$extension;
-                $request->file('image')->move("img",$pic);    
-                // $request->file('photo')->move(public_path("/uploads"), $newfilename);
-            }
-            $post = Post::find($id)->update([
-                'categoryId' => ($request->categoryId),
-                'typeId' => ($request->typeId),
-                'itemId' => ($request->itemId),
-                'userId' => ($request->userId),
-                'details' => ($request->details),
-                'image' => $pic,
-                'isFeatured' => $feat
-            ]);
-            return redirect('/Post')->withSuccess('Successfully updated into the database.');
+                try{
+                $file = $request->file('image');
+                $pic = "";
+                if($file == '' || $file == null){
+                    $nullpic = Post::find($id);
+                    $pic = $nullpic->image;
+                
+                }else{
+                    $date = date("Ymdhis");
+                    $extension = $request->file('image')->getClientOriginalExtension();
+                    $pic = "img/".$date.'.'.$extension;
+                    $request->file('image')->move("img",$pic);    
+                    // $request->file('photo')->move(public_path("/uploads"), $newfilename);
+                }
+                $post = Post::find($id)->update([
+                    'categoryId' => ($request->categoryId),
+                    'typeId' => ($request->typeId),
+                    'itemId' => ($request->itemId),
+                    'userId' => ($request->userId),
+                    'details' => ($request->details),
+                    'image' => $pic,
+                    'isFeatured' => $feat
+                ]);
+                }catch(\Illuminate\Database\QueryException $e){
+                    DB::rollBack();
+                    $errMess = $e->getMessage();
+                    return Redirect::back()->withError($errMess);
+                }
+                return redirect('/Post')->withSuccess('Successfully updated into the database.');
             }
         }
        

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Feedback;
 use App\RatingItem;
 use Redirect;
+use DB;
 
 class feedbackController extends Controller
 {
@@ -76,6 +77,7 @@ class feedbackController extends Controller
         }
         else
         {
+            try{
             $file = $request->file('image');
             $pic = "";
             if($file == '' || $file == null){
@@ -87,7 +89,6 @@ class feedbackController extends Controller
                 $request->file('image')->move("img",$pic);    
                 // $request->file('photo')->move(public_path("/uploads"), $newfilename);
             }
-            
             $post = Feedback::create([
                 'name' => ($request->name),
                 'image' => $pic,
@@ -96,6 +97,11 @@ class feedbackController extends Controller
                 'isSelected' => $sel
             ]);
             $post = $post->refresh();
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                return Redirect::back()->withErrors($errMess);
+            }
             return redirect('/Testimonial')->withSuccess('Your feedback has been received. Thank you');
         }
     }
@@ -147,6 +153,7 @@ class feedbackController extends Controller
         }
         else 
         {
+            try{
             $file = $request->file('image');
             $pic = "";
             if($file == '' || $file == null){
@@ -167,7 +174,11 @@ class feedbackController extends Controller
                 'rating' => ($request->rating),
                 'isSelected' => $sel
             ]);
-        
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                return Redirect::back()->withErrors($errMess);
+            }
             return redirect('/Feedback')->withSuccess('Successfully inserted into the database.');
         }
     }

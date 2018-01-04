@@ -56,10 +56,15 @@ class InquiryController extends Controller
         //     'subject' => $request->subject,
         //     'body' => $request->message
         // );
-
+        try{
        $inq = Inquiries::create($request->all());
 
         \Mail::to($inq)->send(new InquirySent);
+        }catch(\Illuminate\Database\QueryException $e){
+            DB::rollBack();
+            $errMess = $e->getMessage();
+            return Redirect::back()->withError($errMess);
+        }
         //\Mail::to($inq)->send(new InquirySent($inq));
 
        // Mail::send('layouts.email', $data, function($message) use ($data){

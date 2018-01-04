@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+
+<link href="{{ asset('css/bars-1to10.css') }}" rel="stylesheet"> 
+
 @section('contents')
 <!-- <style>
 #formModal {
@@ -36,21 +39,16 @@ outline: none;
                   <textarea class="form-control" rows="5" placeholder="Description" name="description" id="desc"></textarea>
                 </div>
                 <div class="form-group">
-                  <div data-role="rangeslider">
-                    <label for="price-max"><b>Rate us! ( 1-5 ) </b></label>
-                    <input type="range"  name="rating" id="price-max" value="3" min="1" max="5">
-                  </div>
+                    <label for=""><b>Rating: (MIN:1|MAX:5)</b></label>
+                    <select id="example" name="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
                 </div>
-                <!-- <div class="pull-left">
-                  <div class="form-group">
-                    <div align="center" class="checkbox">
-                      <label>
-                        <input type="checkbox" name="isSelected" value="0">
-                        <b>Selected Post</b>
-                      </label>
-                    </div>
-                  </div>
-                </div> -->
+                
                 <div class="pull-right">
                   <button type="submit" class="btn btn-link" style="font-size:13pt; color:black; text-decoration:none; border:1px solid black;">Submit</button>
                 </div>
@@ -219,6 +217,17 @@ outline: none;
 
 </div>
 
+@endsection
+
+@section('script')
+<script src="{{ asset('js/jquery.barrating.min.js') }}"></script>
+<script>
+    $( document ).ready(function() {
+      $('#example').barrating({
+        theme: 'bars-1to10'
+      });
+  });
+</script>  
 <script>
     function readURL(input) {
       if (input.files && input.files[0]) {
@@ -232,5 +241,4 @@ outline: none;
       }
       }
 </script>
-
-@endsection
+@stop

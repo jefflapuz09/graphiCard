@@ -26,7 +26,7 @@
 </style>
 
 @section('contents')
-
+<link href="{{ asset('css/fontawesome-stars.css') }}" rel="stylesheet"> 
 <link href="{{ asset('css/contact.css') }}" rel="stylesheet"> 
 
 <div class="se-pre-con">
@@ -203,10 +203,16 @@
                   }
                   $ave = $sum/$count;
               ?>
-              @for($y=0;$y<$ave;$y++)
-                <span class="fa fa-star checked"></span>
-              @endfor
-            
+
+              <?php $newave = round($ave);
+              ?>
+              <select id="example" disabled>
+                <option value="1" @if(1 == $newave) selected = "selected" @else "" @endif>1</option>
+                <option value="2" @if(2 == $newave) selected = "selected" @else "" @endif>2</option>
+                <option value="3" @if(3 == $newave) selected = "selected" @else "" @endif>3</option>
+                <option value="4" @if(4 == $newave) selected = "selected" @else "" @endif>4</option>
+                <option value="5" @if(5 == $newave) selected = "selected" @else "" @endif>5</option>
+              </select>
             @else
             <p class="text-muted">No ratings yet.</p>
             @endif
@@ -432,11 +438,23 @@
     @endsection
 
     @section('script')
+    
+    <script src="{{ asset('js/jquery.barrating.min.js') }}"></script>
     <script>
         $( document ).ready(function() {
           $('.select2').select2();
 
-          $( ".se-pre-con" ).delay(2000).fadeOut("slow")
+          $( ".se-pre-con" ).delay().fadeOut("slow");
+          $('#example').barrating({
+            
+            theme: 'fontawesome-stars',
+            readonly: true
+          });
+          
+          
+          
+
       });
     </script>  
+
     @stop

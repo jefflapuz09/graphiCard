@@ -24,7 +24,7 @@
 </style>
 
 <?php $__env->startSection('contents'); ?>
-
+<link href="<?php echo e(asset('css/fontawesome-stars.css')); ?>" rel="stylesheet"> 
 <link href="<?php echo e(asset('css/contact.css')); ?>" rel="stylesheet"> 
 
 <div class="se-pre-con">
@@ -197,10 +197,16 @@
                   }
                   $ave = $sum/$count;
               ?>
-              <?php for($y=0;$y<$ave;$y++): ?>
-                <span class="fa fa-star checked"></span>
-              <?php endfor; ?>
-            
+
+              <?php $newave = round($ave);
+              ?>
+              <select id="example" disabled>
+                <option value="1" <?php if(1 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>1</option>
+                <option value="2" <?php if(2 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>2</option>
+                <option value="3" <?php if(3 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>3</option>
+                <option value="4" <?php if(4 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>4</option>
+                <option value="5" <?php if(5 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>5</option>
+              </select>
             <?php else: ?>
             <p class="text-muted">No ratings yet.</p>
             <?php endif; ?>
@@ -428,13 +434,25 @@
     <?php $__env->stopSection(); ?>
 
     <?php $__env->startSection('script'); ?>
+    
+    <script src="<?php echo e(asset('js/jquery.barrating.min.js')); ?>"></script>
     <script>
         $( document ).ready(function() {
           $('.select2').select2();
 
-          $( ".se-pre-con" ).delay(2000).fadeOut("slow")
+          $( ".se-pre-con" ).delay().fadeOut("slow");
+          $('#example').barrating({
+            
+            theme: 'fontawesome-stars',
+            readonly: true
+          });
+          
+          
+          
+
       });
     </script>  
+
     <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
