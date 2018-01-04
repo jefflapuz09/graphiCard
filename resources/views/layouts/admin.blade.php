@@ -14,16 +14,17 @@
   <title>Admin</title>
   @endif
   <!-- Bootstrap core CSS-->
-  
+  @yield('styles')
   <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
   <!-- Page level plugin CSS-->
   <!-- <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet"> -->
   <!-- Custom styles for this template-->
-  @yield('styles')
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet">
-  <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+
+  <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
   <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
   
@@ -178,17 +179,21 @@
       </div>
     </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('vendor/bootstrap/js/jquery.dataTables.min') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/select2.min.js') }}"></script>
     <script src="{{ asset('js/sb-admin.min.js') }}"></script>
+    <script src="{{ asset('js/toastr.js') }}"></script>
      <script>
         $(document).ready(function() {
           $('#example').DataTable( {
-              "scrollX": true
+              "scrollX": true,
+              responsive: true
           } );
+
+          $('.select2').select2();
+          
         } );
 
     </script>

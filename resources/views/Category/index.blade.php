@@ -1,16 +1,24 @@
 @extends('layouts.admin')
 
+@section('styles')
+<link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+@stop
+
 @section('content')
+<script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
+<script src="{{  asset('js/toastr.js')  }}"></script>
     <div> 
         <h3>Service Category</h3>
             @if(session('success'))
-                <div class="alert alert-success">
-                    {{session('success')}}
-                </div>
+                <script type="text/javascript">
+                    toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
+                </script>
             @endif
             @if(session('error'))
             <div class="alert alert-danger">
-                {{session('error')}}
+                <script type="text/javascript">
+                    toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+                </script>
             </div>
              @endif
         <div class="pull-right" style="margin-bottom:15px;"> 
@@ -55,16 +63,11 @@
     </div>
 
 
-<script>
+@endsection
+
+@section('script')
+    <script>
         
-
-        $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true,
-              responsive: true
-          } );
-        } );
-
         function updateForm(){
             var x = confirm("Are you sure you want to alter this record?");
             if (x)
@@ -82,7 +85,5 @@
          }
 
     </script>
-@endsection
+@stop
 
-
-   

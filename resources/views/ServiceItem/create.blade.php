@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
-@section('style')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet">
+@section('styles')
+    
 @stop
 
 @section('content')
@@ -25,7 +25,7 @@
             
             <div class="form-group">
             <label for="sel2">Service Subcategory</label>
-            <select class="sel2 form-control" required id="sel2" name="subcategoryId">
+            <select class="select2 form-control" required id="sel2" name="subcategoryId">
                 <option value="0">Please Select Subcategory</option>
                 @foreach($subcat as $posts)
                    
@@ -53,11 +53,5 @@
 @endsection
 @section('script')
 
-        <script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
-        <script>
-        $( document ).ready(function() {
-            $('#sel2').select2();
-        });
-        </script>
+
 @stop

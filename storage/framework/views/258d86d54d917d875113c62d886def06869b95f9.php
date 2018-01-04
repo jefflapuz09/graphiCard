@@ -6,6 +6,13 @@
 
     </div>
     <?php endif; ?>
+
+    <?php if(session('error')): ?>
+    <div class="alert alert-danger">
+        <?php echo e(session('error')); ?>
+
+    </div>
+     <?php endif; ?>
 </div>
 
 <div class="row">
@@ -73,20 +80,12 @@
 
     </div>
 </div>
-<script>
 
 
-    $(document).ready(function() {
-      $('#example').DataTable( {
-          "scrollX": true
-      } );
 
+<?php $__env->stopSection(); ?>
 
-  } );
-
-</script>
-
-
+<?php $__env->startSection('script'); ?>
 <script src="<?php echo e(url('vendor/tinymce/js/tinymce/tinymce.min.js')); ?>"></script>
 <script>
 

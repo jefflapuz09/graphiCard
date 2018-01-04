@@ -78,20 +78,12 @@
 
     </div>
 </div>
-<script>
 
 
-    $(document).ready(function() {
-      $('#example').DataTable( {
-          "scrollX": true
-      } );
 
+@endsection
 
-  } );
-
-</script>
-
-
+@section('script')
 <script src="{{ url('vendor/tinymce/js/tinymce/tinymce.min.js') }}"></script>
 <script>
 
@@ -193,6 +185,6 @@
         }
     }
 </script>
-@endsection
+@stop
 
 

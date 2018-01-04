@@ -1,6 +1,8 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
 @extends('layouts.admin')
+
+@section('styles')
+    
+@stop
 
 @section('content')
 
@@ -24,7 +26,7 @@
             <div class="form-group">
             <label for="sel2">Service Category</label>
 
-            <select class="form-control" required id="sel" name="categoryId">
+            <select class="select2 form-control" required id="sel" name="categoryId">
                 <option value="" disabled>Select Service Type</option>
                 @foreach($post as $posts)
                     
@@ -59,3 +61,7 @@
 
 
 @endsection
+
+@section('script')
+    
+@stop

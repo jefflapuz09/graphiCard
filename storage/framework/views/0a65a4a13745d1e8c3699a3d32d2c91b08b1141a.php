@@ -1,6 +1,6 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-
+<?php $__env->startSection('styles'); ?>
+    
+<?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
 
@@ -25,7 +25,7 @@
             <div class="form-group">
             <label for="sel2">Service Category</label>
 
-            <select class="form-control" required id="sel" name="categoryId">
+            <select class="select2 form-control" required id="sel" name="categoryId">
                 <option value="" disabled>Select Service Type</option>
                 <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     
@@ -59,5 +59,9 @@
 
 
 
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+    
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -95,18 +95,12 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/PostSoft') }}';" id="showDeactivated"> Show deactivated records</label>
     </div>
-    
-<script>
-        
-        
-        $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true,
-              responsive: true
-          } );
-        } );
-    </script>
+
+
 @endsection
 
+@section('script')
+    
+@stop
 
    

@@ -13,11 +13,7 @@
                 {{session('error')}}
             </div>
              @endif
-        <!-- <div class="pull-right" style="margin-bottom:15px;"> 
-            <a href="{{ url('/FeedbackCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
-                New Record
-            </a>
-        </div> -->
+
     </div>
     
      <table id="example" class="display" cellspacing="0" width="100%">
@@ -47,20 +43,12 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/FeedbackSoft') }}';" id="showDeactivated"> Show deactivated records</label>
     </div>
-<script>
-        
 
-        $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true,
-              responsive: true
-          } );
-
-          
-        } );
-
-    </script>
 @endsection
+
+@section('script')
+    
+@stop
 
 
    

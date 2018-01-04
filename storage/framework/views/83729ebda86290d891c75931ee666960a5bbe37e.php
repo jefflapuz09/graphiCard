@@ -1,5 +1,10 @@
 <?php $__env->startSection('content'); ?>
+<?php if(session('error')): ?>
+<div class="alert alert-danger">
+    <?php echo e(session('error')); ?>
 
+</div>
+ <?php endif; ?>
 <div id="accordion" role="tablist">
     <div class="card" style="border-color:maroon;">
       <div class="card-header" style="background-color:maroon;" role="tab" id="headingOne">

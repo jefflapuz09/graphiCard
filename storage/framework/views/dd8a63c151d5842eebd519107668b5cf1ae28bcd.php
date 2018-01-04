@@ -7,6 +7,12 @@
 
         </div>
         <?php endif; ?>
+        <?php if(session('error')): ?>
+        <div class="alert alert-danger">
+            <?php echo e(session('error')); ?>
+
+        </div>
+         <?php endif; ?>
         <div class="pull-right" style="margin-bottom:15px;"> 
             <a href="<?php echo e(url('/CustomerCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                 New Record
@@ -58,16 +64,12 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/CustomerSoft')); ?>';" id="showDeactivated"> Show deactivated records</label>
     </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
 <script>
         
-
-        $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true,
-              responsive: true
-          } );
-        } );
-
         function updateForm(){
             var x = confirm("Are you sure you want to alter this record?");
             if (x)

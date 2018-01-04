@@ -46,18 +46,11 @@
         </tbody>
     </table>
    
-<script>
-        
 
-        $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true
-          } );
+<?php $__env->stopSection(); ?>
 
-          
-        } );
-
-    </script>
+<?php $__env->startSection('script'); ?>
+    
 <?php $__env->stopSection(); ?>
 
 

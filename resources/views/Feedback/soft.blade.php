@@ -68,19 +68,11 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/Feedback') }}';" id="showDeactivated"> Show records</label>
     </div>
-<script>
-        
 
-        $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true
-          } );
-
-          
-        } );
-
-    </script>
 @endsection
+@section('script')
+    
+@stop
 
 
    

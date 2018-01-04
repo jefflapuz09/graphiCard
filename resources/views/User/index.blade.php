@@ -46,19 +46,12 @@
         </tbody>
     </table>
    
-<script>
-        
 
-        $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true
-          } );
-
-          
-        } );
-
-    </script>
 @endsection
+
+@section('script')
+    
+@stop
 
 
    

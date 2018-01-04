@@ -40,15 +40,12 @@
     </div>
 
    
+
+@endsection
+
+@section('script')
 <script>
         
-
-        $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true
-          } );
-        } );
-
         function reacForm(){
             var x = confirm("Are you sure you want to reactivate this record?");
             if (x)
@@ -59,7 +56,7 @@
 
 
     </script>
-@endsection
+@stop
 
 
    

@@ -48,15 +48,13 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/Item')); ?>';" id="showDeactivated"> Show records</label>
     </div>
+
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
 <script>
         
-
-        $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true
-          } );
-        } );
-
         function reacForm(){
             var x = confirm("Are you sure you want to reactivate this record?");
             if (x)

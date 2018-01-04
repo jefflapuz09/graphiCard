@@ -1,3 +1,7 @@
+<?php $__env->startSection('styles'); ?>
+    
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
     <div> 
         <h3>Customer Feedbacks</h3>
@@ -86,19 +90,10 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/FeedbackSoft')); ?>';" id="showDeactivated"> Show deactivated records</label>
     </div>
-<script>
-        
 
-        $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true,
-              responsive: true
-          } );
-
-          
-        } );
-
-    </script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+    
 <?php $__env->stopSection(); ?>
 
 

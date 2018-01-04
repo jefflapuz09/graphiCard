@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('styles')
+    
+@stop
+
 @section('content')
     <div> 
         <h3>Customer Feedbacks</h3>
@@ -86,20 +90,11 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/FeedbackSoft') }}';" id="showDeactivated"> Show deactivated records</label>
     </div>
-<script>
-        
 
-        $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true,
-              responsive: true
-          } );
-
-          
-        } );
-
-    </script>
 @endsection
+@section('script')
+    
+@stop
 
 
    

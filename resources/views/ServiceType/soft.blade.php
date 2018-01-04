@@ -39,6 +39,10 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/ServiceType') }}';" id="showDeactivated"> Show records</label>
     </div>
+
+@endsection
+
+@section('script')
 <script>
         
 
@@ -58,7 +62,7 @@
  
 
     </script>
-@endsection
+@stop
 
 
    

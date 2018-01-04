@@ -51,33 +51,29 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/ItemSoft')); ?>';" id="showDeactivated"> Show deactivated records</label>
     </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
 <script>
         
-
-        $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true,
-              responsive: true
-          } );
-        } );
-
-        function updateForm(){
-            var x = confirm("Are you sure you want to alter this record?");
-            if (x)
-              return true;
-            else
-              return false;
-         }
-
-         function deleteForm(){
-            var x = confirm("Are you sure you want to deactivate this record? All items included in this record will also be deactivated.");
-            if (x)
-              return true;
-            else
-              return false;
-         }
-
-    </script>
+                function updateForm(){
+                    var x = confirm("Are you sure you want to alter this record?");
+                    if (x)
+                      return true;
+                    else
+                      return false;
+                 }
+        
+                 function deleteForm(){
+                    var x = confirm("Are you sure you want to deactivate this record? All items included in this record will also be deactivated.");
+                    if (x)
+                      return true;
+                    else
+                      return false;
+                 }
+        
+            </script>
 <?php $__env->stopSection(); ?>
 
 

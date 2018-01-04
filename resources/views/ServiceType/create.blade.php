@@ -27,7 +27,7 @@
             
             <div class="form-group">
             <label for="sel2">Service Category</label>
-            <select  class="form-control" required id="sel2" name="categoryId">
+            <select  class="select2 form-control" required id="sel2" name="categoryId">
                     <option value="0" disabled>Please select service type</option>
                 @foreach($post as $posts)
                    
@@ -55,11 +55,4 @@
 
 @section('script')
 
-        <script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
-        <script>
-        $( document ).ready(function() {
-            $('#sel2').select2();
-        });
-        </script>
 @stop

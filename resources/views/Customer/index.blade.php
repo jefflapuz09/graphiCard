@@ -64,16 +64,12 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/CustomerSoft') }}';" id="showDeactivated"> Show deactivated records</label>
     </div>
+
+@endsection
+
+@section('script')
 <script>
         
-
-        $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true,
-              responsive: true
-          } );
-        } );
-
         function updateForm(){
             var x = confirm("Are you sure you want to alter this record?");
             if (x)
@@ -91,7 +87,7 @@
          }
 
     </script>
-@endsection
+@stop
 
 
    
