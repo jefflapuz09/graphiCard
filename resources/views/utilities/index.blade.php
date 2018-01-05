@@ -8,11 +8,9 @@
 <script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
 <script src="{{  asset('js/toastr.js')  }}"></script>
     @if(session('error'))
-    <div class="alert alert-danger">
         <script type="text/javascript">
             toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
         </script>
-    </div>
     @endif
 <div id="accordion" role="tablist">
     <div class="card" style="border-color:maroon;">

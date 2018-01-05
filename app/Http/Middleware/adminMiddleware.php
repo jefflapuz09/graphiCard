@@ -14,18 +14,17 @@ class adminMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $guard = null)
     {
-        if(Auth::check())
-        {
-            if($request->user()->role == 1) {
-                return $next($request);
+        if (Auth::guard($guard)->check()) {
+
+            if($request->user()->role == 2) {
+                return redirect('/admin');
             }
-            return redirect('/admin');
-        }
-        else
-        {
-            return redirect('/Restricted');
+           
+                return $next($request);
+           
+            
         }
 
         if(Auth::guest())

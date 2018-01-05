@@ -26,6 +26,7 @@ class CreateCustomersTable extends Migration
             $table->string('city', 50);
             $table->boolean('gender');
             $table->boolean('isActive')->default(1);
+            $table->boolean('isFeatured')->default(0);
             $table->unique(['firstName', 'middleName','lastName']);
             $table->timestamps();
         });

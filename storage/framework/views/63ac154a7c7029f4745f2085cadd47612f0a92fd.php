@@ -13,11 +13,9 @@
         </script>
         <?php endif; ?>
         <?php if(session('error')): ?>
-        <div class="alert alert-danger">
             <script type="text/javascript">
                 toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
             </script>
-        </div>
         <?php endif; ?>
 
     </div>

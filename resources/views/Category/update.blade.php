@@ -13,11 +13,9 @@
                 <h3>Service Category</h3>
                 </div>
         @if ($errors->any())
-        <div class="alert alert-danger">
             <script type="text/javascript">
                 toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong")
-            </script>
-        </div>                
+            </script>              
         @endif
     <div class="row">
     

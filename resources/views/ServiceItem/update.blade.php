@@ -12,18 +12,14 @@
                 <h3>Service Item</h3>
              </div>
              @if ($errors->any())
-             <div class="alert alert-danger">
                  <script type="text/javascript">
                      toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong")
-                 </script>
-             </div>                
+                 </script>           
              @endif  
              @if(session('error'))
-             <div class="alert alert-danger">
                  <script type="text/javascript">
                      toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
                  </script>
-             </div>
              @endif 
     <div class="row">
     

@@ -15,11 +15,9 @@
         </script>
         <?php endif; ?>
         <?php if(session('error')): ?>
-        <div class="alert alert-danger">
             <script type="text/javascript">
                 toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
             </script>
-        </div>
         <?php endif; ?>
         <div class="pull-right" style="margin-bottom:15px;"> 
             <a href="<?php echo e(url('/PostCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">

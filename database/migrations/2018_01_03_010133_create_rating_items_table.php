@@ -14,8 +14,10 @@ class CreateRatingItemsTable extends Migration
     public function up()
     {
         Schema::create('rating_items', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name');
+            $table->integer('customerId')->unsigned();	
+            $table->foreign('customerId')->references('id')->on('customers');
             $table->integer('itemId')->unsigned();	
             $table->foreign('itemId')->references('id')->on('service_items');
             $table->integer('rating');

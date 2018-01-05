@@ -1,10 +1,15 @@
-<?php $__env->startSection('content'); ?>
-<?php if(session('error')): ?>
-<div class="alert alert-danger">
-    <?php echo e(session('error')); ?>
+<?php $__env->startSection('styles'); ?>
+<link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
+<?php $__env->stopSection(); ?>
 
-</div>
- <?php endif; ?>
+<?php $__env->startSection('content'); ?>
+<script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
+    <?php if(session('error')): ?>
+        <script type="text/javascript">
+            toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+        </script>
+    <?php endif; ?>
 <div id="accordion" role="tablist">
     <div class="card" style="border-color:maroon;">
       <div class="card-header" style="background-color:maroon;" role="tab" id="headingOne">

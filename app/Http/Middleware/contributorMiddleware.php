@@ -15,19 +15,19 @@ class contributorMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $guard = null)
     {
-        if(Auth::check())
-        {
-            if($request->user()->role == 2) {
+      
+            if($request->user()->role == 1) {
+                //return redirect('/admin');
                 return $next($request);
             }
-            return redirect('/admin');
-        }
-        else
-        {
-            return redirect('/Restricted');
-        }
+            else
+            {
+                return $next($request);
+            }
+            
+ 
 
         if(Auth::guest())
         {

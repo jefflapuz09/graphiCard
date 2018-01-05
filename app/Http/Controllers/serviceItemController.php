@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ServiceItem;
 use App\ServiceType;
+use App\Post;
 use Redirect;
 use Validator;
 use DB;
@@ -146,8 +147,17 @@ class serviceItemController extends Controller
      */
     public function destroy($id)
     {
+        $checkPost = Post::where('itemId',$id)->get();
+        if(count($checkPost) > 0)
+        {
+            return redirect('/ServiceType')->withError('It seems that the record is still being used in other items. Deactivation failed.');
+        }
+        else
+        {
             ServiceItem::find($id)->update(['isActive' => 0]);
             return redirect('/Item');
+        }
+            
     }
 
     public function soft()
