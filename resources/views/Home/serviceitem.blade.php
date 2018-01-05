@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('style')
+    
+@stop
+
 @section('contents')
 
 
@@ -33,7 +37,29 @@
                                 </a>
                                 <div class="portfolio-caption">
                                     <h4>{{ $item->item->name }}</h4>
-                                    <p class="text-muted">See More</p>
+                                    @if(count($item->item->RateItem)!=0)
+                                    <?php
+                                        $count = count($item->item->RateItem);
+                                        $sum = 0;
+                                        foreach($item->item->RateItem as $r)
+                                        {
+                                          $sum += $r->rating;
+                                        }
+                                        $ave = $sum/$count;
+                                    ?>
+                      
+                                    <?php $newave = round($ave);
+                                    ?>
+                                    <select id="example" disabled>
+                                      <option value="1" @if(1 == $newave) selected = "selected" @else "" @endif>1</option>
+                                      <option value="2" @if(2 == $newave) selected = "selected" @else "" @endif>2</option>
+                                      <option value="3" @if(3 == $newave) selected = "selected" @else "" @endif>3</option>
+                                      <option value="4" @if(4 == $newave) selected = "selected" @else "" @endif>4</option>
+                                      <option value="5" @if(5 == $newave) selected = "selected" @else "" @endif>5</option>
+                                    </select>
+                                  @else
+                                  <p class="text-muted">No ratings yet.</p>
+                                  @endif
                                 </div>
                                 </div>
                    
@@ -69,3 +95,14 @@
 
     
 @endsection
+
+@section('script')
+    <script>
+        $('#example').barrating({
+          
+          theme: 'fontawesome-stars',
+          readonly: true
+        });
+        
+    </script>
+@stop

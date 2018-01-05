@@ -102,9 +102,15 @@ outline: none;
           <h4 class="card-title">{{$feedback->name}}</h4>
           <p class="card-text">{{$feedback->description}}</p>
           <span class="social-box">
-            @for($i = 0; $i < $feedback->rating; $i++)
-            <span class="fa fa-star checked"></span>
-            @endfor            
+            <?php $round = round($feedback->rating); ?>
+
+              <select id="" class="starrating" disabled>
+                <option value="1" @if($round == 1) selected = "selected" @else "" @endif>1</option>
+                <option value="2" @if($round == 2) selected = "selected" @else "" @endif>2</option>
+                <option value="3" @if($round == 3) selected = "selected" @else "" @endif>3</option>
+                <option value="4" @if($round == 4) selected = "selected" @else "" @endif>4</option>
+                <option value="5" @if($round == 5) selected = "selected" @else "" @endif>5</option>
+              </select>             
           </span>
         </div>
       </div>
@@ -127,11 +133,13 @@ outline: none;
           <p class="card-text">Testimonial</p>
           <span class="social-box">
 
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
+            <select id="" class="starrating meron" disabled>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
           </span>
         </div>
@@ -151,11 +159,13 @@ outline: none;
           <p class="card-text">Testimonial</p>
           <span class="social-box">
 
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
+            <select id="" class="starrating meron" disabled>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
           </span>
         </div>
@@ -175,11 +185,13 @@ outline: none;
           <p class="card-text">Testimonial</p>
           <span class="social-box">
 
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
+            <select id="" class="starrating meron" disabled>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
           </span>
         </div>
@@ -226,6 +238,13 @@ outline: none;
       $('#example').barrating({
         theme: 'bars-1to10'
       });
+      $('.starrating').barrating({
+        
+        theme: 'fontawesome-stars',
+        readonly: true
+      });
+
+      $('.meron').barrating('set', 5);
   });
 </script>  
 <script>

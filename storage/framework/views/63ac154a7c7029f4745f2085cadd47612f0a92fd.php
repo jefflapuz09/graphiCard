@@ -3,7 +3,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-<script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
     <div> 
         <h3>Customer Reviews</h3>
@@ -37,9 +37,10 @@
                 <td><?php echo e($posts->name); ?></td>
                 <td><?php echo e($posts->Item->name); ?></td>
                 <td>
-                        <?php for($i = 0; $i < $posts->rating; $i++): ?>
-                        <span class="fa fa-star checked"></span>
-                        <?php endfor; ?>
+                        
+
+                       <?php echo e($posts->rating); ?>
+
                 </td>
                 <td><?php echo e($posts->description); ?></td>
             </tr>
@@ -49,11 +50,14 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/FeedbackSoft')); ?>';" id="showDeactivated"> Show deactivated records</label>
     </div>
+    
+
 
 <?php $__env->stopSection(); ?>
 
+
 <?php $__env->startSection('script'); ?>
-    
+   
 <?php $__env->stopSection(); ?>
 
 

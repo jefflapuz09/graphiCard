@@ -45,9 +45,7 @@
                 <td>{{$posts->name}}</td>
                 <td><img class="img-responsive" src="{{ asset($posts->image)}}" style="max-width:200px; max-height:200px;"></td>
                 <td>
-                    @for ($i = 0; $i < $posts->rating; $i++)
-                    <span class="fa fa-star checked"></span>
-                    @endfor
+                        {{$posts->rating}}
                 </td>
                 <td>
                         @if($posts->isSelected == 0)

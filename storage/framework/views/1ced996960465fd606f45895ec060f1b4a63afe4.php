@@ -1,5 +1,5 @@
-<?php $__env->startSection('styles'); ?>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<?php $__env->startSection('style'); ?>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contents'); ?>
@@ -14,11 +14,43 @@
     <div class="col-md-7 form-line" style="margin-top:50px;">
       <!-- <h1 class="mt-4 mb-3" style="text-align:center"><?php echo e($post->ServiceType->name); ?></h1> -->
       <div align="center"><img class="img-responsive" style="max-height:100%; max-width:100%;" src="<?php echo asset($post->image)?>" height="400px"  alt="No image available"></div>
-      <div class="pull-right" style="margin-right:35px; margin-top:10px;">
+      <div class="row" style="">
+      <div class="col-md-6" style="margin-top:10px;">
+        <div class="text-center">
+          <?php if(count($post->Item->RateItem)!=0): ?>
+          <?php
+              $count = count($post->Item->RateItem);
+              $sum = 0;
+              foreach($post->Item->RateItem as $r)
+              {
+                $sum += $r->rating;
+              }
+              $ave = $sum/$count;
+          ?>
+
+          <?php $newave = round($ave);
+          ?>
+          <select id="example" disabled>
+            <option value="1" <?php if(1 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>1</option>
+            <option value="2" <?php if(2 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>2</option>
+            <option value="3" <?php if(3 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>3</option>
+            <option value="4" <?php if(4 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>4</option>
+            <option value="5" <?php if(5 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>5</option>
+          </select>
+        <?php else: ?>
+        <p class="text-muted">No ratings yet.</p>
+        <?php endif; ?>
+        </div>
+      </div>
+      
+      <div class="col-md-6" style="margin-top:10px;">
+        <div class="text-center text-muted">
          <small> <?php echo e($post->User->name); ?> - 
           <?php echo e(date('F j, Y - H:i:s',strtotime($post->updated_at))); ?> </small>
+         </div>
       </div>
-      <h2 class="mt-4 mb-3">Description</h2>
+      </div>
+      <h2 class="mt-1 mb-2">Description</h2>
       <div class=""><?php echo $post->details?></div>
       <div class="pull-right">
           <a href="" data-toggle="modal" data-target="#myModal"><button class="btn btn-link" style="font-size:15pt; color:black; text-decoration:none; border:1px solid black;"><i class="fa fa-heart-o" aria-hidden="true"></i> Give us a Review! > </button></a>
@@ -110,18 +142,21 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script>
-    var customers = [
-      'a','b','c','d'
-  ];    
+
 
   $(document).ready(function(){
-    $('#fname').keyup(function(){
-      $('#fname').autocomplete({source: customers});
+
+
+      $('#example').barrating({
+        
+        theme: 'fontawesome-stars',
+        readonly: true
+      });
     });
-  });
+  
+ 
 
   
 </script>

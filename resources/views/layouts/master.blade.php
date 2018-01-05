@@ -22,15 +22,18 @@
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">  
     <link href="{{ asset('css/button.css') }}" rel="stylesheet">  
     <link rel="stylesheet" href="{{  asset('vendor/social/dist/css/social-share-kit.css')  }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet">
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    @yield('style')
+    
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet'>
     <link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet'>
+    <link href="{{ asset('css/fontawesome-stars.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('css/contact.css') }}" rel="stylesheet"> 
+    @yield('style')
   </head>
 
   <body>
@@ -218,9 +221,10 @@
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/megamenu.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+    <script src="{{ asset('js/select2.min.js') }}"></script>
     <script src="{{ asset('js/navscroll.js') }}"></script>
     <script src="{{ asset('vendor/social/dist/js/social-share-kit.js') }}"></script>
+    <script src="{{ asset('js/jquery.barrating.min.js') }}"></script>
     <script>
         SocialShareKit.init();
     </script>

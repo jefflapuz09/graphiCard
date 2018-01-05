@@ -22,8 +22,13 @@
 
 <div class="row">
     <div class="col-md-6">
-        <h4>Inquiries</h4>
-        <table id="example" class="display" cellspacing="0" width="100%">
+        <div class="card" style="border:1px solid black; margin:10px;">
+        <div class="card-header" style="background:teal; color:white;">
+            Inquiries
+        </div>
+        <div class="card-block">
+            <div class="container mt-3">
+            <table id="example" class="display" cellspacing="0" style="" width="100%">
             <thead>
                 <tr>
                     <th>Date Inquired</th>
@@ -48,8 +53,11 @@
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         </table>
-        <div class="form-group pull-right">
+        </div>
+        <div class="form-group pull-right mr-3">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/InquiryRead')); ?>';" id="showDeactivated"> Show read inquiries</label>
+        </div>
+        </div>
         </div>
     </div>
     <div class="col-md-6">

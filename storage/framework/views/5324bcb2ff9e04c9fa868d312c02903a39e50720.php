@@ -43,9 +43,8 @@
                 <td><?php echo e($posts->name); ?></td>
                 <td><img class="img-responsive" src="<?php echo e(asset($posts->image)); ?>" style="max-width:200px; max-height:200px;"></td>
                 <td>
-                    <?php for($i = 0; $i < $posts->rating; $i++): ?>
-                    <span class="fa fa-star checked"></span>
-                    <?php endfor; ?>
+                        <?php echo e($posts->rating); ?>
+
                 </td>
                 <td>
                         <?php if($posts->isSelected == 0): ?>

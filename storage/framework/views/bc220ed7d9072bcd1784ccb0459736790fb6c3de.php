@@ -1,3 +1,7 @@
+<?php $__env->startSection('style'); ?>
+    
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('contents'); ?>
 
 
@@ -31,7 +35,29 @@
                                 </a>
                                 <div class="portfolio-caption">
                                     <h4><?php echo e($item->item->name); ?></h4>
-                                    <p class="text-muted">See More</p>
+                                    <?php if(count($item->item->RateItem)!=0): ?>
+                                    <?php
+                                        $count = count($item->item->RateItem);
+                                        $sum = 0;
+                                        foreach($item->item->RateItem as $r)
+                                        {
+                                          $sum += $r->rating;
+                                        }
+                                        $ave = $sum/$count;
+                                    ?>
+                      
+                                    <?php $newave = round($ave);
+                                    ?>
+                                    <select id="example" disabled>
+                                      <option value="1" <?php if(1 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>1</option>
+                                      <option value="2" <?php if(2 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>2</option>
+                                      <option value="3" <?php if(3 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>3</option>
+                                      <option value="4" <?php if(4 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>4</option>
+                                      <option value="5" <?php if(5 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>5</option>
+                                    </select>
+                                  <?php else: ?>
+                                  <p class="text-muted">No ratings yet.</p>
+                                  <?php endif; ?>
                                 </div>
                                 </div>
                    
@@ -66,5 +92,16 @@
 
 
     
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+    <script>
+        $('#example').barrating({
+          
+          theme: 'fontawesome-stars',
+          readonly: true
+        });
+        
+    </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

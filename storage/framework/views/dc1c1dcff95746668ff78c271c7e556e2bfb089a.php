@@ -14,7 +14,7 @@
   <title>Admin</title>
   <?php endif; ?>
   <!-- Bootstrap core CSS-->
-  <?php echo $__env->yieldContent('styles'); ?>
+
   <link href="<?php echo e(asset('vendor/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <<link rel="stylesheet" href="<?php echo e(asset('css/font-awesome.min.css')); ?>">
@@ -27,7 +27,7 @@
   <link href="<?php echo e(asset('css/jquery.dataTables.min.css')); ?>" rel="stylesheet">
   <link href="<?php echo e(asset('css/sb-admin.css')); ?>" rel="stylesheet">
   <link href="<?php echo e(asset('css/jquery.dataTables.min.css')); ?>" rel="stylesheet">
-  
+  <?php echo $__env->yieldContent('styles'); ?>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">

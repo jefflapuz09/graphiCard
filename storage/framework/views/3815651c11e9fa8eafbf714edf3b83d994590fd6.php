@@ -1,21 +1,28 @@
-<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('styles'); ?>
+<link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
+<?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('content'); ?>
+<script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
     <div class="container-fluid">
     <div>
         <h3>Customer Feedback</h3>
     </div>
     <?php if($errors->any()): ?>
     <div class="alert alert-danger">
-        <?php echo e(implode('', $errors->all(':message'))); ?>
-
+        <script type="text/javascript">
+            toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong")
+        </script>
     </div>                
-    <?php endif; ?>
+    <?php endif; ?>  
     <?php if(session('error')): ?>
     <div class="alert alert-danger">
-        <?php echo e(session('error')); ?>
-
+        <script type="text/javascript">
+            toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+        </script>
     </div>
-     <?php endif; ?>
+    <?php endif; ?>
     <div class="row">
     
     <div class="col-lg-6"> 
@@ -70,19 +77,22 @@
     </div>
     </div>
 
-    <script>
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                        reader.onload = function (e) {
-                            $('#pic')
-                            .attr('src', e.target.result)
-                            .width(300);
-                        };
-                    reader.readAsDataURL(input.files[0]);
-                }
-                }
+ 
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+<script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#pic')
+                        .attr('src', e.target.result)
+                        .width(300);
+                    };
+                reader.readAsDataURL(input.files[0]);
+            }
+            }
 
-    </script>
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

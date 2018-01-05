@@ -1,5 +1,6 @@
 <?php $__env->startSection('styles'); ?>
 <link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -44,5 +45,40 @@
     </div> 
     </div>
     </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $( document ).ready(function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#name" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

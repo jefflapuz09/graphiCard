@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{  asset('js/toastr.js')  }}"></script>
     <div> 
         <h3>Customer Reviews</h3>
@@ -39,9 +39,9 @@
                 <td>{{$posts->name}}</td>
                 <td>{{$posts->Item->name}}</td>
                 <td>
-                        @for ($i = 0; $i < $posts->rating; $i++)
-                        <span class="fa fa-star checked"></span>
-                        @endfor
+                        
+
+                       {{$posts->rating}}
                 </td>
                 <td>{{$posts->description}}</td>
             </tr>
@@ -51,11 +51,14 @@
     <div class="form-group pull-right">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/FeedbackSoft') }}';" id="showDeactivated"> Show deactivated records</label>
     </div>
+    
+
 
 @endsection
 
+
 @section('script')
-    
+   
 @stop
 
 

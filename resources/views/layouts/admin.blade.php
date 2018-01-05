@@ -14,7 +14,7 @@
   <title>Admin</title>
   @endif
   <!-- Bootstrap core CSS-->
-  @yield('styles')
+
   <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
@@ -27,7 +27,7 @@
   <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
   <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
-  
+  @yield('styles')
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">

@@ -1,31 +1,32 @@
+<?php $__env->startSection('style'); ?>
 <style>
-@import  url('https://fonts.googleapis.com/css?family=Poiret+One');
-@import  url('https://fonts.googleapis.com/css?family=Montserrat');
-</style>
-<style>
-    
-    .se-pre-con {
-      position: fixed;
-      left: 0px;
-      top: 0px;
-      width: 100%;
-      height: 100%;
-      z-index: 9999;
-      background: url('<?php echo e(asset('img/Preloader_3.gif')); ?>') center no-repeat #fff;
-    }
-
-     .titleload{
-      position: relative;
-      left:0;
-      right:0;
-      top: 100px;
-
-    }
-</style>
+  @import  url('https://fonts.googleapis.com/css?family=Poiret+One');
+  @import  url('https://fonts.googleapis.com/css?family=Montserrat');
+  </style>
+  <style>
+      
+      .se-pre-con {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url('<?php echo e(asset('img/Preloader_3.gif')); ?>') center no-repeat #fff;
+      }
+  
+       .titleload{
+        position: relative;
+        left:0;
+        right:0;
+        top: 100px;
+  
+      }
+  </style>
+<?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contents'); ?>
-<link href="<?php echo e(asset('css/fontawesome-stars.css')); ?>" rel="stylesheet"> 
-<link href="<?php echo e(asset('css/contact.css')); ?>" rel="stylesheet"> 
+
 
 <div class="se-pre-con">
       
@@ -200,7 +201,7 @@
 
               <?php $newave = round($ave);
               ?>
-              <select id="example" disabled>
+              <select id="" class="starrating" disabled>
                 <option value="1" <?php if(1 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>1</option>
                 <option value="2" <?php if(2 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>2</option>
                 <option value="3" <?php if(3 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>3</option>
@@ -280,9 +281,15 @@
             <h4 class="card-title"><?php echo e($feedback->name); ?></h4>
             <p class="card-text"><?php echo e($feedback->description); ?></p>
             <span class="social-box">
-              <?php for($i = 0; $i < $feedback->rating; $i++): ?>
-              <span class="fa fa-star checked"></span>
-              <?php endfor; ?>            
+              <?php $round = round($feedback->rating); ?>
+
+              <select id="" class="starrating" disabled>
+                <option value="1" <?php if($round == 1): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>1</option>
+                <option value="2" <?php if($round == 2): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>2</option>
+                <option value="3" <?php if($round == 3): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>3</option>
+                <option value="4" <?php if($round == 4): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>4</option>
+                <option value="5" <?php if($round == 5): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>5</option>
+              </select>           
             </span>
           </div>
         </div>
@@ -305,11 +312,13 @@
             <p class="card-text">Testimonial</p>
             <span class="social-box">
 
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
+              <select id="" class="starrating meron" disabled>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
             </span>
           </div>
@@ -329,11 +338,13 @@
             <p class="card-text">Testimonial</p>
             <span class="social-box">
 
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
+              <select id="" class="starrating meron" disabled>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
             </span>
           </div>
@@ -353,11 +364,13 @@
             <p class="card-text">Testimonial</p>
             <span class="social-box">
 
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
+              <select id="" class="starrating meron" disabled>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
             </span>
           </div>
@@ -435,17 +448,18 @@
 
     <?php $__env->startSection('script'); ?>
     
-    <script src="<?php echo e(asset('js/jquery.barrating.min.js')); ?>"></script>
+    
     <script>
         $( document ).ready(function() {
-          $('.select2').select2();
-
+ 
           $( ".se-pre-con" ).delay().fadeOut("slow");
-          $('#example').barrating({
+          $('.starrating').barrating({
             
             theme: 'fontawesome-stars',
             readonly: true
           });
+
+          $('.meron').barrating('set', 5);
           
           
           

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-@section('styles')
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+@section('style')
+
 @stop
 
 @section('contents')
@@ -16,11 +16,43 @@
     <div class="col-md-7 form-line" style="margin-top:50px;">
       <!-- <h1 class="mt-4 mb-3" style="text-align:center">{{ $post->ServiceType->name }}</h1> -->
       <div align="center"><img class="img-responsive" style="max-height:100%; max-width:100%;" src="<?php echo asset($post->image)?>" height="400px"  alt="No image available"></div>
-      <div class="pull-right" style="margin-right:35px; margin-top:10px;">
+      <div class="row" style="">
+      <div class="col-md-6" style="margin-top:10px;">
+        <div class="text-center">
+          @if(count($post->Item->RateItem)!=0)
+          <?php
+              $count = count($post->Item->RateItem);
+              $sum = 0;
+              foreach($post->Item->RateItem as $r)
+              {
+                $sum += $r->rating;
+              }
+              $ave = $sum/$count;
+          ?>
+
+          <?php $newave = round($ave);
+          ?>
+          <select id="example" disabled>
+            <option value="1" @if(1 == $newave) selected = "selected" @else "" @endif>1</option>
+            <option value="2" @if(2 == $newave) selected = "selected" @else "" @endif>2</option>
+            <option value="3" @if(3 == $newave) selected = "selected" @else "" @endif>3</option>
+            <option value="4" @if(4 == $newave) selected = "selected" @else "" @endif>4</option>
+            <option value="5" @if(5 == $newave) selected = "selected" @else "" @endif>5</option>
+          </select>
+        @else
+        <p class="text-muted">No ratings yet.</p>
+        @endif
+        </div>
+      </div>
+      
+      <div class="col-md-6" style="margin-top:10px;">
+        <div class="text-center text-muted">
          <small> {{$post->User->name}} - 
           {{date('F j, Y - H:i:s',strtotime($post->updated_at))}} </small>
+         </div>
       </div>
-      <h2 class="mt-4 mb-3">Description</h2>
+      </div>
+      <h2 class="mt-1 mb-2">Description</h2>
       <div class=""><?php echo $post->details?></div>
       <div class="pull-right">
           <a href="" data-toggle="modal" data-target="#myModal"><button class="btn btn-link" style="font-size:15pt; color:black; text-decoration:none; border:1px solid black;"><i class="fa fa-heart-o" aria-hidden="true"></i> Give us a Review! > </button></a>
@@ -109,18 +141,21 @@
 @stop
 
 @section('script')
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script>
-    var customers = [
-      'a','b','c','d'
-  ];    
+
 
   $(document).ready(function(){
-    $('#fname').keyup(function(){
-      $('#fname').autocomplete({source: customers});
+
+
+      $('#example').barrating({
+        
+        theme: 'fontawesome-stars',
+        readonly: true
+      });
     });
-  });
+  
+ 
 
   
 </script>
