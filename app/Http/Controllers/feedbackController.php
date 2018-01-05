@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Feedback;
 use App\RatingItem;
+use App\Customer;
 use Redirect;
 use DB;
+use Validator;
 
 class feedbackController extends Controller
 {
@@ -28,8 +30,56 @@ class feedbackController extends Controller
      */
 
     public function review(Request $request){
-        RatingItem::create($request->all());
-        return redirect('/');
+
+        $rules = [
+            'customerId' => ['required','unique:rating_items'],
+            'itemId' => 'required',
+            'rating' => 'required',
+            'description' => 'required'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',
+            'regex' => 'The :attribute must not contain special characters.'              
+        ];
+        $niceNames = [
+            'customerId' => 'Customer',
+            'itemId' => 'Item',
+            'rating' => 'Rating',
+            'description' => 'Comment'
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
+        else{
+            try{
+            $nullCust = $request->customerId;
+            //dd($nullCust);
+            if($nullCust == null || $nullCust == "")
+            {
+                return Redirect::back()->withError('Please select a customer');
+            }
+            else
+            {
+                 RatingItem::create([
+                'customerId' => $nullCust,
+                'itemId' => ($request->itemId),
+                'rating' => ($request->rating),
+                'description' => ($request->description)
+                ]);
+                return Redirect::back()->withSuccess('Successfully inserted into the database.');
+            }
+           
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                return Redirect::back()->withError($errMess);
+            }
+            
+        }
      }
 
      public function indexReview()
@@ -90,7 +140,7 @@ class feedbackController extends Controller
                 // $request->file('photo')->move(public_path("/uploads"), $newfilename);
             }
             $post = Feedback::create([
-                'name' => ($request->name),
+                'customerId' => ($request->customerId),
                 'image' => $pic,
                 'description' => ($request->description),
                 'rating' => ($request->rating),
@@ -125,8 +175,9 @@ class feedbackController extends Controller
      */
     public function edit($id)
     {
+        $customer = Customer::all();
         $post = Feedback::find($id);
-        return view('Feedback.update',compact('post'));
+        return view('Feedback.update',compact('post','customer'));
     }
 
     /**
@@ -168,7 +219,7 @@ class feedbackController extends Controller
             }
             
             $post = Feedback::find($id)->update([
-                'name' => ($request->name),
+                'customerId' => ($request->customerId),
                 'image' => $pic,
                 'description' => ($request->description),
                 'rating' => ($request->rating),

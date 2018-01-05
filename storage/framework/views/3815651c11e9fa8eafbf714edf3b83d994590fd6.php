@@ -10,18 +10,14 @@
         <h3>Customer Feedback</h3>
     </div>
     <?php if($errors->any()): ?>
-    <div class="alert alert-danger">
         <script type="text/javascript">
             toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong")
-        </script>
-    </div>                
+        </script>              
     <?php endif; ?>  
     <?php if(session('error')): ?>
-    <div class="alert alert-danger">
         <script type="text/javascript">
             toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
         </script>
-    </div>
     <?php endif; ?>
     <div class="row">
     
@@ -41,8 +37,12 @@
                 <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
             </div>
             <div class="form-group">
-            <label for="">Name:</label>
-            <input type="text" placeholder="Name" value="<?php echo e($post->name); ?>" class="form-control" name="name" id="name">
+                  <label for="">Customer Name:</label></br>
+                  <select class="select2 form-control" name="customerId" style="width: 100%">
+                    <?php $__currentLoopData = $customer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cust): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <option value="<?php echo e($cust->id); ?>" <?php if($cust->id == $post->customerId): ?>selected="selected"<?php else: ?>""<?php endif; ?>><?php echo e($cust->firstName); ?> <?php echo e($cust->middleName); ?> <?php echo e($cust->lastName); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  </select>
             </div>
             <div class="form-group">
             <label for="">Description:</label>

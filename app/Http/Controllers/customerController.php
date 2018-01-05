@@ -46,6 +46,53 @@ class customerController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+     public function store(Request $request)
+     {
+        $rules = [
+            'firstName' => ['required','max:50','unique:customers', 'regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'middleName' => ['nullable','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'lastName' => ['required','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'gender' => 'required',
+            'street' => 'required|max:140',
+            'brgy' => 'required|max:140',
+            'city' => 'required|max:140',
+            'contactNumber' => ['required','max:30','regex:/^[^_]+$/'],
+            'email' => 'nullable|email|max:100',
+            'gender' => 'required'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',   
+            'regex' => 'The :attribute must not contain special characters.'             
+        ];
+        $niceNames = [
+            'firstName' => 'First Name',
+            'middleName' => 'Middle Name',
+            'lastName' => 'Last Name',
+            'street' => 'No. & St./Bldg.',
+            'brgy' => 'Brgy./Subd.',
+            'city' => 'City/Municipality',
+            'contactNumber' => 'Contact No.',
+            'email' => 'Email Address'
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withError($validator);
+        }
+        else{
+            try{
+            Customer::create($request->all());
+            }catch(\Illuminate\Database\QueryException $e){
+                DB::rollBack();
+                $errMess = $e->getMessage();
+                return Redirect::back()->withError($errMess);
+            }
+            return Redirect::back()->withSuccess('Successfully inserted into the database.');
+        }
+     }
+
 
     public function storepost(Request $request)
     {

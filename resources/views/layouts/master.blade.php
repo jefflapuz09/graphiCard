@@ -33,6 +33,7 @@
     <link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet'>
     <link href="{{ asset('css/fontawesome-stars.css') }}" rel="stylesheet"> 
     <link href="{{ asset('css/contact.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
     @yield('style')
   </head>
 
@@ -222,11 +223,16 @@
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/megamenu.js') }}"></script>
     <script src="{{ asset('js/select2.min.js') }}"></script>
-    <script src="{{ asset('js/navscroll.js') }}"></script>
     <script src="{{ asset('vendor/social/dist/js/social-share-kit.js') }}"></script>
     <script src="{{ asset('js/jquery.barrating.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.js') }}"></script>
     <script>
         SocialShareKit.init();
+
+        $(document).ready(function() {
+          $('.select2').select2();
+          
+        } );
     </script>
     @yield('script')
   </body>

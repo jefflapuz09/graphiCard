@@ -57,6 +57,7 @@ Route::get('/CustomerSoft', 'customerController@soft');
 Route::get('/CustomerReactivate/{id}', 'customerController@reactivate');
 
 Route::post('/CustomerStore', 'customerController@storepost');
+Route::post('/CustomerWebStore', 'customerController@store');
 Route::post('/CustomerEdit/{id}', 'customerController@update');
 
 //Service Subcategory

@@ -10,6 +10,7 @@ class RatingItem extends Model
 
     protected $fillable = [
         'name',
+        'customerId',
         'itemId',
         'rating',
         'description'
@@ -17,5 +18,9 @@ class RatingItem extends Model
 
     public function Item(){
         return $this->belongsTo('App\ServiceItem','itemId');
+    }
+
+    public function Customer(){
+        return $this->belongsTo('App\Customer','customerId');
     }
 }

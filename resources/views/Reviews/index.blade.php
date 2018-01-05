@@ -8,7 +8,6 @@
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{  asset('js/toastr.js')  }}"></script>
     <div> 
-        <h3>Customer Reviews</h3>
         @if(session('success'))
         <script type="text/javascript">
             toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
@@ -21,35 +20,41 @@
         @endif
 
     </div>
-    
-     <table id="example" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Item</th>
-                <th>Rating</th>
-                <th>Comment</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($post as $posts)
-            <tr>
-                <td>{{$posts->name}}</td>
-                <td>{{$posts->Item->name}}</td>
-                <td>
-                        
-
-                       {{$posts->rating}}
-                </td>
-                <td>{{$posts->description}}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    <div class="form-group pull-right">
-            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/FeedbackSoft') }}';" id="showDeactivated"> Show deactivated records</label>
+    <div class="card" style="border:1px solid black; margin:10px;">
+    <div class="card-header" style="background:maroon; color:white;">
+            Customer Reviews
     </div>
-    
+    <div class="card-block">
+        <div class="container mt-3 mb-3">
+                 <table id="example" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Item</th>
+                            <th>Rating</th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($post as $posts)
+                        <tr>
+                            <td>{{$posts->Customer->firstName}} {{$posts->Customer->middleName}} {{$posts->Customer->lastName}}</td>
+                            <td>{{$posts->Item->name}}</td>
+                            <td>
+                                    
+
+                                {{$posts->rating}}
+                            </td>
+                            <td>{{$posts->description}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+        </div>
+    </div>
+    </div>
+
+
 
 
 @endsection

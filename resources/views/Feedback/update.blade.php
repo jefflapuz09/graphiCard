@@ -38,8 +38,12 @@
                 <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
             </div>
             <div class="form-group">
-            <label for="">Name:</label>
-            <input type="text" placeholder="Name" value="{{$post->name}}" class="form-control" name="name" id="name">
+                  <label for="">Customer Name:</label></br>
+                  <select class="select2 form-control" name="customerId" style="width: 100%">
+                    @foreach($customer as $cust)
+                      <option value="{{ $cust->id }}" @if($cust->id == $post->customerId)selected="selected"@else""@endif>{{$cust->firstName}} {{$cust->middleName}} {{$cust->lastName}}</option>
+                    @endforeach
+                  </select>
             </div>
             <div class="form-group">
             <label for="">Description:</label>

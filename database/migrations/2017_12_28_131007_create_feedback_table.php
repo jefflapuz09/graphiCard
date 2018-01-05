@@ -17,7 +17,8 @@ class CreateFeedbackTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('image',100);
-            $table->string('name',100);
+            $table->integer('customerId')->unsigned();	
+            $table->foreign('customerId')->references('id')->on('customers');
             $table->integer('rating');
             $table->text('description');
             $table->boolean('isSelected')->default(1);

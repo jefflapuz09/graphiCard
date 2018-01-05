@@ -13,6 +13,7 @@ use App\Banner;
 use App\User;
 use App\Feedback;
 use App\Advisory;
+use App\Customer;
 use Validator;
 use Redirect;
 use Carbon\Carbon as Carbon;
@@ -52,14 +53,16 @@ class HomeController extends Controller
         $ban = Banner::all()->first();
         $feed = Feedback::where('isSelected',0)->where('isPublish',0)->where('isActive',1)->get();
         $adv =Advisory::where('isActive',1)->first();
+     
         // dd($postcat[0]->Post[0]->Item->RateItem[0]['name']);
         return view('Home.index', compact('post','model2','item','postcat','comp','ban','feed','adv'));
     }
 
     public function prodDescription($id)
     {
+        $customer = Customer::all();
         $post = Post::with('ServiceCategory','ServiceType','Item','User')->where('id', $id)->first();
-        return view('Home.prodDescription',compact('id','post'));
+        return view('Home.prodDescription',compact('id','post','customer'));
     }
 
     public function aboutPage()
@@ -163,7 +166,8 @@ class HomeController extends Controller
 
     public function testimonial()
     {
+        $customer = Customer::all();
         $feed = Feedback::where('isActive',1)->where('isPublish',0)->get();
-        return view('Home.testimonial',compact('feed'));
+        return view('Home.testimonial',compact('feed','customer'));
     }
 }

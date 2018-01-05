@@ -33,6 +33,7 @@
     <link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet'>
     <link href="<?php echo e(asset('css/fontawesome-stars.css')); ?>" rel="stylesheet"> 
     <link href="<?php echo e(asset('css/contact.css')); ?>" rel="stylesheet"> 
+    <link href="<?php echo e(asset('css/jquery-ui.css')); ?>" rel="stylesheet">
     <?php echo $__env->yieldContent('style'); ?>
   </head>
 
@@ -226,11 +227,16 @@
     <script src="<?php echo e(asset('vendor/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
     <script src="<?php echo e(asset('js/megamenu.js')); ?>"></script>
     <script src="<?php echo e(asset('js/select2.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('js/navscroll.js')); ?>"></script>
     <script src="<?php echo e(asset('vendor/social/dist/js/social-share-kit.js')); ?>"></script>
     <script src="<?php echo e(asset('js/jquery.barrating.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/jquery-ui.js')); ?>"></script>
     <script>
         SocialShareKit.init();
+
+        $(document).ready(function() {
+          $('.select2').select2();
+          
+        } );
     </script>
     <?php echo $__env->yieldContent('script'); ?>
   </body>

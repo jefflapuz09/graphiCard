@@ -6,7 +6,6 @@
 <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
     <div> 
-        <h3>Customer Reviews</h3>
         <?php if(session('success')): ?>
         <script type="text/javascript">
             toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
@@ -19,36 +18,42 @@
         <?php endif; ?>
 
     </div>
-    
-     <table id="example" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Item</th>
-                <th>Rating</th>
-                <th>Comment</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <tr>
-                <td><?php echo e($posts->name); ?></td>
-                <td><?php echo e($posts->Item->name); ?></td>
-                <td>
-                        
-
-                       <?php echo e($posts->rating); ?>
-
-                </td>
-                <td><?php echo e($posts->description); ?></td>
-            </tr>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </tbody>
-    </table>
-    <div class="form-group pull-right">
-            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/FeedbackSoft')); ?>';" id="showDeactivated"> Show deactivated records</label>
+    <div class="card" style="border:1px solid black; margin:10px;">
+    <div class="card-header" style="background:maroon; color:white;">
+            Customer Reviews
     </div>
-    
+    <div class="card-block">
+        <div class="container mt-3 mb-3">
+                 <table id="example" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Item</th>
+                            <th>Rating</th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <tr>
+                            <td><?php echo e($posts->Customer->firstName); ?> <?php echo e($posts->Customer->middleName); ?> <?php echo e($posts->Customer->lastName); ?></td>
+                            <td><?php echo e($posts->Item->name); ?></td>
+                            <td>
+                                    
+
+                                <?php echo e($posts->rating); ?>
+
+                            </td>
+                            <td><?php echo e($posts->description); ?></td>
+                        </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+    </div>
+
+
 
 
 <?php $__env->stopSection(); ?>

@@ -9,7 +9,7 @@ class Feedback extends Model
     protected $table = 'feedback';
 
     protected $fillable = [
-        'name',
+        'customerId',
         'image',
         'description',
         'rating',
@@ -17,4 +17,8 @@ class Feedback extends Model
         'isPublish',
         'isActive'
     ];
+
+    public function Customer(){
+        return $this->belongsTo('App\Customer','customerId');
+    }
 }
