@@ -1,8 +1,9 @@
-<?php $__env->startSection('styles'); ?>
+<?php $__env->startSection('style'); ?>
 <link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
+<link href="<?php echo e(asset('css/info-box.css')); ?>" rel="stylesheet">
 <script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
 <div >
@@ -15,12 +16,59 @@
             <script type="text/javascript">
                 toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
             </script>
-        <?php endif; ?>
+        <?php endif; ?>  
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="info-box bg-warning">
+            <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+            <div class="info-box-content">
+            <span class="info-box-text">Likes</span>
+            <span class="info-box-number">41,410</span>
+            <div class="progress">
+                <div class="progress-bar" style="width: 70%"></div>
+            </div>
+            <span class="progress-description">
+                70% Increase in 30 Days
+            </span>
+            </div><!-- /.info-box-content -->
+        </div>
+    </div>
+    <div class="col-sm-4">
+            <div class="info-box bg-primary">
+                <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+                <div class="info-box-content">
+                <span class="info-box-text">Likes</span>
+                <span class="info-box-number">41,410</span>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 70%"></div>
+                </div>
+                <span class="progress-description">
+                    70% Increase in 30 Days
+                </span>
+                </div><!-- /.info-box-content -->
+            </div>
+        </div>
+         <div class="col-sm-4">
+        <div class="info-box bg-success">
+            <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+            <div class="info-box-content">
+            <span class="info-box-text">Likes</span>
+            <span class="info-box-number">41,410</span>
+            <div class="progress">
+                <div class="progress-bar" style="width: 70%"></div>
+            </div>
+            <span class="progress-description">
+                70% Increase in 30 Days
+            </span>
+            </div><!-- /.info-box-content -->
+        </div>
+    </div>
 </div>
 
 <div class="row">
     <div class="col-md-6">
-        <div class="card" style="border:1px solid black; margin:10px;">
+        <div class="card" style="border:1px solid black; margin:;">
         <div class="card-header" style="background:darkorange; color:white;">
             Inquiries
         </div>
