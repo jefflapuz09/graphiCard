@@ -20,6 +20,8 @@ class adminController extends Controller
     public function __construct()
     {
         $this->middleware('guest',['except' =>['index']]);
+        $this->middleware('App\Http\Middleware\adminMiddleware');
+        
     }
 
 
