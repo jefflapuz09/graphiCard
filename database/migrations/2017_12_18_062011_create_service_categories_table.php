@@ -19,6 +19,7 @@ class CreateServiceCategoriesTable extends Migration
             $table->string('name', 100);	
             $table->text('description')->nullable();
             $table->boolean('isActive')->default(1);
+            $table->boolean('isFeatured')->default(1);
             $table->timestamps();
             $table->unique(['name']);
         });

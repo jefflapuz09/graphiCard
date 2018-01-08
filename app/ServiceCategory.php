@@ -11,7 +11,8 @@ class ServiceCategory extends Model
     protected $fillable = [
         'name',
         'description',
-        'isActive'
+        'isActive',
+        'isFeatured'
     ];
 
     public function Type(){

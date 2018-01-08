@@ -38,8 +38,10 @@
 </div>
 
 @if(count($adv)!=0)
-<div class="container-fluid" style="background-color: yellow; margin-top:60px;">
+<div class="container-fluid" style="background-color: darkslategray; margin-top:54px; color:white;">
+  <div class="text-center">
   <?php echo $adv->advisory ?>
+  </div>
 </div>
 @else(count($adv)==0)
 <div class="container-fluid" style="margin-top:60px;">
@@ -49,7 +51,7 @@
 <!-- <div class="row" style="margin-top:5px; margin-bottom">
   <img class="img-responsive" style="max-width:100%; max-height:10%;" height="150px" width="100%" src="{{ asset('img/promo-banner.png') }}" alt="">
 </div> -->
-<header style="margin-top:10px;">
+<header style="margin-top:">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

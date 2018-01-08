@@ -16,6 +16,11 @@
             toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong")
         </script>             
     @endif
+     @if(session('error'))
+        <script type="text/javascript">
+            toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+        </script>
+    @endif
     <div class="row">
     
     <div class="col-lg-6"> 
@@ -26,7 +31,15 @@
         <form action="{{ url('/CategoryStore') }}" method="post">
 
         {{ csrf_field() }}
-            
+
+            <div class="form-group">
+                <div align="center" class="checkbox">
+                <label>
+                  <input type="checkbox" name="isFeatured" value="0">
+                  <b>Featured Navigation Menu</b>
+                </label>
+                </div>
+            </div>
             <div class="form-group">
             <label for="">Name:</label>
             <input type="text" placeholder="Service Category Name" value="" class="form-control" name="name" id="name">

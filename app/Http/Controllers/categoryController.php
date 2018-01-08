@@ -53,7 +53,8 @@ class categoryController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'name' => ['required','max:50','unique:service_categories','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/']
+            'name' => ['required','max:50','unique:service_categories','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'description' => ['nullable','max:150']
         ];
         $messages = [
             'unique' => ':attribute already exists.',
@@ -70,14 +71,35 @@ class categoryController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
-            try{
-            ServiceCategory::create($request->all());
-            }catch(\Illuminate\Database\QueryException $e){
-                DB::rollBack();
-                $errMess = $e->getMessage();
-                return Redirect::back()->withError($errMess);
+            $feat = $request->isFeatured;
+            if($feat == null || $feat == '') {
+                $feat = 1;
             }
-            return redirect('/Category')->withSuccess('Successfully inserted into the database.');
+            $checkCat = ServiceCategory::where('isActive',1)
+                ->where('isActive', 1)
+                ->where('isFeatured', 0)
+                ->get();
+
+              
+            if(count($checkCat) >= 4 && $feat == 0)
+            {
+            return Redirect::back()->withError('It seems there are already 4 featured navigation menu');
+            }
+            else
+            {
+                try{
+                ServiceCategory::create([
+                    'name' => ($request->name),
+                    'description' => ($request->description),
+                    'isFeatured' => $feat
+                ]);
+                }catch(\Illuminate\Database\QueryException $e){
+                    DB::rollBack();
+                    $errMess = $e->getMessage();
+                    return Redirect::back()->withError($errMess);
+                }
+                return redirect('/Category')->withSuccess('Successfully inserted into the database.');
+            }
         }
         
     }
@@ -116,7 +138,7 @@ class categoryController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => ['required','max:50','unique:service_categories','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'name' => ['required','max:50','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'description' => ['nullable','max:150']
         ];
         $messages = [
@@ -134,14 +156,35 @@ class categoryController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
-            try{
-            ServiceCategory::find($id)->update($request->all());
-            }catch(\Illuminate\Database\QueryException $e){
-                DB::rollBack();
-                $errMess = $e->getMessage();
-                return Redirect::back()->withError($errMess);
+            $feat = $request->isFeatured;
+            if($feat == null || $feat == '') {
+                $feat = 1;
             }
-            return redirect('/Category')->withSuccess('Successfully Updated into the database.');
+            $checkCat = ServiceCategory::where('isActive',1)
+                ->where('isActive', 1)
+                ->where('isFeatured', 0)
+                ->get();
+
+              
+            if(count($checkCat) >= 4 && $feat == 0)
+            {
+            return Redirect::back()->withError('It seems there are already 4 featured navigation menu');
+            }
+            else
+            {
+                try{
+                ServiceCategory::find($id)->update([
+                    'name' => ($request->name),
+                    'description' => ($request->description),
+                    'isFeatured' => $feat
+                ]);
+                }catch(\Illuminate\Database\QueryException $e){
+                    DB::rollBack();
+                    $errMess = $e->getMessage();
+                    return Redirect::back()->withError($errMess);
+                }
+                return redirect('/Category')->withSuccess('Successfully Updated into the database.');
+            }
         }
     }
 

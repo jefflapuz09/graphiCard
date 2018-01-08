@@ -1,6 +1,5 @@
 <?php $__env->startSection('styles'); ?>
 <link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -11,11 +10,14 @@
         <h3>Service Category</h3>
     </div>
     <?php if($errors->any()): ?>
-    <div class="alert alert-danger">
         <script type="text/javascript">
             toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong")
+        </script>             
+    <?php endif; ?>
+     <?php if(session('error')): ?>
+        <script type="text/javascript">
+            toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
         </script>
-    </div>                
     <?php endif; ?>
     <div class="row">
     
@@ -28,7 +30,15 @@
 
         <?php echo e(csrf_field()); ?>
 
-            
+
+            <div class="form-group">
+                <div align="center" class="checkbox">
+                <label>
+                  <input type="checkbox" name="isFeatured" value="0">
+                  <b>Featured Navigation Menu</b>
+                </label>
+                </div>
+            </div>
             <div class="form-group">
             <label for="">Name:</label>
             <input type="text" placeholder="Service Category Name" value="" class="form-control" name="name" id="name">
@@ -45,40 +55,5 @@
     </div> 
     </div>
     </div>
-<?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('script'); ?>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-    $( document ).ready(function() {
-    var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-    $( "#name" ).autocomplete({
-      source: availableTags
-    });
-  } );
-  </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -36,6 +36,7 @@
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Description</th>
+                                <th>Featured Nav</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -45,6 +46,14 @@
                                 <td><?php echo e($posts->id); ?></td>
                                 <td><?php echo e($posts->name); ?></td>
                                 <td><?php echo e($posts->description); ?></td>
+                                <td>
+                                    <?php if($posts->isFeatured == 0): ?>
+                                        Featured Menu
+                                    <?php else: ?> 
+                                        Not selected
+                                    <?php endif; ?>
+
+                                </td>
                                 <td> 
                                         <a href="<?php echo e(url('/CategoryUpdate', $posts->id)); ?>" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

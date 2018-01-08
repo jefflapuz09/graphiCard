@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Advisory;
+use App\RatingItem;
+use App\Feedback;
+use App\Post;
 
 class adminController extends Controller
 {
@@ -27,8 +30,11 @@ class adminController extends Controller
         ->where('inquiries.status',0)
         ->get(); 
 
+        $countRateItem = RatingItem::all();
+        $countFeedback = Feedback::where('isPublish',0)->get();
+        $countPost = Post::where('isDraft',0)->get();
         $adv =Advisory::where('isActive',1)->first();
-        return view('inquiries.dashboard',compact('post','adv'));
+        return view('inquiries.dashboard',compact('post','adv','countRateItem','countFeedback','countPost'));
     }
 
     /**

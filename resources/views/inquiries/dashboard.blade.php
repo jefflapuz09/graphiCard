@@ -22,47 +22,30 @@
 </div>
 <div class="row">
     <div class="col-sm-4">
-        <div class="info-box bg-warning">
-            <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+        <div class="info-box bg-secondary">
+            <span class="info-box-icon"><a href="{{ url('/Post') }}"><i class="fa fa-paste"></i></a></span>
             <div class="info-box-content">
-            <span class="info-box-text">Likes</span>
-            <span class="info-box-number">41,410</span>
-            <div class="progress">
-                <div class="progress-bar" style="width: 70%"></div>
-            </div>
-            <span class="progress-description">
-                70% Increase in 30 Days
-            </span>
+            <span class="info-box-text">No. of Drafts</span>
+            <span class="info-box-number">{{count($countPost)}}</span>
             </div><!-- /.info-box-content -->
         </div>
     </div>
     <div class="col-sm-4">
-            <div class="info-box bg-primary">
-                <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+            <div class="info-box bg-success">
+                <span class="info-box-icon"><a href="{{ url('/Feedback') }}"><i class="fa fa-handshake-o"></i></a></span>
                 <div class="info-box-content">
-                <span class="info-box-text">Likes</span>
-                <span class="info-box-number">41,410</span>
-                <div class="progress">
-                    <div class="progress-bar" style="width: 70%"></div>
-                </div>
-                <span class="progress-description">
-                    70% Increase in 30 Days
-                </span>
+                <span class="info-box-text">No. of Published Feedbacks</span>
+                <span class="info-box-number">{{count($countFeedback)}}</span>
+
                 </div><!-- /.info-box-content -->
             </div>
         </div>
          <div class="col-sm-4">
-        <div class="info-box bg-success">
-            <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+        <div class="info-box bg-info">
+            <span class="info-box-icon"><a href="{{ url('/Review') }}"><i class="fa fa-comments"></i></a></span>
             <div class="info-box-content">
-            <span class="info-box-text">Likes</span>
-            <span class="info-box-number">41,410</span>
-            <div class="progress">
-                <div class="progress-bar" style="width: 70%"></div>
-            </div>
-            <span class="progress-description">
-                70% Increase in 30 Days
-            </span>
+            <span class="info-box-text">No. of Item Reviews</span>
+            <span class="info-box-number">{{count($countRateItem)}}</span>
             </div><!-- /.info-box-content -->
         </div>
     </div>

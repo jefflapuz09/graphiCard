@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
                 ->select('service_subcategory.categoryId as categoryId','service_subcategory.*')
                 ->where('isActive',1)
                 ->get();
-        $model = ServiceCategory::with('Type')->where('isActive',1)->limit(4)
+        $model = ServiceCategory::with('Type')->where('isActive',1)->where('isFeatured',0)
         ->get();
         $comp = CompanyInfo::find(1);
         View::share('comp',$comp);

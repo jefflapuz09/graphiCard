@@ -38,6 +38,7 @@
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Description</th>
+                                <th>Featured Nav</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -47,6 +48,14 @@
                                 <td>{{ $posts->id }}</td>
                                 <td>{{ $posts->name }}</td>
                                 <td>{{ $posts->description }}</td>
+                                <td>
+                                    @if($posts->isFeatured == 0)
+                                        Featured Menu
+                                    @else 
+                                        Not selected
+                                    @endif
+
+                                </td>
                                 <td> 
                                         <a href="{{ url('/CategoryUpdate', $posts->id) }}" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
