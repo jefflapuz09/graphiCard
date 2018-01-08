@@ -1,8 +1,8 @@
 <?php $__env->startComponent('mail::layout'); ?>
 
 <?php $__env->slot('header'); ?>
-<?php $__env->startComponent('mail::header', ['url' => config('app.url')]); ?>
-<img src="url('<?php echo e(asset($companyInfo->company_logo)); ?>"><b><?php echo e($companyInfo->company_name); ?></b>
+<?php $__env->startComponent('mail::header', ['url' => config('app.url'), 'color' => 'red']); ?>
+<b style="color:white"><?php echo e($companyInfo->company_name); ?></b>
 <?php echo $__env->renderComponent(); ?>
 <?php $__env->endSlot(); ?>
 

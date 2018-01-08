@@ -4,6 +4,21 @@
 <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
 @stop
 
+<style>
+kit-transition-duration: 0.3s; /* Safari */
+      }
+  
+  thumb:hover {
+    cursor: pointer;
+    -webkit-transform: scale(2, 2);
+      -ms-transform: scale(2, 2);
+      transform: scale(2, 2);
+      transition-duration: 0.3s;
+      -webkit-transition-duration: 0.3s; /* Safari */
+      box-shadow: 10px 10px 5px #888888;
+      z-index: 1;
+      }
+</style>
 @section('contents')
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{  asset('js/toastr.js')  }}"></script>
@@ -70,6 +85,14 @@
          </div>
       </div>
       </div>
+      <div class="row">
+        @foreach($ranPost as $ran)
+        <div class="col-sm-2">
+            <a href="{{ url('/prodDescription/'.$ran->id.'/'.$ran->ServiceType->name) }}"><img src="<?php echo asset($ran->image)?>" alt="..." class="img-thumbnail" style="max-height:100px;"></a>
+        </div>
+        @endforeach
+      </div>
+      
       <h2 class="mt-1 mb-2">Description</h2>
       <div class=""><?php echo $post->details?></div>
       <div class="pull-right mt-5">

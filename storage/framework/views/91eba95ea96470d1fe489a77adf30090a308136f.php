@@ -181,16 +181,18 @@
       <div class="row">
         <?php $__currentLoopData = $cat->Post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="col-md-4 col-sm-6 portfolio-item">
-          <a class="portfolio-link"  href="<?php echo e(url('/prodDescription',$post->id)); ?>">
+          <a class="portfolio-link"  href="<?php echo e(url('/prodDescription/'.$post->id.'/'.$post->ServiceType->name)); ?>">
             <div class="portfolio-hover">
               <div class="portfolio-hover-content">
                   <i class="fa fa-flag fa-3x"></i>  
+                  
                     
               </div>
             </div>
             <img class="img-responsive" style="max-width:100%; max-height:100%;" height="300px" src="<?php echo e(asset($post->image)); ?>" alt="">
           </a>
           <div class="portfolio-caption">
+            
             <h4><?php echo e($post->Item->name); ?></h4>
             <?php if(count($post->Item->RateItem)!=0): ?>
               <?php

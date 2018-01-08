@@ -22,7 +22,7 @@ Route::get('/loginto', 'Auth\LoginController@index')->name('loginto');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/logout', 'HomeController@getLogout');
 Route::get('/about', 'HomeController@aboutPage');
-Route::get('/prodDescription/{id}', 'HomeController@prodDescription');
+Route::get('/prodDescription/{id}/{type}', 'HomeController@prodDescription');
 Route::get('/Testimonial','HomeController@testimonial');
 Route::get('/ServiceItem/{id}', 'HomeController@item');
 Route::get('/admin', 'adminController@index');

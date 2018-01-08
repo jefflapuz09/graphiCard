@@ -184,10 +184,11 @@
       <div class="row">
         @foreach($cat->Post as $post)
         <div class="col-md-4 col-sm-6 portfolio-item">
-          <a class="portfolio-link"  href="{{ url('/prodDescription',$post->id) }}">
+          <a class="portfolio-link"  href="{{ url('/prodDescription/'.$post->id.'/'.$post->ServiceType->name) }}">
             <div class="portfolio-hover">
               <div class="portfolio-hover-content">
                   <i class="fa fa-flag fa-3x"></i>  
+                  
                     {{--  <ul class="social-network social-circle">
                         <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
@@ -198,6 +199,7 @@
             <img class="img-responsive" style="max-width:100%; max-height:100%;" height="300px" src="{{ asset($post->image) }}" alt="">
           </a>
           <div class="portfolio-caption">
+            
             <h4>{{ $post->Item->name }}</h4>
             @if(count($post->Item->RateItem)!=0)
               <?php

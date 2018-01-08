@@ -2,6 +2,21 @@
 <link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 
+<style>
+kit-transition-duration: 0.3s; /* Safari */
+      }
+  
+  thumb:hover {
+    cursor: pointer;
+    -webkit-transform: scale(2, 2);
+      -ms-transform: scale(2, 2);
+      transform: scale(2, 2);
+      transition-duration: 0.3s;
+      -webkit-transition-duration: 0.3s; /* Safari */
+      box-shadow: 10px 10px 5px #888888;
+      z-index: 1;
+      }
+</style>
 <?php $__env->startSection('contents'); ?>
 <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
@@ -68,6 +83,14 @@
          </div>
       </div>
       </div>
+      <div class="row">
+        <?php $__currentLoopData = $ranPost; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ran): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <div class="col-sm-2">
+            <a href="<?php echo e(url('/prodDescription/'.$ran->id.'/'.$ran->ServiceType->name)); ?>"><img src="<?php echo asset($ran->image)?>" alt="..." class="img-thumbnail" style="max-height:100px;"></a>
+        </div>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      </div>
+      
       <h2 class="mt-1 mb-2">Description</h2>
       <div class=""><?php echo $post->details?></div>
       <div class="pull-right mt-5">
