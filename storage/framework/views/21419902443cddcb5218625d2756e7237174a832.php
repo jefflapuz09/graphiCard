@@ -1,10 +1,39 @@
+<?php $__env->startSection('style'); ?>
 <style>
-@import  url('https://fonts.googleapis.com/css?family=Poiret+One');
-</style>
+  @import  url('https://fonts.googleapis.com/css?family=Poiret+One');
+  @import  url('https://fonts.googleapis.com/css?family=Montserrat');
+  </style>
+  <style>
+      
+      .se-pre-con {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url('<?php echo e(asset('img/Preloader_3.gif')); ?>') center no-repeat #fff;
+      }
+  
+       .titleload{
+        position: relative;
+        left:0;
+        right:0;
+        top: 100px;
+  
+      }
+  </style>
+<?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contents'); ?>
 
-<link href="<?php echo e(asset('css/contact.css')); ?>" rel="stylesheet"> 
+
+<div class="se-pre-con">
+      
+      
+
+</div>
+
 <?php if(count($adv)!=0): ?>
 <div class="container-fluid" style="background-color: yellow; margin-top:60px;">
   <?php echo $adv->advisory ?>
@@ -81,19 +110,6 @@
   </div>
 </header>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<div class="fb-share-button" data-href="https://www.facebook.com/Graphicard-154392717914639/" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FGraphicard-154392717914639%2F&amp;src=sdkpreparse">Share</a></div>
-
-<div class="fb-post" data-href="https://www.facebook.com/20531316728/posts/10154009990506729/" data-width="500" data-show-text="true"><blockquote cite="https://www.facebook.com/20531316728/posts/10154009990506729/" class="fb-xfbml-parse-ignore">Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on&nbsp;<a href="https://www.facebook.com/20531316728/posts/10154009990506729/">Thursday, August 27, 2015</a></blockquote></div>
-
 
 <header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/red-pattern.jpg')); ?>')">
   <div class="overlay"></div>
@@ -162,16 +178,40 @@
         <?php $__currentLoopData = $cat->Post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="col-md-4 col-sm-6 portfolio-item">
           <a class="portfolio-link"  href="<?php echo e(url('/prodDescription',$post->id)); ?>">
-            <div class="portfolio-hover shop">
+            <div class="portfolio-hover">
               <div class="portfolio-hover-content">
-                <i class="fa fa-flag fa-3x"></i>
+                  <i class="fa fa-flag fa-3x"></i>  
+                    
               </div>
             </div>
             <img class="img-responsive" style="max-width:100%; max-height:100%;" height="300px" src="<?php echo e(asset($post->image)); ?>" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4><?php echo e($post->ServiceType->name); ?></h4>
-            <p class="text-muted">See More</p>
+            <h4><?php echo e($post->Item->name); ?></h4>
+            <?php if(count($post->Item->RateItem)!=0): ?>
+              <?php
+                  $count = count($post->Item->RateItem);
+                  $sum = 0;
+                  foreach($post->Item->RateItem as $r)
+                  {
+                    $sum += $r->rating;
+                  }
+                  $ave = $sum/$count;
+              ?>
+
+              <?php $newave = round($ave);
+              ?>
+              <select id="" class="starrating" disabled>
+                <option value="1" <?php if(1 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>1</option>
+                <option value="2" <?php if(2 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>2</option>
+                <option value="3" <?php if(3 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>3</option>
+                <option value="4" <?php if(4 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>4</option>
+                <option value="5" <?php if(5 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>5</option>
+              </select>
+            <?php else: ?>
+            <p class="text-muted">No ratings yet.</p>
+            <?php endif; ?>
+            
           </div>
         </div>
 
@@ -241,9 +281,15 @@
             <h4 class="card-title"><?php echo e($feedback->name); ?></h4>
             <p class="card-text"><?php echo e($feedback->description); ?></p>
             <span class="social-box">
-              <?php for($i = 0; $i < $feedback->rating; $i++): ?>
-              <span class="fa fa-star checked"></span>
-              <?php endfor; ?>            
+              <?php $round = round($feedback->rating); ?>
+
+              <select id="" class="starrating" disabled>
+                <option value="1" <?php if($round == 1): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>1</option>
+                <option value="2" <?php if($round == 2): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>2</option>
+                <option value="3" <?php if($round == 3): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>3</option>
+                <option value="4" <?php if($round == 4): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>4</option>
+                <option value="5" <?php if($round == 5): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>5</option>
+              </select>           
             </span>
           </div>
         </div>
@@ -266,11 +312,13 @@
             <p class="card-text">Testimonial</p>
             <span class="social-box">
 
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
+              <select id="" class="starrating meron" disabled>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
             </span>
           </div>
@@ -290,11 +338,13 @@
             <p class="card-text">Testimonial</p>
             <span class="social-box">
 
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
+              <select id="" class="starrating meron" disabled>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
             </span>
           </div>
@@ -314,11 +364,13 @@
             <p class="card-text">Testimonial</p>
             <span class="social-box">
 
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
+              <select id="" class="starrating meron" disabled>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
             </span>
           </div>
@@ -355,12 +407,12 @@
       <?php endif; ?>
 
     </div>
-    <div class="contact-section">
-      <div class="container">
+    <div class="contact-section" style="">
+      <div class="container" style="">
         <form method="post" action="<?php echo e(url('/InquirySend')); ?>" id="inquiry-form">
           <?php echo e(csrf_field()); ?>
 
-          <div class="row">
+          <div class="row" style="">
             <div class="col-md-6 form-line"> 
               <div class="form-group">
                 <label for="exampleInputUsername">Your Name</label>
@@ -368,7 +420,7 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail">Email Address</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder=" Enter Email id">
+                <input type="email" class="form-control" id="email" name="email" placeholder=" Enter Email Address">
               </div>	
               <div class="form-group">
                 <label for="telephone">Mobile No.</label>
@@ -377,9 +429,9 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for ="description"> Subject</label>
-                <input type="tel" class="form-control" id="subject" name="subject" placeholder=" Enter a subject">
-              </div>
+                  <label for ="description"> Subject</label>
+                  <input type="text" class="form-control" id="subject" name="subject" placeholder=" Enter a subject">
+                </div>
               <div class="form-group">
                 <label for ="description"> Message</label>
                 <textarea  class="form-control" id="message" name="message" placeholder="Enter Your Message"></textarea>
@@ -392,6 +444,29 @@
         </form>
       </div>
     </section>
+    <?php $__env->stopSection(); ?>
+
+    <?php $__env->startSection('script'); ?>
+    
+    
+    <script>
+        $( document ).ready(function() {
+ 
+          $( ".se-pre-con" ).delay().fadeOut("slow");
+          $('.starrating').barrating({
+            
+            theme: 'fontawesome-stars',
+            readonly: true
+          });
+
+          $('.meron').barrating('set', 5);
+          
+          
+          
+
+      });
+    </script>  
+
     <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

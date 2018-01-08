@@ -14,18 +14,20 @@
   <title>Admin</title>
   <?php endif; ?>
   <!-- Bootstrap core CSS-->
-  
+
   <link href="<?php echo e(asset('vendor/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <<link rel="stylesheet" href="<?php echo e(asset('css/font-awesome.min.css')); ?>">
   <!-- Page level plugin CSS-->
   <!-- <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet"> -->
   <!-- Custom styles for this template-->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet">
-  <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+
+  <link href="<?php echo e(asset('css/select2.min.css')); ?>" rel="stylesheet">
+  <link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
+  <link href="<?php echo e(asset('css/jquery.dataTables.min.css')); ?>" rel="stylesheet">
   <link href="<?php echo e(asset('css/sb-admin.css')); ?>" rel="stylesheet">
-  <link href="<?php echo e(asset('css/jquery.dataTables.min')); ?>" rel="stylesheet">
-  
+  <link href="<?php echo e(asset('css/jquery.dataTables.min.css')); ?>" rel="stylesheet">
+  <?php echo $__env->yieldContent('styles'); ?>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -51,8 +53,14 @@
         <?php if((Auth::user()->role)==1): ?>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <a class="nav-link" href="<?php echo e(url('/Feedback')); ?>">
-              <i class="fa fa-comments"></i>
+              <i class="fa fa-handshake-o"></i>
               <span class="nav-link-text">Feedback</span>
+            </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <a class="nav-link" href="<?php echo e(url('/Review')); ?>">
+              <i class="fa fa-comments"></i>
+              <span class="nav-link-text">Review</span>
             </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
@@ -82,12 +90,12 @@
                 <span class="nav-link-text">Post</span>
               </a>
         </li>
-         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="<?php echo e(url('/Utilities')); ?>">
-                  <i class="fa fa-cog"></i>
-                  <span class="nav-link-text">Utilities</span>
-                </a>
-          </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <a class="nav-link" href="<?php echo e(url('/Customer')); ?>">
+              <i class="fa fa-users"></i>
+              <span class="nav-link-text">Customer</span>
+            </a>
+        </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                   <a class="nav-link" href="<?php echo e(url('/User')); ?>">
                     <i class="fa fa-user"></i>
@@ -95,9 +103,9 @@
                   </a>
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-              <a class="nav-link" href="<?php echo e(url('/Customer')); ?>">
-                <i class="fa fa-users"></i>
-                <span class="nav-link-text">Customer</span>
+              <a class="nav-link" href="<?php echo e(url('/Utilities')); ?>">
+                <i class="fa fa-cog"></i>
+                <span class="nav-link-text">Utilities</span>
               </a>
           </li>
           <?php elseif((Auth::user()->role)==2): ?>
@@ -171,17 +179,21 @@
       </div>
     </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
     <script src="<?php echo e(asset('vendor/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
-    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="<?php echo e(asset('vendor/bootstrap/js/jquery.dataTables.min')); ?>"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+    <script src="<?php echo e(asset('js/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/select2.min.js')); ?>"></script>
     <script src="<?php echo e(asset('js/sb-admin.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
      <script>
         $(document).ready(function() {
           $('#example').DataTable( {
-              "scrollX": true
+              "scrollX": true,
+              responsive: true
           } );
+
+          $('.select2').select2();
+          
         } );
 
     </script>

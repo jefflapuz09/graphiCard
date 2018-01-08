@@ -2,41 +2,32 @@
 
 namespace App\Mail;
 
-// use App\Inquiries;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+use App\Inquiries;
+use App\CompanyInfo;
+
 class InquirySent extends Mailable
 {
     use Queueable, SerializesModels;
 
-    // public $inquiry;
+    public $inquirerData;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    // public function __construct(Inquiries $inquiry)
-    // {
-    //     $this->inquiry = $inquiry;
-    // }
-
-    public function __construct()
+    public function __construct(Inquiries $inquiry, CompanyInfo $compInfo)
     {
-        //
+        $this->inquirerData = $inquiry; 
+        $this->compInfo = $compInfo; 
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
-        return $this->view('layouts.email');
-        //return $this->view('layouts.email');
-    }
+        return $this->from('eyemcoronado@gmail.com', 'Graphicard')
+                    ->subject('Graphicard Inquiry')
+                    ->markdown('email.inquirySent')
+                    ->with('mailData', $this->inquirerData)
+                    ->with('companyInfo', $this->compInfo);
+                }
 }

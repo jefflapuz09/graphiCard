@@ -26,6 +26,7 @@ Route::get('/prodDescription/{id}', 'HomeController@prodDescription');
 Route::get('/Testimonial','HomeController@testimonial');
 Route::get('/ServiceItem/{id}', 'HomeController@item');
 Route::get('/admin', 'adminController@index');
+Route::post('/InquirySend','InquiryController@store');
 
 //error
 Route::get('/Restricted','Homecontroller@error');
@@ -96,8 +97,6 @@ Route::post('/UtilityStore', 'UtilitiesController@store');
 
 //Inquiry
 Route::get('/InquiryRead','InquiryController@read');
-
-Route::post('/InquirySend','InquiryController@store');
 Route::get('/InquiryView/{id}','InquiryController@show');
 Route::post('/InquiryUpdate/{id}','InquiryController@update');
 
@@ -163,8 +162,6 @@ Route::post('/PostUpdate/{id}', 'postController@update');
 
 //Inquiry
 Route::get('/InquiryRead','InquiryController@read');
-
-Route::post('/InquirySend','InquiryController@store');
 Route::get('/InquiryView/{id}','InquiryController@show');
 Route::post('/InquiryUpdate/{id}','InquiryController@update');
 });

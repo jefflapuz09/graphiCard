@@ -21,15 +21,20 @@
     <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/animate.css')); ?>" rel="stylesheet">  
     <link href="<?php echo e(asset('css/button.css')); ?>" rel="stylesheet">  
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo e(asset('vendor/social/dist/css/social-share-kit.css')); ?>">
+    <link href="<?php echo e(asset('css/select2.min.css')); ?>" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="<?php echo e(asset('vendor/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
-    <?php echo $__env->yieldContent('style'); ?>
+    
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet'>
     <link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet'>
+    <link href="<?php echo e(asset('css/fontawesome-stars.css')); ?>" rel="stylesheet"> 
+    <link href="<?php echo e(asset('css/contact.css')); ?>" rel="stylesheet"> 
+    <link href="<?php echo e(asset('css/jquery-ui.css')); ?>" rel="stylesheet">
+    <?php echo $__env->yieldContent('style'); ?>
   </head>
 
   <body>
@@ -86,6 +91,13 @@
     </div>
   </div>
 </nav>
+<div class="ssk-sticky ssk-right ssk-center ssk-lg">
+    <a href="" class="ssk ssk-facebook"></a>
+    <a href="" class="ssk ssk-twitter"></a>
+    <a href="" class="ssk ssk-linkedin"></a>
+    <a href="" class="ssk ssk-email"></a>
+</div>
+
 <?php echo $__env->yieldContent('contents'); ?>;
 
     <!-- Footer -->
@@ -214,8 +226,18 @@
     <script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
     <script src="<?php echo e(asset('vendor/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
     <script src="<?php echo e(asset('js/megamenu.js')); ?>"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
-    <script src="<?php echo e(asset('js/navscroll.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/select2.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('vendor/social/dist/js/social-share-kit.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/jquery.barrating.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/jquery-ui.js')); ?>"></script>
+    <script>
+        SocialShareKit.init();
+
+        $(document).ready(function() {
+          $('.select2').select2();
+          
+        } );
+    </script>
     <?php echo $__env->yieldContent('script'); ?>
   </body>
 
