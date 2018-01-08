@@ -9,7 +9,7 @@
 
 <!-- Body here -->
 <h4>Greetings <?php echo e($mailData->name); ?>,</h4>
-<p>Your inquiry message has been receive. Graphicard will get back to you immediately. Thank you and have a nice day.</p>
+<p>Your inquiry message has been received. Graphicard will get back to you immediately. Thank you and have a nice day.</p>
 
 <?php $__env->slot('subcopy'); ?>
 <?php $__env->startComponent('mail::subcopy'); ?>

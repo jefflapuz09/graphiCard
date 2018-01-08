@@ -1,22 +1,9 @@
 <?php $__env->startSection('style'); ?>
 <link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/bars-1to10.css')); ?>" rel="stylesheet"> 
+<link href="<?php echo e(asset('css/comment.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 
-<style>
-kit-transition-duration: 0.3s; /* Safari */
-      }
-  
-  thumb:hover {
-    cursor: pointer;
-    -webkit-transform: scale(2, 2);
-      -ms-transform: scale(2, 2);
-      transform: scale(2, 2);
-      transition-duration: 0.3s;
-      -webkit-transition-duration: 0.3s; /* Safari */
-      box-shadow: 10px 10px 5px #888888;
-      z-index: 1;
-      }
-</style>
 <?php $__env->startSection('contents'); ?>
 <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
@@ -86,16 +73,66 @@ kit-transition-duration: 0.3s; /* Safari */
       <div class="row">
         <?php $__currentLoopData = $ranPost; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ran): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="col-sm-2">
-            <a href="<?php echo e(url('/prodDescription/'.$ran->id.'/'.$ran->typeId)); ?>"><img src="<?php echo asset($ran->image)?>" alt="..." class="img-thumbnail" style="max-height:100px;"></a>
+            <a href="<?php echo e(url('/prodDescription/'.$ran->id.'/'.$ran->typeId.'/'.$ran->itemid)); ?>"><img src="<?php echo asset($ran->image)?>" alt="..." class="img-thumbnail" style="max-height:100px;"></a>
         </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </div>
       
-      <h2 class="mt-1 mb-2">Description</h2>
+      <h2 class="mt-3 mb-2">Description</h2>
       <div class=""><?php echo $post->details?></div>
       <div class="pull-right mt-5">
           <a href="" data-toggle="modal" data-target="#myModal"><button class="btn btn-link" style="font-size:15pt; color:black; text-decoration:none; border:1px solid black;"><i class="fa fa-heart-o" aria-hidden="true"></i> Give us a Review! > </button></a>
       </div>
+      
+      <div class="container mt-5"> 
+            <div class="row">
+            <!-- Contenedor Principal -->
+              <div class="comments-container">
+              <div class="text-center"><h1>Reviews</h1></div>
+          
+              <ul id="comments-list" class="comments-list">
+
+              <?php if(count($reviewcom)!=0): ?>
+              <?php $__currentLoopData = $reviewcom; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rev): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <li>
+                  <div class="comment-main-level">
+                    <!-- Avatar -->
+
+                    <!-- Contenedor del Comentario -->
+                    <div class="comment-box">
+                      <div class="comment-head">
+                        <h6 class="comment-name"><?php echo e($rev->Name); ?></h6>
+                        <span><?php echo e(Carbon\Carbon::parse($rev->creat)->diffForHumans()); ?></span>
+                      </div>
+                      <div class="comment-content">
+                        <?php echo e($rev->description); ?>
+
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              <?php else: ?>
+              <li>
+                  <div class="comment-main-level">
+                    <div class="comment-box">
+                      <div class="comment-head">
+                        <h6 class="comment-name"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
+                        <span>20 minutes</span>
+                      </div>
+                      <div class="comment-content">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              <?php endif; ?>
+                
+          
+              </ul>
+            </div>
+            </div>
+          </div>
     </div>
 
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
@@ -166,7 +203,13 @@ kit-transition-duration: 0.3s; /* Safari */
                 <div class="form-group">
                   <div data-role="rangeslider">
                     <label for="price-max">Rate us! ( 1-5 )</label>
-                    <input type="range"  name="rating" id="price-max" value="3" min="1" max="5">
+                    <select id="rate" name="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
                   </div>
                 </div>
                 <div class="pull-right">
@@ -272,6 +315,9 @@ kit-transition-duration: 0.3s; /* Safari */
         readonly: true
       });
   
+      $('#rate').barrating({
+        theme: 'bars-1to10'
+      });
     });
   
  
