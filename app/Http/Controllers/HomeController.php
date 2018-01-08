@@ -105,7 +105,7 @@ class HomeController extends Controller
 
     public function user()
     {
-        $post = User::all();
+        $post = User::where('isActive',1)->get();
         return view('User.index',compact('post'));
     }
 
@@ -162,6 +162,80 @@ class HomeController extends Controller
             }
             
         }
+    }
+
+    public function useredit($id)
+    {
+        $user = User::find($id);
+        return view('User.update',compact('user'));
+    }
+
+    public function userupdate(Request $request, $id)
+    {
+        $rules = [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:6|confirmed',
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',
+            'regex' => 'The :attribute must not contain special characters.'              
+        ];
+        $niceNames = [
+            'name' => 'Name',
+            'email' => 'Email Address',
+            'password' => 'Password'
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else{
+            $cpass = $request->password_confirmation;
+            $pass = $request->password;
+            if($cpass == $pass)
+            {
+                try{
+                User::find($id)->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                    'role' => ($request->role)
+                ]);
+                }catch(\Illuminate\Database\QueryException $e){
+                    DB::rollBack();
+                    $errMess = $e->getMessage();
+                    return Redirect::back()->withError($errMess);
+                }
+                return redirect('/User')->withSuccess('Successfully updated into the database.');
+            }
+            else
+            {
+                return Redirect::back()->withErrors($validator);
+            }
+            
+        }
+    }
+
+    public function userdeac($id)
+    {
+        User::find($id)->update(['isActive' => 0]);
+        return redirect('/User');
+    }
+
+    public function userreac($id)
+    {
+        User::find($id)->update(['isActive' => 1]);
+        return redirect('/User');
+    }
+
+    public function usersoft()
+    {
+        $post = User::where('isActive',0)->get();
+        return view('User.soft',compact('post'));
     }
 
     public function testimonial()

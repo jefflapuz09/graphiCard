@@ -114,8 +114,13 @@ Route::post('/ItemUpdate/{id}', 'serviceItemController@update');
 //User
 Route::get('/User','HomeController@user');
 Route::get('/UserCreate','HomeController@usercreate');
+Route::get('/UserEdit/{id}', 'HomeController@useredit');
+Route::get('/UserDeactivate/{id}', 'HomeController@userdeac');
+Route::get('/UserReactivate/{id}', 'HomeController@userreac');
+Route::get('/UserSoft', 'HomeController@usersoft');
 
 Route::post('/UserStore','HomeController@userstore');
+Route::post('/UserUpdate/{id}','HomeController@userupdate');
 
 //Customer Feedback
 Route::get('/Feedback','FeedbackController@index');

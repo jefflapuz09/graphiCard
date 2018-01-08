@@ -55,12 +55,9 @@
                                         @endif
                                     </td>
                                     <td>
-                                            <a href="{{ url('/UserEdit', $user->id) }}" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            <a href="{{ url('/UserReactivate', $user->id) }}" onclick="return reacForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
+                                                <i class="fa fa-recycle" aria-hidden="true"></i>
                                             </a>
-                                            <a href="{{ url('/UserDeactivate', $user->id) }}"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </a>    
                                     </td>
                                 </tr>
                     
@@ -68,7 +65,7 @@
                         </tbody>
                     </table>
                     <div class="form-group pull-right">
-                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/UserSoft') }}';" id="showDeactivated"> Show deactivated records</label>
+                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/User') }}';" id="showDeactivated"> Show records</label>
                     </div>
         </div>
     </div>
@@ -82,16 +79,8 @@
 @section('script')
 <script>
         
-        function updateForm(){
-            var x = confirm("Are you sure you want to alter this record?");
-            if (x)
-              return true;
-            else
-              return false;
-         }
-
-         function deleteForm(){
-            var x = confirm("Are you sure you want to deactivate this record? All items included in this record will also be deactivated.");
+        function reacForm(){
+            var x = confirm("Are you sure you want to reactivate this record?");
             if (x)
               return true;
             else
