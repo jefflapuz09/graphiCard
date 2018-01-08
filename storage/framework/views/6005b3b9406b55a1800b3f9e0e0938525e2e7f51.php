@@ -1,8 +1,8 @@
 <?php $__env->startComponent('mail::layout'); ?>
 
 <?php $__env->slot('header'); ?>
-<?php $__env->startComponent('mail::header', ['url' => config('app.url')]); ?>
-<img src="url('<?php echo e(asset($companyInfo->company_logo)); ?>"><b><?php echo e($companyInfo->company_name); ?></b>
+<?php $__env->startComponent('mail::header', ['url' => config('app.url')], ['color' => 'red']); ?>
+<img src="url('<?php echo e(asset($companyInfo->company_logo)); ?>"><b style="color:black"><?php echo e($companyInfo->company_name); ?></b>
 <?php echo $__env->renderComponent(); ?>
 <?php $__env->endSlot(); ?>
 
@@ -19,7 +19,7 @@
 
 <?php $__env->slot('footer'); ?>
 <?php $__env->startComponent('mail::footer'); ?>
-© <?php echo e(date('Y')); ?> <?php echo e(config('app.name')); ?>. All rights reserved.
+© <?php echo e(date('Y')); ?> <?php echo e($companyInfo->company_name); ?>. All rights reserved.
 <?php echo $__env->renderComponent(); ?>
 <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>
