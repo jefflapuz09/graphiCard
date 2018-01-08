@@ -23,10 +23,12 @@
   
       }
   </style>
+  <link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contents'); ?>
-
+<script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
 
 <div class="se-pre-con">
       
@@ -402,10 +404,9 @@
         Inquire Now
       </span></h1>
       <?php if(session('success')): ?>
-      <div class="alert alert-success">
-        <?php echo e(session('success')); ?>
-
-      </div>
+      <script type="text/javascript">
+          toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
+      </script>
       <?php endif; ?>
 
     </div>

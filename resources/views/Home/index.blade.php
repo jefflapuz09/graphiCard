@@ -26,10 +26,12 @@
   
       }
   </style>
+  <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
 @stop
 
 @section('contents')
-
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{  asset('js/toastr.js')  }}"></script>
 
 <div class="se-pre-con">
       
@@ -409,9 +411,9 @@
         Inquire Now
       </span></h1>
       @if(session('success'))
-      <div class="alert alert-success">
-        {{session('success')}}
-      </div>
+      <script type="text/javascript">
+          toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
+      </script>
       @endif
 
     </div>
