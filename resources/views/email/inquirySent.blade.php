@@ -1,8 +1,8 @@
 @component('mail::layout')
 {{-- Header --}}
 @slot('header')
-@component('mail::header', ['url' => config('app.url')])
-<img src="url('{{ asset($companyInfo->company_logo) }}"><b style="color:black">{{ $companyInfo->company_name }}</b>
+@component('mail::header', ['url' => config('app.url'), 'color' => 'red'])
+<b style="color:white">{{ $companyInfo->company_name }}</b>
 @endcomponent
 @endslot
 
