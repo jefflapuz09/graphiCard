@@ -27,7 +27,7 @@
                         @foreach($post->post as $item)
                            
                                 <div class="col-md-3 col-sm-6 portfolio-item">
-                                <a class="portfolio-link"  href="{{ url('/prodDescription/'.$item->id.'/'.$post->name) }}">
+                                <a class="portfolio-link"  href="{{ url('/prodDescription/'.$item->id.'/'.$item->typeId) }}">
                                     <div class="portfolio-hover">
                                     <div class="portfolio-hover-content">
                                         <i class="fa fa-flag fa-3x"></i>

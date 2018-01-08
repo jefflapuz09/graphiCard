@@ -184,7 +184,7 @@
       <div class="row">
         @foreach($cat->Post as $post)
         <div class="col-md-4 col-sm-6 portfolio-item">
-          <a class="portfolio-link"  href="{{ url('/prodDescription/'.$post->id.'/'.$post->ServiceType->name) }}">
+          <a class="portfolio-link"  href="{{ url('/prodDescription/'.$post->id.'/'.$post->typeId) }}">
             <div class="portfolio-hover">
               <div class="portfolio-hover-content">
                   <i class="fa fa-flag fa-3x"></i>  

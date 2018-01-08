@@ -88,7 +88,7 @@ kit-transition-duration: 0.3s; /* Safari */
       <div class="row">
         @foreach($ranPost as $ran)
         <div class="col-sm-2">
-            <a href="{{ url('/prodDescription/'.$ran->id.'/'.$ran->ServiceType->name) }}"><img src="<?php echo asset($ran->image)?>" alt="..." class="img-thumbnail" style="max-height:100px;"></a>
+            <a href="{{ url('/prodDescription/'.$ran->id.'/'.$ran->typeId) }}"><img src="<?php echo asset($ran->image)?>" alt="..." class="img-thumbnail" style="max-height:100px;"></a>
         </div>
         @endforeach
       </div>

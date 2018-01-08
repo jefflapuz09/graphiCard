@@ -86,7 +86,7 @@ kit-transition-duration: 0.3s; /* Safari */
       <div class="row">
         <?php $__currentLoopData = $ranPost; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ran): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="col-sm-2">
-            <a href="<?php echo e(url('/prodDescription/'.$ran->id.'/'.$ran->ServiceType->name)); ?>"><img src="<?php echo asset($ran->image)?>" alt="..." class="img-thumbnail" style="max-height:100px;"></a>
+            <a href="<?php echo e(url('/prodDescription/'.$ran->id.'/'.$ran->typeId)); ?>"><img src="<?php echo asset($ran->image)?>" alt="..." class="img-thumbnail" style="max-height:100px;"></a>
         </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </div>

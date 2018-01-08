@@ -61,7 +61,7 @@ class HomeController extends Controller
     public function prodDescription($id,$type)
     {
         $customer = Customer::all();
-        $ranPost = $post = Post::with('ServiceCategory','ServiceType','Item','User')->where('isDraft',1)->inRandomOrder()->limit(6)->get();
+        $ranPost = $post = Post::with('ServiceCategory','ServiceType','Item','User')->where('isDraft',1)->where('typeId','=',$type)->inRandomOrder()->limit(6)->get();
         $post = Post::with('ServiceCategory','ServiceType','Item','User')->where('id', $id)->first();
         return view('Home.prodDescription',compact('id','post','customer','ranPost'));
     }
