@@ -79,8 +79,6 @@
             </li>
        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
        <?php if($user = Auth::user()): ?>
-   
-          
        <?php elseif(Auth::guest()): ?>
        <li class="nav-item">
           <a class="nav-link" href="<?php echo e(url('/login')); ?>">Login</a>
@@ -92,9 +90,9 @@
   </div>
 </nav>
 <div class="ssk-sticky ssk-right ssk-center ssk-lg">
-    <a href="" class="ssk ssk-facebook"></a>
-    <a href="" class="ssk ssk-twitter"></a>
-    <a href="" class="ssk ssk-linkedin"></a>
+    <a href="" class="ssk ssk-facebook" data-url="https://www.facebook.com/Graphicard-154392717914639/"></a>
+    <a href="" class="ssk ssk-twitter" data-url="https://www.facebook.com/Graphicard-154392717914639/"></a>
+    <a href="" class="ssk ssk-linkedin" data-url="https://www.facebook.com/Graphicard-154392717914639/"></a>
     <a href="" class="ssk ssk-email"></a>
 </div>
 

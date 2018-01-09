@@ -1,11 +1,10 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container">
-    <div class="row">
+<div class="container" >
+    <div class="row" >
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Login</div>
+            <div class="panel panel-primary" >
+                <div class="panel-heading"><img src="{{ asset($comp->company_logo) }}" style="max-width:50px; max-height:50px;" height="25px" width="25px"><b> Graphicard Admin Login</b></div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
@@ -54,7 +53,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>
