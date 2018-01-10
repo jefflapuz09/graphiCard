@@ -56,6 +56,7 @@
         <div class="card" style="border:1px solid black; margin:;">
         <div class="card-header" style="background:darkorange; color:white;">
             Inquiries
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All customer inquiries are displayed here. By clicking the view icon you'll be able to view all inquiry information."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
         </div>
         <div class="card-block">
             <div class="container mt-3">
@@ -95,6 +96,7 @@
         <div class="card" style="border:1px solid black;">
         <div class="card-header" style="background:darkorange; color:white;">
                 Advisory (Make it short)
+                <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="You can write your advisory here and it will be displayed on the top section of the website."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
         </div>
         <div class="card-block">
             <div class="container mt-3 mb-3">

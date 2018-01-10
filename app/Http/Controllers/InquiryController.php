@@ -56,6 +56,9 @@ class InquiryController extends Controller
         $inq = Inquiries::create($request->all());
         $post = CompanyInfo::find(1);
         \Mail::to($inq)->send(new InquirySent($inq, $post));
+
+        //Nexmo API SMS message
+
         // $to = $request->contact_number;
         
         // Nexmo::message()->send([
@@ -63,6 +66,7 @@ class InquiryController extends Controller
         //     'from' => '16105552344',
         //     'text' => 'Using the facade to send a message.'
         // ]);
+        
         }catch(\Illuminate\Database\QueryException $e){
             DB::rollBack();
             $errMess = $e->getMessage();

@@ -28,7 +28,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset($comp->company_logo) }}" style="max-width:50px; max-height:50px;" height="25px" width="25px">
+                        @if(count($comp)!=0)<img src="{{ asset($comp->company_logo) }}" style="max-width:50px; max-height:50px;" height="25px" width="25px">@endif
                     </a>
                 </div>
 

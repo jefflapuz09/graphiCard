@@ -3,7 +3,7 @@
     <div class="row" >
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-primary" >
-                <div class="panel-heading"><img src="<?php echo e(asset($comp->company_logo)); ?>" style="max-width:50px; max-height:50px;" height="25px" width="25px"><b> Graphicard Admin Login</b></div>
+                <div class="panel-heading"><?php if(count($comp)!=0): ?><img src="<?php echo e(asset($comp->company_logo)); ?>" style="max-width:50px; max-height:50px;" height="25px" width="25px"><?php endif; ?><b>Admin Login</b></div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="<?php echo e(route('login')); ?>">

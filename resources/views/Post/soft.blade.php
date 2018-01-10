@@ -8,16 +8,18 @@
     <div class="card" style="border:1px solid black; margin:10px;">
     <div class="card-header" style="background:maroon; color:white;">
             Post
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All post information are displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
     </div>
     <div class="card-block">
         <div class="container mt-3 mb-3">
                 <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th width="120px">Post Details</th>
-                                <th width="200px">Image</th>
-                                <th>Details</th>
-                                <th width="300px">Actions</th>
+                                    <th width="120px">Post Details</th>
+                                    <th>Author</th>
+                                    <th width="200px">Image</th>
+                                    <th>Featured Post</th>
+                                    <th width="300px">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,9 +28,17 @@
                                 <td>
                                     <li>{{ $posts->category }}</li>
                                     <li>{{ $posts->type }}</li>
+                                    <li>{{ $posts->item }}</li>
                                 </td>
+                                <td>{{$posts->userName}}</td>
                                 <td><img class="img-responsive" src="{{ asset($posts->image)}}" style="max-width:200px; max-height:200px;"></td>
-                                <td><?php echo $posts->details  ?></td>
+                                <td>
+                                        @if($posts->isFeatured == 0)
+                                        Featured Post
+                                        @elseif($posts->isFeatured == 1)
+                                        Default Post 
+                                        @endif
+                                </td>
                                 <td> 
                 
                                   

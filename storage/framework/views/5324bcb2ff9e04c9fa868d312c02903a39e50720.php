@@ -25,6 +25,7 @@
     <div class="card" style="border:1px solid black; margin:10px;">
     <div class="card-header" style="background:maroon; color:white;">
             Customer Feedbacks
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All of the customer feedbacks are displayed here. In order for the selected feedback be displayed on the website. Please update the record and tick the box that says selected post."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
     </div>
     <div class="card-block">
         <div class="container mt-3 mb-3">

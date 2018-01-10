@@ -21,6 +21,7 @@
     <div class="card" style="border:1px solid black; margin:10px;">
     <div class="card-header" style="background:maroon; color:white;">
             Customer Reviews
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All customer reviews are displayed here by item."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
     </div>
     <div class="card-block">
         <div class="container mt-3 mb-3">

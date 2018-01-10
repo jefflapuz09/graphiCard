@@ -286,12 +286,14 @@ class postController extends Controller
     public function soft()
     {
         $post = DB::table('posts')
-                ->join('service_subcategory','posts.typeId','=','service_subcategory.id')
-                ->join('service_categories','posts.categoryId','=','service_categories.id')
-                ->select('posts.*','service_subcategory.name as type', 'service_categories.name as category')
-                ->orderBy('posts.id','Asc')
-                ->where('posts.isActive',0)
-                ->get();
+        ->join('service_subcategory','posts.typeId','=','service_subcategory.id')
+        ->join('service_categories','posts.categoryId','=','service_categories.id')
+        ->join('users as u','u.id','=','posts.userId')
+        ->join('service_items','service_items.id','=','posts.itemId')
+        ->select('posts.*','service_subcategory.name as type', 'service_categories.name as category','u.name as userName','service_items.name as item')
+        ->orderBy('posts.id','Asc')
+        ->where('posts.isActive',0)
+        ->get();
         return view('Post.soft',compact('post'));
     }
 

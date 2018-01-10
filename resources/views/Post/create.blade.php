@@ -34,6 +34,7 @@
                 <label>
                   <input type="checkbox" name="isFeatured" value="0">
                   <b>Featured Post</b>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-toggle="popover" title="Featured Post" data-html="true" data-content="Ticking the box will let the post be displayed on the landing page of the website. If not, it will be just displayed on the default page."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
                 </label>
                 </div>
             </div>

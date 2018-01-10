@@ -28,7 +28,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                        <img src="<?php echo e(asset($comp->company_logo)); ?>" style="max-width:50px; max-height:50px;" height="25px" width="25px">
+                        <?php if(count($comp)!=0): ?><img src="<?php echo e(asset($comp->company_logo)); ?>" style="max-width:50px; max-height:50px;" height="25px" width="25px"><?php endif; ?>
                     </a>
                 </div>
 

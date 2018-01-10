@@ -34,6 +34,7 @@
                 <label>
                   <input type="checkbox" @if($post->isFeatured == 0) checked @else @endif name='isFeatured' value="0">
                   <b>Featured Navigation Menu</b>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-toggle="popover" title="Featured Menu" data-html="true" data-content="Ticking the box will let the category be displayed on the navigation bar."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
                 </label>
                 </div>
             </div>

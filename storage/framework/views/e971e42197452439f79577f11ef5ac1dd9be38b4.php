@@ -33,6 +33,7 @@
         
             <div class="form-group">
                 <label for="sel1">Role:</label>
+                <button type="button" class="mb-2 pull-right btn btn btn-outline-dark btn-sm" data-toggle="popover" title="Role Description" data-html="true" data-content="<b>Administrators</b> can perform every task available through the dashboard. <br><br> While, the <b>Contributors</b> permission to access all of the content. <b>Contributors</b> can make a draft and update changes but not able to publish."><i class="fa fa-question-circle" aria-hidden="true"></i></button>                
                 <select class="select2 form-control" name="role" id="sel1">
                   <option value='1'>Administrator</option>
                   <option value='2'>Contributor</option>
@@ -65,7 +66,8 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
+<script>
 
-
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

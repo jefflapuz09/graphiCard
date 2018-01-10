@@ -51,19 +51,19 @@
         </li>
 
         <?php if((Auth::user()->role)==1): ?>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Customer Feedback">
             <a class="nav-link" href="<?php echo e(url('/Feedback')); ?>">
               <i class="fa fa-handshake-o"></i>
               <span class="nav-link-text">Feedback</span>
             </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Customer Review">
             <a class="nav-link" href="<?php echo e(url('/Review')); ?>">
               <i class="fa fa-comments"></i>
               <span class="nav-link-text">Review</span>
             </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Maintenance">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-sitemap"></i>
             <span class="nav-link-text">Maintenance</span>
@@ -84,32 +84,32 @@
               </ul>
             </li>
           </ul>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Post">
               <a class="nav-link" href="<?php echo e(url('/Post')); ?>">
                 <i class="fa fa-paste"></i>
                 <span class="nav-link-text">Post</span>
               </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Customers">
             <a class="nav-link" href="<?php echo e(url('/Customer')); ?>">
               <i class="fa fa-users"></i>
               <span class="nav-link-text">Customer</span>
             </a>
         </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users">
                   <a class="nav-link" href="<?php echo e(url('/User')); ?>">
                     <i class="fa fa-user"></i>
                     <span class="nav-link-text">User</span>
                   </a>
           </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Utilities">
               <a class="nav-link" href="<?php echo e(url('/Utilities')); ?>">
                 <i class="fa fa-cog"></i>
                 <span class="nav-link-text">Utilities</span>
               </a>
           </li>
           <?php elseif((Auth::user()->role)==2): ?>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Post">
             <a class="nav-link" href="<?php echo e(url('/Post')); ?>">
               <i class="fa fa-paste"></i>
               <span class="nav-link-text">Post</span>
@@ -193,6 +193,7 @@
           } );
 
           $('.select2').select2();
+          $('[data-toggle="popover"]').popover()
           
         } );
 

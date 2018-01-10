@@ -31,6 +31,19 @@
         <form action="{{ url('/FeedbackEdit', $post->id) }}" method="post" enctype="multipart/form-data">
 
         {{ csrf_field() }}
+                <div class="form-group">
+                            <div align="center" class="checkbox">
+                            <label>
+                                @if($post->isSelected == 1)
+                              <input type="checkbox" name="isSelected" value="0">
+                                @else
+                              <input type="checkbox" checked name="isSelected" value="0">
+                                @endif
+                              <b>Selected Post</b>
+                              <button type="button" class="ml-1 btn btn-outline-dark btn-sm" data-toggle="popover" title="Selected Post" data-html="true" data-content="Ticking the box will let the customer feedback be displayed on the landing page of the website. If not, it will be just displayed on the default page."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+                            </label>
+                            </div>
+                        </div>
             <div class="form-group" style="margin-top:10px; border:1px solid black; padding:10px" >
                 <center><img class="img-responsive" id="pic" src="{{ URL::asset($post->image)}}" style="max-width:300px; background-size: contain" /></center>
                 <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
@@ -54,20 +67,6 @@
                         <label for="price-max">Rating:</label>
                         <input type="range"  name="rating" id="price-max" value="{{$post->rating}}" min="1" max="5">
                    </div>
-            </div>
-            <div class="pull-left">
-                    <div class="form-group">
-                            <div align="center" class="checkbox">
-                            <label>
-                                @if($post->isSelected == 1)
-                              <input type="checkbox" name="isSelected" value="0">
-                                @else
-                              <input type="checkbox" checked name="isSelected" value="0">
-                                @endif
-                              <b>Selected Post</b>
-                            </label>
-                            </div>
-                        </div>
             </div>
             <div class="pull-right">
                 <button type="reset" class="btn btn-success">Clear</button>
