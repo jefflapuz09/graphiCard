@@ -10,6 +10,8 @@ use App\Inquiries;
 use App\Mail\InquirySent;
 use Mail;
 use DB;
+use Nexmo;
+use Nexmo\Client;
 
 class InquiryController extends Controller
 {
@@ -54,6 +56,13 @@ class InquiryController extends Controller
         $inq = Inquiries::create($request->all());
         $post = CompanyInfo::find(1);
         \Mail::to($inq)->send(new InquirySent($inq, $post));
+        // $to = $request->contact_number;
+        
+        // Nexmo::message()->send([
+        //     'to'   => $to,
+        //     'from' => '16105552344',
+        //     'text' => 'Using the facade to send a message.'
+        // ]);
         }catch(\Illuminate\Database\QueryException $e){
             DB::rollBack();
             $errMess = $e->getMessage();
