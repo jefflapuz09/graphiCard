@@ -36,7 +36,7 @@ outline: none;
                 </div>
                 <div class="form-group">
                     <label for="">Customer Name:</label><div class="pull-right"><button type="button" class="btn btn-success btn-sm mb-2 ml-2" data-toggle="modal" title="New Customer" data-dismiss="modal" data-target="#myModal2"><i class="fa fa-plus" aria-hidden="true"></i></button></div></br>
-                    <select class="select2 form-control" name="customerId" style="width: 100%">
+                    <select class="select2 form-control" required name="customerId" style="width: 100%">
                       <?php $__currentLoopData = $customer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cust): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($cust->id); ?>"><?php echo e($cust->firstName); ?> <?php echo e($cust->middleName); ?> <?php echo e($cust->lastName); ?></option>
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -44,7 +44,7 @@ outline: none;
                   </div>
                 <div class="form-group">
                   <label for=""><b>Your comments</b></label>
-                  <textarea class="form-control" rows="5" placeholder="Description" name="description" id="desc"></textarea>
+                  <textarea class="form-control" rows="5" required placeholder="Description" name="description" id="desc"></textarea>
                 </div>
                 <div class="form-group">
                     <label for=""><b>Rating: (MIN:1|MAX:5)</b></label>

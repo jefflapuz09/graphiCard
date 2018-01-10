@@ -63,7 +63,7 @@ class HomeController extends Controller
     public function prodDescription($id,$type,$item)
     {
         $customer = Customer::all();
-        $ranPost = $post = Post::with('ServiceCategory','ServiceType','Item','User')->where('isDraft',1)->where('typeId','=',$type)->inRandomOrder()->limit(6)->get();
+        $ranPost = Post::with('ServiceCategory','ServiceType','Item','User')->where('isDraft',1)->where('typeId','=',$type)->inRandomOrder()->limit(6)->get();
         $post = Post::with('ServiceCategory','ServiceType','Item','User')->where('id', $id)->first();
         $reviewcom = collect(DB::select(DB::raw("SELECT CONCAT(customers.firstName,' ',customers.middleName,' ',customers.lastName)as Name, rating_items.description, rating_items.created_at as creat FROM `customers` join rating_items on rating_items.customerId = customers.id join service_items on service_items.id = rating_items.itemId WHERE rating_items.itemId = $item")));
         $rev = ServiceItem::with('RateItem')->where('id',$item)->get();

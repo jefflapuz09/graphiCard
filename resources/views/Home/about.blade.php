@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
+@section('style')
+<link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
+@stop
+
 @section('contents')
-<div class="container-fluid bg-light" style="margin-top:100px; padding:20px;">
+<div class="container-fluid" style="margin-top:100px; background:; padding:20px;">
 
   <!-- <div class="row">
     <div class="col-md-4">
@@ -15,9 +19,11 @@
   </div> -->
   <div class="row">
     @if(count($comp)!=0)
+    <div class="card-body rgba-grey-slight z-depth-2" >
     <div class="col-md-8">
       <h3 class="my-3">About Us</h3> 
       <?php echo $comp->about ?>
+    </div>
     </div>
     @else
     <div class="col-md-8">
@@ -29,36 +35,50 @@
     @endif
     
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
-    <div class="col-md-4" style="background-image:url('img/grey-pattern.png'); padding-bottom:10px" >
-      <div class="form-area" style="">  
-          <form role="form" method="post" action="{{ url('/InquirySend') }}" id="inquiry-form">
-
-            {{ csrf_field() }}
-            <br style="clear:both">
-            <h2 class="section-header" style="margin-bottom: 25px; text-align: center; font-family: 'Oleo Script', cursive; color:maroon">Inquire Now</h2>
-            <div class="form-group">
-              <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Contact Number" required>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" type="textarea" id="message" name="message" placeholder="Message" maxlength="140" rows="7"></textarea>
-            </div>
-            <div class="float-right">
-              <button type="submit" class="btn btn-link submit" style="color:maroon; hover:text-underline:none;"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
-            </div>
-            <div style="clear:both ">
+    <div class="col-md-4" style=" padding-bottom:10px" >
+      <div class="card-body red darken-4 z-depth-2" >
+          <!-- Form contact -->
+          <form method="post" action="{{ url('/InquirySend') }}">
+              <h2 class="text-center py-4 font-bold font-up white-text">Inquiry Form</h2>
+              {{ csrf_field() }}
+              <div class="md-form">
+                  <i class="fa fa-user prefix white-text"></i>
+                  <input type="text" class="white-text" id="form32" name="name" class="form-control">
+                  <label for="form32" class="white-text">Your name</label>
+              </div>
+              <div class="md-form">
+                  <i class="fa fa-envelope prefix white-text"></i>
+                  <input type="text" class="white-text" id="form22" name="email" class="form-control">
+                  <label for="form22"  class="white-text">Your email</label>
+              </div>
+              <div class="md-form">
+                  <i class="fa fa-envelope prefix white-text"></i>
+                  <input type="text" class="white-text" id="form22" name="contact_number" class="form-control">
+                  <label for="form22"  class="white-text">Your Mobile No.</label>
+              </div>
+              <div class="md-form">
+                  <i class="fa fa-tag prefix white-text"></i>
+                  <input type="text" class="white-text" id="form322" name="subject" class="form-control">
+                  <label for="form342" class="white-text">Subject</label>
+              </div>
+              <div class="md-form">
+                  <i class="fa fa-pencil prefix white-text"></i>
+                  <textarea type="text" id="form82" name="message" class="md-textarea white-text" style="height: 100px"></textarea>
+                  <label for="form82" class="white-text">Your message</label>
+              </div>
+              <div class="text-center">
+                  <button type="submit" class="btn btn-danger btn-lg">Send</button>
+              </div>
           </form>
-        </div>
+          <!-- Form contact -->
+      </div>
     </div>
   </div>
 </div>
 </div>
+@stop
+
+@section('script')
+<script src="{{ asset('js/mdb.min.js') }}"></script>
+
 @stop
