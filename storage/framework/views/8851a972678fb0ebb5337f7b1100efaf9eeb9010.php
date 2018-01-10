@@ -153,17 +153,17 @@ outline: none;
         <div class="pull-left">
             <?php if(session('success')): ?>
             <script type="text/javascript">
-                toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
+                toastr.success(' <?php echo session('success'); ?>', 'Success!')
             </script>
             <?php endif; ?>
             <?php if(session('error')): ?>
                 <script type="text/javascript">
-                    toastr.error(" <?php echo session('error'); ?>", "There's something wrong")
+                    toastr.error(" <?php echo session('error'); ?>", "There's something wrong!")
                 </script>
             <?php endif; ?>
             <?php if($errors->any()): ?>
                 <script type="text/javascript">
-                  toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong")
+                  toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong!")
               </script>   
             <?php endif; ?>
 
@@ -301,11 +301,13 @@ outline: none;
           <p class="card-text">Testimonial</p>
           <span class="social-box">
 
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
+            <select id="" class="starrating meron" disabled>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
           </span>
         </div>

@@ -37,7 +37,7 @@ outline: none;
                 </div>
                 <div class="form-group">
                     <label for="">Customer Name:</label><div class="pull-right"><button type="button" class="btn btn-success btn-sm mb-2 ml-2" data-toggle="modal" title="New Customer" data-dismiss="modal" data-target="#myModal2"><i class="fa fa-plus" aria-hidden="true"></i></button></div></br>
-                    <select class="select2 form-control" name="customerId" style="width: 100%">
+                    <select class="select2 form-control" required name="customerId" style="width: 100%">
                       @foreach($customer as $cust)
                         <option value="{{ $cust->id }}">{{$cust->firstName}} {{$cust->middleName}} {{$cust->lastName}}</option>
                       @endforeach
@@ -45,7 +45,7 @@ outline: none;
                   </div>
                 <div class="form-group">
                   <label for=""><b>Your comments</b></label>
-                  <textarea class="form-control" rows="5" placeholder="Description" name="description" id="desc"></textarea>
+                  <textarea class="form-control" rows="5" required placeholder="Description" name="description" id="desc"></textarea>
                 </div>
                 <div class="form-group">
                     <label for=""><b>Rating: (MIN:1|MAX:5)</b></label>
@@ -153,17 +153,17 @@ outline: none;
         <div class="pull-left">
             @if(session('success'))
             <script type="text/javascript">
-                toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
+                toastr.success(' <?php echo session('success'); ?>', 'Success!')
             </script>
             @endif
             @if(session('error'))
                 <script type="text/javascript">
-                    toastr.error(" <?php echo session('error'); ?>", "There's something wrong")
+                    toastr.error(" <?php echo session('error'); ?>", "There's something wrong!")
                 </script>
             @endif
             @if($errors->any())
                 <script type="text/javascript">
-                  toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong")
+                  toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong!")
               </script>   
             @endif
 
@@ -301,11 +301,13 @@ outline: none;
           <p class="card-text">Testimonial</p>
           <span class="social-box">
 
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
+            <select id="" class="starrating meron" disabled>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
           </span>
         </div>

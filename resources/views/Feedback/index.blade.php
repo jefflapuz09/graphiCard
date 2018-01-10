@@ -10,12 +10,12 @@
     <div> 
         @if(session('success'))
         <script type="text/javascript">
-            toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
+            toastr.success(' <?php echo session('success'); ?>', 'Success!')
         </script>
         @endif
         @if(session('error'))
             <script type="text/javascript">
-                toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+                toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
             </script>
         @endif
         <!-- <div class="pull-right" style="margin-bottom:15px;"> 

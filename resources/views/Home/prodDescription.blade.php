@@ -13,17 +13,17 @@
 <div class="container-fluid bg-light" style="margin-top:100px; padding:20px;">
     @if(session('success'))
     <script type="text/javascript">
-        toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
+        toastr.success(' <?php echo session('success'); ?>', 'Success!')
     </script>
     @endif
     @if(session('error'))
         <script type="text/javascript">
-            toastr.error(" <?php echo session('error'); ?>", "There's something wrong")
+            toastr.error(" <?php echo session('error'); ?>", "There's something wrong!")
         </script>
     @endif
     @if($errors->any())
     <script type="text/javascript">
-          toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong")
+          toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong!")
       </script>   
     @endif
   <ol class="breadcrumbs breadcrumb-arrow" width="100%">

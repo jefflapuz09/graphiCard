@@ -420,7 +420,7 @@
       </span></h1>
       @if(session('success'))
       <script type="text/javascript">
-          toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
+          toastr.success(' <?php echo session('success'); ?>', 'Success!')
       </script>
       @endif
 
@@ -433,25 +433,25 @@
             <div class="col-md-6 form-line"> 
               <div class="form-group">
                 <label for="exampleInputUsername">Your Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder=" Enter Name">
+                <input type="text" class="form-control" id="name" name="name" required placeholder=" Enter Name">
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail">Email Address</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder=" Enter Email Address">
+                <input type="email" class="form-control" id="email" name="email" required placeholder=" Enter Email Address">
               </div>	
               <div class="form-group">
                 <label for="telephone">Mobile No.</label>
-                <input type="tel" class="form-control" id="contact_number" name="contact_number" placeholder=" Enter mobile no.">
+                <input type="tel" class="form-control" id="contact_number" name="contact_number" required placeholder=" Enter mobile no.">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                   <label for ="description"> Subject</label>
-                  <input type="text" class="form-control" id="subject" name="subject" placeholder=" Enter a subject">
+                  <input type="text" class="form-control" id="subject" name="subject" required placeholder=" Enter a subject">
                 </div>
               <div class="form-group">
                 <label for ="description"> Message</label>
-                <textarea  class="form-control" id="message" name="message" placeholder="Enter Your Message"></textarea>
+                <textarea  class="form-control" id="message" name="message" required placeholder="Enter Your Message"></textarea>
               </div>
               <div>
                 <button type="submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>

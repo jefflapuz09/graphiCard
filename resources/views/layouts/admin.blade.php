@@ -193,7 +193,7 @@
           } );
 
           $('.select2').select2();
-          $('[data-toggle="popover"]').popover()
+          $('[data-toggle="popover"]').popover({ trigger: "hover" })
           
         } );
 
