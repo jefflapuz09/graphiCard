@@ -429,7 +429,7 @@
               </div>	
               <div class="form-group">
                 <label for="telephone">Mobile No.</label>
-                <input type="tel" class="form-control" id="contact_number" name="contact_number" placeholder=" Enter 10-digit mobile no.">
+                <input type="tel" class="form-control" id="contact_number" name="contact_number" placeholder=" Enter mobile no.">
               </div>
             </div>
             <div class="col-md-6">

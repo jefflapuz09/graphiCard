@@ -147,19 +147,19 @@
             <br style="clear:both">
             <h2 class="section-header" style="margin-bottom: 25px; text-align: center; font-family: 'Oleo Script', cursive; color:maroon">Inquire Now</h2>
             <div class="form-group">
-              <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address" required>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Contact Number" required>
+              <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Enter Mobile No." required>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+              <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject" required>
             </div>
             <div class="form-group">
-              <textarea class="form-control" type="textarea" id="message" name="message" placeholder="Message" maxlength="140" rows="7"></textarea>
+              <textarea class="form-control" type="textarea" id="message" name="message" placeholder="Enter Your Message" maxlength="140" rows="7"></textarea>
             </div>
             <div class="float-right">
               <button type="submit" class="btn btn-link submit" style="color:maroon; hover:text-underline:none;"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>

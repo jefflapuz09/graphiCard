@@ -79,8 +79,6 @@
             </li>
        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
        <?php if($user = Auth::user()): ?>
-   
-          
        <?php elseif(Auth::guest()): ?>
        <li class="nav-item">
           <a class="nav-link" href="<?php echo e(url('/login')); ?>">Login</a>
