@@ -60,42 +60,48 @@
     <div class="carousel-inner" role="listbox">
       <?php if(count($ban)!=0): ?>
       <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image: url('<?php echo e(asset($ban->banner)); ?>'); background-size: 1600px 420px;  ">
+      <div class="carousel-item active" >
+        <img class="img-responsive img-fluid" src="<?php echo e(asset($ban->banner)); ?>" width="100%">
         <div class="carousel-caption d-none d-md-block">
       <!-- <h3>First Slide</h3>
         <p>This is a description for the first slide.</p> -->
       </div>
     </div>
     <!-- Slide Two - Set the background image for this slide in the line below -->
-    <div class="carousel-item" style="background-image: url('<?php echo e(asset($ban->banner2)); ?>'); background-size: 1600px 420px;">
+    <div class="carousel-item">
+      <img class="img-responsive" src="<?php echo e(asset($ban->banner2)); ?>" width="100%">
       <div class="carousel-caption d-none d-md-block">
       <!-- <h3>Second Slide</h3>
         <p>This is a description for the second slide.</p> -->
       </div>
     </div>
     <!-- Slide Three - Set the background image for this slide in the line below -->
-    <div class="carousel-item" style="background-image: url('<?php echo e(asset($ban->banner3)); ?>'); background-size: 1600px 420px;">
+    <div class="carousel-item">
+      <img class="img-responsive" src="<?php echo e(asset($ban->banner3)); ?>" width="100%">
       <div class="carousel-caption d-none d-md-block">
       <!-- <h3>Third Slide</h3>
         <p>This is a description for the third slide.</p> -->
       </div>
     </div>
     <?php elseif(count($ban)==0): ?>
-    <div class="carousel-item active" style="background-image: url('img/grey-pattern.png'); background-size: 1600px 420px;  ">
+    <div class="carousel-item active">
+    <img class="img-responsive" src="img/grey-pattern.png" width="100%">
       <div class="carousel-caption d-none d-md-block">
         <!-- <h3>First Slide</h3>
           <p>This is a description for the first slide.</p> -->
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('img/grey-pattern.png'); background-size: 1600px 420px;">
+      <div class="carousel-item">
+      <img class="img-responsive" src="img/grey-pattern.png" width="100%">
         <div class="carousel-caption d-none d-md-block">
         <!-- <h3>Second Slide</h3>
           <p>This is a description for the second slide.</p> -->
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('img/grey-pattern.png'); background-size: 1600px 420px;">
+      <div class="carousel-item">
+        <img class="img-responsive" src="img/grey-pattern.png" width="100%">
         <div class="carousel-caption d-none d-md-block">
         <!-- <h3>Third Slide</h3>
           <p>This is a description for the third slide.</p> -->
@@ -429,7 +435,7 @@
               </div>	
               <div class="form-group">
                 <label for="telephone">Mobile No.</label>
-                <input type="tel" class="form-control" id="contact_number" name="contact_number" placeholder=" Enter 10-digit mobile no.">
+                <input type="tel" class="form-control" id="contact_number" name="contact_number" placeholder=" Enter mobile no.">
               </div>
             </div>
             <div class="col-md-6">

@@ -16,6 +16,7 @@ class ServicesSeeder extends Seeder
             'name' => 'Digital Printing',
             'description' => 'Sample description here.',
             'isActive' => 1,
+            'isFeatured' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -23,6 +24,7 @@ class ServicesSeeder extends Seeder
             'name' => 'Large Offset Printing',
             'description' => 'Sample description here.',
             'isActive' => 1,
+            'isFeatured' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

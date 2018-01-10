@@ -1,5 +1,15 @@
-<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('styles'); ?>
+<link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
+<?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('content'); ?>
+<script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
+    <?php if(session('error')): ?>
+        <script type="text/javascript">
+            toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+        </script>
+    <?php endif; ?>
 <div id="accordion" role="tablist">
     <div class="card" style="border-color:maroon;">
       <div class="card-header" style="background-color:maroon;" role="tab" id="headingOne">
@@ -9,7 +19,7 @@
               </a>
           </h5>
       </div>
-      <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+      <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
           <div class="card-body">
               <?php if($errors->any()): ?>
               <div class="alert alert-danger">
