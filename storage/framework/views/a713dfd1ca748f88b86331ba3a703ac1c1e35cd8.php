@@ -1,9 +1,9 @@
 <?php $__env->startSection('style'); ?>
-<link href="<?php echo e(asset('css/mdb.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/mdparts.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contents'); ?>
-<div class="container-fluid" style="margin-top:100px; background:; padding:20px;">
+<div class="container-fluid" style="margin-top:100px; background:; padding:20px; background-image: url('<?php echo e(asset('img/grey-pattern.jpg')); ?>');">
 
   <!-- <div class="row">
     <div class="col-md-4">
@@ -19,7 +19,7 @@
     <?php if(count($comp)!=0): ?>
     <div class="card-body rgba-grey-slight z-depth-2" >
     <div class="col-md-8">
-      <h3 class="my-3">About Us</h3> 
+      <h3 class="my-3"><b>About Us</b></h3> 
       <?php echo $comp->about ?>
     </div>
     </div>
@@ -42,7 +42,7 @@
 
               <div class="md-form">
                   <i class="fa fa-user prefix white-text"></i>
-                  <input type="text" class="white-text" id="form32" name="name" class="form-control">
+                  <input type="text" id="form32" name="name" class="form-control">
                   <label for="form32" class="white-text">Your name</label>
               </div>
               <div class="md-form">
@@ -51,9 +51,9 @@
                   <label for="form22"  class="white-text">Your email</label>
               </div>
               <div class="md-form">
-                  <i class="fa fa-envelope prefix white-text"></i>
-                  <input type="text" class="white-text" id="form22" name="contact_number" class="form-control">
-                  <label for="form22"  class="white-text">Your Mobile No.</label>
+                  <i class="fa fa-phone prefix white-text"></i>
+                  <input type="text" class="white-text" id="form23" name="contact_number" class="form-control">
+                  <label for="form23"  class="white-text">Your Mobile No.</label>
               </div>
               <div class="md-form">
                   <i class="fa fa-tag prefix white-text"></i>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('style')
-<link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/mdparts.css') }}" rel="stylesheet">
 @stop
 
 @section('contents')
@@ -43,7 +43,7 @@
               {{ csrf_field() }}
               <div class="md-form">
                   <i class="fa fa-user prefix white-text"></i>
-                  <input type="text" class="white-text" id="form32" name="name" class="form-control">
+                  <input type="text" id="form32" name="name" class="form-control">
                   <label for="form32" class="white-text">Your name</label>
               </div>
               <div class="md-form">
@@ -53,8 +53,8 @@
               </div>
               <div class="md-form">
                   <i class="fa fa-phone prefix white-text"></i>
-                  <input type="text" class="white-text" id="form22" name="contact_number" class="form-control">
-                  <label for="form22"  class="white-text">Your Mobile No.</label>
+                  <input type="text" class="white-text" id="form23" name="contact_number" class="form-control">
+                  <label for="form23"  class="white-text">Your Mobile No.</label>
               </div>
               <div class="md-form">
                   <i class="fa fa-tag prefix white-text"></i>

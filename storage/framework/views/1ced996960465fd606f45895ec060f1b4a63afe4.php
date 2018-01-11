@@ -2,7 +2,7 @@
 <link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
 <link href="<?php echo e(asset('css/bars-1to10.css')); ?>" rel="stylesheet"> 
 <link href="<?php echo e(asset('css/comment.css')); ?>" rel="stylesheet">
-<link href="<?php echo e(asset('css/mdb.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/mdparts.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contents'); ?>
@@ -96,7 +96,7 @@
                   <h1>Reviews</h1>
                   </div>
                   <div class="col-sm-5">
-                      <a href="" data-toggle="modal" data-target="#myModal"><button class="mt-3 btn btn-primary pull-right" style="font-size:12pt; color:black; text-decoration:none;"><i class="fa fa-heart-o" aria-hidden="true"></i> Give us a Review! > </button></a>
+                      <a href="" data-toggle="modal" data-target="#myModal"><button class="mt-4 btn btn-primary pull-right" style="font-size:12pt; color:black; text-decoration:none;"><i class="fa fa-heart-o" aria-hidden="true"></i> Give us a Review! > </button></a>
                   </div>
                   </div>
                   
@@ -155,7 +155,7 @@
                     <label for="form22"  class="white-text">Your email</label>
                 </div>
                 <div class="md-form">
-                    <i class="fa fa-envelope prefix white-text"></i>
+                    <i class="fa fa-phone prefix white-text"></i>
                     <input type="text" required class="white-text" id="form22" name="contact_number" class="form-control">
                     <label for="form22"  class="white-text">Your Mobile No.</label>
                 </div>
@@ -205,7 +205,7 @@
                 </div>
                 <div class="form-group">
                   <label for="">Your comments</label>
-                  <textarea class="form-control" rows="5" placeholder="Description" name="description" id="desc"></textarea>
+                  <textarea class="form-control" rows="5" placeholder="Description" name="description" id="desc" style="padding:5px;"></textarea>
                 </div>
                 <div class="form-group">
                   <div data-role="rangeslider">
@@ -220,7 +220,7 @@
                   </div>
                 </div>
                 <div class="pull-right">
-                  <button type="submit" class="btn btn-danger" style="font-size:13pt; color:black; text-decoration:none; border:1px solid black;">Submit</button>
+                  <button type="submit" class="btn btn-primary btn-lg" style="font-size:13pt; color:black; text-decoration:none; ">Submit</button>
                 </div>
               </form>
         </div>

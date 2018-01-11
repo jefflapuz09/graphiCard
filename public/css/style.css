@@ -17,14 +17,16 @@
 .nav-item .dropdown-menu{
     background: #252525;
     
+    
 }
 
 .nav-item .dropdown-menu a{
     color:white;  
 }
 
+
 .nav-item .dropdown-menu a:hover{
-    color:maroon;  
+    color:black;  
 }
 
 body{

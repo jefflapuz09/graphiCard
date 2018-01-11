@@ -59,13 +59,13 @@
             <li class="nav-item">   
                <?php if(count($post->Type) != 0): ?>
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
                         <?php echo e($post->name); ?>
 
                       </a>          
                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                   <?php $__currentLoopData = $post->Type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                   
-                        <a class="dropdown-item" href="<?php echo e(url('/ServiceItem', $type->id)); ?>"><?php echo e($type->name); ?></a>
+                        <a class="dropdown-item" href="<?php echo e(url('/ServiceItem', $type->id)); ?>" style="color:;"><?php echo e($type->name); ?></a>
                       
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </div>
