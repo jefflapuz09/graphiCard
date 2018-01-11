@@ -59,12 +59,12 @@
             <li class="nav-item">   
                @if(count($post->Type) != 0)
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
                         {{$post->name}}
                       </a>          
                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                   @foreach($post->Type as $type)                   
-                        <a class="dropdown-item" href="{{ url('/ServiceItem', $type->id) }}">{{$type->name}}</a>
+                        <a class="dropdown-item" href="{{ url('/ServiceItem', $type->id) }}" style="color:white;">{{$type->name}}</a>
                       
                   @endforeach
                   </div>

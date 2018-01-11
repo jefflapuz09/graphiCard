@@ -39,18 +39,19 @@
 <?php if(count($adv)!=0): ?>
 <div class="container-fluid" style="background-color: darkslategray; margin-top:54px; color:white;">
   <div class="text-center">
-  <?php echo $adv->advisory ?>
+  <p style="text-align: center; font-size:13pt;padding:5px;font-family: 'Montserrat', sans-serif;font-weight: bold;"><?php echo e($adv->advisory); ?></p>
   </div>
 </div>
+<header style="margin-top:-15px">
 <?php else: ?>
 <div class="container-fluid" style="margin-top:60px;">
   <p style="text-align: center"></p>
 </div>
+<header style="margin-top:-5px">
 <?php endif; ?>
 <!-- <div class="row" style="margin-top:5px; margin-bottom">
   <img class="img-responsive" style="max-width:100%; max-height:10%;" height="150px" width="100%" src="<?php echo e(asset('img/promo-banner.png')); ?>" alt="">
 </div> -->
-<header style="margin-top:">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -121,17 +122,17 @@
 </header>
 
 
-<header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/red-pattern.jpg')); ?>')">
+<header class="masthead top text-center" style="background-image: url('<?php echo e(asset('img/bg-pattern1.jpg')); ?>')">
   <div class="overlay"></div>
   <div class="container">
     <div class="col-xl-12 mx-auto">
-      <h1 class="animated rubberBand">Personalize your own</h1>
+      <h1 style="font-family: 'Lato', sans-serif; font-weight:bold;color:black">CREATE YOUR OWN DESIGN</h1>
     </div>
   </div>
 </header>
 
 
-<div class="container">
+<div class="container wow fadeInUp">
   <!-- Features Section -->
   <div class="row">
     <div class="col-lg-12" style="margin-top:20px; margin-bottom:20px;">
@@ -157,11 +158,11 @@
 </div>
 
 <!-- Page Content -->
-<header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/red-pattern.jpg')); ?>')">
+<header class="masthead top text-center" style="background-image: url('<?php echo e(asset('img/bg-pattern1.jpg')); ?>')">
   <div class="overlay"></div>
   <div class="container">
     <div class="col-xl-12 mx-auto">
-      <h1 class="animated rubberBand">Sample Items</h1>
+      <h1 style="font-family: 'Lato', sans-serif; font-weight:bold;color:black">SERVICE ITEMS</h1>
     </div>
   </div>
 </header>
@@ -171,7 +172,7 @@
   <!-- Portfolio Section -->
 
   <div class="container">
-    <ol class="breadcrumbs breadcrumb-arrow">
+    <ol class="breadcrumbs breadcrumb-arrow wow fadeInUp">
       <li><a href="<?php echo e(url('/ServiceItem', $cat->id)); ?>"><span style="color:white;" ><?php echo e($cat->name); ?></span></a></li>
       <li class="active"><span style="color:white;"><b>See More</b></span></li>
     </ol>
@@ -186,11 +187,11 @@
 
       <div class="row">
         <?php $__currentLoopData = $cat->Post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <div class="col-md-4 col-sm-6 portfolio-item">
+        <div class="col-md-4 col-sm-6 portfolio-item wow fadeInUp">
           <a class="portfolio-link"  href="<?php echo e(url('/prodDescription/'.$post->id.'/'.$post->typeId.'/'.$post->itemId)); ?>">
             <div class="portfolio-hover">
               <div class="portfolio-hover-content">
-                  <i class="fa fa-flag fa-3x"></i>  
+                  <h4 style="font-family: 'Poiret One', cursive; color:white;"><?php echo e($post->Item->name); ?></h4> 
                   
                     
               </div>
@@ -199,7 +200,7 @@
           </a>
           <div class="portfolio-caption">
             
-            <h4><?php echo e($post->Item->name); ?></h4>
+            
             <?php if(count($post->Item->RateItem)!=0): ?>
               <?php
                   $count = count($post->Item->RateItem);
@@ -220,8 +221,18 @@
                 <option value="4" <?php if(4 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>4</option>
                 <option value="5" <?php if(5 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>5</option>
               </select>
+              <ul class="social-network2 social-circle2">
+                  <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                </ul>	
             <?php else: ?>
             <p class="text-muted">No ratings yet.</p>
+            <ul class="social-network2 social-circle2">
+                <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+              </ul>	
             <?php endif; ?>
             
           </div>
@@ -235,7 +246,7 @@
 
   <?php else: ?>  
   <div class="container">
-    <div class="jumbotron" style="background-color:darkorange; color:white;">
+    <div class="jumbotron wow fadeInUp" style="background-color:darkorange; color:white;">
       <div class="col-lg-12" align="center">
         <h1>NO FEATURED POST!<h1>
         </div>
@@ -248,7 +259,7 @@
   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   <?php else: ?>
 
-  <div class="jumbotron" style="background-color:#ff3030; color:white;">
+  <div class="jumbotron wow fadeInUp" style="background-color:#ff3030; color:white;">
     <div class="col-lg-12" align="center">
       <h1>NO SERVICE CATEGORY AVAILABLE!<h1>
       </div>
@@ -262,11 +273,11 @@
 
 
 
-    <header class="masthead top text-white text-center" style="background-image: url('<?php echo e(asset('img/red-pattern.jpg')); ?>')">
+    <header class="masthead top text-center" style="background-image: url('<?php echo e(asset('img/bg-pattern1.jpg')); ?>')">
       <div class="overlay"></div>
       <div class="container">
         <div class="col-xl-12 mx-auto">
-          <h1 class="animated rubberBand">Customer Feedback</h1>
+          <h1 style="font-family: 'Lato', sans-serif; font-weight:bold; color:black">CUSTOMER FEEDBACK</h1>
         </div>
       </div>
     </header>
@@ -277,7 +288,7 @@
 
   <div class="container">
     <!-- Marketing Icons Section -->
-    <div class="row">
+    <div class="row wow fadeInUp">
       <?php if(count($feed)!=0): ?>
       <?php $__currentLoopData = $feed; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $feedback): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <div class="col-lg-4 mb-4">
@@ -406,9 +417,9 @@
   <link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <section id="contact" style="background:url('<?php echo e(asset('img/grey-pattern.png')); ?>'); width:100%;">
+  <section class="wow fadeInUp" id="contact" style="background:url('<?php echo e(asset('img/grey-pattern.jpg')); ?>'); width:100%;">
     <div class="section-content">
-      <h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> 
+      <h1 class="section-header"><span class="content-header" data-wow-delay="0.2s" data-wow-duration="2s"> 
         Inquire Now
       </span></h1>
       <?php if(session('success')): ?>
@@ -459,10 +470,11 @@
 
     <?php $__env->startSection('script'); ?>
     
-    
+    <script src="<?php echo e(asset('js/wow.js')); ?>"></script>
     <script>
         $( document ).ready(function() {
  
+          new WOW().init();
           $( ".se-pre-con" ).delay().fadeOut("slow");
           $('.starrating').barrating({
             

@@ -5,7 +5,7 @@
 @stop
 
 @section('contents')
-<div class="container-fluid" style="margin-top:100px; background:; padding:20px;">
+<div class="container-fluid" style="margin-top:100px; background:; padding:20px; background-image: url('{{ asset('img/grey-pattern.jpg') }}');">
 
   <!-- <div class="row">
     <div class="col-md-4">
@@ -21,7 +21,7 @@
     @if(count($comp)!=0)
     <div class="card-body rgba-grey-slight z-depth-2" >
     <div class="col-md-8">
-      <h3 class="my-3">About Us</h3> 
+      <h3 class="my-3"><b>About Us</b></h3> 
       <?php echo $comp->about ?>
     </div>
     </div>
@@ -52,7 +52,7 @@
                   <label for="form22"  class="white-text">Your email</label>
               </div>
               <div class="md-form">
-                  <i class="fa fa-envelope prefix white-text"></i>
+                  <i class="fa fa-phone prefix white-text"></i>
                   <input type="text" class="white-text" id="form22" name="contact_number" class="form-control">
                   <label for="form22"  class="white-text">Your Mobile No.</label>
               </div>
