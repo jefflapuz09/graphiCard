@@ -1,20 +1,24 @@
-<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('styles'); ?>
+<link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
+<?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('content'); ?>
+<script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
     <div class="container-fluid">
     
             <div>
                 <h3>Post</h3>
             </div>
             <?php if($errors->any()): ?>
-            <div class="alert alert-danger">
-                  <?php echo "<pre>".implode(",\n",$errors->all(':message'))."</pre>"; ?>
-            </div>
-            <?php endif; ?> 
+                <script type="text/javascript">
+                    toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong!")
+                </script>           
+            <?php endif; ?>  
             <?php if(session('error')): ?>
-            <div class="alert alert-danger">
-                <?php echo e(session('error')); ?>
-
-            </div>
+                <script type="text/javascript">
+                    toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
+                </script>
             <?php endif; ?>
     <div class="row">
     
@@ -30,6 +34,7 @@
                     <label>
                       <input type="checkbox" name="isFeatured" value="0">
                       <b>Featured Post</b>
+                      <button type="button" class="btn btn-outline-dark btn-sm" data-toggle="popover" title="Featured Post" data-html="true" data-content="Ticking the box will let the post be displayed on the landing page of the website. If not, it will be just displayed on the default page."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
                     </label>
                     </div>
                 </div>
@@ -88,13 +93,6 @@
 
 <?php $__env->startSection('script'); ?>
 
-        <script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
-        <script>
-        $( document ).ready(function() {
-            $('.select2').select2();
-        });
-        </script>
         <script src="<?php echo e(url('vendor/tinymce/js/tinymce/tinymce.min.js')); ?>"></script>
         <script>
     

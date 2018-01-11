@@ -190,7 +190,7 @@
           <a class="portfolio-link"  href="<?php echo e(url('/prodDescription/'.$post->id.'/'.$post->typeId.'/'.$post->itemId)); ?>">
             <div class="portfolio-hover">
               <div class="portfolio-hover-content">
-                  <i class="fa fa-flag fa-3x"></i>  
+                  <h4 style="font-family: 'Poiret One', cursive; color:white;"><?php echo e($post->Item->name); ?></h4> 
                   
                     
               </div>
@@ -199,7 +199,7 @@
           </a>
           <div class="portfolio-caption">
             
-            <h4><?php echo e($post->Item->name); ?></h4>
+            
             <?php if(count($post->Item->RateItem)!=0): ?>
               <?php
                   $count = count($post->Item->RateItem);
@@ -220,8 +220,18 @@
                 <option value="4" <?php if(4 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>4</option>
                 <option value="5" <?php if(5 == $newave): ?> selected = "selected" <?php else: ?> "" <?php endif; ?>>5</option>
               </select>
+              <ul class="social-network2 social-circle2">
+                  <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                </ul>	
             <?php else: ?>
             <p class="text-muted">No ratings yet.</p>
+            <ul class="social-network2 social-circle2">
+                <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+              </ul>	
             <?php endif; ?>
             
           </div>
