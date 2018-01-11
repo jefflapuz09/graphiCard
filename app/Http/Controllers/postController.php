@@ -180,7 +180,8 @@ class postController extends Controller
         $post = Post::find($id);
         $cat = ServiceCategory::where('isActive',1)->get();
         $type = ServiceType::Where('isActive',1)->get();
-        return view('Post.draft',compact('cat','type','post'));
+        $item = ServiceItem::Where('isActive',1)->get();
+        return view('Post.draft',compact('cat','type','post','item'));
     }
 
     /**
@@ -229,8 +230,6 @@ class postController extends Controller
                 ->where('isFeatured', 0)
                 ->where('typeId', $request->typeId)
                 ->get();
-
-              
             if(count($checkFeatured) >= 3 && $feat == 0)
             {
             return Redirect::back()->withError('It seems there are already 3 featured published post on that certain item.');

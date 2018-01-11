@@ -27,7 +27,7 @@
     <div class="card" style="border:1px solid black; margin:10px;">
     <div class="card-header" style="background:maroon; color:white;">
             Customer Feedbacks
-            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All of the customer feedbacks are displayed here. In order for the selected feedback be displayed on the website. Please update the record and tick the box that says selected post."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All customer feedbacks are displayed here. In order for the selected feedback to be displayed on the website, update the record and tick the box that says selected post."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
     </div>
     <div class="card-block">
         <div class="container mt-3 mb-3">
@@ -38,7 +38,7 @@
                                 <th>Image</th>
                                 <th>Rating</th>
                                 <th>Featured Post</th>
-                                <th>Posted</th>
+                                <th>Post Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -52,20 +52,20 @@
                                 </td>
                                 <td>
                                         @if($posts->isSelected == 0)
-                                        Featured Post
+                                        Default Post
                                         @elseif($posts->isSelected == 1)
-                                        Default Post 
+                                        Featured Post 
                                         @endif
                                 </td>
                                 <td>
                                     @if($posts->isPublish == 1)
-                                    Not yet posted
-                                    @else
                                     Posted
+                                    @else
+                                    Not posted
                                     @endif
                                 </td>
                                 <td>
-                                    @if($posts->isPublish == 1)
+                                    @if($posts->isPublish == 0)
                                     <a href="{{ url('/FeedbackUpdate',$posts->id) }}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     </a>

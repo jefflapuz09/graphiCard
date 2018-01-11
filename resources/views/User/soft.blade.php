@@ -25,23 +25,19 @@
     <div class="card" style="border:1px solid black; margin:10px;">
     <div class="card-header" style="background:maroon; color:white;">
             Users
-            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All user information are displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All deactivated user information are displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
     </div>
     <div class="card-block">
         <div class="container mt-3 mb-3">
                 <div class="pull-right" style="margin-bottom:15px;"> 
-                        <a href="{{ url('/UserCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
-                            New Record
-                        </a>
+
                     </div>
                 <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
-                            <tr>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>Actions</th>
-                            </tr>
                         </thead>
                         <tbody>
                                 @foreach ($post as $user)
@@ -66,7 +62,7 @@
                         </tbody>
                     </table>
                     <div class="form-group pull-right">
-                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/User') }}';" id="showDeactivated"> Show records</label>
+                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/Utilities') }}';" id="showDeactivated"> Back to Utilities</label>
                     </div>
         </div>
     </div>

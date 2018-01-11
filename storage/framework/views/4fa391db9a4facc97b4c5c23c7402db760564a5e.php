@@ -7,7 +7,7 @@
 <script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
     <?php if(session('error')): ?>
         <script type="text/javascript">
-            toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+            toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
         </script>
     <?php endif; ?>
 <div id="accordion" role="tablist">
@@ -17,6 +17,7 @@
               <a data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne" style="color:white; text-decoration: none">
                   Company Information
               </a>
+          <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="Update Company Information here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
           </h5>
       </div>
       <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
@@ -151,6 +152,7 @@
         <a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo" style="color:white; text-decoration:none">
           Banner
       </a>
+      <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="Update Homepage Banners here. Limited to 3 banners."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
   </h5>
 </div>
 <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
@@ -208,11 +210,85 @@
 </div>
 </div><!--END OF 2-->
 
+<div class="card" style="border-color:maroon; margin-top:10px">
+    <div class="card-header" style="background-color:maroon;" role="tab" id="headingThree">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseTwo" style="color:white; text-decoration:none">
+          Users
+      </a>
+      <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All user information is displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+  </h5>
+</div>
+<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+  <div class="card-body">
+    <div class="card-block">
+        <div class="container mt-3 mb-3">
+                <div class="pull-right" style="margin-bottom:15px;"> 
+                        <a href="<?php echo e(url('/UserCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
+                            New User
+                        </a>
+                    </div>
+                <table id="example" class="display" cellspacing="0" width="100%">
+                        <thead>
+                                <th width="200px">Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                        </thead>
+                        <tbody>
+                                <?php $__currentLoopData = $userinfo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <tr>
+                                    <td><?php echo e($user->name); ?></td>
+                                    <td><?php echo e($user->email); ?></td>
+                                    <td>
+                                        <?php if($user->role==1): ?>
+                                        Administrator
+                                        <?php elseif($user->role==2): ?>
+                                        Contributor
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                            <a href="<?php echo e(url('/UserEdit', $user->id)); ?>" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </a>
+                                            <a href="<?php echo e(url('/UserDeactivate', $user->id)); ?>"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </a>    
+                                    </td>
+                                </tr>
+                    
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </tbody>
+                    </table>
+                    <div class="form-group pull-right">
+                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/UserSoft')); ?>';" id="showDeactivated"> Show deactivated records</label>
+                    </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
 </div><!--END OF ACCORDION-->
 
 <script src="<?php echo e(url('vendor/tinymce/js/tinymce/tinymce.min.js')); ?>"></script>
 <script>
+        
+        function updateForm(){
+            var x = confirm("Are you sure you want to alter this record?");
+            if (x)
+              return true;
+            else
+              return false;
+         }
 
+         function deleteForm(){
+            var x = confirm("Are you sure you want to deactivate this record? All items included in this record will also be deactivated.");
+            if (x)
+              return true;
+            else
+              return false;
+         }
 
     function changetype(id)
     {

@@ -1,17 +1,17 @@
-@extends('layouts.admin')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div> 
-            @if(session('success'))
+            <?php if(session('success')): ?>
                 <div class="alert alert-success">
-                    {{session('success')}}
+                    <?php echo e(session('success')); ?>
+
                 </div>
-            @endif
-            @if(session('error'))
+            <?php endif; ?>
+            <?php if(session('error')): ?>
             <div class="alert alert-danger">
-                {{session('error')}}
+                <?php echo e(session('error')); ?>
+
             </div>
-             @endif
+             <?php endif; ?>
         
     </div>
     <div class="card" style="border:1px solid black; margin:10px;">
@@ -33,51 +33,52 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($post as $posts)
+                            <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td>{{$posts->name}}</td>
-                                <td><img class="img-responsive" src="{{ asset($posts->image)}}" style="max-width:200px; max-height:200px;"></td>
+                                <td><?php echo e($posts->name); ?></td>
+                                <td><img class="img-responsive" src="<?php echo e(asset($posts->image)); ?>" style="max-width:200px; max-height:200px;"></td>
                                 <td>
-                                    @for ($i = 0; $i < $posts->rating; $i++)
+                                    <?php for($i = 0; $i < $posts->rating; $i++): ?>
                                     <span class="fa fa-star checked"></span>
-                                    @endfor
+                                    <?php endfor; ?>
                                 </td>
                                 <td>
-                                        @if($posts->isSelected == 1)
+                                        <?php if($posts->isSelected == 1): ?>
                                         Featured Post
-                                        @elseif($posts->isSelected == 0)
+                                        <?php elseif($posts->isSelected == 0): ?>
                                         Default Post 
-                                        @endif
+                                        <?php endif; ?>
                                 </td>
                                 <td>
-                                    @if($posts->isPublish == 0)
+                                    <?php if($posts->isPublish == 0): ?>
                                     Not yet posted
-                                    @else
+                                    <?php else: ?>
                                     Posted
-                                    @endif
+                                    <?php endif; ?>
                                 </td>
                                 <td>
-                                    <a href="{{ url('/FeedbackReactivate', $posts->id) }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
+                                    <a href="<?php echo e(url('/FeedbackReactivate', $posts->id)); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
                                         <i class="fa fa-recycle" aria-hidden="true"></i>
                                     </a>
                                 </td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                    
                         </tbody>
                     </table>
                     <div class="form-group pull-right">
-                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/Feedback') }}';" id="showDeactivated"> Back to Feedbacks table</label>
+                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/Feedback')); ?>';" id="showDeactivated"> Back to Feedbacks table</label>
                     </div>
         </div>
     </div>
     </div>
      
 
-@endsection
-@section('script')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
     
-@stop
+<?php $__env->stopSection(); ?>
 
 
    
+<?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

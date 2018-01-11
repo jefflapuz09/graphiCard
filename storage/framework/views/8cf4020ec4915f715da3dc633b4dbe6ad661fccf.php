@@ -32,10 +32,18 @@
                         <textarea  class="form-control" id="message" name="message" disabled><?php echo e($post->message); ?></textarea>
                     </div>
                     <div class="form-group">
+                        <?php if($post->status == 1): ?>
+                        <label><input type="checkbox" name="status" value="1" class="status" onclick="enableBtn(this.value)" checked> Already responded to the inquiry</label>
+                        <?php else: ?>
                         <label><input type="checkbox" name="status" value="1" class="status" onclick="enableBtn(this.value)"> Already responded to the inquiry? Mark as <b>READ?</b></label>
+                        <?php endif; ?>
                     </div>
                     <div>
+                        <?php if($post->status == 1): ?>
+                        <button type="submit" class="btn btn-default submit pull-right" id="" disabled><i class="fa fa-paper-plane" aria-hidden="true"></i>  Submit</button>
+                        <?php else: ?>
                         <button type="submit" class="btn btn-default submit pull-right" id="btnSubmit" disabled><i class="fa fa-paper-plane" aria-hidden="true"></i>  Submit</button>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CompanyInfo;
 use App\Banner;
+use App\User;
 use Validator;
 use Redirect;
 use DB;
@@ -20,7 +21,8 @@ class UtilitiesController extends Controller
     {
         $post = CompanyInfo::find(1);
         $ban = Banner::first();
-        return view('Utilities.index',compact('post','ban'));
+        $userinfo = User::where('isActive',1)->get();
+        return view('Utilities.index',compact('post','ban','userinfo'));
     }
 
     /**

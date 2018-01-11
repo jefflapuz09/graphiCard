@@ -21,8 +21,8 @@ class CreateFeedbackTable extends Migration
             $table->foreign('customerId')->references('id')->on('customers');
             $table->integer('rating');
             $table->text('description');
-            $table->boolean('isSelected')->default(1);
-            $table->boolean('isPublish')->default(1);
+            $table->boolean('isSelected')->default(0);
+            $table->boolean('isPublish')->default(0);
             $table->boolean('isActive')->default(1);
             $table->timestamps();
         });

@@ -53,7 +53,7 @@
                         </tbody>
                     </table>
                     <div class="form-group pull-right">
-                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/Item') }}';" id="showDeactivated"> Show records</label>
+                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/Item') }}';" id="showDeactivated"> Back to Service Item table</label>
                     </div>
         </div>
     </div>

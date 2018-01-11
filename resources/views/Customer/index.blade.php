@@ -31,7 +31,7 @@
         <div class="container mt-3 mb-3">
                 <div class="pull-right" style="margin-bottom:15px;"> 
                         <a href="{{ url('/CustomerCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
-                            New Record
+                            New Customer Record
                         </a>
                     </div>
                     <table id="example" class="display" cellspacing="0" width="100%">

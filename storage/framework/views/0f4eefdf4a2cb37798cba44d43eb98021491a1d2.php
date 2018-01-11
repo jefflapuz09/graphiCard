@@ -10,12 +10,12 @@
     <div > 
         <?php if(session('success')): ?>
         <script type="text/javascript">
-            toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
+            toastr.success(' <?php echo session('success'); ?>', 'Success!')
         </script>
         <?php endif; ?>
         <?php if(session('error')): ?>
             <script type="text/javascript">
-                toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+                toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
             </script>
         <?php endif; ?>
 
@@ -24,12 +24,13 @@
         <div class="card" style="border:1px solid black; margin:10px;">
         <div class="card-header" style="background:maroon; color:white;">
                 Post
+                <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All post information are displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
         </div>
         <div class="card-block">
             <div class="container mt-3 mb-3">
                     <div class="pull-right" style="margin-bottom:15px;"> 
                             <a href="<?php echo e(url('/PostCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
-                                New Record
+                                New Post
                             </a>
                         </div>
                     <table id="example" class="display" cellspacing="0" width="100%">
@@ -39,7 +40,7 @@
                                     <th>Author</th>
                                     <th width="200px">Image</th>
                                     <th>Featured Post</th>
-                                    <th width="300px">Actions</th>
+                                    <th width="150px">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>

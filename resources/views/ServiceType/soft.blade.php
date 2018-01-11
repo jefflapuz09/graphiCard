@@ -8,7 +8,7 @@
     <div class="card" style="border:1px solid black; margin:10px;">
     <div class="card-header" style="background:maroon; color:white;">
             Service Subcategory
-            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All service subcategory information are displayed here including what category is the subcategory in."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All deactivated service subcategory information are displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
     </div>
     <div class="card-block">
         <div class="container mt-3 mb-3">
@@ -18,7 +18,7 @@
                                 <th>Service Category</th>
                                 <th>Name</th>
                                 <th>Description</th>
-                                <th>Actions</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,7 +38,7 @@
                         </tbody>
                     </table>
                     <div class="form-group pull-right">
-                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/ServiceType') }}';" id="showDeactivated"> Show records</label>
+                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/ServiceType') }}';" id="showDeactivated"> Back to Subcategory table</label>
                     </div>
         </div>
     </div>

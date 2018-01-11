@@ -72,7 +72,7 @@ class InquiryController extends Controller
             $errMess = $e->getMessage();
             return Redirect::back()->withError($errMess);
         }
-        return Redirect::to(URL::previous() . "#inquiry-form")->withSuccess('Your inquiry has been sent. You will receieve a reply as soon as we checked your inquiry');
+        return Redirect::to(URL::previous() . "#inquiry-form")->withSuccess('Your inquiry has been sent. You will receive a reply as soon as we checked your inquiry');
        
     }
 
@@ -115,7 +115,7 @@ class InquiryController extends Controller
         }
         else{
             Inquiries::find($id)->update(['status' => $value]);
-            return redirect('/admin')->withSuccess('Successfully updated into the database.');
+            return redirect('/admin')->withSuccess('Successfully marked as read the inquiry.');
         }
     }
 

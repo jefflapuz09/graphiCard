@@ -29,17 +29,15 @@
             <table id="example" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Date Inquired</th>
                             <th>Name</th>
                             <th>Subject</th>
-                            <th>Actions</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($post as $posts)
                         <tr>
-                            <td>{{ $posts->id }}</td>
                             <td>{{ \Carbon\Carbon::parse($posts->created_at)->format('F m,Y')}}</td>
                             <td>{{ $posts->name }}</td>
                             <td>{{ $posts->subject }}</td>
@@ -54,7 +52,7 @@
                     </tbody>
                 </table>
                 <div class="form-group pull-right">
-                    <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/admin') }}';" id="showDeactivated"> Show unread inquiries</label>
+                    <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/admin') }}';" id="showDeactivated"> Back to Dashboard</label>
                 </div>
     </div>
   </div>

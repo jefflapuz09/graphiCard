@@ -8,30 +8,23 @@
     <div> 
         <?php if(session('success')): ?>
         <script type="text/javascript">
-            toastr.success(' <?php echo session('success'); ?>', 'Success!')
+            toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
         </script>
         <?php endif; ?>
         <?php if(session('error')): ?>
             <script type="text/javascript">
-                toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
+                toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
             </script>
         <?php endif; ?>
-        
     </div>
     
-
     <div class="card" style="border:1px solid black; margin:10px;">
     <div class="card-header" style="background:maroon; color:white;">
             Service Item
-            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All service item information are displayed here, including "><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All service item information are displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
     </div>
     <div class="card-block">
         <div class="container mt-3 mb-3">
-                <div class="pull-right" style="margin-bottom:15px;"> 
-                        <a href="<?php echo e(url('/ItemCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
-                            New Service Item
-                        </a>
-                    </div>
                 <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
                             <tr>
@@ -49,11 +42,8 @@
                                 <td><?php echo e($posts->description); ?></td>
                                 <td>
                 
-                                        <a href="<?php echo e(url('/ItemEdit',$posts->id)); ?>" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="<?php echo e(url('/ItemDeactivate', $posts->id)); ?>" onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        <a href="<?php echo e(url('/ItemReactivate', $posts->id)); ?>" onclick="return reacForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
+                                            <i class="fa fa-recycle" aria-hidden="true"></i>
                                         </a>
                                 </td>
                             </tr>
@@ -61,7 +51,7 @@
                         </tbody>
                     </table>
                     <div class="form-group pull-right">
-                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/ItemSoft')); ?>';" id="showDeactivated"> Show deactivated records</label>
+                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/Item')); ?>';" id="showDeactivated"> Back to Service Item table</label>
                     </div>
         </div>
     </div>
@@ -69,28 +59,21 @@
 
      
 
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
 <script>
         
-                function updateForm(){
-                    var x = confirm("Are you sure you want to alter this record?");
-                    if (x)
-                      return true;
-                    else
-                      return false;
-                 }
-        
-                 function deleteForm(){
-                    var x = confirm("Are you sure you want to deactivate this record? All items included in this record will also be deactivated.");
-                    if (x)
-                      return true;
-                    else
-                      return false;
-                 }
-        
-            </script>
+        function reacForm(){
+            var x = confirm("Are you sure you want to reactivate this record?");
+            if (x)
+              return true;
+            else
+              return false;
+         }
+
+    </script>
 <?php $__env->stopSection(); ?>
 
 

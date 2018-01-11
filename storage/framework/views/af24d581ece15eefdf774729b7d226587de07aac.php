@@ -1,6 +1,4 @@
-@extends('layouts.admin')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div > 
     </div>
 
@@ -23,35 +21,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($post as $posts)
+                        <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                
-                                <td>{{ $posts->firstName }} {{ $posts->middleName }} {{ $posts->lastName }}</td>
+                                <td><?php echo e($posts->firstName); ?> <?php echo e($posts->middleName); ?> <?php echo e($posts->lastName); ?></td>
                                 <td>
-                                @if($posts->gender == 1)
+                                <?php if($posts->gender == 1): ?>
                                     Male 
-                                @elseif($posts->gender == 2)
+                                <?php elseif($posts->gender == 2): ?>
                                     Female
-                                @endif  
+                                <?php endif; ?>  
                                 </td>
                                 <td>
-                                    <li>Contact Number: {{ $posts->contactNumber }}</li>
-                                    <li>Email Address: {{ $posts->emailAddress }}</li>
+                                    <li>Contact Number: <?php echo e($posts->contactNumber); ?></li>
+                                    <li>Email Address: <?php echo e($posts->emailAddress); ?></li>
                                 </td>
-                                <td>{{ $posts->street }} {{ $posts->brgy }} {{ $posts->city }}</td>
+                                <td><?php echo e($posts->street); ?> <?php echo e($posts->brgy); ?> <?php echo e($posts->city); ?></td>
                                 <td> 
-                                        <a href="{{ url('/CustomerReactivate',$posts->id) }}" onclick="return reacForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
+                                        <a href="<?php echo e(url('/CustomerReactivate',$posts->id)); ?>" onclick="return reacForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
                                             <i class="fa fa-recycle" aria-hidden="true"></i>
                                         </a>
                                  
                                 </td>
                             </tr>
                 
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                     <div class="form-group pull-right">
-                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/Customer') }}';" id="showDeactivated"> Back to Customer records table</label>
+                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/Customer')); ?>';" id="showDeactivated"> Back to Customer records table</label>
                     </div>
         </div>
     </div>
@@ -76,7 +74,8 @@
          }
 
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
    
+<?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -95,13 +95,13 @@ class feedbackController extends Controller
 
     public function publish($id)
     {
-            Feedback::find($id)->update(['isPublish' => 0]);
+            Feedback::find($id)->update(['isPublish' => 1]);
             return redirect('/Feedback');
     }
 
     public function unpublish($id)
     {
-            Feedback::find($id)->update(['isPublish' => 1]);
+            Feedback::find($id)->update(['isPublish' => 0,'isSelected' => 0]);
             return redirect('/Feedback');
     }
     /**
@@ -191,11 +191,11 @@ class feedbackController extends Controller
     {
         $sel = $request->isSelected;
         if($sel == null || $sel == '') {
-            $sel = 1;
+            $sel = 0;
         }
         else
         {
-            $sel = 0;
+            $sel = 1;
         }
         $chkFeed = Feedback::where('isSelected',0)->get();
         if(count($chkFeed) >= 3)
@@ -205,24 +205,27 @@ class feedbackController extends Controller
         else 
         {
             try{
-            $file = $request->file('image');
-            $pic = "";
-            if($file == '' || $file == null){
-                $nullpic = Feedback::find($id);
-                $pic = $nullpic->image;
-            }else{
-                $date = date("Ymdhis");
-                $extension = $request->file('image')->getClientOriginalExtension();
-                $pic = "img/".$date.'.'.$extension;
-                $request->file('image')->move("img",$pic);    
-                // $request->file('photo')->move(public_path("/uploads"), $newfilename);
-            }
+            // $file = $request->file('image');
+            // $pic = "";
+            // if($file == '' || $file == null){
+            //     $nullpic = Feedback::find($id);
+            //     $pic = $nullpic->image;
+            // }else{
+            //     $date = date("Ymdhis");
+            //     $extension = $request->file('image')->getClientOriginalExtension();
+            //     $pic = "img/".$date.'.'.$extension;
+            //     $request->file('image')->move("img",$pic);    
+            //     // $request->file('photo')->move(public_path("/uploads"), $newfilename);
+            // }
             
+            // $post = Feedback::find($id)->update([
+            //     'customerId' => ($request->customerId),
+            //     'image' => $pic,
+            //     'description' => ($request->description),
+            //     'rating' => ($request->rating),
+            //     'isSelected' => $sel
+            // ]);
             $post = Feedback::find($id)->update([
-                'customerId' => ($request->customerId),
-                'image' => $pic,
-                'description' => ($request->description),
-                'rating' => ($request->rating),
                 'isSelected' => $sel
             ]);
             }catch(\Illuminate\Database\QueryException $e){

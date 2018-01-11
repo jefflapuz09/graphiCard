@@ -1,34 +1,41 @@
 <?php $__env->startSection('content'); ?>
     <div > 
-
     </div>
 
     <div class="card" style="border:1px solid black; margin:10px;">
     <div class="card-header" style="background:maroon; color:white;">
-            Service Subcategory
-            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All deactivated service subcategory information are displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+            Service Category
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All deactivated service category information are displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
     </div>
     <div class="card-block">
         <div class="container mt-3 mb-3">
                 <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>Service Category</th>
                                 <th>Name</th>
                                 <th>Description</th>
-                                <th>Action</th>
+                                <th>Navigation Bar</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                         <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td><?php echo e($posts->category); ?></td>
                                 <td><?php echo e($posts->name); ?></td>
                                 <td><?php echo e($posts->description); ?></td>
+                                <td>
+                                    <?php if($posts->isFeatured == 0): ?>
+                                        On navigation bar
+                                    <?php else: ?> 
+                                        Not selected
+                                    <?php endif; ?>
+
+                                </td>
                                 <td> 
-                                        <a href="<?php echo e(url('/ServiceTypeReactivate', $posts->id)); ?>" onclick="return reacForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
-                                            <i class="fa fa-recycle" aria-hidden="true"></i>
-                                        </a>
+                                    <a href="<?php echo e(url('/CategoryReactivate', $posts->id)); ?>"  onclick="return reacForm()"  type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
+                                    <i class="fa fa-recycle" aria-hidden="true"></i>
+                                    </a>
+                                 
                                 </td>
                             </tr>
                 
@@ -36,7 +43,7 @@
                         </tbody>
                     </table>
                     <div class="form-group pull-right">
-                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/ServiceType')); ?>';" id="showDeactivated"> Back to Subcategory table</label>
+                            <label class="checkbox-inline"><input type="checkbox" onclick="document.location='<?php echo e(url('/Category')); ?>';" id="showDeactivated"> Back to Service Category table</label>
                     </div>
         </div>
     </div>
@@ -44,16 +51,13 @@
 
      
 
+   
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
 <script>
         
-
-        $(document).ready(function() {
-
-        } );
-
         function reacForm(){
             var x = confirm("Are you sure you want to reactivate this record?");
             if (x)
@@ -61,7 +65,7 @@
             else
               return false;
          }
- 
+
 
     </script>
 <?php $__env->stopSection(); ?>

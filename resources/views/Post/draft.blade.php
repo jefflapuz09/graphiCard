@@ -58,6 +58,15 @@
             <b><label for="sel2">Service Subcategory</label></b>
             <select class="select2 form-control" onchange="changesub(this.value)" id="Type" name="typeId">
                     <option value="0">Please Select Service Subcategory</option>
+                    @foreach($type as $posts)   
+                    <option value="{{ $posts->id }}"
+                        @if($posts->id == $post->typeId)
+                         selected = "selected"
+                        @else 
+                         ""
+                        @endif
+                        >{{ $posts->name }}</option>
+                @endforeach
               
             </select>
             </div>
@@ -65,6 +74,15 @@
                     <b><label for="sel2">Service Item</label></b>
                     <select class="select2 form-control" id="item" name="itemId">
                             <option value="0">Please Select Service Item</option>
+                            @foreach($item as $posts)   
+                    <option value="{{ $posts->id }}"
+                        @if($posts->id == $post->itemId)
+                         selected = "selected"
+                        @else 
+                         ""
+                        @endif
+                        >{{ $posts->name }}</option>
+                @endforeach
                  
                     </select>
                     </div>

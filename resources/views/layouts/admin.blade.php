@@ -51,7 +51,7 @@
         </li>
 
         @if((Auth::user()->role)==1)
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Customer Feedback">
+       <!--  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Customer Feedback">
             <a class="nav-link" href="{{ url('/Feedback') }}">
               <i class="fa fa-handshake-o"></i>
               <span class="nav-link-text">Feedback</span>
@@ -62,7 +62,7 @@
               <i class="fa fa-comments"></i>
               <span class="nav-link-text">Review</span>
             </a>
-        </li>
+        </li> -->
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Maintenance">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-sitemap"></i>
@@ -84,6 +84,28 @@
               </ul>
             </li>
           </ul>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Maintenance">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseFR" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-comments"></i>
+            <span class="nav-link-text">Feedbacks and Reviews</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseFR">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Customer Feedback">
+                <a class="nav-link" href="{{ url('/Feedback') }}">
+                  <i class="fa fa-handshake-o"></i>
+                  <span class="nav-link-text">Feedback</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Customer Review">
+                <a class="nav-link" href="{{ url('/Review') }}">
+                  <i class="fa fa-comment"></i>
+                  <span class="nav-link-text">Review</span>
+                </a>
+            </li>
+          </ul>
+        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Post">
               <a class="nav-link" href="{{ url('/Post') }}">
                 <i class="fa fa-paste"></i>
@@ -97,10 +119,10 @@
             </a>
         </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users">
-                  <a class="nav-link" href="{{ url('/User') }}">
+                  <!-- <a class="nav-link" href="{{ url('/User') }}">
                     <i class="fa fa-user"></i>
                     <span class="nav-link-text">User</span>
-                  </a>
+                  </a> -->
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Utilities">
               <a class="nav-link" href="{{ url('/Utilities') }}">
