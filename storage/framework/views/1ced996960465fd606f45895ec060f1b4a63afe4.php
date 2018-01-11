@@ -96,7 +96,7 @@
                   <h1>Reviews</h1>
                   </div>
                   <div class="col-sm-5">
-                      <a href="" data-toggle="modal" data-target="#myModal"><button class="mt-3 btn btn-danger pull-right" style="font-size:12pt; color:black; text-decoration:none; border:1px solid black;"><i class="fa fa-heart-o" aria-hidden="true"></i> Give us a Review! > </button></a>
+                      <a href="" data-toggle="modal" data-target="#myModal"><button class="mt-3 btn btn-primary pull-right" style="font-size:12pt; color:black; text-decoration:none;"><i class="fa fa-heart-o" aria-hidden="true"></i> Give us a Review! > </button></a>
                   </div>
                   </div>
                   

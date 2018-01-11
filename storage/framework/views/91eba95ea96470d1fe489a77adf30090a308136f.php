@@ -125,13 +125,13 @@
   <div class="overlay"></div>
   <div class="container">
     <div class="col-xl-12 mx-auto">
-      <h1 class="animated rubberBand">Personalize your own</h1>
+      <h1 class="">Personalize your own</h1>
     </div>
   </div>
 </header>
 
 
-<div class="container">
+<div class="container wow fadeInUp">
   <!-- Features Section -->
   <div class="row">
     <div class="col-lg-12" style="margin-top:20px; margin-bottom:20px;">
@@ -161,7 +161,7 @@
   <div class="overlay"></div>
   <div class="container">
     <div class="col-xl-12 mx-auto">
-      <h1 class="animated rubberBand">Sample Items</h1>
+      <h1 class="">Sample Items</h1>
     </div>
   </div>
 </header>
@@ -171,7 +171,7 @@
   <!-- Portfolio Section -->
 
   <div class="container">
-    <ol class="breadcrumbs breadcrumb-arrow">
+    <ol class="breadcrumbs breadcrumb-arrow wow fadeInUp">
       <li><a href="<?php echo e(url('/ServiceItem', $cat->id)); ?>"><span style="color:white;" ><?php echo e($cat->name); ?></span></a></li>
       <li class="active"><span style="color:white;"><b>See More</b></span></li>
     </ol>
@@ -186,7 +186,7 @@
 
       <div class="row">
         <?php $__currentLoopData = $cat->Post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <div class="col-md-4 col-sm-6 portfolio-item">
+        <div class="col-md-4 col-sm-6 portfolio-item wow fadeInUp">
           <a class="portfolio-link"  href="<?php echo e(url('/prodDescription/'.$post->id.'/'.$post->typeId.'/'.$post->itemId)); ?>">
             <div class="portfolio-hover">
               <div class="portfolio-hover-content">
@@ -245,7 +245,7 @@
 
   <?php else: ?>  
   <div class="container">
-    <div class="jumbotron" style="background-color:darkorange; color:white;">
+    <div class="jumbotron wow fadeInUp" style="background-color:darkorange; color:white;">
       <div class="col-lg-12" align="center">
         <h1>NO FEATURED POST!<h1>
         </div>
@@ -258,7 +258,7 @@
   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   <?php else: ?>
 
-  <div class="jumbotron" style="background-color:#ff3030; color:white;">
+  <div class="jumbotron wow fadeInUp" style="background-color:#ff3030; color:white;">
     <div class="col-lg-12" align="center">
       <h1>NO SERVICE CATEGORY AVAILABLE!<h1>
       </div>
@@ -276,7 +276,7 @@
       <div class="overlay"></div>
       <div class="container">
         <div class="col-xl-12 mx-auto">
-          <h1 class="animated rubberBand">Customer Feedback</h1>
+          <h1 class="">Customer Feedback</h1>
         </div>
       </div>
     </header>
@@ -287,7 +287,7 @@
 
   <div class="container">
     <!-- Marketing Icons Section -->
-    <div class="row">
+    <div class="row wow fadeInUp">
       <?php if(count($feed)!=0): ?>
       <?php $__currentLoopData = $feed; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $feedback): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <div class="col-lg-4 mb-4">
@@ -416,9 +416,9 @@
   <link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <section id="contact" style="background:url('<?php echo e(asset('img/grey-pattern.png')); ?>'); width:100%;">
+  <section class="wow fadeInUp" id="contact" style="background:url('<?php echo e(asset('img/grey-pattern.png')); ?>'); width:100%;">
     <div class="section-content">
-      <h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> 
+      <h1 class="section-header"><span class="content-header" data-wow-delay="0.2s" data-wow-duration="2s"> 
         Inquire Now
       </span></h1>
       <?php if(session('success')): ?>
@@ -469,10 +469,11 @@
 
     <?php $__env->startSection('script'); ?>
     
-    
+    <script src="<?php echo e(asset('js/wow.js')); ?>"></script>
     <script>
         $( document ).ready(function() {
  
+          new WOW().init();
           $( ".se-pre-con" ).delay().fadeOut("slow");
           $('.starrating').barrating({
             
