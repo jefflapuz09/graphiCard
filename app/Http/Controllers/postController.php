@@ -13,6 +13,7 @@ use Redirect;
 use Response;
 use Session;
 
+
 use Illuminate\Validation\Rule;
 
 class postController extends Controller
@@ -196,7 +197,7 @@ class postController extends Controller
         $rules = [
             'categoryId' => 'required',
             'typeId' => 'required',
-            'itemId' => 'required|unique:posts',
+            'itemId' => ['required',Rule::unique('posts')->ignore($id)],
             'details' => 'required',
             'image' => 'nullable|mimes:jpeg,png,jpg,svg',
             'isFeatured' => 'nullable'

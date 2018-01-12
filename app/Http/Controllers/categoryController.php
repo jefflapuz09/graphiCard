@@ -9,6 +9,7 @@ use App\ServiceType;
 use App\Post;
 use Validator;
 use Redirect;
+use Illuminate\Validation\Rule;
 
 class categoryController extends Controller
 {
@@ -138,7 +139,7 @@ class categoryController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => ['required','max:50','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'name' => ['required','max:50',Rule::unique('service_categories')->ignore($id),'regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'description' => ['nullable','max:150']
         ];
         $messages = [

@@ -30,7 +30,7 @@
             <div class="container mt-3 mb-3">
                     <div class="pull-right" style="margin-bottom:15px;"> 
                             <a href="<?php echo e(url('/PostCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
-                                New Record
+                                New Post
                             </a>
                         </div>
                     <table id="example" class="display" cellspacing="0" width="100%">
@@ -40,7 +40,7 @@
                                     <th>Author</th>
                                     <th width="200px">Image</th>
                                     <th>Featured Post</th>
-                                    <th width="300px">Actions</th>
+                                    <th width="150px">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>

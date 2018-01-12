@@ -52,8 +52,8 @@
 <div class="row">
     <div class="col-md-6">
         <div class="card" style="border:1px solid black; margin:;">
-        <div class="card-header" style="background:darkorange; color:white;">
-            Inquiries
+        <div class="card-header" style="background:#f22e35; color:white;">
+            <b>Inquiries</b>
             <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All customer inquiries are displayed here. By clicking the view icon you'll be able to view all inquiry information."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
         </div>
         <div class="card-block">
@@ -64,7 +64,7 @@
                     <th>Date Inquired</th>
                     <th>Name</th>
                     <th>Subject</th>
-                    <th>Actions</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -92,9 +92,9 @@
     </div>
     <div class="col-md-6">
         <div class="card" style="border:1px solid black;">
-        <div class="card-header" style="background:darkorange; color:white;">
-                Advisory (Make it short)
-                <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="You can write your advisory here and it will be displayed on the top section of the website."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+        <div class="card-header" style="background:#f22e35; color:white;">
+                <b>Advisory</b>
+                <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="You can write your advisory here and it will be displayed on the top section of the website. (Make it short)"><i class="fa fa-question-circle" aria-hidden="true"></i></button>
         </div>
         <div class="card-block">
             <div class="container mt-3 mb-3">
@@ -104,9 +104,9 @@
 
                     <div class="form-group">
                         <input type="hidden" name="status" value="0">
-                        <textarea class="form-control" rows="5"  name="advisory" id="advisory"><?php echo $adv->advisory ?></textarea>
+                        <textarea class="form-control" rows="5"  name="advisory" id="advisory" style="border:1px solid black"><?php echo $adv->advisory ?></textarea>
                     </div>
-                    <div class="pull-right">
+                    <div class="pull-right mb-3">
                         <button type="reset" class="btn btn-success">Clear</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
@@ -117,7 +117,7 @@
 
                     <div class="form-group">
                         <input type="hidden" name="status" value="0">
-                        <textarea class="form-control" rows="5"  name="advisory" id="advisory"></textarea>
+                        <textarea class="form-control" rows="5"  name="advisory" id="advisory" style="border:1px solid black" placeholder="Your advisory here"></textarea>
                     </div>
                     <div class="pull-right mb-3">
                         <button type="reset" class="btn btn-success">Clear</button>
@@ -161,36 +161,36 @@
             }
         });
     }
-    tinymce.init({
-      selector: 'textarea',
-      plugins: 'image code',
-      toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | undo redo | code',
-      image_title: true, 
-      automatic_uploads: true,
-      file_picker_types: 'image', 
-      file_picker_callback: function(cb, value, meta) {
-        var input = document.createElement('input');
-        input.setAttribute('type', 'file');
-        input.setAttribute('accept', 'image/*');
-        input.onchange = function() {
-          var file = this.files[0];
+//     tinymce.init({
+//       selector: 'textarea',
+//       plugins: 'image code',
+//       toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | undo redo | code',
+//       image_title: true, 
+//       automatic_uploads: true,
+//       file_picker_types: 'image', 
+//       file_picker_callback: function(cb, value, meta) {
+//         var input = document.createElement('input');
+//         input.setAttribute('type', 'file');
+//         input.setAttribute('accept', 'image/*');
+//         input.onchange = function() {
+//           var file = this.files[0];
 
-          var reader = new FileReader();
-          reader.onload = function () {
+//           var reader = new FileReader();
+//           reader.onload = function () {
 
-            var id = 'blobid' + (new Date()).getTime();
-            var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
-            var base64 = reader.result.split(',')[1];
-            var blobInfo = blobCache.create(id, file, base64);
-            blobCache.add(blobInfo);
-            cb(blobInfo.blobUri(), { title: file.name });
-        };
-        reader.readAsDataURL(file);
-    };
+//             var id = 'blobid' + (new Date()).getTime();
+//             var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+//             var base64 = reader.result.split(',')[1];
+//             var blobInfo = blobCache.create(id, file, base64);
+//             blobCache.add(blobInfo);
+//             cb(blobInfo.blobUri(), { title: file.name });
+//         };
+//         reader.readAsDataURL(file);
+//     };
     
-    input.click();
-}
-});
+//     input.click();
+// }
+// });
 
     function readURL(input) {
         if (input.files && input.files[0]) {

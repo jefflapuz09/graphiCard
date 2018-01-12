@@ -9,6 +9,8 @@ use App\Post;
 use Redirect;
 use Validator;
 use DB;
+use Illuminate\Validation\Rule;
+
 
 class serviceItemController extends Controller
 {
@@ -43,7 +45,7 @@ class serviceItemController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'name' => ['required','max:50','unique:service_subcategory','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'name' => ['required','max:50','unique:service_items','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'subcategoryId' => 'required',
             'description' => 'nullable'
         ];
@@ -108,7 +110,7 @@ class serviceItemController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => ['required','max:50','unique:service_subcategory','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'name' => ['required','max:50',Rule::unique('service_items')->ignore($id),'regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'subcategoryId' => 'required',
             'description' => 'nullable'
         ];

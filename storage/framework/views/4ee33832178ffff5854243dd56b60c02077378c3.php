@@ -22,13 +22,13 @@
     <div class="card" style="border:1px solid black; margin:10px;">
     <div class="card-header" style="background:maroon; color:white;">
             Service Category
-            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All service category information are displayed here including if the certain category is displayed on the navigation bar or not."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All service categories are listed here. It also shows if a certain category is on the navigation bar or not."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
     </div>
     <div class="card-block">
         <div class="container mt-3 mb-3">
                 <div class="pull-right" style="margin-bottom:15px;"> 
                         <a href="<?php echo e(url('/CategoryCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
-                            New Record
+                            New Service Category
                         </a>
                     </div>
                 <table id="example" class="display" cellspacing="0" width="100%">
@@ -36,7 +36,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
-                                <th>Featured Nav</th>
+                                <th>Navigation Bar</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -47,7 +47,7 @@
                                 <td><?php echo e($posts->description); ?></td>
                                 <td>
                                     <?php if($posts->isFeatured == 0): ?>
-                                        Featured Menu
+                                        On navigation bar
                                     <?php else: ?> 
                                         Not selected
                                     <?php endif; ?>

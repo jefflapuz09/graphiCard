@@ -51,9 +51,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo e(url('/about')); ?>">About</a>
-        </li>
 
        <?php $__currentLoopData = $model; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <li class="nav-item">   
@@ -71,13 +68,16 @@
                   </div>
                  </li>
               <?php else: ?>
-                             <?php echo e($post->categoryId); ?>
-
+              <?php echo e($post->categoryId); ?>
 
                   <a class="nav-link" href="<?php echo e(url('/ServiceItem', $post->id)); ?>"><?php echo e($post->name); ?></a>
               <?php endif; ?>
             </li>
        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo e(url('/about')); ?>"> About Us</a>
+        </li>
        <?php if($user = Auth::user()): ?>
        <?php elseif(Auth::guest()): ?>
        <li class="nav-item">
@@ -185,7 +185,7 @@
                             <ul class="social-network social-circle">
                               <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                               <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                              <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                              <li><a href="#" class="icoLinkedin" title="Messenger"><i class="fa fa-bolt"></i></a></li>
                             </ul>	
                             </div>
                         </div>

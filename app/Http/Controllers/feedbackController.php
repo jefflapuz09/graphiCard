@@ -9,6 +9,8 @@ use App\Customer;
 use Redirect;
 use DB;
 use Validator;
+use Illuminate\Validation\Rule;
+
 
 class feedbackController extends Controller
 {

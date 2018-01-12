@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Customer;
 use Validator;
+use Illuminate\Validation\Rule;
 use Redirect;
 
 class customerController extends Controller
@@ -175,7 +176,7 @@ class customerController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'firstName' => ['required','max:50','unique:customers', 'regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'firstName' => ['required','max:50',Rule::unique('customers')->ignore($id), 'regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'middleName' => ['nullable','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'lastName' => ['required','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'gender' => 'required',

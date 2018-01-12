@@ -8,12 +8,12 @@
     <div > 
         <?php if(session('success')): ?>
         <script type="text/javascript">
-            toastr.success(' <?php echo session('success'); ?>', 'Insert Success')
+            toastr.success(' <?php echo session('success'); ?>', 'Success!')
         </script>
         <?php endif; ?>
         <?php if(session('error')): ?>
             <script type="text/javascript">
-                toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+                toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
             </script>
         <?php endif; ?>
 
@@ -22,19 +22,19 @@
     <div class="card" style="border:1px solid black; margin:10px;">
     <div class="card-header" style="background:maroon; color:white;">
             Service Subcategory
-            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All service subcategory information are displayed here including what category is the subcategory in."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All service subcategory information are displayed here including what category, the subcategory is under in."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
     </div>
     <div class="card-block">
         <div class="container mt-3 mb-3">
                 <div class="pull-right" style="margin-bottom:15px;"> 
                         <a href="<?php echo e(url('/ServiceTypeCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
-                            New Item
+                            New Subcategory
                         </a>
                     </div>
                 <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>Service Category</th>
+                                <th>Service Category Name</th>
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Actions</th>

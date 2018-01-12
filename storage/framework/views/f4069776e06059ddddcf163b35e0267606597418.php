@@ -57,6 +57,15 @@
             <b><label for="sel2">Service Subcategory</label></b>
             <select class="select2 form-control" onchange="changesub(this.value)" id="Type" name="typeId">
                     <option value="0">Please Select Service Subcategory</option>
+                    <?php $__currentLoopData = $type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>   
+                    <option value="<?php echo e($posts->id); ?>"
+                        <?php if($posts->id == $post->typeId): ?>
+                         selected = "selected"
+                        <?php else: ?> 
+                         ""
+                        <?php endif; ?>
+                        ><?php echo e($posts->name); ?></option>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               
             </select>
             </div>
@@ -64,6 +73,15 @@
                     <b><label for="sel2">Service Item</label></b>
                     <select class="select2 form-control" id="item" name="itemId">
                             <option value="0">Please Select Service Item</option>
+                            <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>   
+                    <option value="<?php echo e($posts->id); ?>"
+                        <?php if($posts->id == $post->itemId): ?>
+                         selected = "selected"
+                        <?php else: ?> 
+                         ""
+                        <?php endif; ?>
+                        ><?php echo e($posts->name); ?></option>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                  
                     </select>
                     </div>
