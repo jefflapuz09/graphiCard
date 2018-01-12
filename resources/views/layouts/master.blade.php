@@ -51,9 +51,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url('/about') }}">About</a>
-        </li>
 
        @foreach($model as $post)
             <li class="nav-item">   
@@ -70,12 +67,15 @@
                   </div>
                  </li>
               @else
-                             {{ $post->categoryId}}
-
+              {{ $post->categoryId}}
                   <a class="nav-link" href="{{ url('/ServiceItem', $post->id) }}">{{$post->name}}</a>
               @endif
             </li>
        @endforeach
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url('/about') }}"> About Us</a>
+        </li>
        @if($user = Auth::user())
        @elseif(Auth::guest())
        <li class="nav-item">
@@ -181,7 +181,7 @@
                             <ul class="social-network social-circle">
                               <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                               <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                              <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                              <li><a href="#" class="icoLinkedin" title="Messenger"><i class="fa fa-bolt"></i></a></li>
                             </ul>	
                             </div>
                         </div>

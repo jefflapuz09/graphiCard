@@ -125,11 +125,11 @@
 </header>
 
 
-<header class="masthead top text-center" style="background-image: url('{{ asset('img/bg-pattern1.jpg') }}')">
+<header class="masthead top text-center" style="background-image: url('{{ asset('img/sample1.png') }}')">
   <div class="overlay"></div>
   <div class="container">
     <div class="col-xl-12 mx-auto">
-      <h1 style="font-family: 'Lato', sans-serif; font-weight:bold;color:black">CREATE YOUR OWN DESIGN</h1>
+      <h1 style="font-family: 'Lato', sans-serif; font-weight:bold;color:white">CREATE YOUR OWN DESIGN</h1>
     </div>
   </div>
 </header>
@@ -161,11 +161,11 @@
 </div>
 
 <!-- Page Content -->
-<header class="masthead top text-center" style="background-image: url('{{ asset('img/bg-pattern1.jpg') }}')">
+<header class="masthead top text-center" style="background-image: url('{{ asset('img/sample2.png') }}')">
   <div class="overlay"></div>
   <div class="container">
     <div class="col-xl-12 mx-auto">
-      <h1 style="font-family: 'Lato', sans-serif; font-weight:bold;color:black">SERVICE ITEMS</h1>
+      <h1 style="font-family: 'Lato', sans-serif; font-weight:bold;color:white">SERVICE ITEMS</h1>
     </div>
   </div>
 </header>
@@ -276,11 +276,11 @@
 
 
 
-    <header class="masthead top text-center" style="background-image: url('{{ asset('img/bg-pattern1.jpg') }}')">
+    <header class="masthead top text-center" style="background-image: url('{{ asset('img/sample3.png') }}')">
       <div class="overlay"></div>
       <div class="container">
         <div class="col-xl-12 mx-auto">
-          <h1 style="font-family: 'Lato', sans-serif; font-weight:bold; color:black">CUSTOMER FEEDBACK</h1>
+          <h1 style="font-family: 'Lato', sans-serif; font-weight:bold; color:white">CUSTOMER FEEDBACK</h1>
         </div>
       </div>
     </header>
@@ -420,7 +420,7 @@
   <link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <section class="wow fadeInUp" id="contact" style="background:url('{{ asset('img/grey-pattern.jpg') }}'); width:100%;">
+  <section class="wow fadeInUp" id="contact" style="background:url('{{ asset('img/bg-pattern1.png') }}'); width:100%;">
     <div class="section-content">
       <h1 class="section-header"><span class="content-header" data-wow-delay="0.2s" data-wow-duration="2s"> 
         Inquire Now
