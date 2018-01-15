@@ -8,6 +8,7 @@ use DB;
 use App\ServiceCategory;
 use App\ServiceType;
 use App\CompanyInfo;
+use App\SNS;
 use Illuminate\Support\Facades\View;
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,9 +30,11 @@ class AppServiceProvider extends ServiceProvider
         $model = ServiceCategory::with('Type')->where('isActive',1)->where('isFeatured',0)
         ->get();
         $comp = CompanyInfo::find(1);
+        $sns = SNS::find(1);
         View::share('comp',$comp);
         View::share('nav',$nav);
         View::share('model',$model);
+        View::share('sns',$sns);
       
     }
 

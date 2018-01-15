@@ -169,4 +169,8 @@ Route::post('/PostUpdate/{id}', 'postController@update');
 Route::get('/InquiryRead','InquiryController@read');
 Route::get('/InquiryView/{id}','InquiryController@show');
 Route::post('/InquiryUpdate/{id}','InquiryController@update');
+
+//SNS
+Route::post('/SNSUpdate/{id}','SNSController@update');
+Route::post('/SNSNew','SNSController@store');
 });

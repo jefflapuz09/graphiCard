@@ -89,12 +89,12 @@
     </div>
   </div>
 </nav>
-<div class="ssk-sticky ssk-right ssk-center ssk-lg">
+<!-- <div class="ssk-sticky ssk-right ssk-center ssk-lg">
     <a href="" class="ssk ssk-facebook" data-url="https://www.facebook.com/Graphicard-154392717914639/"></a>
-    <a href="" class="ssk ssk-twitter" data-url="https://www.facebook.com/Graphicard-154392717914639/"></a>
+    <a href="" class="ssk ssk-twitter" data-url="https://www.facebook.com/Graphicard-154392717914639/" data-text="Home of quality printed products"></a>
     <a href="" class="ssk ssk-linkedin" data-url="https://www.facebook.com/Graphicard-154392717914639/"></a>
     <a href="" class="ssk ssk-email"></a>
-</div>
+</div> -->
 
 <?php echo $__env->yieldContent('contents'); ?>;
 
@@ -183,9 +183,10 @@
                             
                             <div style="margin-top:10px;">
                             <ul class="social-network social-circle">
-                              <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                              <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                              <li><a href="#" class="icoLinkedin" title="Messenger"><i class="fa fa-bolt"></i></a></li>
+                              <li><a target="_blank" href="<?php echo e($sns->facebook); ?>" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                              <li><a target="_blank" href="<?php echo e($sns->twitter); ?>" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                              <!-- <li><a target="_blank" href="<?php echo e($sns->messenger); ?>" class="icoTwitter" title="Messenger"><i class="fa mssngr-messenger"></i></a></li> -->
+                              <li><a target="_blank" href="<?php echo e($sns->messenger); ?>" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li>
                             </ul>	
                             </div>
                         </div>

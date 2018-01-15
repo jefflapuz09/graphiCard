@@ -1,26 +1,31 @@
-<?php $__env->startSection('styles'); ?>
+<?php $__env->startSection('style'); ?>
 <link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
 <script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
-<?php if(session('error')): ?>
-<script type="text/javascript">
-  toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
-</script>
-<?php endif; ?>
+        <?php if(session('success')): ?>
+        <script type="text/javascript">
+            toastr.success(' <?php echo session('success'); ?>', 'Success!')
+        </script>
+        <?php endif; ?>
+        <?php if(session('error')): ?>
+            <script type="text/javascript">
+                toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
+            </script>
+        <?php endif; ?> 
 <div id="accordion" role="tablist">
   <div class="card" style="border-color:maroon;">
     <div class="card-header" style="background-color:maroon;" role="tab" id="headingOne">
       <h5 class="mb-0">
-        <a data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne" style="color:white; text-decoration: none">
+        <a class="collapsed" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne" style="color:white; text-decoration: none">
           Company Information
         </a>
         <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="Update Company Information here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
       </h5>
     </div>
-    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
         <?php if($errors->any()): ?>
         <div class="alert alert-danger">
@@ -213,7 +218,7 @@
   <div class="card" style="border-color:maroon; margin-top:10px">
     <div class="card-header" style="background-color:maroon;" role="tab" id="headingThree">
       <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseTwo" style="color:white; text-decoration:none">
+        <a class="collapsed" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree" style="color:white; text-decoration:none">
           Users
         </a>
         <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All user information is displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
@@ -269,42 +274,65 @@
     </div>
   </div><!--HEADING THREE-->
 
-  <!-- <div class="card" style="border-color:maroon; margin-top:10px">
+  <div class="card" style="border-color:maroon; margin-top:10px">
     <div class="card-header" style="background-color:maroon;" role="tab" id="headingFour">
       <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseTwo" style="color:white; text-decoration:none">
+        <a class="collapsed" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour" style="color:white; text-decoration:none">
           Social Networking Sites
         </a>
         <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All user information is displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
       </h5>
     </div>
-    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
       <div class="card-body">
         <div class="card-block">
-          <form action="<?php echo e(url('/SNSNew')); ?>" method="post">
+          <?php if(count($snslinks)==0): ?>
+           <form action="<?php echo e(url('/SNSNew')); ?>" method="post">
               <?php echo e(csrf_field()); ?>
 
               <div class="form-group">
                 <label >Your <b>Facebook</b> account link</label>
-                <input  class="form-control" type="text" name="facebook" id="facebook">
+                <input  class="form-control" type="text" name="facebook" id="facebook" value="N/A">
               </div>
               <div class="form-group">
                 <label>Your <b>Twitter</b> account link</label>
-                <input class="form-control" type="text" name="twitter" id="twitter">
+                <input class="form-control" type="text" name="twitter" id="twitter" value="N/A">
               </div>
               <div class="form-group">
                 <label>Your <b>Messenger</b> account link</label>
-                <input class="form-control" type="text" name="messenger" id="messenger">
+                <input class="form-control" type="text" name="messenger" id="messenger" value="N/A">
               </div>
               <div class="pull-right mb-3">
                   <button type="reset" class="btn btn-success">Clear</button>
                   <button type="submit" class="btn btn-primary">Submit</button>
               </div>
           </form>
+          <?php else: ?>
+          <form action="<?php echo e(url('/SNSNew')); ?>" method="post">
+              <?php echo e(csrf_field()); ?>
+
+              <div class="form-group">
+                <label >Your <b>Facebook</b> account link</label>
+                <input  class="form-control" type="text" name="facebook" id="facebook" value="<?php echo e($snslinks->facebook); ?>">
+              </div>
+              <div class="form-group">
+                <label>Your <b>Twitter</b> account link</label>
+                <input class="form-control" type="text" name="twitter" id="twitter" value="<?php echo e($snslinks->twitter); ?>">
+              </div>
+              <div class="form-group">
+                <label>Your <b>Messenger</b> account link</label>
+                <input class="form-control" type="text" name="messenger" id="messenger" value="<?php echo e($snslinks->messenger); ?>">
+              </div>
+              <div class="pull-right mb-3">
+                  <button type="reset" class="btn btn-success">Clear</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+          </form>
+          <?php endif; ?>
         </div>
       </div>
     </div>
-  </div> --><!--HEADING FOUR-->
+  </div><!--HEADING FOUR-->
 
 </div><!--END OF ACCORDION-->
 

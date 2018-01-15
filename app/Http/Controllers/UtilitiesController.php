@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\CompanyInfo;
 use App\Banner;
 use App\User;
+use App\SNS;
 use Validator;
 use Redirect;
 use DB;
@@ -22,7 +23,8 @@ class UtilitiesController extends Controller
         $post = CompanyInfo::find(1);
         $ban = Banner::first();
         $userinfo = User::where('isActive',1)->get();
-        return view('Utilities.index',compact('post','ban','userinfo'));
+        $snslinks = SNS::first();
+        return view('Utilities.index',compact('post','ban','userinfo','snslinks'));
     }
 
     /**
@@ -219,7 +221,7 @@ class UtilitiesController extends Controller
                 'description' => ($request->description),
                 
             ]);
-            return redirect('/Utilities')->withSuccess('Successfully Updated into the database.');
+            return redirect('/Utilities')->withSuccess('Successfully updated company information.');
             }
             else{
                 CompanyInfo::create([

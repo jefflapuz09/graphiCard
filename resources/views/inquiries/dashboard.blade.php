@@ -22,7 +22,7 @@
 </div>
 <div class="row">
     <div class="col-sm-4">
-        <div class="info-box bg-secondary">
+        <div class="info-box">
             <span class="info-box-icon"><a href="{{ url('/Post') }}"><i class="fa fa-paste"></i></a></span>
             <div class="info-box-content">
             <span class="info-box-text">No. of Drafts</span>
@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="col-sm-4">
-            <div class="info-box bg-success">
+            <div class="info-box">
                 <span class="info-box-icon"><a href="{{ url('/Feedback') }}"><i class="fa fa-handshake-o"></i></a></span>
                 <div class="info-box-content">
                 <span class="info-box-text">No. of Published Feedbacks</span>
@@ -41,7 +41,7 @@
             </div>
         </div>
          <div class="col-sm-4">
-        <div class="info-box bg-info">
+        <div class="info-box">
             <span class="info-box-icon"><a href="{{ url('/Review') }}"><i class="fa fa-comments"></i></a></span>
             <div class="info-box-content">
             <span class="info-box-text">No. of Item Reviews</span>
@@ -54,7 +54,8 @@
 <div class="row">
     <div class="col-md-6">
         <div class="card" style="border:1px solid black; margin:;">
-        <div class="card-header" style="background:#f22e35; color:white;">
+        <!-- <div class="card-header" style="background:#f22e35; color:white;"> -->
+        <div class="card-header" style="background:#a70000; color:white;">
             <b>Inquiries</b>
             <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All customer inquiries are displayed here. By clicking the view icon you'll be able to view all inquiry information."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
         </div>
@@ -94,7 +95,7 @@
     </div>
     <div class="col-md-6">
         <div class="card" style="border:1px solid black;">
-        <div class="card-header" style="background:#f22e35; color:white;">
+        <div class="card-header" style="background:#a70000; color:white;">
                 <b>Advisory</b>
                 <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="You can write your advisory here and it will be displayed on the top section of the website. (Make it short)"><i class="fa fa-question-circle" aria-hidden="true"></i></button>
         </div>
