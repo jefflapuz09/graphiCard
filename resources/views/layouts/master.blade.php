@@ -115,8 +115,7 @@
       <div class="col-lg-6"> 
         <div align="center" style="color:white; background:; line-height:5px;">
           @if(count($comp) != 0 )
-          <img src="{{ asset($comp->company_logo) }}">
-          <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">{{$comp->company_name}}</h1>
+          <img src="{{ asset($comp->company_logo) }}"><h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">{{$comp->company_name}}</h1>
           @else
           <img src="">
           <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Name</h1>

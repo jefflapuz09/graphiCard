@@ -117,8 +117,7 @@
       <div class="col-lg-6"> 
         <div align="center" style="color:white; background:; line-height:5px;">
           <?php if(count($comp) != 0 ): ?>
-          <img src="<?php echo e(asset($comp->company_logo)); ?>">
-          <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase"><?php echo e($comp->company_name); ?></h1>
+          <img src="<?php echo e(asset($comp->company_logo)); ?>"><h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase"><?php echo e($comp->company_name); ?></h1>
           <?php else: ?>
           <img src="">
           <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Name</h1>
