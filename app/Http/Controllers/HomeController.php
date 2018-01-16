@@ -250,4 +250,30 @@ class HomeController extends Controller
         $feed = Feedback::where('isActive',1)->where('isPublish',0)->get();
         return view('Home.testimonial',compact('feed','customer'));
     }
+
+    public function allItems()
+    {
+        $post =DB::table('service_subcategory')
+            ->join('service_categories', 'service_subcategory.categoryId', '=', 'service_categories.id')
+            ->select('service_subcategory.*', 'service_categories.name as category')
+            ->where('service_subcategory.isActive',1)
+            ->get();
+        $item = DB::table('posts')
+            ->join('service_subcategory','posts.typeId','=','service_subcategory.id')
+            ->select('posts.*','service_subcategory.name as category')
+            ->where('posts.isActive',1)
+            ->where('posts.isDraft',1)
+            ->get();
+        $postcat = ServiceCategory::with(['Post' => function($query) {
+            $query->where('isDraft', 1)->where('isFeatured',0);}])
+            ->where('isActive',1)->get();
+        $comp = CompanyInfo::find(1);
+        $model2 = Post::where('isActive',1)->where('isDraft',1)->get();
+        $ban = Banner::all()->first();
+        $feed = Feedback::where('isSelected',0)->where('isPublish',0)->where('isActive',1)->get();
+        $adv =Advisory::where('isActive',1)->first();
+     
+        // dd($postcat[0]->Post[0]->Item->RateItem[0]['name']);
+        return view('Home.review', compact('post','model2','item','postcat','comp','ban','feed','adv'));
+    }
 }

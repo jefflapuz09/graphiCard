@@ -80,7 +80,7 @@
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">               
                 <a class="dropdown-item" href="{{ url('/FAQs') }}" style="color:;">FAQs</a>
                 <a class="dropdown-item" href="{{ url('/Testimonial') }}" style="color:;">Company Feedback</a>
-                <a class="dropdown-item" href="{{ url('/ServiceItem') }}" style="color:;">Item Review</a>
+                <a class="dropdown-item" href="{{ url('/AllItems') }}" style="color:;">Item Review</a>
               </div>
             </li>
           </li>

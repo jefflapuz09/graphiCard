@@ -82,7 +82,7 @@
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">               
                 <a class="dropdown-item" href="<?php echo e(url('/FAQs')); ?>" style="color:;">FAQs</a>
                 <a class="dropdown-item" href="<?php echo e(url('/Testimonial')); ?>" style="color:;">Company Feedback</a>
-                <a class="dropdown-item" href="<?php echo e(url('/ServiceItem')); ?>" style="color:;">Item Review</a>
+                <a class="dropdown-item" href="<?php echo e(url('/AllItems')); ?>" style="color:;">Item Review</a>
               </div>
             </li>
           </li>

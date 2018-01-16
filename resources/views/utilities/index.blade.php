@@ -331,6 +331,57 @@
     </div>
   </div><!--HEADING FOUR-->
 
+  <div class="card" style="border-color:maroon; margin-top:10px">
+    <div class="card-header" style="background-color:maroon;" role="tab" id="headingFive">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" href="#collapseFive" role="button" aria-expanded="false" aria-controls="collapseFive" style="color:white; text-decoration:none">
+          FAQs
+        </a>
+        <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All user information is displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+      </h5>
+    </div>
+    <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive" data-parent="#accordion">
+      <div class="card-body">
+        <div class="card-block">
+          <div class="container mt-3 mb-3">
+            <div class="pull-right" style="margin-bottom:15px;"> 
+              <a href="{{ url('/FAQCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
+                New FAQs
+              </a>
+            </div>
+            <table id="example" class="display" cellspacing="0" width="100%">
+              <thead>
+                <th width="200px">Question</th>
+                <th>Answer</th>
+                <th>Actions</th>
+              </thead>
+              <tbody>
+                @foreach ($userinfo as $user)
+                <tr>
+                  <td>{{ $user->name }}</td>
+                  <td>{{ $user->email }}</td>
+                  <td>
+                    <a href="{{ url('/UserEdit', $user->id) }}" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
+                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <a href="{{ url('/UserDeactivate', $user->id) }}"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>    
+                  </td>
+                </tr>
+
+                @endforeach
+              </tbody>
+            </table>
+            <div class="form-group pull-right">
+              <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/UserSoft') }}';" id="showDeactivated"> Show deactivated records</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--HEADING Five-->
+
 </div><!--END OF ACCORDION-->
 
 <script src="{{ url('vendor/tinymce/js/tinymce/tinymce.min.js') }}"></script>

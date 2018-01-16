@@ -27,6 +27,8 @@ Route::get('/Testimonial','HomeController@testimonial');
 Route::get('/ServiceItem/{id}', 'HomeController@item');
 Route::get('/admin', 'adminController@index');
 Route::post('/InquirySend','InquiryController@store');
+Route::get('/AllItems','HomeController@allItems');
+Route::get('/FAQs','FAQController@index');
 
 //error
 Route::get('/Restricted','Homecontroller@error');
@@ -172,5 +174,9 @@ Route::post('/InquiryUpdate/{id}','InquiryController@update');
 
 //SNS
 Route::post('/SNSUpdate/{id}','SNSController@update');
+Route::post('/SNSNew','SNSController@store');
+
+//FAQs
+Route::get('/FAQCreate','FAQController@create');
 Route::post('/SNSNew','SNSController@store');
 });

@@ -87,7 +87,7 @@
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </div>
             <hr class="mb-5 mt-4">
-            <div class="container mt-5"> 
+            <div class="container mt-5" id="review"> 
                 <div class="row">
                 <!-- Contenedor Principal -->
                   <div class="comments-container">
