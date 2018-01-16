@@ -356,18 +356,18 @@
               <thead>
                 <th width="200px">Question</th>
                 <th>Answer</th>
-                <th>Actions</th>
+                <th class="pull-right">Actions</th>
               </thead>
               <tbody>
-                <?php $__currentLoopData = $userinfo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $faqs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $f): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
-                  <td><?php echo e($user->name); ?></td>
-                  <td><?php echo e($user->email); ?></td>
-                  <td>
-                    <a href="<?php echo e(url('/UserEdit', $user->id)); ?>" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
+                  <td><?php echo e($f->question); ?></td>
+                  <td><?php echo  $f->answer ?></td>
+                  <td class="pull-right">
+                    <a href="<?php echo e(url('/UserEdit')); ?>" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
-                    <a href="<?php echo e(url('/UserDeactivate', $user->id)); ?>"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
+                    <a href="<?php echo e(url('/UserDeactivate')); ?>"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
                       <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>    
                   </td>

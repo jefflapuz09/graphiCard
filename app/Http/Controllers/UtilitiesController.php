@@ -7,6 +7,7 @@ use App\CompanyInfo;
 use App\Banner;
 use App\User;
 use App\SNS;
+use App\FAQs;
 use Validator;
 use Redirect;
 use DB;
@@ -24,7 +25,8 @@ class UtilitiesController extends Controller
         $ban = Banner::first();
         $userinfo = User::where('isActive',1)->get();
         $snslinks = SNS::first();
-        return view('Utilities.index',compact('post','ban','userinfo','snslinks'));
+        $faqs = FAQs::all();
+        return view('Utilities.index',compact('post','ban','userinfo','snslinks','faqs'));
     }
 
     /**

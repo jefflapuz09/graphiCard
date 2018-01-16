@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
+use App\FAQs;
+use DB;
+use Validator;
+use Illuminate\Validation\Rule;
 
 class FAQController extends Controller
 {
@@ -13,7 +19,8 @@ class FAQController extends Controller
      */
     public function index()
     {
-        return view('Home.FAQs');
+        $faqs = FAQs::all();
+        return view('Home.FAQs', compact('faqs'));
     }
 
     /**
@@ -34,7 +41,9 @@ class FAQController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        FAQs::create($request->all());
+        // return Redirect::to(URL::previous())->withSuccess('Successfully created record.');
+            return redirect('/Utilities')->withSuccess('Successfully created record.');
     }
 
     /**

@@ -353,18 +353,18 @@
               <thead>
                 <th width="200px">Question</th>
                 <th>Answer</th>
-                <th>Actions</th>
+                <th class="pull-right">Actions</th>
               </thead>
               <tbody>
-                @foreach ($userinfo as $user)
+                @foreach ($faqs as $f)
                 <tr>
-                  <td>{{ $user->name }}</td>
-                  <td>{{ $user->email }}</td>
-                  <td>
-                    <a href="{{ url('/UserEdit', $user->id) }}" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
+                  <td>{{ $f->question }}</td>
+                  <td><?php echo  $f->answer ?></td>
+                  <td class="pull-right">
+                    <a href="{{ url('/UserEdit') }}" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
-                    <a href="{{ url('/UserDeactivate', $user->id) }}"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
+                    <a href="{{ url('/UserDeactivate') }}"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
                       <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>    
                   </td>

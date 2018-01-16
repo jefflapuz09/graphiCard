@@ -178,5 +178,5 @@ Route::post('/SNSNew','SNSController@store');
 
 //FAQs
 Route::get('/FAQCreate','FAQController@create');
-Route::post('/SNSNew','SNSController@store');
+Route::post('/FAQStore','FAQController@store');
 });
