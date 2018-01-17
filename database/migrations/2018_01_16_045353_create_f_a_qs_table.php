@@ -17,6 +17,7 @@ class CreateFAQsTable extends Migration
             $table->increments('id');
             $table->string('question',450);
             $table->text('answer');
+            $table->boolean('isActive')->default(1);
             $table->timestamps();
         });
     }

@@ -22,7 +22,7 @@
 
     <div class="card" style="border:1px solid black; margin:10px;">
     <div class="card-header" style="background:maroon; color:white;">
-            Users
+            FAQ's
             <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All deactivated user information are displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
     </div>
     <div class="card-block">
@@ -32,25 +32,17 @@
                     </div>
                 <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
+                                <th>Question</th>
+                                <th>Answer</th>
                                 <th>Actions</th>
                         </thead>
                         <tbody>
-                                <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td><?php echo e($user->name); ?></td>
-                                    <td><?php echo e($user->email); ?></td>
+                                    <td><?php echo e($posts->question); ?></td>
+                                    <td><?php echo $posts->answer ?></td>
                                     <td>
-                                        <?php if($user->role==1): ?>
-                                        Administrator
-                                        <?php elseif($user->role==2): ?>
-                                        Contributor
-                                        <?php endif; ?>
-                                    </td>
-                                    <td>
-                                            <a href="<?php echo e(url('/UserReactivate', $user->id)); ?>" onclick="return reacForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
+                                            <a href="<?php echo e(url('/FAQReactivate/'.$posts->id)); ?>" onclick="return reacForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
                                                 <i class="fa fa-recycle" aria-hidden="true"></i>
                                             </a>
                                     </td>

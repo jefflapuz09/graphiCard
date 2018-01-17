@@ -24,7 +24,7 @@ outline: none;
   <div id="accordion" role="tablist">
     @foreach ($faqs as $f)
     <div class="card">
-      <div class="card-header" role="tab" id="heading{{$f -> id}}">
+      <div class="card-header" style="" role="tab" id="heading{{$f -> id}}">
         <h5 class="mb-0">
           <a data-toggle="collapse" href="#collapse{{$f -> id}}" role="button" aria-expanded="true" aria-controls="collapse{{$f -> id}}">
             {{$f->question}}

@@ -232,7 +232,7 @@
                 New User
               </a>
             </div>
-            <table id="example" class="display" cellspacing="0" width="100%">
+            <table id="" class="display dtable" cellspacing="0" width="100%">
               <thead>
                 <th width="200px">Name</th>
                 <th>Email</th>
@@ -349,22 +349,22 @@
                 New FAQs
               </a>
             </div>
-            <table id="example" class="display" cellspacing="0" width="100%">
+            <table id="FAQ" class="display dtable" cellspacing="0" width="100%">
               <thead>
                 <th width="200px">Question</th>
                 <th>Answer</th>
-                <th class="pull-right">Actions</th>
+                <th>Actions</th>
               </thead>
               <tbody>
                 @foreach ($faqs as $f)
                 <tr>
                   <td>{{ $f->question }}</td>
                   <td><?php echo  $f->answer ?></td>
-                  <td class="pull-right">
-                    <a href="{{ url('/UserEdit') }}" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
+                  <td class="">
+                    <a href="{{ url('/FAQUpdate/'.$f->id) }}" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
-                    <a href="{{ url('/UserDeactivate') }}"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
+                    <a href="{{ url('/FAQDeactivate/'.$f->id) }}"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
                       <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>    
                   </td>
@@ -374,7 +374,7 @@
               </tbody>
             </table>
             <div class="form-group pull-right">
-              <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/UserSoft') }}';" id="showDeactivated"> Show deactivated records</label>
+              <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/FAQSoft') }}';" id="showDeactivated"> Show deactivated records</label>
             </div>
           </div>
         </div>
@@ -386,6 +386,13 @@
 
 <script src="{{ url('vendor/tinymce/js/tinymce/tinymce.min.js') }}"></script>
 <script>
+    $(document).ready(function() {
+      $('.dtable').DataTable( {
+  
+        responsive: true
+    } );
+
+    });
 
   function updateForm(){
     var x = confirm("Are you sure you want to alter this record?");

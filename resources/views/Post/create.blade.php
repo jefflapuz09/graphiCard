@@ -25,7 +25,7 @@
     
     <div class="col-lg-6"> 
         
-        <form action="{{ url('/PostStore') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('/PostStore') }}" method="post" files="true" enctype="multipart/form-data">
 
         {{ csrf_field() }}
             <input type="hidden" name="userId" value="{{Auth::user()->id}}">

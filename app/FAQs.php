@@ -10,6 +10,7 @@ class FAQs extends Model
 
     protected $fillable = [
         'question',
-        'answer'
+        'answer',
+        'isActive'
     ];
 }

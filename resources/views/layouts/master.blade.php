@@ -190,10 +190,16 @@ else{
 
     <div style="margin-top:10px;">
       <ul class="social-network social-circle">
+          @if(count($sns)!=0)
         <li><a target="_blank" href="{{ $sns->facebook}}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
         <li><a target="_blank" href="{{ $sns->twitter}}" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
         <!-- <li><a target="_blank" href="{{ $sns->messenger}}" class="icoTwitter" title="Messenger"><i class="fa mssngr-messenger"></i></a></li> -->
         <li><a target="_blank" href="{{ $sns->messenger}}" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li>
+          @else
+          <li><a target="_blank" href="" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+          <li><a target="_blank" href="" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+          <li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li> 
+        @endif
       </ul>	
     </div>
   </div>

@@ -145,6 +145,20 @@ Route::post('/AdvisoryNew','AdvisoryController@store');
 Route::get('/Review', 'FeedbackController@indexReview');
 
 Route::post('/ReviewStore', 'FeedbackController@review');
+
+//SNS
+Route::post('/SNSUpdate/{id}','SNSController@update');
+Route::post('/SNSNew','SNSController@store');
+
+//FAQs
+Route::get('/FAQCreate','FAQController@create');
+Route::get('/FAQUpdate/{id}', 'FAQController@edit');
+Route::get('/FAQDeactivate/{id}', 'FAQController@destroy');
+Route::get('/FAQSoft', 'FAQController@soft');
+Route::get('/FAQReactivate/{id}', 'FAQController@reactivate');
+
+Route::post('/FAQStore','FAQController@store');
+Route::post('/FAQEdit/{id}', 'FAQController@update');
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\contributorMiddleware'], function () {
@@ -171,12 +185,4 @@ Route::post('/PostUpdate/{id}', 'postController@update');
 Route::get('/InquiryRead','InquiryController@read');
 Route::get('/InquiryView/{id}','InquiryController@show');
 Route::post('/InquiryUpdate/{id}','InquiryController@update');
-
-//SNS
-Route::post('/SNSUpdate/{id}','SNSController@update');
-Route::post('/SNSNew','SNSController@store');
-
-//FAQs
-Route::get('/FAQCreate','FAQController@create');
-Route::post('/FAQStore','FAQController@store');
 });

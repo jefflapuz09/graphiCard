@@ -19,7 +19,7 @@ class FAQController extends Controller
      */
     public function index()
     {
-        $faqs = FAQs::all();
+        $faqs = FAQs::where('isActive',1)->get();
         return view('Home.FAQs', compact('faqs'));
     }
 
@@ -41,9 +41,35 @@ class FAQController extends Controller
      */
     public function store(Request $request)
     {
-        FAQs::create($request->all());
-        // return Redirect::to(URL::previous())->withSuccess('Successfully created record.');
-            return redirect('/Utilities')->withSuccess('Successfully created record.');
+        $rules = [
+            'question' => ['required','max:150','unique:faqs'],
+            'answer' => ['required','max:150']
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',
+            'regex' => 'The :attribute must not contain special characters.'              
+        ];
+        $niceNames = [
+            'question' => 'Question',
+            'answer' => 'Answer'
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else{
+                try{
+                    FAQs::create($request->all());
+                }catch(\Illuminate\Database\QueryException $e){
+                    DB::rollBack();
+                    $errMess = $e->getMessage();
+                    return Redirect::back()->withError($errMess);
+                }
+                return redirect('/Utilities')->withSuccess('Successfully inserted into the database.');
+        }
     }
 
     /**
@@ -65,7 +91,8 @@ class FAQController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = FAQs::find($id);
+        return view('FAQs.FAQedit',compact('post'));
     }
 
     /**
@@ -77,7 +104,35 @@ class FAQController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'question' => ['required','max:150',Rule::unique('faqs')->ignore($id)],
+            'answer' => ['required','max:150']
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',
+            'regex' => 'The :attribute must not contain special characters.'              
+        ];
+        $niceNames = [
+            'question' => 'Question',
+            'answer' => 'Answer'
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else{
+                try{
+                    FAQs::find($id)->update($request->all());
+                }catch(\Illuminate\Database\QueryException $e){
+                    DB::rollBack();
+                    $errMess = $e->getMessage();
+                    return Redirect::back()->withError($errMess);
+                }
+                return redirect('/Utilities')->withSuccess('Successfully updated into the database.');
+        }
     }
 
     /**
@@ -86,8 +141,21 @@ class FAQController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+        FAQs::find($id)->update(['isActive' => 0]);
+            return redirect('/Utilities');  
+    }
+
+    public function soft()
+    {
+        $post = FAQs::where('isActive',0)->get();
+        return view('FAQs.FAQsoft',compact('post'));
+    }
+
+    public function reactivate($id)
+    {
+        FAQs::find($id)->update(['isActive' => 1]);
+        return redirect('/Utilities');
     }
 }

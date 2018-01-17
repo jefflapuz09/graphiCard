@@ -11,19 +11,19 @@
             </div>
             <?php if($errors->any()): ?>
                 <script type="text/javascript">
-                    toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong")
+                    toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong!")
                 </script>            
             <?php endif; ?>  
             <?php if(session('error')): ?>
                 <script type="text/javascript">
-                    toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+                    toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
                 </script>
             <?php endif; ?>
     <div class="row">
     
     <div class="col-lg-6"> 
         
-        <form action="<?php echo e(url('/PostStore')); ?>" method="post" enctype="multipart/form-data">
+        <form action="<?php echo e(url('/PostStore')); ?>" method="post" files="true" enctype="multipart/form-data">
 
         <?php echo e(csrf_field()); ?>
 
@@ -64,7 +64,6 @@
                 <center><img class="img-responsive" id="pic" src="<?php echo e(URL::asset('img/grey-pattern.png')); ?>" style="max-width:300px; background-size: contain" /></center>
                 <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
                 <input type="file" class="form-control-file" name="image" onChange="readURL(this)" id="exampleInputFile" aria-describedby="fileHelp">
-                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
             </div>
             
             
