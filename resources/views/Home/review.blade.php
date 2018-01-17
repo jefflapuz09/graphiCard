@@ -34,7 +34,7 @@
 <script src="{{  asset('js/toastr.js')  }}"></script>
 @if(count($postcat)!=0)
 @foreach($postcat as $cat)
-<div class="container" style="background:; margin-top:35px;">
+<div class="container" style="background:; margin-top:85px;">
   <!-- Portfolio Section -->
 
   <div class="container">
@@ -88,17 +88,21 @@
                 <option value="5" @if(5 == $newave) selected = "selected" @else "" @endif>5</option>
               </select>
               <ul class="social-network2 social-circle2">
+                @if(count($sns)!=0)
                   <li><a target="_blank" href="https://www.facebook.com/share.php?u={{ $sns->facebook}}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                 <li><a target="_blank" href="https://twitter.com/intent/tweet?url={{ $sns->twitter}}" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                 <li><a target="_blank" href="{{ $sns->messenger}}" class="icoTwitter" title="Messenger"><i class="fa mssngr-messenger"></i></a></li>
-                </ul> 
+                @endif
+              </ul> 
             @else
             <p class="text-muted">No ratings yet.</p>
             <ul class="social-network2 social-circle2">
-                <li><a target="_blank" href="https://www.facebook.com/share.php?u={{ $sns->facebook}}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                @if(count($sns)!=0) 
+              <li><a target="_blank" href="https://www.facebook.com/share.php?u={{ $sns->facebook}}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                 <li><a target="_blank" href="https://twitter.com/intent/tweet?url={{ $sns->twitter}}" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                 <li><a target="_blank" href="{{ $sns->messenger}}" class="icoTwitter" title="Messenger"><i class="fa mssngr-messenger"></i></a></li>
               </ul> 
+              @endif
             @endif
             
           </div>

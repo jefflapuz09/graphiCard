@@ -276,4 +276,31 @@ class HomeController extends Controller
         // dd($postcat[0]->Post[0]->Item->RateItem[0]['name']);
         return view('Home.review', compact('post','model2','item','postcat','comp','ban','feed','adv'));
     }
+
+    public function custLogin()
+    {
+        return view('Home.custLogin');
+    }
+
+    public function custLog(Request $request)
+    {
+        
+        $email = $request->email;
+        $pass = $request->password;
+        $authUser = DB::table('customers')->where('emailAddress',$email)->where('password',$pass)->get();
+        $cpass = $request->cpassword;
+        if(count($authUser)!=0)
+        {
+        dd('hello');
+        }
+        else
+        {
+            dd('gg');
+        }
+    }
+
+    public function custRegister()
+    {
+        return view('Home.custRegister');
+    }
 }

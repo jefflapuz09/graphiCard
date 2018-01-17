@@ -25,6 +25,7 @@ class CreateCustomersTable extends Migration
             $table->string('brgy', 50);
             $table->string('city', 50);
             $table->boolean('gender');
+            $table->string('password');
             $table->boolean('isActive')->default(1);
             $table->boolean('isFeatured')->default(0);
             $table->unique(['firstName', 'middleName','lastName']);

@@ -30,6 +30,10 @@ Route::post('/InquirySend','InquiryController@store');
 Route::get('/AllItems','HomeController@allItems');
 Route::get('/FAQs','FAQController@index');
 
+Route::get('/customer/login','HomeController@custLogin');
+Route::get('/customer/register','HomeController@custRegister');
+Route::post('/customer/login/post','HomeController@custLog');
+
 //error
 Route::get('/Restricted','Homecontroller@error');
 Route::get('/RestrictedAuth','Homecontroller@error2');
