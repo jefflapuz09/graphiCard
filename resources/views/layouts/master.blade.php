@@ -218,23 +218,23 @@
       $col2 = "";
       for($x=0;$x<$ctr;$x++){
       if($x>$limit-1){ //2nd column
-        $col2 = $col2 . "<li>". $sample[$x] . "</li>";
+        $col2 = $col2 . "<p>". $sample[$x] . "</p>";
       }
       else{
-        $col1 = $col1 . "<li>". $sample[$x] . "</li>";
+        $col1 = $col1 . "<p>". $sample[$x] . "</p>";
       }
     }
     ?>
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-md-6">
         <ul>
           <?php
           echo $col1;
           ?>
         </ul>
       </div>
-      <div class="col-sm-6">
-        <ul>    
+      <div class="col-md-6">
+        <ul>   
           <?php
           echo $col2;
           ?>
@@ -243,12 +243,12 @@
     </div>
     @else
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-md-6">
         <ul>
           <li>Sample Service</li>
         </ul>
       </div>
-      <div class="col-sm-6">
+      <div class="col-md-6">
         <ul>
           <li>Sample Service</li>
         </ul>
@@ -257,7 +257,7 @@
     @endif
     </div>
     <div class="col-md-4"  style="color:white""> 
-      <!-- <div class="row">        
+      <div class="row">        
         <div class="col-md-6">
         <h5 style="color:gold; text-align: center">Customer Services</h5>   
         <ul>
@@ -275,10 +275,10 @@
         <li style="list-style-type: circle"><a style="color:white" href="{{ url('/AllItems') }}" style="color:;">Privacy Policy</a></li>
         </ul>
         </div>
-      </div> -->
+      </div>
     </div>
     <div class="col-md-4" align="center">
-      <!-- <h5 style="color:gold;">Find Us</h5>
+      <h5 style="color:gold;">Find Us</h5>
       @if(count($comp) != 0 )
       <p style="color:white;">{{ $comp->street }} {{$comp->brgy}}, {{$comp->city}}</p>
       <h5 style="color:gold;">Contact Us</h5>
@@ -302,7 +302,7 @@
       <li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li> 
       @endif
       </ul> 
-      </div> -->
+      </div>
     </div>
   </div><!--END ROW-->
 </footer>
