@@ -57,7 +57,8 @@ class HomeController extends Controller
         $adv =Advisory::where('isActive',1)->first();
      
         // dd($postcat[0]->Post[0]->Item->RateItem[0]['name']);
-        return view('Home.index', compact('post','model2','item','postcat','comp','ban','feed','adv'));
+       return view('Home.index', compact('post','model2','item','postcat','comp','ban','feed','adv'));
+        // return view('Home.gg');
     }
 
     public function prodDescription($id,$type,$item)

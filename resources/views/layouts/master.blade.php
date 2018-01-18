@@ -38,67 +38,151 @@
 </head>
 
 <body>
-
-  <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
-    <div class="container">
-      @if(count($comp) != 0 )
-      <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset($comp->company_logo) }}" style="max-width:50px; max-height:50px;">{{ $comp->company_name }}</a>
-      @else
-      <a class="navbar-brand" href="{{ url('/') }}"><img src="">Company Name</a>
-      @endif
-      <button class="navbar-toggler navbar-toggler-right custom-toggler"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" style="color:yellow;"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-
-          @foreach($model as $post)
-          <li class="nav-item">   
-            @if(count($post->Type) != 0)
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
-                {{$post->name}}
-              </a>          
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                @foreach($post->Type as $type)                   
-                <a class="dropdown-item" href="{{ url('/ServiceItem', $type->id) }}" style="color:;">{{$type->name}}</a>
-
-                @endforeach
-              </div>
-            </li>
-            @else
-            {{ $post->categoryId}}
-            <a class="nav-link" href="{{ url('/ServiceItem', $post->id) }}">{{$post->name}}</a>
-            @endif
-          </li>
-          @endforeach
-          <li class="nav-item">   
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
-                Customer Service
-              </a>          
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">               
-                <a class="dropdown-item" href="{{ url('/FAQs') }}" style="color:;">FAQs</a>
-                <a class="dropdown-item" href="{{ url('/Testimonial') }}" style="color:;">Company Feedback</a>
-                <a class="dropdown-item" href="{{ url('/AllItems') }}" style="color:;">Item Review</a>
-              </div>
-            </li>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url('/about') }}"> About Us</a>
-          </li>
-          @if($user = Auth::user())
-          @elseif(Auth::guest())
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url('/login') }}">Login</a>
-          </li>
-          @endif
-
-        </ul>
+  <div class="fixed-top">
+    <header class="topbar">
+      <div class="container-fluid">
+        @if(count($comp) != 0 )
+        <div class="row" style="background-color:#f72028;color:white;padding:5px;">
+          <div class="col-md-6 col-sm-6">
+            <div class="links  pull-left" style="padding-left:0px;margin-left: 0px;">
+              <ul>
+                <li style="display: inline-block"><i class="fa fa-phone"></i> {{$comp->contactNumber}} | </li>
+                <li  style="display: inline-block"><i class="fa fa-envelope"></i> {{$comp->emailAddress}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="links  pull-right">
+              <ul>
+                <li  style="display: inline-block"><a href="{{ url('/login') }}" style="color:white"><i class="fa fa-user"></i> My Account </a> | </li>
+                <li  style="display: inline-block"><a href="{{ url('/login') }}" style="color:white"><i class="fa fa-shopping-cart"></i> My Cart (0) items</a> | </li>
+                <li  style="display: inline-block"><i class="fa fa-sign-in"></i> <a href="{{ url('/login') }}" style="color:white"> Login </a> | <a href="{{ url('/login') }}" style="color:white"> Register</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        @else
+        @endif
       </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear" style="font-weight: 700; font-family: 'Roboto', sans-serif; border-top:2px solid black">
+      <div class="container">
+        @if(count($comp) != 0 )
+        <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset($comp->company_logo) }}" style="max-width:50px; max-height:50px;">{{ $comp->company_name }}</a>
+        @else
+        <a class="navbar-brand" href="{{ url('/') }}"><img src="">Company Name</a>
+        @endif
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            @foreach($model as $post)
+            <li class="nav-item">   
+              @if(count($post->Type) != 0)
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
+                  {{$post->name}}
+                </a>          
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                  @foreach($post->Type as $type)                   
+                  <a class="dropdown-item" href="{{ url('/ServiceItem', $type->id) }}" style="color:;">{{$type->name}}</a>
+
+                  @endforeach
+                </div>
+              </li>
+              @else
+              {{ $post->categoryId}}
+              <a class="nav-link" href="{{ url('/ServiceItem', $post->id) }}">{{$post->name}}</a>
+              @endif
+            </li>
+            @endforeach
+            <li class="nav-item">   
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
+                  Customer Service
+                </a>          
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">               
+                  <a class="dropdown-item" href="{{ url('/FAQs') }}" style="color:;">FAQs</a>
+                  <a class="dropdown-item" href="{{ url('/Testimonial') }}" style="color:;">Company Feedback</a>
+                  <a class="dropdown-item" href="{{ url('/AllItems') }}" style="color:;">Item Review</a>
+                </div>
+              </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('/about') }}"> About Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url('/about') }}"><i class="fa fa-search" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+<!-- <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
+<div class="container">
+@if(count($comp) != 0 )
+<a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset($comp->company_logo) }}" style="max-width:50px; max-height:50px;">{{ $comp->company_name }}</a>
+@else
+<a class="navbar-brand" href="{{ url('/') }}"><img src="">Company Name</a>
+@endif
+<button class="navbar-toggler navbar-toggler-right custom-toggler"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon" style="color:yellow;"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarResponsive">
+<ul class="navbar-nav ml-auto">
+
+@foreach($model as $post)
+<li class="nav-item">   
+  @if(count($post->Type) != 0)
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
+      {{$post->name}}
+    </a>          
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+      @foreach($post->Type as $type)                   
+      <a class="dropdown-item" href="{{ url('/ServiceItem', $type->id) }}" style="color:;">{{$type->name}}</a>
+
+      @endforeach
     </div>
-  </nav>
+  </li>
+  @else
+  {{ $post->categoryId}}
+  <a class="nav-link" href="{{ url('/ServiceItem', $post->id) }}">{{$post->name}}</a>
+  @endif
+</li>
+@endforeach
+<li class="nav-item">   
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
+      Customer Service
+    </a>          
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">               
+      <a class="dropdown-item" href="{{ url('/FAQs') }}" style="color:;">FAQs</a>
+      <a class="dropdown-item" href="{{ url('/Testimonial') }}" style="color:;">Company Feedback</a>
+      <a class="dropdown-item" href="{{ url('/AllItems') }}" style="color:;">Item Review</a>
+    </div>
+  </li>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/about') }}"> About Us</a>
+</li>
+@if($user = Auth::user())
+@elseif(Auth::guest())
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/login') }}">Login</a>
+</li>
+@endif
+
+</ul>
+</div>
+</div>
+</nav> -->
 <!-- <div class="ssk-sticky ssk-right ssk-center ssk-lg">
 <a href="" class="ssk ssk-facebook" data-url="https://www.facebook.com/Graphicard-154392717914639/"></a>
 <a href="" class="ssk ssk-twitter" data-url="https://www.facebook.com/Graphicard-154392717914639/" data-text="Home of quality printed products"></a>
@@ -108,108 +192,221 @@
 
 @yield('contents');
 
-<!-- Footer -->
 <footer class="py-5" id="foot">
-  <div class="container" style="background:; color:white;">
-    <div class="row"> 
-      <div class="col-lg-6"> 
-        <div align="center" style="color:white; background:; line-height:5px;">
-          @if(count($comp) != 0 )
-          <img src="{{ asset($comp->company_logo) }}"><h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">{{$comp->company_name}}</h1>
-          @else
-          <img src="">
-          <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Name</h1>
-          @endif
-
-
-          <h5 style="color:gold;">Services Offered</h5>
+  <!-- <div class="row">
+     @if(count($comp) != 0 )
+      <div style="display: flex; align-items: center; justify-content: center;color:white;font-family: 'Roboto', sans-serif; margin:0px auto">
+      <span><img src="{{ asset($comp->company_logo) }}"></span>      
+      <h1 style="font-family: 'Roboto', sans-serif;" class="text-uppercase">{{$comp->company_name}}</h1>
+      </div>
+      @else
+      <div style="display: flex; align-items: center; color:white;font-family: 'Roboto', sans-serif; ">
+      <span><img src=""></span>
+      <h1 style="font-family: 'Roboto', sans-serif;" class="text-uppercase">Company Name Here</h1>
+      </div>
+      @endif
+  </div> -->
+  <div class="row">
+    <div class="col-md-4" style="color: white;">
+      <h5 style="color:gold; text-align:center">Services Offered</h5>
+      @if(count($comp) != 0 )
+      <?php 
+      $sample = explode("</p>",$comp->services_offered);
+      $ctr = count($sample);
+      $limit = $ctr/2;
+      $col1 = "";
+      $col2 = "";
+      for($x=0;$x<$ctr;$x++){
+      if($x>$limit-1){ //2nd column
+        $col2 = $col2 . "<li>". $sample[$x] . "</li>";
+      }
+      else{
+        $col1 = $col1 . "<li>". $sample[$x] . "</li>";
+      }
+    }
+    ?>
+    <div class="row">
+      <div class="col-sm-6">
+        <ul>
+          <?php
+          echo $col1;
+          ?>
+        </ul>
+      </div>
+      <div class="col-sm-6">
+        <ul>    
+          <?php
+          echo $col2;
+          ?>
+        </ul>
+      </div>
+    </div>
+    @else
+    <div class="row">
+      <div class="col-sm-6">
+        <ul>
+          <li>Sample Service</li>
+        </ul>
+      </div>
+      <div class="col-sm-6">
+        <ul>
+          <li>Sample Service</li>
+        </ul>
+      </div>
+    </div>
+    @endif
+    </div>
+    <div class="col-md-4"  style="color:white""> 
+      <!-- <div class="row">        
+        <div class="col-md-6">
+        <h5 style="color:gold; text-align: center">Customer Services</h5>   
+        <ul>
+        <li style="list-style-type: circle"><a style="color:white" href="{{ url('/FAQs') }}" style="color:;">FAQs</a></li>
+        <li style="list-style-type: circle"><a style="color:white" href="{{ url('/Testimonial') }}" style="color:;">Company Feedback</a></li>
+        <li style="list-style-type: circle"><a style="color:white" href="{{ url('/AllItems') }}" style="color:;">Item Review</a></li>
+        <li style="list-style-type: circle"><a style="color:white" href="{{ url('/AllItems') }}" style="color:;">Gallery</a></li>
+        </ul>
+        </div>     
+        <div class="col-md-6">
+          <h5 style="color:gold; text-align: center">About Us</h5>   
+        <ul>
+        <li style="list-style-type: circle"><a style="color:white" href="{{ url('/FAQs') }}" style="color:;">Company Information</a></li>
+        <li style="list-style-type: circle"><a style="color:white" href="{{ url('/Testimonial') }}" style="color:;">Terms and Conditions</a></li>
+        <li style="list-style-type: circle"><a style="color:white" href="{{ url('/AllItems') }}" style="color:;">Privacy Policy</a></li>
+        </ul>
         </div>
+      </div> -->
+    </div>
+    <div class="col-md-4" align="center">
+      <!-- <h5 style="color:gold;">Find Us</h5>
+      @if(count($comp) != 0 )
+      <p style="color:white;">{{ $comp->street }} {{$comp->brgy}}, {{$comp->city}}</p>
+      <h5 style="color:gold;">Contact Us</h5>
+      <p style="color:white;">{{$comp->contactNumber}}
+      <br>{{$comp->emailAddress}}</p>
+      @else
+      <p class="lead">Street Brgy City</p>
+      <h3 style="color:gold;">Contact Us</h3>
+      Contact Number
+      <br>Email Address
+      @endif
+      <div style="margin-top:10px;">
+      <ul class="social-network social-circle" >
+      @if(count($sns)!=0)
+      <li><a target="_blank" href="{{ $sns->facebook}}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+      <li><a target="_blank" href="{{ $sns->twitter}}" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+      <li><a target="_blank" href="{{ $sns->messenger}}" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li>
+      @else
+      <li><a target="_blank" href="" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+      <li><a target="_blank" href="" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+      <li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li> 
+      @endif
+      </ul> 
+      </div> -->
+    </div>
+  </div><!--END ROW-->
+</footer>
 
-        @if(count($comp) != 0 )
-        <?php 
-        $sample = explode("</p>",$comp->services_offered);
-        $ctr = count($sample);
-        $limit = $ctr/2;
-        $col1 = "";
-        $col2 = "";
-        for($x=0;$x<$ctr;$x++){
+<!-- Footer -->
+<!-- <footer class="py-5" id="foot">
+<div class="container" style="background:; color:white;">
+<div class="row"> 
+<div class="col-lg-6"> 
+<div align="center" style="color:white; background:; line-height:5px;">
+@if(count($comp) != 0 )
+<img src="{{ asset($comp->company_logo) }}"><h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">{{$comp->company_name}}</h1>
+@else
+<img src="">
+<h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Name</h1>
+@endif
+
+
+<h5 style="color:gold;">Services Offered</h5>
+</div>
+
+@if(count($comp) != 0 )
+<?php 
+$sample = explode("</p>",$comp->services_offered);
+$ctr = count($sample);
+$limit = $ctr/2;
+$col1 = "";
+$col2 = "";
+for($x=0;$x<$ctr;$x++){
 if($x>$limit-1){ //2nd column
-  $col2 = $col2 . "<li>". $sample[$x] . "</li>";
+$col2 = $col2 . "<li>". $sample[$x] . "</li>";
 }
 else{
-  $col1 = $col1 . "<li>". $sample[$x] . "</li>";
+$col1 = $col1 . "<li>". $sample[$x] . "</li>";
 }
 }
 ?>
 <div class="row" style="margin-left:25px;">
-  <div class="col-sm-6">
-    <ul>
-      <?php
-      echo $col1;
-      ?>
-    </ul>
-  </div>
-  <div class="col-sm-6">
-    <ul>    
-      <?php
-      echo $col2;
-      ?>
-    </ul>
-  </div>
+<div class="col-sm-6">
+<ul>
+<?php
+echo $col1;
+?>
+</ul>
+</div>
+<div class="col-sm-6">
+<ul>    
+<?php
+echo $col2;
+?>
+</ul>
+</div>
 </div>
 @else
 <div class="row" style="margin-left:25px;">
-  <div class="col-sm-6">
-    <ul>
-      <li>Sample Service</li>
-    </ul>
-  </div>
-  <div class="col-sm-6">
-    <ul>
-      <li>Sample Service</li>
-    </ul>
-  </div>
+<div class="col-sm-6">
+<ul>
+<li>Sample Service</li>
+</ul>
+</div>
+<div class="col-sm-6">
+<ul>
+<li>Sample Service</li>
+</ul>
+</div>
 </div>
 @endif
 </div>
 <div class="col-lg-6" style="margin-top:20px;"> 
-  <div align="center">
-    <h3 style="color:gold;">Find Us</h3>
-    @if(count($comp) != 0 )
-    <p class="lead">{{ $comp->street }} {{$comp->brgy}}, {{$comp->city}}</p>
-    <h3 style="color:gold;">Contact Us</h3>
-    {{$comp->contactNumber}}
-    <br>{{$comp->emailAddress}}
-    @else
-    <p class="lead">Street Brgy City</p>
-    <h3 style="color:gold;">Contact Us</h3>
+<div align="center">
+<h3 style="color:gold;">Find Us</h3>
+@if(count($comp) != 0 )
+<p class="lead">{{ $comp->street }} {{$comp->brgy}}, {{$comp->city}}</p>
+<h3 style="color:gold;">Contact Us</h3>
+{{$comp->contactNumber}}
+<br>{{$comp->emailAddress}}
+@else
+<p class="lead">Street Brgy City</p>
+<h3 style="color:gold;">Contact Us</h3>
 
-    Contact Number
-    <br>Email Address
-    @endif
+Contact Number
+<br>Email Address
+@endif
 
-    <div style="margin-top:10px;">
-      <ul class="social-network social-circle">
-          @if(count($sns)!=0)
-        <li><a target="_blank" href="{{ $sns->facebook}}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-        <li><a target="_blank" href="{{ $sns->twitter}}" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-        <!-- <li><a target="_blank" href="{{ $sns->messenger}}" class="icoTwitter" title="Messenger"><i class="fa mssngr-messenger"></i></a></li> -->
-        <li><a target="_blank" href="{{ $sns->messenger}}" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li>
-          @else
-          <li><a target="_blank" href="" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-          <li><a target="_blank" href="" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-          <li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li> 
-        @endif
-      </ul>	
-    </div>
-  </div>
+<div style="margin-top:10px;">
+<ul class="social-network social-circle">
+@if(count($sns)!=0)
+<li><a target="_blank" href="{{ $sns->facebook}}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+<li><a target="_blank" href="{{ $sns->twitter}}" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+<li><a target="_blank" href="{{ $sns->messenger}}" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li>
+@else
+<li><a target="_blank" href="" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+<li><a target="_blank" href="" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+<li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li> 
+@endif
+</ul>	
 </div>
 </div>
 </div>
+</div>
+</div>
+</footer> -->
 
-<!-- /.container -->
-</footer>
-<div class="container-fluid" style="background:#154360; height:30px;">
+<div class="container-fluid" style="background:red; height:30px;">
   <div align="center" style="margin-top:px;color:white;">
     @if(count($comp) != 0 )
     <small class="text-uppercase"><b>&copy; 2017, {{$comp->company_name}}</b></small>
@@ -220,7 +417,7 @@ else{
 
 </div>
 @if($user = Auth::user())
-<div class="container-fluid" style="background:#154360; height:30px;">
+<div class="container-fluid" style="background:red; height:30px;">
   <div align="center" style="margin-top:px;color:white;">
     @if(count($comp) != 0 )
     <a style="text-decoration:none; color:white" href="{{ url('/admin') }}" title="Go to admin"><small class="text-uppercase"><b>{{$comp->company_name}} -  Admin</b></small></a>

@@ -38,69 +38,155 @@
 </head>
 
 <body>
-
-  <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
-    <div class="container">
-      <?php if(count($comp) != 0 ): ?>
-      <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="<?php echo e(asset($comp->company_logo)); ?>" style="max-width:50px; max-height:50px;"><?php echo e($comp->company_name); ?></a>
-      <?php else: ?>
-      <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="">Company Name</a>
-      <?php endif; ?>
-      <button class="navbar-toggler navbar-toggler-right custom-toggler"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" style="color:yellow;"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-
-          <?php $__currentLoopData = $model; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-          <li class="nav-item">   
-            <?php if(count($post->Type) != 0): ?>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
-                <?php echo e($post->name); ?>
-
-              </a>          
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <?php $__currentLoopData = $post->Type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                   
-                <a class="dropdown-item" href="<?php echo e(url('/ServiceItem', $type->id)); ?>" style="color:;"><?php echo e($type->name); ?></a>
-
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-              </div>
-            </li>
-            <?php else: ?>
-            <?php echo e($post->categoryId); ?>
-
-            <a class="nav-link" href="<?php echo e(url('/ServiceItem', $post->id)); ?>"><?php echo e($post->name); ?></a>
-            <?php endif; ?>
-          </li>
-          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-          <li class="nav-item">   
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
-                Customer Service
-              </a>          
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">               
-                <a class="dropdown-item" href="<?php echo e(url('/FAQs')); ?>" style="color:;">FAQs</a>
-                <a class="dropdown-item" href="<?php echo e(url('/Testimonial')); ?>" style="color:;">Company Feedback</a>
-                <a class="dropdown-item" href="<?php echo e(url('/AllItems')); ?>" style="color:;">Item Review</a>
-              </div>
-            </li>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(url('/about')); ?>"> About Us</a>
-          </li>
-          <?php if($user = Auth::user()): ?>
-          <?php elseif(Auth::guest()): ?>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(url('/login')); ?>">Login</a>
-          </li>
-          <?php endif; ?>
-
-        </ul>
+  <div class="fixed-top">
+    <header class="topbar">
+      <div class="container-fluid">
+        <?php if(count($comp) != 0 ): ?>
+        <div class="row" style="background-color:#f72028;color:white;padding:5px;">
+          <div class="col-md-6 col-sm-6">
+            <div class="links  pull-left" style="padding-left:0px;margin-left: 0px;">
+              <ul>
+                <li style="display: inline-block"><i class="fa fa-phone"></i> <?php echo e($comp->contactNumber); ?> | </li>
+                <li  style="display: inline-block"><i class="fa fa-envelope"></i> <?php echo e($comp->emailAddress); ?></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="links  pull-right">
+              <ul>
+                <li  style="display: inline-block"><a href="<?php echo e(url('/login')); ?>" style="color:white"><i class="fa fa-user"></i> My Account </a> | </li>
+                <li  style="display: inline-block"><a href="<?php echo e(url('/login')); ?>" style="color:white"><i class="fa fa-shopping-cart"></i> My Cart (0) items</a> | </li>
+                <li  style="display: inline-block"><i class="fa fa-sign-in"></i> <a href="<?php echo e(url('/login')); ?>" style="color:white"> Login </a> | <a href="<?php echo e(url('/login')); ?>" style="color:white"> Register</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <?php else: ?>
+        <?php endif; ?>
       </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear" style="font-weight: 700; font-family: 'Roboto', sans-serif; border-top:2px solid black">
+      <div class="container">
+        <?php if(count($comp) != 0 ): ?>
+        <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="<?php echo e(asset($comp->company_logo)); ?>" style="max-width:50px; max-height:50px;"><?php echo e($comp->company_name); ?></a>
+        <?php else: ?>
+        <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="">Company Name</a>
+        <?php endif; ?>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <?php $__currentLoopData = $model; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li class="nav-item">   
+              <?php if(count($post->Type) != 0): ?>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
+                  <?php echo e($post->name); ?>
+
+                </a>          
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                  <?php $__currentLoopData = $post->Type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                   
+                  <a class="dropdown-item" href="<?php echo e(url('/ServiceItem', $type->id)); ?>" style="color:;"><?php echo e($type->name); ?></a>
+
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
+              </li>
+              <?php else: ?>
+              <?php echo e($post->categoryId); ?>
+
+              <a class="nav-link" href="<?php echo e(url('/ServiceItem', $post->id)); ?>"><?php echo e($post->name); ?></a>
+              <?php endif; ?>
+            </li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <li class="nav-item">   
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
+                  Customer Service
+                </a>          
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">               
+                  <a class="dropdown-item" href="<?php echo e(url('/FAQs')); ?>" style="color:;">FAQs</a>
+                  <a class="dropdown-item" href="<?php echo e(url('/Testimonial')); ?>" style="color:;">Company Feedback</a>
+                  <a class="dropdown-item" href="<?php echo e(url('/AllItems')); ?>" style="color:;">Item Review</a>
+                </div>
+              </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo e(url('/about')); ?>"> About Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo e(url('/about')); ?>"><i class="fa fa-search" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+<!-- <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
+<div class="container">
+<?php if(count($comp) != 0 ): ?>
+<a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="<?php echo e(asset($comp->company_logo)); ?>" style="max-width:50px; max-height:50px;"><?php echo e($comp->company_name); ?></a>
+<?php else: ?>
+<a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="">Company Name</a>
+<?php endif; ?>
+<button class="navbar-toggler navbar-toggler-right custom-toggler"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon" style="color:yellow;"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarResponsive">
+<ul class="navbar-nav ml-auto">
+
+<?php $__currentLoopData = $model; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+<li class="nav-item">   
+  <?php if(count($post->Type) != 0): ?>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
+      <?php echo e($post->name); ?>
+
+    </a>          
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+      <?php $__currentLoopData = $post->Type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                   
+      <a class="dropdown-item" href="<?php echo e(url('/ServiceItem', $type->id)); ?>" style="color:;"><?php echo e($type->name); ?></a>
+
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
-  </nav>
+  </li>
+  <?php else: ?>
+  <?php echo e($post->categoryId); ?>
+
+  <a class="nav-link" href="<?php echo e(url('/ServiceItem', $post->id)); ?>"><?php echo e($post->name); ?></a>
+  <?php endif; ?>
+</li>
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+<li class="nav-item">   
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
+      Customer Service
+    </a>          
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">               
+      <a class="dropdown-item" href="<?php echo e(url('/FAQs')); ?>" style="color:;">FAQs</a>
+      <a class="dropdown-item" href="<?php echo e(url('/Testimonial')); ?>" style="color:;">Company Feedback</a>
+      <a class="dropdown-item" href="<?php echo e(url('/AllItems')); ?>" style="color:;">Item Review</a>
+    </div>
+  </li>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link" href="<?php echo e(url('/about')); ?>"> About Us</a>
+</li>
+<?php if($user = Auth::user()): ?>
+<?php elseif(Auth::guest()): ?>
+<li class="nav-item">
+  <a class="nav-link" href="<?php echo e(url('/login')); ?>">Login</a>
+</li>
+<?php endif; ?>
+
+</ul>
+</div>
+</div>
+</nav> -->
 <!-- <div class="ssk-sticky ssk-right ssk-center ssk-lg">
 <a href="" class="ssk ssk-facebook" data-url="https://www.facebook.com/Graphicard-154392717914639/"></a>
 <a href="" class="ssk ssk-twitter" data-url="https://www.facebook.com/Graphicard-154392717914639/" data-text="Home of quality printed products"></a>
@@ -110,104 +196,224 @@
 
 <?php echo $__env->yieldContent('contents'); ?>;
 
-<!-- Footer -->
 <footer class="py-5" id="foot">
-  <div class="container" style="background:; color:white;">
-    <div class="row"> 
-      <div class="col-lg-6"> 
-        <div align="center" style="color:white; background:; line-height:5px;">
-          <?php if(count($comp) != 0 ): ?>
-          <img src="<?php echo e(asset($comp->company_logo)); ?>"><h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase"><?php echo e($comp->company_name); ?></h1>
-          <?php else: ?>
-          <img src="">
-          <h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Name</h1>
-          <?php endif; ?>
-
-
-          <h5 style="color:gold;">Services Offered</h5>
+  <!-- <div class="row">
+     <?php if(count($comp) != 0 ): ?>
+      <div style="display: flex; align-items: center; justify-content: center;color:white;font-family: 'Roboto', sans-serif; margin:0px auto">
+      <span><img src="<?php echo e(asset($comp->company_logo)); ?>"></span>      
+      <h1 style="font-family: 'Roboto', sans-serif;" class="text-uppercase"><?php echo e($comp->company_name); ?></h1>
+      </div>
+      <?php else: ?>
+      <div style="display: flex; align-items: center; color:white;font-family: 'Roboto', sans-serif; ">
+      <span><img src=""></span>
+      <h1 style="font-family: 'Roboto', sans-serif;" class="text-uppercase">Company Name Here</h1>
+      </div>
+      <?php endif; ?>
+  </div> -->
+  <div class="row">
+    <div class="col-md-4" style="color: white;">
+      <h5 style="color:gold; text-align:center">Services Offered</h5>
+      <?php if(count($comp) != 0 ): ?>
+      <?php 
+      $sample = explode("</p>",$comp->services_offered);
+      $ctr = count($sample);
+      $limit = $ctr/2;
+      $col1 = "";
+      $col2 = "";
+      for($x=0;$x<$ctr;$x++){
+      if($x>$limit-1){ //2nd column
+      $col2 = $col2 . "<li>". $sample[$x] . "</li>";
+      }
+      else{
+      $col1 = $col1 . "<li>". $sample[$x] . "</li>";
+      }
+      }
+      ?>
+      <div class="row">
+      <div class="col-sm-6">
+      <ul>
+      <?php
+      echo $col1;
+      ?>
+      </ul>
+      </div>
+      <div class="col-sm-6">
+      <ul>    
+      <?php
+      echo $col2;
+      ?>
+      </ul>
+      </div>
+      </div>
+      <?php else: ?>
+      <div class="row">
+      <div class="col-sm-6">
+      <ul>
+      <li>Sample Service</li>
+      </ul>
+      </div>
+      <div class="col-sm-6">
+      <ul>
+      <li>Sample Service</li>
+      </ul>
+      </div>
+      </div>
+      <?php endif; ?>
+    </div>
+    <div class="col-md-4"  style="color:white""> 
+      <!-- <div class="row">        
+        <div class="col-md-6">
+        <h5 style="color:gold; text-align: center">Customer Services</h5>   
+        <ul>
+        <li style="list-style-type: circle"><a style="color:white" href="<?php echo e(url('/FAQs')); ?>" style="color:;">FAQs</a></li>
+        <li style="list-style-type: circle"><a style="color:white" href="<?php echo e(url('/Testimonial')); ?>" style="color:;">Company Feedback</a></li>
+        <li style="list-style-type: circle"><a style="color:white" href="<?php echo e(url('/AllItems')); ?>" style="color:;">Item Review</a></li>
+        <li style="list-style-type: circle"><a style="color:white" href="<?php echo e(url('/AllItems')); ?>" style="color:;">Gallery</a></li>
+        </ul>
+        </div>     
+        <div class="col-md-6">
+          <h5 style="color:gold; text-align: center">About Us</h5>   
+        <ul>
+        <li style="list-style-type: circle"><a style="color:white" href="<?php echo e(url('/FAQs')); ?>" style="color:;">Company Information</a></li>
+        <li style="list-style-type: circle"><a style="color:white" href="<?php echo e(url('/Testimonial')); ?>" style="color:;">Terms and Conditions</a></li>
+        <li style="list-style-type: circle"><a style="color:white" href="<?php echo e(url('/AllItems')); ?>" style="color:;">Privacy Policy</a></li>
+        </ul>
         </div>
+      </div> -->
+    </div>
+    <div class="col-md-4" align="center">
+      <!-- <h5 style="color:gold;">Find Us</h5>
+      <?php if(count($comp) != 0 ): ?>
+      <p style="color:white;"><?php echo e($comp->street); ?> <?php echo e($comp->brgy); ?>, <?php echo e($comp->city); ?></p>
+      <h5 style="color:gold;">Contact Us</h5>
+      <p style="color:white;"><?php echo e($comp->contactNumber); ?>
 
-        <?php if(count($comp) != 0 ): ?>
-        <?php 
-        $sample = explode("</p>",$comp->services_offered);
-        $ctr = count($sample);
-        $limit = $ctr/2;
-        $col1 = "";
-        $col2 = "";
-        for($x=0;$x<$ctr;$x++){
+      <br><?php echo e($comp->emailAddress); ?></p>
+      <?php else: ?>
+      <p class="lead">Street Brgy City</p>
+      <h3 style="color:gold;">Contact Us</h3>
+      Contact Number
+      <br>Email Address
+      <?php endif; ?>
+      <div style="margin-top:10px;">
+      <ul class="social-network social-circle" >
+      <?php if(count($sns)!=0): ?>
+      <li><a target="_blank" href="<?php echo e($sns->facebook); ?>" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+      <li><a target="_blank" href="<?php echo e($sns->twitter); ?>" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+      <li><a target="_blank" href="<?php echo e($sns->messenger); ?>" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li>
+      <?php else: ?>
+      <li><a target="_blank" href="" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+      <li><a target="_blank" href="" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+      <li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li> 
+      <?php endif; ?>
+      </ul> 
+      </div> -->
+    </div>
+  </div><!--END ROW-->
+</footer>
+
+<!-- Footer -->
+<!-- <footer class="py-5" id="foot">
+<div class="container" style="background:; color:white;">
+<div class="row"> 
+<div class="col-lg-6"> 
+<div align="center" style="color:white; background:; line-height:5px;">
+<?php if(count($comp) != 0 ): ?>
+<img src="<?php echo e(asset($comp->company_logo)); ?>"><h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase"><?php echo e($comp->company_name); ?></h1>
+<?php else: ?>
+<img src="">
+<h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Name</h1>
+<?php endif; ?>
+
+
+<h5 style="color:gold;">Services Offered</h5>
+</div>
+
+<?php if(count($comp) != 0 ): ?>
+<?php 
+$sample = explode("</p>",$comp->services_offered);
+$ctr = count($sample);
+$limit = $ctr/2;
+$col1 = "";
+$col2 = "";
+for($x=0;$x<$ctr;$x++){
 if($x>$limit-1){ //2nd column
-  $col2 = $col2 . "<li>". $sample[$x] . "</li>";
+$col2 = $col2 . "<li>". $sample[$x] . "</li>";
 }
 else{
-  $col1 = $col1 . "<li>". $sample[$x] . "</li>";
+$col1 = $col1 . "<li>". $sample[$x] . "</li>";
 }
 }
 ?>
 <div class="row" style="margin-left:25px;">
-  <div class="col-sm-6">
-    <ul>
-      <?php
-      echo $col1;
-      ?>
-    </ul>
-  </div>
-  <div class="col-sm-6">
-    <ul>    
-      <?php
-      echo $col2;
-      ?>
-    </ul>
-  </div>
+<div class="col-sm-6">
+<ul>
+<?php
+echo $col1;
+?>
+</ul>
+</div>
+<div class="col-sm-6">
+<ul>    
+<?php
+echo $col2;
+?>
+</ul>
+</div>
 </div>
 <?php else: ?>
 <div class="row" style="margin-left:25px;">
-  <div class="col-sm-6">
-    <ul>
-      <li>Sample Service</li>
-    </ul>
-  </div>
-  <div class="col-sm-6">
-    <ul>
-      <li>Sample Service</li>
-    </ul>
-  </div>
+<div class="col-sm-6">
+<ul>
+<li>Sample Service</li>
+</ul>
+</div>
+<div class="col-sm-6">
+<ul>
+<li>Sample Service</li>
+</ul>
+</div>
 </div>
 <?php endif; ?>
 </div>
 <div class="col-lg-6" style="margin-top:20px;"> 
-  <div align="center">
-    <h3 style="color:gold;">Find Us</h3>
-    <?php if(count($comp) != 0 ): ?>
-    <p class="lead"><?php echo e($comp->street); ?> <?php echo e($comp->brgy); ?>, <?php echo e($comp->city); ?></p>
-    <h3 style="color:gold;">Contact Us</h3>
-    <?php echo e($comp->contactNumber); ?>
+<div align="center">
+<h3 style="color:gold;">Find Us</h3>
+<?php if(count($comp) != 0 ): ?>
+<p class="lead"><?php echo e($comp->street); ?> <?php echo e($comp->brgy); ?>, <?php echo e($comp->city); ?></p>
+<h3 style="color:gold;">Contact Us</h3>
+<?php echo e($comp->contactNumber); ?>
 
-    <br><?php echo e($comp->emailAddress); ?>
+<br><?php echo e($comp->emailAddress); ?>
 
-    <?php else: ?>
-    <p class="lead">Street Brgy City</p>
-    <h3 style="color:gold;">Contact Us</h3>
+<?php else: ?>
+<p class="lead">Street Brgy City</p>
+<h3 style="color:gold;">Contact Us</h3>
 
-    Contact Number
-    <br>Email Address
-    <?php endif; ?>
+Contact Number
+<br>Email Address
+<?php endif; ?>
 
-    <div style="margin-top:10px;">
-      <ul class="social-network social-circle">
-        <li><a target="_blank" href="<?php echo e($sns->facebook); ?>" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-        <li><a target="_blank" href="<?php echo e($sns->twitter); ?>" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-        <!-- <li><a target="_blank" href="<?php echo e($sns->messenger); ?>" class="icoTwitter" title="Messenger"><i class="fa mssngr-messenger"></i></a></li> -->
-        <li><a target="_blank" href="<?php echo e($sns->messenger); ?>" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li>
-      </ul>	
-    </div>
-  </div>
+<div style="margin-top:10px;">
+<ul class="social-network social-circle">
+<?php if(count($sns)!=0): ?>
+<li><a target="_blank" href="<?php echo e($sns->facebook); ?>" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+<li><a target="_blank" href="<?php echo e($sns->twitter); ?>" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+<li><a target="_blank" href="<?php echo e($sns->messenger); ?>" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li>
+<?php else: ?>
+<li><a target="_blank" href="" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+<li><a target="_blank" href="" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+<li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li> 
+<?php endif; ?>
+</ul>	
 </div>
 </div>
 </div>
+</div>
+</div>
+</footer> -->
 
-<!-- /.container -->
-</footer>
-<div class="container-fluid" style="background:#154360; height:30px;">
+<div class="container-fluid" style="background:red; height:30px;">
   <div align="center" style="margin-top:px;color:white;">
     <?php if(count($comp) != 0 ): ?>
     <small class="text-uppercase"><b>&copy; 2017, <?php echo e($comp->company_name); ?></b></small>
@@ -218,7 +424,7 @@ else{
 
 </div>
 <?php if($user = Auth::user()): ?>
-<div class="container-fluid" style="background:#154360; height:30px;">
+<div class="container-fluid" style="background:red; height:30px;">
   <div align="center" style="margin-top:px;color:white;">
     <?php if(count($comp) != 0 ): ?>
     <a style="text-decoration:none; color:white" href="<?php echo e(url('/admin')); ?>" title="Go to admin"><small class="text-uppercase"><b><?php echo e($comp->company_name); ?> -  Admin</b></small></a>
