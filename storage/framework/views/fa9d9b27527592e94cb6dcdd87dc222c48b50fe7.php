@@ -114,14 +114,17 @@
             <li class="nav-item">
               <a class="nav-link" href="<?php echo e(url('/about')); ?>"> About Us</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo e(url('/about')); ?>"><i class="fa fa-search" aria-hidden="true"> Search</i></a>
+            </li>
           </ul>
         </div>
       </div>
-      <ul class="navbar-nav ml-auto">
+      <!-- <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="<?php echo e(url('/about')); ?>"><i class="fa fa-search" aria-hidden="true"></i></a>
         </li>
-      </ul>
+      </ul> -->
     </nav>
   </div>
 
@@ -195,9 +198,9 @@
 </div> -->
 
 <?php echo $__env->yieldContent('contents'); ?>;
-
-<footer class="py-5" id="foot">
-  <!-- <div class="row">
+<footer style="width:100%;background-color: black;padding:20px">
+  <div class="col-md-12">
+  <div class="row">
      <?php if(count($comp) != 0 ): ?>
       <div style="display: flex; align-items: center; justify-content: center;color:white;font-family: 'Roboto', sans-serif; margin:0px auto">
       <span><img src="<?php echo e(asset($comp->company_logo)); ?>"></span>      
@@ -209,56 +212,56 @@
       <h1 style="font-family: 'Roboto', sans-serif;" class="text-uppercase">Company Name Here</h1>
       </div>
       <?php endif; ?>
-  </div> -->
+  </div>
   <div class="row">
     <div class="col-md-4" style="color: white;">
-      <h5 style="color:gold; text-align:center">Services Offered</h5>
-      <?php if(count($comp) != 0 ): ?>
-      <?php 
-      $sample = explode("</p>",$comp->services_offered);
-      $ctr = count($sample);
-      $limit = $ctr/2;
-      $col1 = "";
-      $col2 = "";
-      for($x=0;$x<$ctr;$x++){
-      if($x>$limit-1){ //2nd column
-        $col2 = $col2 . "<p>". $sample[$x] . "</p>";
+        <h5 style="color:gold; text-align:center">Services Offered</h5>
+        <?php if(count($comp) != 0 ): ?>
+        <?php 
+        $sample = explode("</p>",$comp->services_offered);
+        $ctr = count($sample);
+        $limit = $ctr/2;
+        $col1 = "";
+        $col2 = "";
+        for($x=0;$x<$ctr;$x++){
+        if($x>$limit-1){ //2nd column
+          $col2 = $col2 . "<p>". $sample[$x] . "</p>";
+        }
+        else{
+          $col1 = $col1 . "<p>". $sample[$x] . "</p>";
+        }
       }
-      else{
-        $col1 = $col1 . "<p>". $sample[$x] . "</p>";
-      }
-    }
-    ?>
-    <div class="row">
-      <div class="col-md-6">
-        <ul>
-          <?php
-          echo $col1;
-          ?>
-        </ul>
+      ?>
+      <div class="row">
+        <div class="col-md-6">
+          <ul>
+            <?php
+            echo $col1;
+            ?>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul>   
+            <?php
+            echo $col2;
+            ?>
+          </ul>
+        </div>
       </div>
-      <div class="col-md-6">
-        <ul>   
-          <?php
-          echo $col2;
-          ?>
-        </ul>
+      <?php else: ?>
+      <div class="row">
+        <div class="col-md-6">
+          <ul>
+            <li>Sample Service</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li>Sample Service</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <?php else: ?>
-    <div class="row">
-      <div class="col-md-6">
-        <ul>
-          <li>Sample Service</li>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <ul>
-          <li>Sample Service</li>
-        </ul>
-      </div>
-    </div>
-    <?php endif; ?>
+      <?php endif; ?>
     </div>
     <div class="col-md-4"  style="color:white""> 
       <div class="row">        
@@ -309,6 +312,7 @@
       </ul> 
       </div>
     </div>
+  </div>
   </div><!--END ROW-->
 </footer>
 
