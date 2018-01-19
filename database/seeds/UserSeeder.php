@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'AM Coronado',
+            'employeeId' => '1',
             'email' => 'hongkaira@gmail.com',
             'password' => bcrypt('passw0rd'),
             'role' => 1,
@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
         DB::table('users')->insert([
-            'name' => 'Jefferson Lapuz',
+            'employeeId' => '2',
             'email' => 'jeff.lapuz09@gmail.com',
             'password' => bcrypt('passw0rd'),
             'role' => 1,

@@ -16,9 +16,11 @@ use App\Feedback;
 use App\Advisory;
 use App\Customer;
 use App\RatingItem;
+use App\userEmployee;
 use Validator;
 use Redirect;
 use Carbon\Carbon as Carbon;
+use Illuminate\Validation\Rule;
 
 class HomeController extends Controller
 {
@@ -123,9 +125,17 @@ class HomeController extends Controller
 
     public function userstore(Request $request)
     {
+        
         $rules = [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'firstName' => 'required|string|max:255',
+            'middleName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:25',
+            'contactNumber' => 'required',
+            'street' => 'required',
+            'brgy' => 'required',
+            'city' => 'required',
+            'gender' => 'required',
+            'email' => 'required|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ];
         $messages = [
@@ -135,9 +145,16 @@ class HomeController extends Controller
             'regex' => 'The :attribute must not contain special characters.'              
         ];
         $niceNames = [
-            'name' => 'Name',
+            'firstName' => 'First Name',
+            'middleName' => 'Middle Name',
+            'lastName' => 'Last Name',
+            'contactNumber' => 'Contact Number',
+            'street' => 'Street',
+            'brgy' => 'Brgy',
+            'city' => 'City',
+            'gender' => 'Gender',
             'email' => 'Email Address',
-            'password' => 'Password'
+            'password' => 'Password',
         ];
         $validator = Validator::make($request->all(),$rules,$messages);
         $validator->setAttributeNames($niceNames); 
@@ -150,22 +167,36 @@ class HomeController extends Controller
             if($cpass == $pass)
             {
                 try{
+                    
+                    userEmployee::create([
+                        'firstName' => $request->firstName,
+                        'middleName' => $request->middleName,
+                        'lastName' => $request->lastName,
+                        'contactNumber' => $request->contactNumber,
+                        'street' => $request->street,
+                        'brgy' => $request->brgy,
+                        'city' => $request->city,
+                        'gender' => $request->gender
+                    ]);
+            
+                    $employeeId = DB::getPdo()->lastInsertId();
+
                 User::create([
-                    'name' => $request->name,
+                    'employeeId' => $employeeId,
                     'email' => $request->email,
                     'password' => bcrypt($request->password),
-                    'role' => ($request->role)
+                    'role' => $request->role
                 ]);
                 }catch(\Illuminate\Database\QueryException $e){
                     DB::rollBack();
                     $errMess = $e->getMessage();
                     return Redirect::back()->withError($errMess);
                 }
-                return redirect('/User')->withSuccess('Successfully inserted into the database.');
+                return redirect('/Utilities')->withSuccess('Successfully inserted into the database.');
             }
             else
             {
-                return Redirect::back()->withErrors($validator);
+                return Redirect::back()->withErrors('The password does not match');
             }
             
         }
@@ -173,15 +204,22 @@ class HomeController extends Controller
 
     public function useredit($id)
     {
-        $user = User::find($id);
+        $user = User::with('Employee')->find($id);
         return view('User.update',compact('user'));
     }
 
     public function userupdate(Request $request, $id)
     {
         $rules = [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
+            'firstName' => 'required|string|max:255',
+            'middleName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:25',
+            'contactNumber' => 'required',
+            'street' => 'required',
+            'brgy' => 'required',
+            'city' => 'required',
+            'gender' => 'required',
+            'email' => ['required',Rule::unique('users')->ignore($id)],
             'password' => 'required|string|min:6|confirmed',
         ];
         $messages = [
@@ -191,9 +229,16 @@ class HomeController extends Controller
             'regex' => 'The :attribute must not contain special characters.'              
         ];
         $niceNames = [
-            'name' => 'Name',
+            'firstName' => 'First Name',
+            'middleName' => 'Middle Name',
+            'lastName' => 'Last Name',
+            'contactNumber' => 'Contact Number',
+            'street' => 'Street',
+            'brgy' => 'Brgy',
+            'city' => 'City',
+            'gender' => 'Gender',
             'email' => 'Email Address',
-            'password' => 'Password'
+            'password' => 'Password',
         ];
         $validator = Validator::make($request->all(),$rules,$messages);
         $validator->setAttributeNames($niceNames); 
@@ -206,22 +251,36 @@ class HomeController extends Controller
             if($cpass == $pass)
             {
                 try{
+             
+                    userEmployee::find($request->hidid)->update([
+                        'firstName' => $request->firstName,
+                        'middleName' => $request->middleName,
+                        'lastName' => $request->lastName,
+                        'contactNumber' => $request->contactNumber,
+                        'street' => $request->street,
+                        'brgy' => $request->brgy,
+                        'city' => $request->city,
+                        'gender' => $request->gender
+                    ]);
+            
+                    $employeeId = DB::getPdo()->lastInsertId();
+
                 User::find($id)->update([
-                    'name' => $request->name,
+                    'employeeId' => $request->hidid,
                     'email' => $request->email,
                     'password' => bcrypt($request->password),
-                    'role' => ($request->role)
+                    'role' => $request->role
                 ]);
                 }catch(\Illuminate\Database\QueryException $e){
                     DB::rollBack();
                     $errMess = $e->getMessage();
                     return Redirect::back()->withError($errMess);
                 }
-                return redirect('/User')->withSuccess('Successfully updated into the database.');
+                return redirect('/Utilities')->withSuccess('Successfully updated into the database.');
             }
             else
             {
-                return Redirect::back()->withErrors($validator);
+                return Redirect::back()->withErrors('The password does not match');
             }
             
         }
@@ -229,12 +288,26 @@ class HomeController extends Controller
 
     public function userdeac($id)
     {
+        $chkEmp = DB::table('users as u')
+        ->join('user_employees as e','u.employeeId','e.id')
+        ->select('e.id')
+        ->where('u.id',$id)
+        ->get();
+        $emp = User::with('Employee')->where('isActive',1)->where('id',$id)->first();
+        userEmployee::find($emp->Employee->id)->update(['isActive' => 0]);
         User::find($id)->update(['isActive' => 0]);
         return redirect('/User');
     }
 
     public function userreac($id)
     {
+        $chkEmp = DB::table('users as u')
+        ->join('user_employees as e','u.employeeId','e.id')
+        ->select('e.id')
+        ->where('u.id',$id)
+        ->get();
+        $emp = User::with('Employee')->where('isActive',0)->where('id',$id)->first();
+        userEmployee::find($emp->Employee->id)->update(['isActive' => 1]);
         User::find($id)->update(['isActive' => 1]);
         return redirect('/User');
     }

@@ -23,7 +23,7 @@ class UtilitiesController extends Controller
     {
         $post = CompanyInfo::find(1);
         $ban = Banner::first();
-        $userinfo = User::where('isActive',1)->get();
+        $userinfo = User::with('Employee')->where('isActive',1)->get();
         $snslinks = SNS::first();
         $faqs = FAQs::where('isActive',1)->get();
         return view('Utilities.index',compact('post','ban','userinfo','snslinks','faqs'));

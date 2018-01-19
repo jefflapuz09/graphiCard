@@ -19,11 +19,6 @@
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>" required autofocus>
 
-                            <?php if($errors->has('email')): ?>
-                                <span class="help-block">
-                                    <strong><?php echo e($errors->first('email')); ?></strong>
-                                </span>
-                            <?php endif; ?>
                         </div>
                     </div>
 
@@ -32,12 +27,6 @@
 
                         <div class="col-md-6">
                             <input id="password" type="password" class="form-control" name="password" required>
-
-                            <?php if($errors->has('password')): ?>
-                                <span class="help-block">
-                                    <strong><?php echo e($errors->first('password')); ?></strong>
-                                </span>
-                            <?php endif; ?>
                         </div>
                     </div>
 

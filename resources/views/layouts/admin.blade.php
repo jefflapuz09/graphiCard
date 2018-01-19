@@ -153,7 +153,7 @@
        
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>{{ Auth::user()->name }}</a>
+            <i class="fa fa-fw fa-sign-out"></i>{{ Auth::user()->Employee->firstName }} {{ Auth::user()->Employee->lastName }}</a>
         </li>
       </ul>
     </div>

@@ -242,7 +242,7 @@
               <tbody>
                 @foreach ($userinfo as $user)
                 <tr>
-                  <td>{{ $user->name }}</td>
+                  <td>{{ $user->Employee->firstName }} {{ $user->Employee->middleNmae }} {{ $user->Employee->lastName }}</td>
                   <td>{{ $user->email }}</td>
                   <td>
                     @if($user->role==1)

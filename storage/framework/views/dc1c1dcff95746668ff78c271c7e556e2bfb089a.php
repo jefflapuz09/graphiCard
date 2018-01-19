@@ -153,7 +153,7 @@
        
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i><?php echo e(Auth::user()->name); ?></a>
+            <i class="fa fa-fw fa-sign-out"></i><?php echo e(Auth::user()->Employee->firstName); ?> <?php echo e(Auth::user()->Employee->lastName); ?></a>
         </li>
       </ul>
     </div>
