@@ -43,6 +43,7 @@
       <div class="container-fluid">
         @if(count($comp) != 0 )
         <div class="row" style="background-color:#f72028;color:white;padding:5px;">
+        <!-- <div class="row" style="background-color:blue;color:white;padding:5px;"> -->
           <div class="col-md-6 col-sm-6">
             <div class="links  pull-left" style="padding-left:0px;margin-left: 0px;">
               <ul>
@@ -68,7 +69,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear" style="font-weight: 700; font-family: 'Roboto', sans-serif; border-top:2px solid black">
       <div class="container">
         @if(count($comp) != 0 )
-        <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset($comp->company_logo) }}" style="max-width:50px; max-height:50px;">{{ $comp->company_name }}</a>
+        <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset($comp->company_logo) }}" style="max-width:50px; max-height:50px;color:yellow;">{{ $comp->company_name }}</a>
         @else
         <a class="navbar-brand" href="{{ url('/') }}"><img src="">Company Name</a>
         @endif
@@ -97,6 +98,9 @@
               @endif
             </li>
             @endforeach
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('/about') }}"> Packages</a>
+            </li>
             <li class="nav-item">   
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">

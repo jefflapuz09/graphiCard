@@ -402,7 +402,7 @@ padding-bottom: 1rem;
 }
 
 .top h1{
-  font-size:50pt;
+  font-size:30pt;
   font-family: 'Roboto', sans-serif;;
   color:white;
 }
@@ -591,9 +591,17 @@ padding-bottom: 1rem;
                 }
 
                 .mx-background-top-linear {
-                  background: -webkit-linear-gradient(40deg, #f72028 30%, #1b1e21 30%);
+                  background: -webkit-linear-gradient(45deg, #f72028 30%, #1b1e21 30%);
                   background: -webkit-linear-gradient(left, #f72028 30%, #1b1e21 30%);
-                  background: linear-gradient(40deg, #f72028 30%, #1b1e21 30%);
+                  background: linear-gradient(45deg, #f72028 30%, #1b1e21 30%);
+                }
+
+                 .mx-background-top-linear1 {
+                  background: -webkit-linear-gradient(180deg, #e52c2c 50%, #363636 30%);
+                  background: -webkit-linear-gradient(right, #e52c2c 50%, #363636 30%);
+                  /*background: linear-gradient(180deg, #e52c2c 50%, #363636 30%);*/
+                  background: linear-gradient(to bottom right, #e52c2c , #363636 );
+
                 }
 
                 #navNew body {
@@ -686,5 +694,9 @@ padding-bottom: 1rem;
 
                 .sticky + .content {
                   padding-top: 60px;
+                }
+
+                body{
+                  background-color: #e1e1e1;
                 }
 
