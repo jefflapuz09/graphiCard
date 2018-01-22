@@ -40,7 +40,7 @@
                         <tbody>
                                 <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td><?php echo e($user->name); ?></td>
+                                    <td><?php echo e($user->Employee->firstName); ?> <?php echo e($user->Employee->middleName); ?> <?php echo e($user->Employee->lastName); ?></td>
                                     <td><?php echo e($user->email); ?></td>
                                     <td>
                                         <?php if($user->role==1): ?>

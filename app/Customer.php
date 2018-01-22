@@ -12,13 +12,15 @@ class Customer extends Model
         'firstName',
         'middleName',
         'lastName',
-        'emailAddress',
         'contactNumber',
         'street',
         'brgy',
         'city',
         'gender',
-        'isActive',
-        'password'
+        'isActive'
     ];
+
+    public function User(){
+        return $this->hasMany('App\User','customerId');
+    }
 }

@@ -243,13 +243,19 @@
               <tbody>
                 <?php $__currentLoopData = $userinfo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
-                  <td><?php echo e($user->Employee->firstName); ?> <?php echo e($user->Employee->middleNmae); ?> <?php echo e($user->Employee->lastName); ?></td>
+                  <td><?php if(count($user->Employee)!=0): ?><?php echo e($user->Employee->firstName); ?> <?php echo e($user->Employee->middleNmae); ?> <?php echo e($user->Employee->lastName); ?>
+
+                      <?php elseif(count($user->Customer)!=0): ?> <?php echo e($user->Customer->firstName); ?> <?php echo e($user->Customer->middleNmae); ?> <?php echo e($user->Customer->lastName); ?>
+
+                    <?php endif; ?></td>
                   <td><?php echo e($user->email); ?></td>
                   <td>
                     <?php if($user->role==1): ?>
                     Administrator
                     <?php elseif($user->role==2): ?>
                     Contributor
+                    <?php else: ?> 
+                    Customer
                     <?php endif; ?>
                   </td>
                   <td>

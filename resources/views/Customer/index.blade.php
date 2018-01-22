@@ -29,11 +29,11 @@
     </div>
     <div class="card-block">
         <div class="container mt-3 mb-3">
-                {{--  <div class="pull-right" style="margin-bottom:15px;"> 
+                <div class="pull-right" style="margin-bottom:15px;"> 
                         <a href="{{ url('/CustomerCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                             New Customer Record
                         </a>
-                    </div>  --}}
+                    </div>
                     <table id="example" class="display" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
@@ -59,7 +59,7 @@
                                     </td>
                                     <td>
                                         <li>Contact Number: {{ $posts->contactNumber }}</li>
-                                        <li>Email Address: {{ $posts->emailAddress }}</li>
+                                        <li>Email Address: {{ $posts->User[0]->email }}</li>
                                     </td>
                                     <td>{{ $posts->street }} {{ $posts->brgy }} {{ $posts->city }}</td>
                                     <td> 

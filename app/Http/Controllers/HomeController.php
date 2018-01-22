@@ -127,16 +127,16 @@ class HomeController extends Controller
     {
         
         $rules = [
-            'firstName' => 'required|string|max:255',
-            'middleName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:25',
-            'contactNumber' => 'required',
-            'street' => 'required',
-            'brgy' => 'required',
-            'city' => 'required',
+            'firstName' => ['required','max:50', 'regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'middleName' => ['nullable','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'lastName' => ['required','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'gender' => 'required',
-            'email' => 'required|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'street' => 'required|max:140',
+            'brgy' => 'required|max:140',
+            'city' => 'required|max:140',
+            'contactNumber' => ['required','max:30','regex:/^[^_]+$/'],
+            'email' => ['required','unique:users','email'],
+            'password' => 'required|string|min:6|confirmed'
         ];
         $messages = [
             'unique' => ':attribute already exists.',
@@ -211,16 +211,16 @@ class HomeController extends Controller
     public function userupdate(Request $request, $id)
     {
         $rules = [
-            'firstName' => 'required|string|max:255',
-            'middleName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:25',
-            'contactNumber' => 'required',
-            'street' => 'required',
-            'brgy' => 'required',
-            'city' => 'required',
+            'firstName' => ['required','max:50','unique:customers', 'regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'middleName' => ['nullable','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'lastName' => ['required','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'gender' => 'required',
-            'email' => ['required',Rule::unique('users')->ignore($id)],
-            'password' => 'required|string|min:6|confirmed',
+            'street' => 'required|max:140',
+            'brgy' => 'required|max:140',
+            'city' => 'required|max:140',
+            'contactNumber' => ['required','max:30','regex:/^[^_]+$/'],
+            'email' => ['required',Rule::unique('users')->ignore($id),'email'],
+            'password' => 'required|string|min:6|confirmed'
         ];
         $messages = [
             'unique' => ':attribute already exists.',
@@ -296,7 +296,7 @@ class HomeController extends Controller
         $emp = User::with('Employee')->where('isActive',1)->where('id',$id)->first();
         userEmployee::find($emp->Employee->id)->update(['isActive' => 0]);
         User::find($id)->update(['isActive' => 0]);
-        return redirect('/User');
+        return redirect('/UserSoft');
     }
 
     public function userreac($id)
@@ -309,7 +309,7 @@ class HomeController extends Controller
         $emp = User::with('Employee')->where('isActive',0)->where('id',$id)->first();
         userEmployee::find($emp->Employee->id)->update(['isActive' => 1]);
         User::find($id)->update(['isActive' => 1]);
-        return redirect('/User');
+        return redirect('/Utilities');
     }
 
     public function usersoft()

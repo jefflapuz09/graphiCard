@@ -111,7 +111,7 @@
 </header>
 
 
-<header class="masthead text-center" style="background-image: url('<?php echo e(asset('img/sample1.png')); ?>')">
+<header class="masthead top text-center mx-background-top-linear1">
   <div class="overlay"></div>
   <div class="container">
     <div class="col-xl-12 mx-auto">
@@ -141,7 +141,7 @@
 </div>
 
 <!-- Page Content -->
-<header class="masthead text-center" style="background-image: url('<?php echo e(asset('img/sample2.png')); ?>')">
+<header class="masthead top text-center mx-background-top-linear1"">
   <div class="overlay"></div>
   <div class="container">
     <div class="col-xl-12 mx-auto">
@@ -269,7 +269,7 @@
 
 
 
-    <header class="masthead top text-center" style="background-image: url('<?php echo e(asset('img/sample3.png')); ?>')">
+    <header class="masthead top text-center mx-background-top-linear1"">
       <div class="overlay"></div>
       <div class="container">
         <div class="col-xl-12 mx-auto">

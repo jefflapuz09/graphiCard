@@ -242,13 +242,17 @@
               <tbody>
                 @foreach ($userinfo as $user)
                 <tr>
-                  <td>{{ $user->Employee->firstName }} {{ $user->Employee->middleNmae }} {{ $user->Employee->lastName }}</td>
+                  <td>@if(count($user->Employee)!=0){{ $user->Employee->firstName }} {{ $user->Employee->middleNmae }} {{ $user->Employee->lastName }}
+                      @elseif(count($user->Customer)!=0) {{ $user->Customer->firstName }} {{ $user->Customer->middleNmae }} {{ $user->Customer->lastName }}
+                    @endif</td>
                   <td>{{ $user->email }}</td>
                   <td>
                     @if($user->role==1)
                     Administrator
                     @elseif($user->role==2)
                     Contributor
+                    @else 
+                    Customer
                     @endif
                   </td>
                   <td>

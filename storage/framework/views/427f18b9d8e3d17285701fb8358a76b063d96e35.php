@@ -5,6 +5,7 @@
     <div class="card" style="border:1px solid black; margin:10px;">
     <div class="card-header" style="background:maroon; color:white;">
             Customer
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All customer information are displayed here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
     </div>
     <div class="card-block">
         <div class="container mt-3 mb-3">
@@ -16,7 +17,7 @@
                                 <th>Gender</th>
                                 <th>Contact Information</th>
                                 <th>Address</th>
-                                <th>Actions</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,7 +34,7 @@
                                 </td>
                                 <td>
                                     <li>Contact Number: <?php echo e($posts->contactNumber); ?></li>
-                                    <li>Email Address: <?php echo e($posts->emailAddress); ?></li>
+                                    <li>Email Address: <?php echo e($posts->User[0]->email); ?></li>
                                 </td>
                                 <td><?php echo e($posts->street); ?> <?php echo e($posts->brgy); ?> <?php echo e($posts->city); ?></td>
                                 <td> 
@@ -48,7 +49,7 @@
                         </tbody>
                     </table>
                     <div class="form-group pull-right">
-                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/Customer')); ?>';" id="showDeactivated"> Show records</label>
+                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/Customer')); ?>';" id="showDeactivated"> Back to Customer records table</label>
                     </div>
         </div>
     </div>

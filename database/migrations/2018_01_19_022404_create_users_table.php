@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->integer('employeeId')->unsigned()->nullable();	
             $table->foreign('employeeId')->references('id')->on('user_employees');
+            $table->integer('customerId')->unsigned()->nullable();	
+            $table->foreign('customerId')->references('id')->on('customers');
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('role')->default(1);

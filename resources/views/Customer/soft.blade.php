@@ -36,7 +36,7 @@
                                 </td>
                                 <td>
                                     <li>Contact Number: {{ $posts->contactNumber }}</li>
-                                    <li>Email Address: {{ $posts->emailAddress }}</li>
+                                    <li>Email Address: {{ $posts->User[0]->email }}</li>
                                 </td>
                                 <td>{{ $posts->street }} {{ $posts->brgy }} {{ $posts->city }}</td>
                                 <td> 

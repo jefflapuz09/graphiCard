@@ -8,6 +8,7 @@ use App\Customer;
 use Validator;
 use Illuminate\Validation\Rule;
 use Redirect;
+use App\User;
 
 class customerController extends Controller
 {
@@ -47,54 +48,6 @@ class customerController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function store(Request $request)
-     {
-        $rules = [
-            'firstName' => ['required','max:50','unique:customers', 'regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
-            'middleName' => ['nullable','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
-            'lastName' => ['required','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
-            'gender' => 'required',
-            'street' => 'required|max:140',
-            'brgy' => 'required|max:140',
-            'city' => 'required|max:140',
-            'contactNumber' => ['required','max:30','regex:/^[^_]+$/'],
-            'email' => 'nullable|email|max:100',
-            'gender' => 'required'
-        ];
-        $messages = [
-            'unique' => ':attribute already exists.',
-            'required' => 'The :attribute field is required.',
-            'max' => 'The :attribute field must be no longer than :max characters.',   
-            'regex' => 'The :attribute must not contain special characters.'             
-        ];
-        $niceNames = [
-            'firstName' => 'First Name',
-            'middleName' => 'Middle Name',
-            'lastName' => 'Last Name',
-            'street' => 'No. & St./Bldg.',
-            'brgy' => 'Brgy./Subd.',
-            'city' => 'City/Municipality',
-            'contactNumber' => 'Contact No.',
-            'email' => 'Email Address'
-        ];
-        $validator = Validator::make($request->all(),$rules,$messages);
-        $validator->setAttributeNames($niceNames); 
-        if ($validator->fails()) {
-            return Redirect::back()->withError($validator);
-        }
-        else{
-            try{
-            Customer::create($request->all());
-            }catch(\Illuminate\Database\QueryException $e){
-                DB::rollBack();
-                $errMess = $e->getMessage();
-                return Redirect::back()->withError($errMess);
-            }
-            return Redirect::back()->withSuccess('Successfully inserted into the database.');
-        }
-     }
-
-
     public function storepost(Request $request)
     {
         $rules = [
@@ -106,24 +59,26 @@ class customerController extends Controller
             'brgy' => 'required|max:140',
             'city' => 'required|max:140',
             'contactNumber' => ['required','max:30','regex:/^[^_]+$/'],
-            'email' => 'nullable|email|max:100',
-            'gender' => 'required'
+            'email' => ['required','email','max:100','unique:users'],
+            'password' => 'required|string|min:6|confirmed'
         ];
         $messages = [
             'unique' => ':attribute already exists.',
             'required' => 'The :attribute field is required.',
-            'max' => 'The :attribute field must be no longer than :max characters.',   
-            'regex' => 'The :attribute must not contain special characters.'             
+            'max' => 'The :attribute field must be no longer than :max characters.',
+            'regex' => 'The :attribute must not contain special characters.'              
         ];
         $niceNames = [
             'firstName' => 'First Name',
             'middleName' => 'Middle Name',
             'lastName' => 'Last Name',
-            'street' => 'No. & St./Bldg.',
-            'brgy' => 'Brgy./Subd.',
-            'city' => 'City/Municipality',
-            'contactNumber' => 'Contact No.',
-            'email' => 'Email Address'
+            'contactNumber' => 'Contact Number',
+            'street' => 'Street',
+            'brgy' => 'Brgy',
+            'city' => 'City',
+            'gender' => 'Gender',
+            'email' => 'Email Address',
+            'password' => 'Password',
         ];
         $validator = Validator::make($request->all(),$rules,$messages);
         $validator->setAttributeNames($niceNames); 
@@ -131,14 +86,44 @@ class customerController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
-            try{
-            Customer::create($request->all());
-            }catch(\Illuminate\Database\QueryException $e){
-                DB::rollBack();
-                $errMess = $e->getMessage();
-                return Redirect::back()->withError($errMess);
+            $cpass = $request->password_confirmation;
+            $pass = $request->password;
+            if($cpass == $pass)
+            {
+                try{
+                    
+                    $data =  Customer::create([
+                        'firstName' => $request->firstName,
+                        'middleName' => $request->middleName,
+                        'lastName' => $request->lastName,
+                        'contactNumber' => $request->contactNumber,
+                        'street' => $request->street,
+                        'brgy' => $request->brgy,
+                        'city' => $request->city,
+                        'gender' => $request->gender
+                    ]);
+            
+                    $customerId = $data->id;
+       
+
+                User::create([
+                    'customerId' => $customerId,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                    'role' => 3
+                ]);
+                }catch(\Illuminate\Database\QueryException $e){
+                    DB::rollBack();
+                    $errMess = $e->getMessage();
+                    return Redirect::back()->withError($errMess);
+                }
+                return redirect('/Customer')->withSuccess('Successfully inserted into the database.');
             }
-            return redirect('/Customer')->withSuccess('Successfully Updated into the database.');
+            else
+            {
+                return Redirect::back()->withErrors('The password does not match');
+            }
+            
         }
     }
 
@@ -184,7 +169,7 @@ class customerController extends Controller
             'brgy' => 'required|max:140',
             'city' => 'required|max:140',
             'contactNumber' => ['required','max:30','regex:/^[^_]+$/'],
-            'email' => 'nullable|email|max:100',
+            'email' => ['required','email','max:100'],
             'gender' => 'required'
         ];
         $messages = [
@@ -197,11 +182,13 @@ class customerController extends Controller
             'firstName' => 'First Name',
             'middleName' => 'Middle Name',
             'lastName' => 'Last Name',
-            'street' => 'No. & St./Bldg.',
-            'brgy' => 'Brgy./Subd.',
-            'city' => 'City/Municipality',
-            'contactNumber' => 'Contact No.',
-            'email' => 'Email Address'
+            'contactNumber' => 'Contact Number',
+            'street' => 'Street',
+            'brgy' => 'Brgy',
+            'city' => 'City',
+            'gender' => 'Gender',
+            'email' => 'Email Address',
+            'password' => 'Password',
         ];
         $validator = Validator::make($request->all(),$rules,$messages);
         $validator->setAttributeNames($niceNames); 
@@ -210,7 +197,25 @@ class customerController extends Controller
         }
         else{
             try{
-            Customer::find($id)->update($request->all());
+                Customer::find($id)->update([
+                    'firstName' => $request->firstName,
+                    'middleName' => $request->middleName,
+                    'lastName' => $request->lastName,
+                    'contactNumber' => $request->contactNumber,
+                    'street' => $request->street,
+                    'brgy' => $request->brgy,
+                    'city' => $request->city,
+                    'gender' => $request->gender
+                ]);
+        
+                $customerId = DB::getPdo()->lastInsertId();
+
+            User::find($request->hidid)->update([
+            
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'role' => 3
+            ]);
             }catch(\Illuminate\Database\QueryException $e){
                 DB::rollBack();
                 $errMess = $e->getMessage();
@@ -230,6 +235,8 @@ class customerController extends Controller
     public function destroy($id)
     {
         Customer::find($id)->update(['isActive' => 0]);
+        $cust = Customer::with('User')->where('id',$id)->first();
+        User::find($cust->User[0]->id)->update(['isActive' => 0]);
         return redirect('/Customer');
     }
 
@@ -242,6 +249,8 @@ class customerController extends Controller
     public function reactivate($id)
     {
         Customer::find($id)->update(['isActive' => 1]);
+        $cust = Customer::with('User')->where('id',$id)->first();
+        User::find($cust->User[0]->id)->update(['isActive' => 1]);
         return redirect('/Customer');
     }
 }

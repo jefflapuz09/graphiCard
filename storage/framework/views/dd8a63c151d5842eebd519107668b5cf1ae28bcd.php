@@ -27,7 +27,11 @@
     </div>
     <div class="card-block">
         <div class="container mt-3 mb-3">
-                
+                <div class="pull-right" style="margin-bottom:15px;"> 
+                        <a href="<?php echo e(url('/CustomerCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
+                            New Customer Record
+                        </a>
+                    </div>
                     <table id="example" class="display" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
@@ -53,7 +57,7 @@
                                     </td>
                                     <td>
                                         <li>Contact Number: <?php echo e($posts->contactNumber); ?></li>
-                                        <li>Email Address: <?php echo e($posts->emailAddress); ?></li>
+                                        <li>Email Address: <?php echo e($posts->User[0]->email); ?></li>
                                     </td>
                                     <td><?php echo e($posts->street); ?> <?php echo e($posts->brgy); ?> <?php echo e($posts->city); ?></td>
                                     <td> 
