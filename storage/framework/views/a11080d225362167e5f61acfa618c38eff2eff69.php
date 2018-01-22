@@ -1,5 +1,25 @@
-<?php $__env->startSection('contents'); ?>
+<?php $__env->startSection('style'); ?>
+<link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
+<?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('contents'); ?>
+<script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
+<?php if($errors->any()): ?>
+<script type="text/javascript">
+    toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong!")
+</script>            
+<?php endif; ?>  
+<?php if(session('error')): ?>
+<script type="text/javascript">
+   toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
+</script>
+<?php endif; ?>
+<?php if(session('success')): ?>
+<script type="text/javascript">
+    toastr.success(' <?php echo session('success'); ?>', 'Success!')
+</script>
+<?php endif; ?>
 <div class="container" style="margin-top:65px;">
         <div class="container">
                 <ol class="breadcrumbs breadcrumb-arrow wow fadeInUp">

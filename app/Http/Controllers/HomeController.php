@@ -20,6 +20,7 @@ use App\userEmployee;
 use Validator;
 use Redirect;
 use Carbon\Carbon as Carbon;
+use Hash;
 use Illuminate\Validation\Rule;
 
 class HomeController extends Controller
@@ -37,7 +38,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         $post =DB::table('service_subcategory')
             ->join('service_categories', 'service_subcategory.categoryId', '=', 'service_categories.id')
             ->select('service_subcategory.*', 'service_categories.name as category')
@@ -361,15 +362,25 @@ class HomeController extends Controller
         
         $email = $request->email;
         $pass = $request->password;
-        $authUser = DB::table('customers')->where('emailAddress',$email)->where('password',$pass)->get();
-        $cpass = $request->cpassword;
-        if(count($authUser)!=0)
-        {
-        dd('hello');
+        $authUser = User::where('email',$email)->first();
+        // $cpass = $request->cpassword;
+        
+        // if(Hash::check($pass,$authUser->password)==true)
+        // {
+        // dd('hello');
+        // }
+        // else
+        // {
+        //     dd('gg');
+        // }
+
+        if (Auth::attempt(['email' => $email, 'password' => $pass])) {
+            // Authentication passed...
+            return redirect()->intended('/');
         }
-        else
+        else 
         {
-            dd('gg');
+            return Redirect::back()->withErrors('Invalid Credentials');
         }
     }
 

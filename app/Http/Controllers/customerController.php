@@ -20,7 +20,7 @@ class customerController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth',['except' =>['index','store']]);
+        $this->middleware('auth',['except' =>['index','store','storeweb']]);
     }
 
 
@@ -47,6 +47,84 @@ class customerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function storeweb(Request $request)
+    {
+        $rules = [
+            'firstName' => ['required','max:50','unique:customers', 'regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'middleName' => ['nullable','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'lastName' => ['required','max:45','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'gender' => 'required',
+            'street' => 'required|max:140',
+            'brgy' => 'required|max:140',
+            'city' => 'required|max:140',
+            'contactNumber' => ['required','max:30','regex:/^[^_]+$/'],
+            'email' => ['required','email','max:100','unique:users'],
+            'password' => 'required|string|min:6|confirmed'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',
+            'regex' => 'The :attribute must not contain special characters.'              
+        ];
+        $niceNames = [
+            'firstName' => 'First Name',
+            'middleName' => 'Middle Name',
+            'lastName' => 'Last Name',
+            'contactNumber' => 'Contact Number',
+            'street' => 'Street',
+            'brgy' => 'Brgy',
+            'city' => 'City',
+            'gender' => 'Gender',
+            'email' => 'Email Address',
+            'password' => 'Password',
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else{
+            $cpass = $request->password_confirmation;
+            $pass = $request->password;
+            if($cpass == $pass)
+            {
+                try{
+                    
+                    $data =  Customer::create([
+                        'firstName' => $request->firstName,
+                        'middleName' => $request->middleName,
+                        'lastName' => $request->lastName,
+                        'contactNumber' => $request->contactNumber,
+                        'street' => $request->street,
+                        'brgy' => $request->brgy,
+                        'city' => $request->city,
+                        'gender' => $request->gender
+                    ]);
+            
+                    $customerId = $data->id;
+       
+
+                User::create([
+                    'customerId' => $customerId,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                    'role' => 3
+                ]);
+                }catch(\Illuminate\Database\QueryException $e){
+                    DB::rollBack();
+                    $errMess = $e->getMessage();
+                    return Redirect::back()->withError($errMess);
+                }
+                return redirect('/customer/register')->withSuccess('Successfully inserted into the database.');
+            }
+            else
+            {
+                return Redirect::back()->withErrors('The password does not match');
+            }
+            
+        }
+    }
 
     public function storepost(Request $request)
     {

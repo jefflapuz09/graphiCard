@@ -32,7 +32,9 @@ Route::get('/FAQs','FAQController@index');
 
 Route::get('/customer/login','HomeController@custLogin');
 Route::get('/customer/register','HomeController@custRegister');
+Route::post('/customer/register/post','customerController@storeweb');
 Route::post('/customer/login/post','HomeController@custLog');
+
 
 //error
 Route::get('/Restricted','Homecontroller@error');
