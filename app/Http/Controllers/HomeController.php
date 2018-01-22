@@ -363,17 +363,6 @@ class HomeController extends Controller
         $email = $request->email;
         $pass = $request->password;
         $authUser = User::where('email',$email)->first();
-        // $cpass = $request->cpassword;
-        
-        // if(Hash::check($pass,$authUser->password)==true)
-        // {
-        // dd('hello');
-        // }
-        // else
-        // {
-        //     dd('gg');
-        // }
-
         if (Auth::attempt(['email' => $email, 'password' => $pass])) {
             // Authentication passed...
             return redirect()->intended('/');
