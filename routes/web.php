@@ -165,6 +165,12 @@ Route::get('/FAQReactivate/{id}', 'FAQController@reactivate');
 
 Route::post('/FAQStore','FAQController@store');
 Route::post('/FAQEdit/{id}', 'FAQController@update');
+
+//Packages
+Route::get('/Package','PackageController@index');
+Route::get('/PackageCreate','PackageController@create');
+
+Route::post('/PackageStore','PackageController@store');
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\contributorMiddleware'], function () {

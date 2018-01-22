@@ -106,6 +106,12 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Utilities">
+            <a class="nav-link" href="{{ url('/Package') }}">
+              <i class="fa fa-cog"></i>
+              <span class="nav-link-text">Packages</span>
+            </a>
+        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Post">
               <a class="nav-link" href="{{ url('/Post') }}">
                 <i class="fa fa-paste"></i>
