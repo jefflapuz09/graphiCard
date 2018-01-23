@@ -90,8 +90,6 @@
           });
         attach_delete();
         $('.add-one').click(function(){
-            
-
             table.row.add(["<select  class='select form-control' required id='sel2' name='itemId[]'><?php $__currentLoopData = $pack; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option value='<?php echo e($posts->id); ?>'><?php echo e($posts->name); ?></option><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>", "<input type='text' class='form-control' name='qty[]' placeholder='Quantity'>", "<a class='btn btn-sm btn-danger delete' href='#'>x</a>"]).draw( false );
             
             attach_delete();

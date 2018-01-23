@@ -170,6 +170,9 @@ Route::post('/FAQEdit/{id}', 'FAQController@update');
 Route::get('/Package','PackageController@index');
 Route::get('/PackageCreate','PackageController@create');
 Route::get('/PackageUpdate/{id}','PackageController@edit');
+Route::get('/PackageDeactivate/{id}', 'PackageController@destroy');
+Route::get('/PackageSoft', 'PackageController@soft');
+Route::get('/PackageReactivate/{id}', 'PackageController@reactivate');
 
 Route::post('/PackageStore','PackageController@store');
 Route::post('/PackageEdit/{id}','PackageController@update');

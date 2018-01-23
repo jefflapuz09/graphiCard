@@ -20,12 +20,6 @@ class PackageController extends Controller
      */
     public function index()
     {
-        // $post = DB::table('packages as p')
-        // ->join('package_inclusions as i','p.id','i.packId')
-        // ->join('service_items as s','s.id','i.itemId')
-        // ->select('p.*','s.name as item','i.qty')
-        // ->where('p.isActive',1)
-        // ->get();
 
         $post = Package::with('Inclusion')->where('isActive',1)->get();
 
@@ -128,7 +122,9 @@ class PackageController extends Controller
      */
     public function edit($id)
     {
-        return view('Package.update');
+        $pack = ServiceItem::where('isActive',1)->get();
+        $post = Package::find($id);
+        return view('Package.update',compact('post','pack'));
     }
 
     /**
@@ -140,7 +136,64 @@ class PackageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'name' => ['required','max:50',Rule::unique('packages')->ignore($id),'regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'price' => 'required',
+            'description' => ['nullable','max:150'],
+            'itemId' => 'required',
+            'qty' => 'required'
+        ];
+        $messages = [
+            'unique' => ':attribute already exists.',
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute field must be no longer than :max characters.',  
+            'regex' => 'The :attribute must not contain special characters.'             
+        ];
+        $niceNames = [
+            'name' => 'Package',
+            'price' => 'Price',
+            'description' => 'Description',
+            'packId' => 'Package Name',
+            'itemId' => 'Item Name',
+            'qty' => 'Quantity'
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        $validator->setAttributeNames($niceNames); 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else{
+            $chkArray = $request->itemId;
+            if(count($chkArray) <= 1)
+            {
+            return redirect('/Package')->withError('It seems you only included 1 item on the package.');
+            }
+            else
+            {                    
+                    $data = Package::find($id)->update([
+                        'name' => $request->name,
+                        'description' =>$request->description,
+                        'price' => $request->price
+                    ]);
+            
+                    $packId = $request->hidid;
+                    $index = 0;
+                    $cnt = count($request->inc);
+                    foreach($request->itemId as $test){
+                        if($request->inc[$index] >= $cnt)
+                        {
+                            PackageInclusion::find($request->inc[$index])->update([
+                                'packId' => $packId,
+                                'itemId' => $test,
+                                'qty' => $request->qty[$index]
+                            ]);
+                            $index++;
+                        }
+                    }
+                    
+                return redirect('/Package')->withSuccess('Successfully Updated into the database.');
+            }
+        }  
     }
 
     /**
@@ -151,6 +204,20 @@ class PackageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        Package::find($id)->update(['isActive' => 0]);
+        return redirect('/Package');
+    }
+
+    public function soft()
+    {
+        $post = Package::with('Inclusion')->where('isActive',0)->get();
+        return view('Package.soft',compact('post'));
+    }
+
+    public function reactivate($id)
+    {
+        Package::find($id)->update(['isActive' => 1]);
+        return redirect('/Package');
     }
 }

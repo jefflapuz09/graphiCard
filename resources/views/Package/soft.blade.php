@@ -49,19 +49,15 @@
                                 <td>{{ $posts->name }}</td>
                                 <td>
                                   @foreach($posts->Inclusion as $inclusion)
-                                    <li>Item: {{ $inclusion->ItemPack->name}} ({{$inclusion->qty}}@if($inclusion->qty <= 1) pc. @else pcs. @endif)</li>
+                                    <li>Item: {{ $inclusion->ItemPack->name}} ({{$inclusion->qty}}pcs.)</li>
                                    @endforeach
                                 </td>
                                 <td>{{ $posts->description }}</td>
                                 <td>{{ number_format($posts->price,2) }}</td>
                                 <td> 
-                                        <a href="{{ url('/PackageUpdate', $posts->id) }}" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        <a href="{{ url('/PackageReactivate', $posts->id) }}" onclick="return reacForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
+                                            <i class="fa fa-recycle" aria-hidden="true"></i>
                                         </a>
-                                        <a href="{{ url('/PackageDeactivate/'.$posts->id) }}"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </a>
-                                 
                                 </td>
                             </tr>
                 
@@ -70,7 +66,7 @@
                     </table>
                 
                     <div class="form-group pull-right">
-                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/PackageSoft') }}';" id="showDeactivated"> Show deactivated records</label>
+                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/Package') }}';" id="showDeactivated"> Show  records</label>
                     </div>
         </div>
     </div>
@@ -84,21 +80,13 @@
 @section('script')
     <script>
         
-        function updateForm(){
-            var x = confirm("Are you sure you want to alter this record?");
-            if (x)
-              return true;
-            else
-              return false;
-         }
-
-         function deleteForm(){
-            var x = confirm("Are you sure you want to deactivate this record? All items included in this record will also be deactivated.");
-            if (x)
-              return true;
-            else
-              return false;
-         }
+            function reacForm(){
+                var x = confirm("Are you sure you want to reactivate this record?");
+                if (x)
+                  return true;
+                else
+                  return false;
+             }
 
     </script>
 @stop

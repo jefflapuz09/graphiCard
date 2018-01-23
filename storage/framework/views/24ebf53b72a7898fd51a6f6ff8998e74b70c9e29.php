@@ -47,19 +47,15 @@
                                 <td><?php echo e($posts->name); ?></td>
                                 <td>
                                   <?php $__currentLoopData = $posts->Inclusion; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $inclusion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li>Item: <?php echo e($inclusion->ItemPack->name); ?> (<?php echo e($inclusion->qty); ?><?php if($inclusion->qty <= 1): ?> pc. <?php else: ?> pcs. <?php endif; ?>)</li>
+                                    <li>Item: <?php echo e($inclusion->ItemPack->name); ?> (<?php echo e($inclusion->qty); ?>pcs.)</li>
                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </td>
                                 <td><?php echo e($posts->description); ?></td>
                                 <td><?php echo e(number_format($posts->price,2)); ?></td>
                                 <td> 
-                                        <a href="<?php echo e(url('/PackageUpdate', $posts->id)); ?>" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        <a href="<?php echo e(url('/PackageReactivate', $posts->id)); ?>" onclick="return reacForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
+                                            <i class="fa fa-recycle" aria-hidden="true"></i>
                                         </a>
-                                        <a href="<?php echo e(url('/PackageDeactivate/'.$posts->id)); ?>"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </a>
-                                 
                                 </td>
                             </tr>
                 
@@ -68,7 +64,7 @@
                     </table>
                 
                     <div class="form-group pull-right">
-                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/PackageSoft')); ?>';" id="showDeactivated"> Show deactivated records</label>
+                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/Package')); ?>';" id="showDeactivated"> Show  records</label>
                     </div>
         </div>
     </div>
@@ -82,21 +78,13 @@
 <?php $__env->startSection('script'); ?>
     <script>
         
-        function updateForm(){
-            var x = confirm("Are you sure you want to alter this record?");
-            if (x)
-              return true;
-            else
-              return false;
-         }
-
-         function deleteForm(){
-            var x = confirm("Are you sure you want to deactivate this record? All items included in this record will also be deactivated.");
-            if (x)
-              return true;
-            else
-              return false;
-         }
+            function reacForm(){
+                var x = confirm("Are you sure you want to reactivate this record?");
+                if (x)
+                  return true;
+                else
+                  return false;
+             }
 
     </script>
 <?php $__env->stopSection(); ?>
