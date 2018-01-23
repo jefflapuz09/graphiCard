@@ -37,6 +37,7 @@
                                 <th>Name</th>
                                 <th>Package Inclusion</th>
                                 <th>Description</th>
+                                <th>Price</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -45,9 +46,12 @@
                             <tr>
                                 <td><?php echo e($posts->name); ?></td>
                                 <td>
-                                    <li>Item: <?php echo e($posts->item); ?>(<?php echo e($posts->qty); ?>)</li>
+                                  <?php $__currentLoopData = $posts->Inclusion; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $inclusion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li>Item: <?php echo e($inclusion->ItemPack->name); ?> (<?php echo e($inclusion->qty); ?>pcs.)</li>
+                                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </td>
                                 <td><?php echo e($posts->description); ?></td>
+                                <td><?php echo e(number_format($posts->price,2)); ?></td>
                                 <td> 
                                         <a href="<?php echo e(url('/CategoryUpdate', $posts->id)); ?>" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

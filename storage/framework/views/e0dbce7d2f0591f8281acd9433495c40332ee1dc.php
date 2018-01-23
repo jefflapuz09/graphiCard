@@ -30,6 +30,10 @@
                 <input type="text" placeholder="Package Name" value="" class="form-control" name="name" id="name">
             </div>
             <div class="form-group">
+                <label for="">Price:</label>
+                <input type="text" placeholder="Price" value="" class="form-control" name="price" id="price">
+            </div>
+            <div class="form-group">
                 <label for="">Description:</label>
                 <textarea class="form-control" rows="5" placeholder="Description" name="description" id="desc"></textarea>
             </div>
@@ -69,7 +73,14 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
+<script src="<?php echo e(asset('js/jquery.inputmask.bundle.js')); ?>"></script>
 <script>
+
+    $(document).ready(function(){
+        $("#price").inputmask('currency', {
+            rightAlign: true
+          });
+    });
 
         $('.add-one').click(function(){
             $('.dynamic-element').first().clone().appendTo('.e');

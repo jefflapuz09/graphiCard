@@ -14,4 +14,12 @@ class PackageInclusion extends Model
         'isActive',
         'qty'
     ];
+
+    public function ItemPack(){
+        return $this->belongsTo('App\ServiceItem','itemId');
+    }
+
+    public function Package(){
+        return $this->belongsTo('App\Package','packId');
+    }
 }

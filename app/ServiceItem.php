@@ -23,5 +23,9 @@ class ServiceItem extends Model
         return $this->hasMany('App\RatingItem','itemId');
     }
 
+    public function PackageInclusion(){
+        return $this->belongsTo('App\PackageInclusion','itemId');
+    }
+
     
 }

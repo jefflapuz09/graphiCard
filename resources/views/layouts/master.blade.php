@@ -34,6 +34,7 @@
   <link href="{{ asset('css/fontawesome-stars.css') }}" rel="stylesheet"> 
   <link href="{{ asset('css/contact.css') }}" rel="stylesheet"> 
   <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/inputmask.min.css') }}" rel="stylesheet">
   @yield('style')
 </head>
 
@@ -321,104 +322,6 @@
   </div><!--END ROW-->
 </footer>
 
-<!-- Footer -->
-<!-- <footer class="py-5" id="foot">
-<div class="container" style="background:; color:white;">
-<div class="row"> 
-<div class="col-lg-6"> 
-<div align="center" style="color:white; background:; line-height:5px;">
-@if(count($comp) != 0 )
-<img src="{{ asset($comp->company_logo) }}"><h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">{{$comp->company_name}}</h1>
-@else
-<img src="">
-<h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Name</h1>
-@endif
-
-
-<h5 style="color:gold;">Services Offered</h5>
-</div>
-
-@if(count($comp) != 0 )
-<?php 
-$sample = explode("</p>",$comp->services_offered);
-$ctr = count($sample);
-$limit = $ctr/2;
-$col1 = "";
-$col2 = "";
-for($x=0;$x<$ctr;$x++){
-if($x>$limit-1){ //2nd column
-$col2 = $col2 . "<li>". $sample[$x] . "</li>";
-}
-else{
-$col1 = $col1 . "<li>". $sample[$x] . "</li>";
-}
-}
-?>
-<div class="row" style="margin-left:25px;">
-<div class="col-sm-6">
-<ul>
-<?php
-echo $col1;
-?>
-</ul>
-</div>
-<div class="col-sm-6">
-<ul>    
-<?php
-echo $col2;
-?>
-</ul>
-</div>
-</div>
-@else
-<div class="row" style="margin-left:25px;">
-<div class="col-sm-6">
-<ul>
-<li>Sample Service</li>
-</ul>
-</div>
-<div class="col-sm-6">
-<ul>
-<li>Sample Service</li>
-</ul>
-</div>
-</div>
-@endif
-</div>
-<div class="col-lg-6" style="margin-top:20px;"> 
-<div align="center">
-<h3 style="color:gold;">Find Us</h3>
-@if(count($comp) != 0 )
-<p class="lead">{{ $comp->street }} {{$comp->brgy}}, {{$comp->city}}</p>
-<h3 style="color:gold;">Contact Us</h3>
-{{$comp->contactNumber}}
-<br>{{$comp->emailAddress}}
-@else
-<p class="lead">Street Brgy City</p>
-<h3 style="color:gold;">Contact Us</h3>
-
-Contact Number
-<br>Email Address
-@endif
-
-<div style="margin-top:10px;">
-<ul class="social-network social-circle">
-@if(count($sns)!=0)
-<li><a target="_blank" href="{{ $sns->facebook}}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-<li><a target="_blank" href="{{ $sns->twitter}}" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-<li><a target="_blank" href="{{ $sns->messenger}}" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li>
-@else
-<li><a target="_blank" href="" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-<li><a target="_blank" href="" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-<li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li> 
-@endif
-</ul>	
-</div>
-</div>
-</div>
-</div>
-</div>
-</footer> -->
 
 <div class="container-fluid" style="background:red; height:30px;">
   <div align="center" style="margin-top:px;color:white;">
@@ -446,13 +349,14 @@ Contact Number
 
 @endif
 <!-- Bootstrap core JavaScript -->
-<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/megamenu.js') }}"></script>
 <script src="{{ asset('js/select2.min.js') }}"></script>
 <script src="{{ asset('vendor/social/dist/js/social-share-kit.js') }}"></script>
 <script src="{{ asset('js/jquery.barrating.min.js') }}"></script>
 <script src="{{ asset('js/jquery-ui.js') }}"></script>
+
 <script>
   SocialShareKit.init();
 

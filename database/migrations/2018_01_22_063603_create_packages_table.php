@@ -18,6 +18,7 @@ class CreatePackagesTable extends Migration
             $table->increments('id');
             $table->string('name', 100);	
             $table->text('description')->nullable();
+            $table->decimal('price',15,2);
             $table->boolean('isActive')->default(1);
             $table->timestamps();
         });
