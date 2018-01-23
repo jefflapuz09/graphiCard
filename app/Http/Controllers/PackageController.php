@@ -128,7 +128,7 @@ class PackageController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('Package.update');
     }
 
     /**

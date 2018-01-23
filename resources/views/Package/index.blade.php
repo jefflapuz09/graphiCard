@@ -55,7 +55,7 @@
                                 <td>{{ $posts->description }}</td>
                                 <td>{{ number_format($posts->price,2) }}</td>
                                 <td> 
-                                        <a href="{{ url('/CategoryUpdate', $posts->id) }}" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
+                                        <a href="{{ url('/PackageUpdate', $posts->id) }}" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                         <a href="{{ url('/CategoryDeac', $posts->id) }}"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">

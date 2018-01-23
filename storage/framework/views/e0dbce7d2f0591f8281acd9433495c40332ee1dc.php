@@ -44,27 +44,33 @@
         </div> 
     <div class="col-lg-6 e">
             <p class="add-one lead">Package Inclusion <-Please click to add</p> 
-            <div class="form-group  dynamic-element row">
-                    <div class="form-group col-md-6">
-                    <label for="sel2">Service Subcategory</label>
-                    <select  class="select form-control" required id="sel2" name="itemId[]">
-                            <option value="0" disabled>Please select service type</option>
-                        <?php $__currentLoopData = $pack; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                           
-                            <option value="<?php echo e($posts->id); ?>"><?php echo e($posts->name); ?></option>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                            <label for="inputEmail4">Quantity</label>
+            <table id="example" class="display dynamic" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                    <tr class="del">
+                        <td>
+                            <select  class="select form-control" required id="sel2" name="itemId[]">
+                                <option value="0" disabled>Please select service type</option>
+                            <?php $__currentLoopData = $pack; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                               
+                                <option value="<?php echo e($posts->id); ?>"><?php echo e($posts->name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+                        </td>
+                        <td>
                             <input type="text" class="form-control" name="qty[]" id="inputEmail4" placeholder="Quantity">
-                            
-                    </div>
-                    <div class="form-group col-md-2">
-                            <label for="inputEmail4">Action</label>
-                            <a class="btn btn-sm btn-danger delete" href="#">x</a>
-                    </div>
-            </div>
+                        </td>
+                        <td><a class="btn btn-sm btn-danger delete" href="#">x</a></td>
+                    </tr>      
+                </tbody>
+            </table>
     </div>
 
     </div>
@@ -76,14 +82,18 @@
 <script src="<?php echo e(asset('js/jquery.inputmask.bundle.js')); ?>"></script>
 <script>
 
+       
+
     $(document).ready(function(){
         $("#price").inputmask('currency', {
             rightAlign: true
           });
-    });
-
+        attach_delete();
         $('.add-one').click(function(){
-            $('.dynamic-element').first().clone().appendTo('.e');
+            
+
+            table.row.add(["<select  class='select form-control' required id='sel2' name='itemId[]'><?php $__currentLoopData = $pack; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option value='<?php echo e($posts->id); ?>'><?php echo e($posts->name); ?></option><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>", "<input type='text' class='form-control' name='qty[]' placeholder='Quantity'>", "<a class='btn btn-sm btn-danger delete' href='#'>x</a>"]).draw( false );
+            
             attach_delete();
           });
           
@@ -93,9 +103,10 @@
             $('.delete').off();
             $('.delete').click(function(){
               console.log("click");
-              $(this).closest('.dynamic-element').remove();
+              table.row($(this).parents('tr')).remove().draw( false );
             });
           }
+        });
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

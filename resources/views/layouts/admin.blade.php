@@ -214,11 +214,12 @@
     <script src="{{ asset('js/sb-admin.min.js') }}"></script>
     <script src="{{ asset('js/toastr.js') }}"></script>
      <script>
+        var table;
         $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true,
-              responsive: true
-          } );
+         table= $('#example').DataTable( {
+            "scrollX": true,
+            responsive: true
+        } );
 
           $('.select2').select2();
           $('[data-toggle="popover"]').popover({ trigger: "hover" })

@@ -53,7 +53,7 @@
                                 <td><?php echo e($posts->description); ?></td>
                                 <td><?php echo e(number_format($posts->price,2)); ?></td>
                                 <td> 
-                                        <a href="<?php echo e(url('/CategoryUpdate', $posts->id)); ?>" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
+                                        <a href="<?php echo e(url('/PackageUpdate', $posts->id)); ?>" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                         <a href="<?php echo e(url('/CategoryDeac', $posts->id)); ?>"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
