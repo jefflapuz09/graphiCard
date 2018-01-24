@@ -98,7 +98,7 @@ class PackageController extends Controller
                         $index++;
                         }
                     
-                return redirect('/Package')->withSuccess('Successfully Updated into the database.');
+                return redirect('/Package')->withSuccess('Successfully inserted into the database.');
             }
         }  
     }

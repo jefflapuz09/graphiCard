@@ -34,6 +34,7 @@
   <link href="<?php echo e(asset('css/fontawesome-stars.css')); ?>" rel="stylesheet"> 
   <link href="<?php echo e(asset('css/contact.css')); ?>" rel="stylesheet"> 
   <link href="<?php echo e(asset('css/jquery-ui.css')); ?>" rel="stylesheet">
+  <link href="<?php echo e(asset('css/inputmask.min.css')); ?>" rel="stylesheet">
   <?php echo $__env->yieldContent('style'); ?>
 </head>
 
@@ -326,106 +327,6 @@
   </div><!--END ROW-->
 </footer>
 
-<!-- Footer -->
-<!-- <footer class="py-5" id="foot">
-<div class="container" style="background:; color:white;">
-<div class="row"> 
-<div class="col-lg-6"> 
-<div align="center" style="color:white; background:; line-height:5px;">
-<?php if(count($comp) != 0 ): ?>
-<img src="<?php echo e(asset($comp->company_logo)); ?>"><h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase"><?php echo e($comp->company_name); ?></h1>
-<?php else: ?>
-<img src="">
-<h1 style="font-family: 'Roboto', sans-serif; margin-top:35px;" class="text-uppercase">Company Name</h1>
-<?php endif; ?>
-
-
-<h5 style="color:gold;">Services Offered</h5>
-</div>
-
-<?php if(count($comp) != 0 ): ?>
-<?php 
-$sample = explode("</p>",$comp->services_offered);
-$ctr = count($sample);
-$limit = $ctr/2;
-$col1 = "";
-$col2 = "";
-for($x=0;$x<$ctr;$x++){
-if($x>$limit-1){ //2nd column
-$col2 = $col2 . "<li>". $sample[$x] . "</li>";
-}
-else{
-$col1 = $col1 . "<li>". $sample[$x] . "</li>";
-}
-}
-?>
-<div class="row" style="margin-left:25px;">
-<div class="col-sm-6">
-<ul>
-<?php
-echo $col1;
-?>
-</ul>
-</div>
-<div class="col-sm-6">
-<ul>    
-<?php
-echo $col2;
-?>
-</ul>
-</div>
-</div>
-<?php else: ?>
-<div class="row" style="margin-left:25px;">
-<div class="col-sm-6">
-<ul>
-<li>Sample Service</li>
-</ul>
-</div>
-<div class="col-sm-6">
-<ul>
-<li>Sample Service</li>
-</ul>
-</div>
-</div>
-<?php endif; ?>
-</div>
-<div class="col-lg-6" style="margin-top:20px;"> 
-<div align="center">
-<h3 style="color:gold;">Find Us</h3>
-<?php if(count($comp) != 0 ): ?>
-<p class="lead"><?php echo e($comp->street); ?> <?php echo e($comp->brgy); ?>, <?php echo e($comp->city); ?></p>
-<h3 style="color:gold;">Contact Us</h3>
-<?php echo e($comp->contactNumber); ?>
-
-<br><?php echo e($comp->emailAddress); ?>
-
-<?php else: ?>
-<p class="lead">Street Brgy City</p>
-<h3 style="color:gold;">Contact Us</h3>
-
-Contact Number
-<br>Email Address
-<?php endif; ?>
-
-<div style="margin-top:10px;">
-<ul class="social-network social-circle">
-<?php if(count($sns)!=0): ?>
-<li><a target="_blank" href="<?php echo e($sns->facebook); ?>" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-<li><a target="_blank" href="<?php echo e($sns->twitter); ?>" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-<li><a target="_blank" href="<?php echo e($sns->messenger); ?>" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li>
-<?php else: ?>
-<li><a target="_blank" href="" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-<li><a target="_blank" href="" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-<li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i data-icon="a" class="fa"></i></a></li> 
-<?php endif; ?>
-</ul>	
-</div>
-</div>
-</div>
-</div>
-</div>
-</footer> -->
 
 <div class="container-fluid" style="background:red; height:30px;">
   <div align="center" style="margin-top:px;color:white;">
@@ -453,13 +354,14 @@ Contact Number
 
 <?php endif; ?>
 <!-- Bootstrap core JavaScript -->
-<script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('vendor/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/megamenu.js')); ?>"></script>
 <script src="<?php echo e(asset('js/select2.min.js')); ?>"></script>
 <script src="<?php echo e(asset('vendor/social/dist/js/social-share-kit.js')); ?>"></script>
 <script src="<?php echo e(asset('js/jquery.barrating.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/jquery-ui.js')); ?>"></script>
+
 <script>
   SocialShareKit.init();
 

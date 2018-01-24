@@ -176,6 +176,17 @@ Route::get('/PackageReactivate/{id}', 'PackageController@reactivate');
 
 Route::post('/PackageStore','PackageController@store');
 Route::post('/PackageEdit/{id}','PackageController@update');
+
+//order
+Route::get('/Attribute','itemAttributesController@index');
+Route::get('/AttributeCreate','itemAttributesController@create');
+Route::get('/AttributeUpdate/{id}','itemAttributesController@edit');
+Route::get('/AttributeDeactivate/{id}', 'itemAttributesController@destroy');
+Route::get('/AttributeSoft', 'itemAttributesController@soft');
+Route::get('/AttributeReactivate/{id}', 'itemAttributesController@reactivate');
+
+Route::post('/AttributeStore','itemAttributesController@store');
+Route::post('/AttributeEdit/{id}','itemAttributesController@update');
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\contributorMiddleware'], function () {

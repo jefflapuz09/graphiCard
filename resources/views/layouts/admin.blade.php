@@ -27,6 +27,7 @@
   <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
   <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/tagsinput.css') }}" rel="stylesheet">
   @yield('styles')
 </head>
 
@@ -112,6 +113,12 @@
               <span class="nav-link-text">Packages</span>
             </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Utilities">
+          <a class="nav-link" href="{{ url('/Attribute') }}">
+            <i class="fa fa-cog"></i>
+            <span class="nav-link-text">Item Attribute</span>
+          </a>
+      </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Post">
               <a class="nav-link" href="{{ url('/Post') }}">
                 <i class="fa fa-paste"></i>
@@ -213,6 +220,7 @@
     <script src="{{ asset('js/select2.min.js') }}"></script>
     <script src="{{ asset('js/sb-admin.min.js') }}"></script>
     <script src="{{ asset('js/toastr.js') }}"></script>
+    <script src="{{ asset('js/tagsinput.js') }}"></script>
      <script>
         var table;
         $(document).ready(function() {
@@ -221,9 +229,9 @@
             responsive: true
         } );
 
+        
           $('.select2').select2();
-          $('[data-toggle="popover"]').popover({ trigger: "hover" })
-          
+          $('[data-toggle="popover"]').popover({ trigger: "hover" })     
         } );
 
     </script>
