@@ -4,25 +4,25 @@
 <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
 <style>
 .btn-outline-secondary {
-  color: #272626;
-  background-color: transparent;
-  background-image: none;
-  border-color: #272626;
+    color: #272626;
+    background-color: transparent;
+    background-image: none;
+    border-color: #272626;
 }
 
 .btn-outline-secondary:hover {
-  color: white;
-  background-color: #f72028;
-  border-color: black;
+    color: white;
+    background-color: #f72028;
+    border-color: black;
 }
 
 .btn-outline-secondary:focus, .btn-outline-secondary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(134, 142, 150, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(134, 142, 150, 0.5);
 }
 
 .btn-outline-secondary.disabled, .btn-outline-secondary:disabled {
-  color: #868e96;
-  background-color: transparent;
+    color: #868e96;
+    background-color: transparent;
 }
 </style>
 @stop
@@ -37,7 +37,7 @@
 @endif  
 @if(session('error'))
 <script type="text/javascript">
-   toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
+ toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
 </script>
 @endif
 @if(session('success'))
@@ -45,7 +45,6 @@
     toastr.success(' <?php echo session('success'); ?>', 'Success!')
 </script>
 @endif
-
 <div class="container" style="margin-top:65px;">
     <div class="container" class="p-5">
         <div class="container" class="p-5">
@@ -89,5 +88,8 @@
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            @endsection
+@endsection

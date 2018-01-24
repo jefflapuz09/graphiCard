@@ -711,7 +711,7 @@ padding-bottom: 1rem;
   padding: 30px 38px 66px;
   margin: 0 auto;
   margin-top: 20px;
-  border: 3px dotted rgba(0,0,0,0.1);  
+  border: 3px dotted #fef200;  
   }
 
 
@@ -720,7 +720,7 @@ padding-bottom: 1rem;
   padding: 30px 38px 66px;
   margin: 0 auto;
   margin-top: 20px;
-  border: 3px dotted rgba(0,0,0,0.1);  
+  border: 3px dotted #ed008c;  
   }
 
 .form-signin-heading {
@@ -764,6 +764,14 @@ input[type="password"] {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.form-control-a:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #00adef;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 173, 239, 0.25);
 }
 
 .new-btn {

@@ -124,7 +124,7 @@
               <a class="nav-link" href="{{ url('/about') }}"> About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link pull-right" href="{{ url('/about') }}"><i class="fa fa-search" aria-hidden="true"> Search</i></a>
+              <a class="nav-link" href="{{ url('/about') }}"><i class="fa fa-search" aria-hidden="true"> Search</i></a>
             </li>
           </ul>
         </div>
