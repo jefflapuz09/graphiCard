@@ -1,7 +1,5 @@
-@extends('layouts.master')
-
-@section('style')
-<link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+<?php $__env->startSection('style'); ?>
+<link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
 <style>
 .btn-outline-secondary {
   color: #272626;
@@ -25,26 +23,26 @@
   background-color: transparent;
 }
 </style>
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('contents')
-<script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
-<script src="{{  asset('js/toastr.js')  }}"></script>
-@if ($errors->any())
+<?php $__env->startSection('contents'); ?>
+<script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
+<?php if($errors->any()): ?>
 <script type="text/javascript">
     toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong!")
 </script>            
-@endif  
-@if(session('error'))
+<?php endif; ?>  
+<?php if(session('error')): ?>
 <script type="text/javascript">
    toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
 </script>
-@endif
-@if(session('success'))
+<?php endif; ?>
+<?php if(session('success')): ?>
 <script type="text/javascript">
     toastr.success(' <?php echo session('success'); ?>', 'Success!')
 </script>
-@endif
+<?php endif; ?>
 <div class="container" style="margin-top:65px;">
     <div class="container" class="p-5">
         <div class="container" class="p-5">
@@ -54,8 +52,9 @@
                 </div>
                 <hr class="colorgraph"><br>
                 <h3 class="form-signin-heading">Account Information</h3>
-                <form action="{{ url('/customer/register/post') }}" method="post" class="form-register">
-                    {{ csrf_field() }}
+                <form action="<?php echo e(url('/customer/register/post')); ?>" method="post" class="form-register">
+                    <?php echo e(csrf_field()); ?>
+
 
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label-sm">Name <span style="color:red">*</span></label>
@@ -147,4 +146,5 @@
 </form>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

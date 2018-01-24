@@ -700,3 +700,90 @@ padding-bottom: 1rem;
                   background-color: #e1e1e1;
                 }
 
+
+.wrapper {    
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.form-signin {
+  max-width: 600px;
+  padding: 30px 38px 66px;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 3px dotted rgba(0,0,0,0.1);  
+  }
+
+
+.form-register {
+  max-width: 90%;
+  padding: 30px 38px 66px;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 3px dotted rgba(0,0,0,0.1);  
+  }
+
+.form-signin-heading {
+  text-align:center;
+  margin:0 auto;
+}
+
+/*input[type="text"] {
+  margin-bottom: 0px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}*/
+
+.colorgraph {
+  height: 7px;
+  border-top: 0;
+  background: #ed008c;
+  border-radius: 2px;
+  background-image: -webkit-linear-gradient(left, #ed008c, #ed008c 12.5%, #ed008c 12.5%, #ed008c 25%, #fef200 25%, #fef200 37.5%, #fef200 37.5%, #fef200 50%, #000000 50%, #000000 62.5%, #000000 62.5%, #000000 75%, #00adef 75%, #00adef 87.5%, #00adef 87.5%, #00adef);
+  background-image: -moz-linear-gradient(left, #ed008c, #ed008c 12.5%, #ed008c 12.5%, #ed008c 25%, #fef200 25%, #fef200 37.5%, #fef200 37.5%, #fef200 50%, #000000 50%, #000000 62.5%, #000000 62.5%, #000000 75%, #00adef 75%, #00adef 87.5%, #00adef 87.5%, #00adef);
+  background-image: -o-linear-gradient(left, #ed008c, #ed008c 12.5%, #ed008c 12.5%, #ed008c 25%, #fef200 25%, #fef200 37.5%, #fef200 37.5%, #fef200 50%, #000000 50%, #000000 62.5%, #000000 62.5%, #000000 75%, #00adef 75%, #00adef 87.5%, #00adef 87.5%, #00adef);
+  background-image: linear-gradient(to right, #ed008c, #ed008c 12.5%, #ed008c 12.5%, #ed008c 25%, #fef200 25%, #fef200 37.5%, #fef200 37.5%, #fef200 50%, #000000 50%, #000000 62.5%, #000000 62.5%, #000000 75%, #00adef 75%, #00adef 87.5%, #00adef 87.5%, #00adef);
+}
+
+.form-control-a{
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.new-btn {
+  color: #272626;
+  background-color: transparent;
+  background-image: none;
+  border-color: #272626;
+}
+
+.new-btn:hover {
+  color: white;
+  background-color: #f72028;
+  border-color: black;
+}
+
+.new-btn:focus, .new-btn.focus {
+  box-shadow: 0 0 0 0.2rem rgba(134, 142, 150, 0.5);
+}
+
+.new-btn.disabled, .new-btn:disabled {
+  color: #868e96;
+  background-color: transparent;
+}

@@ -106,6 +106,12 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Utilities">
+            <a class="nav-link" href="<?php echo e(url('/Package')); ?>">
+              <i class="fa fa-cog"></i>
+              <span class="nav-link-text">Packages</span>
+            </a>
+        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Post">
               <a class="nav-link" href="<?php echo e(url('/Post')); ?>">
                 <i class="fa fa-paste"></i>
@@ -150,11 +156,7 @@
       <ul class="navbar-nav ml-auto">
         
        
-       
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i><?php echo e(Auth::user()->name); ?></a>
-        </li>
+  
       </ul>
     </div>
   </nav>
@@ -208,11 +210,12 @@
     <script src="<?php echo e(asset('js/sb-admin.min.js')); ?>"></script>
     <script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
      <script>
+        var table;
         $(document).ready(function() {
-          $('#example').DataTable( {
-              "scrollX": true,
-              responsive: true
-          } );
+         table= $('#example').DataTable( {
+            "scrollX": true,
+            responsive: true
+        } );
 
           $('.select2').select2();
           $('[data-toggle="popover"]').popover({ trigger: "hover" })
