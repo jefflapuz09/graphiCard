@@ -377,4 +377,9 @@ class HomeController extends Controller
     {
         return view('Home.custRegister');
     }
+
+    public function order()
+    {
+        return view('Home.order');
+    }
 }

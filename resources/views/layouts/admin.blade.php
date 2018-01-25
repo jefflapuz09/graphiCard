@@ -166,7 +166,12 @@
        
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            @if(Auth::guest())
+            
+            @else
             <i class="fa fa-fw fa-sign-out"></i>{{ Auth::user()->Employee->firstName }} {{ Auth::user()->Employee->lastName }}</a>
+            @endif
+            
         </li>
       </ul>
     </div>

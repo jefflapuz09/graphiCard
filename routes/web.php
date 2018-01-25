@@ -29,11 +29,14 @@ Route::get('/admin', 'adminController@index');
 Route::post('/InquirySend','InquiryController@store');
 Route::get('/AllItems','HomeController@allItems');
 Route::get('/FAQs','FAQController@index');
+Route::get('/Order','HomeController@order');
 
 Route::get('/customer/login','HomeController@custLogin');
 Route::get('/customer/register','HomeController@custRegister');
 Route::post('/customer/register/post','customerController@storeweb');
 Route::post('/customer/login/post','HomeController@custLog');
+
+Route::get('/cartPost/{id}','OrderController@addcart');
 
 
 //error

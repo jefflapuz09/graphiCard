@@ -166,7 +166,12 @@
        
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <?php if(Auth::guest()): ?>
+            
+            <?php else: ?>
             <i class="fa fa-fw fa-sign-out"></i><?php echo e(Auth::user()->Employee->firstName); ?> <?php echo e(Auth::user()->Employee->lastName); ?></a>
+            <?php endif; ?>
+            
         </li>
       </ul>
     </div>

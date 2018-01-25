@@ -150,6 +150,7 @@
     </div>
   </div>
 </header>
+<form>
 @if(count($postcat)!=0)
 @foreach($postcat as $cat)
 <div class="container" style="background:; margin-top:35px;">
@@ -216,6 +217,7 @@
               <li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i class="fa mssngr-messenger"></i></a></li>
               @endif
             </ul>	
+            <a class="btn btn-danger">Order now</a>
 
             @else
             <p class="text-muted">No ratings yet.</p>
@@ -229,7 +231,8 @@
               <li><a target="_blank" href="" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
               <li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i class="fa mssngr-messenger"></i></a></li>
               @endif
-            </ul>	
+            </ul>	<br>
+            <a href="{{ url('/cartPost/'.$post->Item->name) }}" class="mt-2 btn btn-danger text-white">Order now</a>
             @endif
 
           </div>
@@ -270,7 +273,7 @@
 
 
 
-    <header class="masthead top text-center mx-background-top-linear1"">
+    <header class="masthead top text-center mx-background-top-linear1">
       <div class="overlay"></div>
       <div class="container">
         <div class="col-xl-12 mx-auto">
