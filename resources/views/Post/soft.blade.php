@@ -30,7 +30,7 @@
                                     <li>{{ $posts->type }}</li>
                                     <li>{{ $posts->item }}</li>
                                 </td>
-                                <td>{{$posts->userName}}</td>
+                                <td>{{$posts->firstName}} {{$posts->middleName}} {{$posts->lastName}}</td>
                                 <td><img class="img-responsive" src="{{ asset($posts->image)}}" style="max-width:200px; max-height:200px;"></td>
                                 <td>
                                         @if($posts->isFeatured == 0)

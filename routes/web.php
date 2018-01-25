@@ -30,13 +30,14 @@ Route::post('/InquirySend','InquiryController@store');
 Route::get('/AllItems','HomeController@allItems');
 Route::get('/FAQs','FAQController@index');
 Route::get('/Order','HomeController@order');
+Route::post('/ReviewStore', 'FeedbackController@review');
 
 Route::get('/customer/login','HomeController@custLogin');
 Route::get('/customer/register','HomeController@custRegister');
 Route::post('/customer/register/post','customerController@storeweb');
 Route::post('/customer/login/post','HomeController@custLog');
 
-Route::get('/cartPost/{id}','OrderController@addcart');
+Route::get('/cartPost/{id}/{itemid}','OrderController@addcart');
 
 
 //error
@@ -153,7 +154,7 @@ Route::post('/AdvisoryNew','AdvisoryController@store');
 //Review
 Route::get('/Review', 'FeedbackController@indexReview');
 
-Route::post('/ReviewStore', 'FeedbackController@review');
+
 
 //SNS
 Route::post('/SNSUpdate/{id}','SNSController@update');

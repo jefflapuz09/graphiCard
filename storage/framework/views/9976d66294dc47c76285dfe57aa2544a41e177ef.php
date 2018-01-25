@@ -77,14 +77,14 @@
                       <label for="inputEmail3" class="col-sm-2 col-form-label-sm">Address <span style="color:red">*</span></label>
                       <div class="col-sm-10">
                           <div class="row">
-                              <div class="col-sm-5">
-                                  <input class="form-control-a" placeholder="Street No./Bldg No.:" name="street" type="text">
-                              </div>
                               <div class="col-sm-3">
-                                  <input class="form-control-a" id="ex2" placeholder="Brgy No./Subd.:" name="brgy" type="text">
+                                  <input class="form-control-a" placeholder="###" name="street" type="text">
+                              </div>
+                              <div class="col-sm-5">
+                                  <input class="form-control-a" id="ex2" placeholder="Batasan Hills" name="brgy" type="text">
                               </div>
                               <div class="col-sm-4">
-                                  <input class="form-control-a" placeholder="City:" name="city" type="text">
+                                  <input class="form-control-a" placeholder="Quezon City" name="city" type="text">
                               </div>
                           </div>
                       </div>

@@ -51,7 +51,7 @@
                                         <li><?php echo e($posts->type); ?></li>
                                         <li><?php echo e($posts->item); ?></li>
                                     </td>
-                                    <td><?php echo e($posts->userName); ?></td>
+                                    <td><?php echo e($posts->firstName); ?> <?php echo e($posts->middleName); ?> <?php echo e($posts->lastName); ?></td>
                                     <td><img class="img-responsive" src="<?php echo e(asset($posts->image)); ?>" style="max-width:200px; max-height:200px;"></td>
                                     <td>
                                         <?php if($posts->isFeatured == 0): ?>

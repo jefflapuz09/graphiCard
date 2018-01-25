@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Cookie;
+use App\ServiceType;
 
 class OrderController extends Controller
 {
@@ -27,11 +28,12 @@ class OrderController extends Controller
         //
     }
 
-    public function addcart($id, Request $request)
+    public function addcart($id, $itemid, Request $request)
     {
-        $trycookie = $id;
-
-        dd($trycookie);
+        $post = ServiceType::with(['item' => function($query) use($itemid) {
+            $query->where('id', $itemid);},'post' => function($query) use($itemid) {
+                $query->where('itemId', $itemid);}])->find($id);
+        return view('Home.order',compact('post'));
     }
     /**
      * Store a newly created resource in storage.

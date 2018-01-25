@@ -215,8 +215,8 @@
               <li><a target="_blank" href="" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
               <li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i class="fa mssngr-messenger"></i></a></li>
               <?php endif; ?>
-            </ul>	
-            <a class="btn btn-danger">Order now</a>
+            </ul>	<br>
+            <a class="mt-2 text-white btn btn-danger" href="<?php echo e(url('/cartPost/'.$post->Item->subcategoryId.'/'.$post->Item->id)); ?>">Order now</a>
 
             <?php else: ?>
             <p class="text-muted">No ratings yet.</p>
@@ -231,7 +231,7 @@
               <li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i class="fa mssngr-messenger"></i></a></li>
               <?php endif; ?>
             </ul>	<br>
-            <a href="<?php echo e(url('/cartPost/'.$post->Item->name)); ?>" class="mt-2 btn btn-danger text-white">Order now</a>
+            <a href="<?php echo e(url('/cartPost/'.$post->Item->subcategoryId.'/'.$post->Item->id)); ?>" class="mt-2 btn btn-danger text-white">Order now</a>
             <?php endif; ?>
 
           </div>

@@ -23,6 +23,10 @@ class ServiceItem extends Model
         return $this->hasMany('App\RatingItem','itemId');
     }
 
+    public function Attributes(){
+        return $this->hasMany('App\ItemAttributes','itemId');
+    }
+
     public function PackageInclusion(){
         return $this->belongsTo('App\PackageInclusion','itemId');
     }

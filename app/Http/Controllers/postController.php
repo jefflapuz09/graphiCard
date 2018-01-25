@@ -31,12 +31,14 @@ class postController extends Controller
      
     public function index()
     {
+
         $post = DB::table('posts')
                 ->join('service_subcategory','posts.typeId','=','service_subcategory.id')
                 ->join('service_categories','posts.categoryId','=','service_categories.id')
                 ->join('users as u','u.id','=','posts.userId')
+                ->join('user_employees as e','e.id','u.employeeId')
                 ->join('service_items','service_items.id','=','posts.itemId')
-                ->select('posts.*','service_subcategory.name as type', 'service_categories.name as category','u.name as userName','service_items.name as item')
+                ->select('posts.*','service_subcategory.name as type', 'service_categories.name as category','e.firstName as firstName', 'e.middleName as middleName', 'e.lastName as lastName','service_items.name as item')
                 ->orderBy('posts.id','Asc')
                 ->where('posts.isActive',1)
                 ->get();
@@ -289,8 +291,9 @@ class postController extends Controller
         ->join('service_subcategory','posts.typeId','=','service_subcategory.id')
         ->join('service_categories','posts.categoryId','=','service_categories.id')
         ->join('users as u','u.id','=','posts.userId')
+        ->join('user_employees as e','e.id','u.employeeId')
         ->join('service_items','service_items.id','=','posts.itemId')
-        ->select('posts.*','service_subcategory.name as type', 'service_categories.name as category','u.name as userName','service_items.name as item')
+        ->select('posts.*','service_subcategory.name as type', 'service_categories.name as category','e.firstName as firstName', 'e.middleName as middleName', 'e.lastName as lastName','service_items.name as item')
         ->orderBy('posts.id','Asc')
         ->where('posts.isActive',0)
         ->get();
