@@ -141,7 +141,7 @@
 </div>
 
 <!-- Page Content -->
-<header class="masthead top text-center mx-background-top-linear1"">
+<header class="masthead top text-center mx-background-top-linear1">
   <div class="overlay"></div>
   <div class="container">
     <div class="col-xl-12 mx-auto">
@@ -149,6 +149,7 @@
     </div>
   </div>
 </header>
+<form>
 <?php if(count($postcat)!=0): ?>
 <?php $__currentLoopData = $postcat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <div class="container" style="background:; margin-top:35px;">
@@ -215,6 +216,7 @@
               <li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i class="fa mssngr-messenger"></i></a></li>
               <?php endif; ?>
             </ul>	
+            <a class="btn btn-danger">Order now</a>
 
             <?php else: ?>
             <p class="text-muted">No ratings yet.</p>
@@ -228,7 +230,8 @@
               <li><a target="_blank" href="" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
               <li><a target="_blank" href="" class="icoTwitter" title="Messenger"><i class="fa mssngr-messenger"></i></a></li>
               <?php endif; ?>
-            </ul>	
+            </ul>	<br>
+            <a href="<?php echo e(url('/cartPost/'.$post->Item->name)); ?>" class="mt-2 btn btn-danger text-white">Order now</a>
             <?php endif; ?>
 
           </div>
@@ -269,7 +272,7 @@
 
 
 
-    <header class="masthead top text-center mx-background-top-linear1"">
+    <header class="masthead top text-center mx-background-top-linear1">
       <div class="overlay"></div>
       <div class="container">
         <div class="col-xl-12 mx-auto">

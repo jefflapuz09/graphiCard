@@ -1,23 +1,21 @@
-@extends('layouts.admin')
+<?php $__env->startSection('styles'); ?>
+<link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
+<?php $__env->stopSection(); ?>
 
-@section('styles')
-<link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
-@stop
-
-@section('content')
-<script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
-<script src="{{  asset('js/toastr.js')  }}"></script>
+<?php $__env->startSection('content'); ?>
+<script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
     <div> 
-            @if(session('success'))
+            <?php if(session('success')): ?>
                 <script type="text/javascript">
                     toastr.success(' <?php echo session('success'); ?>', 'Success!')
                 </script>
-            @endif
-            @if(session('error'))
+            <?php endif; ?>
+            <?php if(session('error')): ?>
                 <script type="text/javascript">
                     toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
                 </script>
-             @endif
+             <?php endif; ?>
        
     </div>
     
@@ -29,7 +27,7 @@
     <div class="card-block">
         <div class="container mt-3 mb-3">
                 <div class="pull-right" style="margin-bottom:15px;"> 
-                        <a href="{{ url('/AttributeCreate') }}" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
+                        <a href="<?php echo e(url('/AttributeCreate')); ?>" type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="New record">
                             New Item Attribute
                         </a>
                     </div>
@@ -43,27 +41,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($post as $posts)
+                            <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td>{{$posts->Item->name}}</td>
-                                <td>{{$posts->attributeName}}</td>
-                                <td>{{$posts->choiceDescription}}</td>
+                                <td><?php echo e($posts->Item->name); ?></td>
+                                <td><?php echo e($posts->attributeName); ?></td>
+                                <td><?php echo e($posts->choiceDescription); ?></td>
                                 <td> 
-                                        <a href="{{ url('/AttributeUpdate', $posts->id) }}" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
+                                        <a href="<?php echo e(url('/AttributeUpdate', $posts->id)); ?>" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
-                                        <a href="{{ url('/AttributeDeactivate/'.$posts->id) }}"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
+                                        <a href="<?php echo e(url('/AttributeDeactivate/'.$posts->id)); ?>"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </a>
                                  
                                 </td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 
                     <div class="form-group pull-right">
-                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/AttributeSoft') }}';" id="showDeactivated"> Show deactivated records</label>
+                            <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/AttributeSoft')); ?>';" id="showDeactivated"> Show deactivated records</label>
                     </div>
         </div>
     </div>
@@ -72,9 +70,9 @@
     
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
     <script>
         
         function updateForm(){
@@ -94,5 +92,7 @@
          }
 
     </script>
-@stop
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

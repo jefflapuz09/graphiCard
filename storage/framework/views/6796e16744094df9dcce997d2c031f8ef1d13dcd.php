@@ -1,7 +1,5 @@
-@extends('layouts.admin')
-
-@section('styles')
-<link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+<?php $__env->startSection('styles'); ?>
+<link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
 <style>
 .btn-sq-lg {
   width: 200px !important;
@@ -11,30 +9,31 @@
 
 
 </style>
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('content')
-<script src="{{  asset('vendor/jquery/jquery.min.js')  }}"></script>
-<script src="{{  asset('js/toastr.js')  }}"></script>
+<?php $__env->startSection('content'); ?>
+<script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/toastr.js')); ?>"></script>
     <div class="container-fluid">
     <div>
         <h3>Package</h3>
     </div>
-    @if ($errors->any())
+    <?php if($errors->any()): ?>
         <script type="text/javascript">
             toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong!")
         </script>             
-    @endif
-     @if(session('error'))
+    <?php endif; ?>
+     <?php if(session('error')): ?>
         <script type="text/javascript">
             toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
         </script>
-    @endif
-    <form action="{{ url('/PackageStore') }}" method="post">
+    <?php endif; ?>
+    <form action="<?php echo e(url('/PackageStore')); ?>" method="post">
     <div class="row">
         <div class="col-lg-6"> 
             
-            {{ csrf_field() }}
+            <?php echo e(csrf_field()); ?>
+
             <div class="form-group">
                 <label for="">Name:</label>
                 <input type="text" placeholder="Package Name" value="" class="form-control" name="name" id="name">
@@ -70,10 +69,10 @@
                         <td>
                             <select  class="select form-control" required id="sel2" name="itemId[]">
                                 <option value="0" disabled>Please select service type</option>
-                            @foreach($pack as $posts)
+                            <?php $__currentLoopData = $pack; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                
-                                <option value="{{ $posts->id }}">{{ $posts->name }}</option>
-                            @endforeach
+                                <option value="<?php echo e($posts->id); ?>"><?php echo e($posts->name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                         </td>
                         <td>
@@ -88,10 +87,10 @@
     </div>
     </div>
 </form>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
-<script src="{{ asset('js/jquery.inputmask.bundle.js') }}"></script>
+<?php $__env->startSection('script'); ?>
+<script src="<?php echo e(asset('js/jquery.inputmask.bundle.js')); ?>"></script>
 <script>
 
        
@@ -102,7 +101,7 @@
           });
         attach_delete();
         $('.add-one').click(function(){
-            table.row.add(["<select  class='select form-control' required id='sel2' name='itemId[]'>@foreach($pack as $posts)<option value='{{ $posts->id }}'>{{ $posts->name }}</option>@endforeach", "<input type='text' class='form-control' name='qty[]' placeholder='Quantity' style='text-align:right'>", "<a class='btn btn-sm btn-danger delete' href='#'>x</a>"]).draw( false );
+            table.row.add(["<select  class='select form-control' required id='sel2' name='itemId[]'><?php $__currentLoopData = $pack; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option value='<?php echo e($posts->id); ?>'><?php echo e($posts->name); ?></option><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>", "<input type='text' class='form-control' name='qty[]' placeholder='Quantity' style='text-align:right'>", "<a class='btn btn-sm btn-danger delete' href='#'>x</a>"]).draw( false );
             
             attach_delete();
           });
@@ -118,4 +117,5 @@
           }
         });
 </script>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
