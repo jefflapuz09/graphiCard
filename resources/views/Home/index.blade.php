@@ -142,7 +142,7 @@
 </div>
 
 <!-- Page Content -->
-<header class="masthead top text-center mx-background-top-linear1"">
+<header class="masthead top text-center mx-background-top-linear1">
   <div class="overlay"></div>
   <div class="container">
     <div class="col-xl-12 mx-auto">

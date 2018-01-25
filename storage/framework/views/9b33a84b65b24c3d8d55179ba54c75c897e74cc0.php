@@ -139,75 +139,6 @@
     </nav>
   </div>
 
-<!-- <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
-<div class="container">
-<?php if(count($comp) != 0 ): ?>
-<a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="<?php echo e(asset($comp->company_logo)); ?>" style="max-width:50px; max-height:50px;"><?php echo e($comp->company_name); ?></a>
-<?php else: ?>
-<a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img src="">Company Name</a>
-<?php endif; ?>
-<button class="navbar-toggler navbar-toggler-right custom-toggler"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon" style="color:yellow;"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarResponsive">
-<ul class="navbar-nav ml-auto">
-
-<?php $__currentLoopData = $model; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-<li class="nav-item">   
-  <?php if(count($post->Type) != 0): ?>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
-      <?php echo e($post->name); ?>
-
-    </a>          
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-      <?php $__currentLoopData = $post->Type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                   
-      <a class="dropdown-item" href="<?php echo e(url('/ServiceItem', $type->id)); ?>" style="color:;"><?php echo e($type->name); ?></a>
-
-      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </div>
-  </li>
-  <?php else: ?>
-  <?php echo e($post->categoryId); ?>
-
-  <a class="nav-link" href="<?php echo e(url('/ServiceItem', $post->id)); ?>"><?php echo e($post->name); ?></a>
-  <?php endif; ?>
-</li>
-<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-<li class="nav-item">   
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
-      Customer Service
-    </a>          
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">               
-      <a class="dropdown-item" href="<?php echo e(url('/FAQs')); ?>" style="color:;">FAQs</a>
-      <a class="dropdown-item" href="<?php echo e(url('/Testimonial')); ?>" style="color:;">Company Feedback</a>
-      <a class="dropdown-item" href="<?php echo e(url('/AllItems')); ?>" style="color:;">Item Review</a>
-    </div>
-  </li>
-</li>
-
-<li class="nav-item">
-  <a class="nav-link" href="<?php echo e(url('/about')); ?>"> About Us</a>
-</li>
-<?php if($user = Auth::user()): ?>
-<?php elseif(Auth::guest()): ?>
-<li class="nav-item">
-  <a class="nav-link" href="<?php echo e(url('/login')); ?>">Login</a>
-</li>
-<?php endif; ?>
-
-</ul>
-</div>
-</div>
-</nav> -->
-<!-- <div class="ssk-sticky ssk-right ssk-center ssk-lg">
-<a href="" class="ssk ssk-facebook" data-url="https://www.facebook.com/Graphicard-154392717914639/"></a>
-<a href="" class="ssk ssk-twitter" data-url="https://www.facebook.com/Graphicard-154392717914639/" data-text="Home of quality printed products"></a>
-<a href="" class="ssk ssk-linkedin" data-url="https://www.facebook.com/Graphicard-154392717914639/"></a>
-<a href="" class="ssk ssk-email"></a>
-</div> -->
-
 <?php echo $__env->yieldContent('contents'); ?>;
 <footer style="width:100%;background-color: black;padding:20px">
   <div class="col-md-12">
@@ -274,7 +205,7 @@
       </div>
       <?php endif; ?>
     </div>
-    <div class="col-md-4"  style="color:white""> 
+    <div class="col-md-4"  style="color:white"> 
       <div class="row">        
         <div class="col-md-6">
         <h5 style="color:gold; text-align: center">Customer Services</h5>   

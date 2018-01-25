@@ -137,73 +137,6 @@
     </nav>
   </div>
 
-<!-- <nav class="navbar fixed-top navbar-expand-lg navbg fixed-top" id="mainNav">
-<div class="container">
-@if(count($comp) != 0 )
-<a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset($comp->company_logo) }}" style="max-width:50px; max-height:50px;">{{ $comp->company_name }}</a>
-@else
-<a class="navbar-brand" href="{{ url('/') }}"><img src="">Company Name</a>
-@endif
-<button class="navbar-toggler navbar-toggler-right custom-toggler"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon" style="color:yellow;"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarResponsive">
-<ul class="navbar-nav ml-auto">
-
-@foreach($model as $post)
-<li class="nav-item">   
-  @if(count($post->Type) != 0)
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
-      {{$post->name}}
-    </a>          
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-      @foreach($post->Type as $type)                   
-      <a class="dropdown-item" href="{{ url('/ServiceItem', $type->id) }}" style="color:;">{{$type->name}}</a>
-
-      @endforeach
-    </div>
-  </li>
-  @else
-  {{ $post->categoryId}}
-  <a class="nav-link" href="{{ url('/ServiceItem', $post->id) }}">{{$post->name}}</a>
-  @endif
-</li>
-@endforeach
-<li class="nav-item">   
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
-      Customer Service
-    </a>          
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">               
-      <a class="dropdown-item" href="{{ url('/FAQs') }}" style="color:;">FAQs</a>
-      <a class="dropdown-item" href="{{ url('/Testimonial') }}" style="color:;">Company Feedback</a>
-      <a class="dropdown-item" href="{{ url('/AllItems') }}" style="color:;">Item Review</a>
-    </div>
-  </li>
-</li>
-
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/about') }}"> About Us</a>
-</li>
-@if($user = Auth::user())
-@elseif(Auth::guest())
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/login') }}">Login</a>
-</li>
-@endif
-
-</ul>
-</div>
-</div>
-</nav> -->
-<!-- <div class="ssk-sticky ssk-right ssk-center ssk-lg">
-<a href="" class="ssk ssk-facebook" data-url="https://www.facebook.com/Graphicard-154392717914639/"></a>
-<a href="" class="ssk ssk-twitter" data-url="https://www.facebook.com/Graphicard-154392717914639/" data-text="Home of quality printed products"></a>
-<a href="" class="ssk ssk-linkedin" data-url="https://www.facebook.com/Graphicard-154392717914639/"></a>
-<a href="" class="ssk ssk-email"></a>
-</div> -->
-
 @yield('contents');
 <footer style="width:100%;background-color: black;padding:20px">
   <div class="col-md-12">
@@ -270,7 +203,7 @@
       </div>
       @endif
     </div>
-    <div class="col-md-4"  style="color:white""> 
+    <div class="col-md-4"  style="color:white"> 
       <div class="row">        
         <div class="col-md-6">
         <h5 style="color:gold; text-align: center">Customer Services</h5>   
