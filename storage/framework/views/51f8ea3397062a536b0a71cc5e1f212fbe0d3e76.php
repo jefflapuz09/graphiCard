@@ -46,6 +46,7 @@
             <div class="modal-body">
                 <hr class="colorgraph">
                 <p class="lead">
+                     <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     Package Name: <?php echo e($posts->name); ?><br><br>
                     Items: <br>
                     <?php $__currentLoopData = $posts->Inclusion; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $inclusion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -53,6 +54,7 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <br>Price: ₱<?php echo e($posts->price); ?>
 
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </p>
             </div>
             <div class="modal-footer">

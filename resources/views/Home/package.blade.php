@@ -48,12 +48,14 @@
             <div class="modal-body">
                 <hr class="colorgraph">
                 <p class="lead">
+                     @foreach($post as $posts)
                     Package Name: {{$posts->name}}<br><br>
                     Items: <br>
                     @foreach($posts->Inclusion as $inclusion)
                     {{$inclusion->ItemPack->name}} ({{$inclusion->qty}}@if($inclusion->qty <= 1) pc. @else pcs. @endif)<br>
                     @endforeach
                     <br>Price: ₱{{$posts->price}}
+                    @endforeach
                 </p>
             </div>
             <div class="modal-footer">
