@@ -56,12 +56,12 @@
         <div class="card" style="border:1px solid black; margin:;">
         <!-- <div class="card-header" style="background:#f22e35; color:white;"> -->
         <div class="card-header" style="background:#a70000; color:white;">
-            <b>Inquiries</b>
+            <b>New Orders</b>
             <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All customer inquiries are displayed here. By clicking the view icon you'll be able to view all inquiry information."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
         </div>
         <div class="card-block">
             <div class="container mt-3">
-            <table id="example" class="display" cellspacing="0" style="" width="100%">
+            <!-- <table id="example" class="display" cellspacing="0" style="" width="100%">
             <thead>
                 <tr>
                     <th>Date Inquired</th>
@@ -85,7 +85,7 @@
 
                 @endforeach
             </tbody>
-        </table>
+        </table> -->
         </div>
         <div class="form-group pull-right mr-3">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/InquiryRead') }}';" id="showDeactivated"> Show read inquiries</label>
@@ -94,13 +94,65 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="card" style="border:1px solid black;">
-        <div class="card-header" style="background:#a70000; color:white;">
-                <b>Advisory</b>
-                <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="You can write your advisory here and it will be displayed on the top section of the website. (Make it short)"><i class="fa fa-question-circle" aria-hidden="true"></i></button>
-        </div>
-        <div class="card-block">
-            <div class="container mt-3 mb-3">
+        <div id="accordion">
+          <div class="card" style="border-color:maroon;">
+            <div class="card-header" id="headingOne" style="background:#a70000; color:white;">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color:white; text-decoration: none">
+                  <b>Inquiries</b>
+                </button>
+
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="All customer inquiries are displayed here. By clicking the view icon you'll be able to view all inquiry information."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+              </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                    <div class="container mt-3">
+                    <table id="example" class="display" cellspacing="0" style="" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Date Inquired</th>
+                            <th>Name</th>
+                            <th>Subject</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($post as $posts)
+                        <tr>
+                            <td>{{ \Carbon\Carbon::parse($posts->created_at)->format('F m,Y')}}</td>
+                            <td>{{ $posts->name }}</td>
+                            <td>{{ $posts->subject }}</td>
+                            <td> 
+                                <a href="{{ url('/InquiryView',$posts->id) }}" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="View Inquiry">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> View Inquiry
+                                </a>
+                            </td>
+                        </tr>
+
+                        @endforeach
+                    </tbody>
+                </table>
+                </div>
+                <div class="form-group pull-right mr-3">
+                    <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='{{ url('/InquiryRead') }}';" id="showDeactivated"> Show read inquiries</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="border-color:maroon;">
+            <div class="card-header" id="headingTwo" style="background:#a70000; color:white;">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="color:white; text-decoration: none">
+                  <b>Make an Advisory</b>
+                </button>
+
+            <button type="button" class="pull-right btn btn-outline-light btn-sm" data-toggle="popover" title="Help" data-html="true" data-content="An advisory created here will be posted on the top part of the website. Make a short one here."><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
                 @if(count($adv)!=0)
                 <form action="{{ url('/AdvisoryUpdate',$adv->id) }}" method="post">
                     {{ csrf_field() }}
@@ -126,11 +178,10 @@
                     </div>
                 </form>
                 @endif
+              </div>
             </div>
+          </div>
         </div>
-        </div>
-        
-
     </div>
 </div>
 
