@@ -35,6 +35,7 @@
   <link href="{{ asset('css/contact.css') }}" rel="stylesheet"> 
   <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
   <link href="{{ asset('css/inputmask.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/tagsinput.css') }}" rel="stylesheet">
   @yield('style')
 </head>
 
@@ -289,7 +290,8 @@
 <script src="{{ asset('vendor/social/dist/js/social-share-kit.js') }}"></script>
 <script src="{{ asset('js/jquery.barrating.min.js') }}"></script>
 <script src="{{ asset('js/jquery-ui.js') }}"></script>
-
+<script src="{{ asset('js/jscolor.js') }}"></script>
+<script src="{{ asset('js/tagsinput.js') }}"></script>
 <script>
   SocialShareKit.init();
 

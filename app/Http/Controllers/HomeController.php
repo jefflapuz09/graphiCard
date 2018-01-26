@@ -17,6 +17,7 @@ use App\Advisory;
 use App\Customer;
 use App\RatingItem;
 use App\userEmployee;
+use App\Package;
 use Validator;
 use Redirect;
 use Carbon\Carbon as Carbon;
@@ -381,5 +382,11 @@ class HomeController extends Controller
     public function order()
     {
         return view('Home.order');
+    }
+
+    public function package()
+    {
+        $post = Package::with('Inclusion')->where('isActive',1)->get();
+        return view('Home.package',compact('post'));
     }
 }

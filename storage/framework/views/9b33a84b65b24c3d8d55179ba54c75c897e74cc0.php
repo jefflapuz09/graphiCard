@@ -35,6 +35,7 @@
   <link href="<?php echo e(asset('css/contact.css')); ?>" rel="stylesheet"> 
   <link href="<?php echo e(asset('css/jquery-ui.css')); ?>" rel="stylesheet">
   <link href="<?php echo e(asset('css/inputmask.min.css')); ?>" rel="stylesheet">
+  <link href="<?php echo e(asset('css/tagsinput.css')); ?>" rel="stylesheet">
   <?php echo $__env->yieldContent('style'); ?>
 </head>
 
@@ -292,7 +293,8 @@
 <script src="<?php echo e(asset('vendor/social/dist/js/social-share-kit.js')); ?>"></script>
 <script src="<?php echo e(asset('js/jquery.barrating.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/jquery-ui.js')); ?>"></script>
-
+<script src="<?php echo e(asset('js/jscolor.js')); ?>"></script>
+<script src="<?php echo e(asset('js/tagsinput.js')); ?>"></script>
 <script>
   SocialShareKit.init();
 

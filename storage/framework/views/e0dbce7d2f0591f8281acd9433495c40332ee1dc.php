@@ -1,5 +1,14 @@
 <?php $__env->startSection('styles'); ?>
 <link href="<?php echo e(asset('css/toastr.css')); ?>" rel="stylesheet">
+<style>
+.btn-sq-lg {
+  width: 200px !important;
+  height: 50px !important;
+  margin-bottom: 20px;  
+}
+
+
+</style>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -43,12 +52,14 @@
             </div>
         </div> 
     <div class="col-lg-6 e">
-            <p class="add-one lead">Package Inclusion <-Please click to add</p> 
+            <div class="btn btn-sq-lg btn-info">
+                <p class="add-one lead"><i class="fa fa-plus"/></i> Package Inclusion</p>
+            </div>
             <table id="example" class="display dynamic" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Quantity</th>
+                        <th style="text-align:right">Quantity</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -65,7 +76,7 @@
                         </select>
                         </td>
                         <td>
-                            <input type="text" class="form-control" name="qty[]" id="inputEmail4" placeholder="Quantity">
+                            <input type="text" class="form-control" name="qty[]" id="inputEmail4" placeholder="Quantity" style="text-align:right">
                         </td>
                         <td><a class="btn btn-sm btn-danger delete" href="#">x</a></td>
                     </tr>      
@@ -90,7 +101,7 @@
           });
         attach_delete();
         $('.add-one').click(function(){
-            table.row.add(["<select  class='select form-control' required id='sel2' name='itemId[]'><?php $__currentLoopData = $pack; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option value='<?php echo e($posts->id); ?>'><?php echo e($posts->name); ?></option><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>", "<input type='text' class='form-control' name='qty[]' placeholder='Quantity'>", "<a class='btn btn-sm btn-danger delete' href='#'>x</a>"]).draw( false );
+            table.row.add(["<select  class='select form-control' required id='sel2' name='itemId[]'><?php $__currentLoopData = $pack; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option value='<?php echo e($posts->id); ?>'><?php echo e($posts->name); ?></option><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>", "<input type='text' class='form-control' name='qty[]' placeholder='Quantity' style='text-align:right'>", "<a class='btn btn-sm btn-danger delete' href='#'>x</a>"]).draw( false );
             
             attach_delete();
           });

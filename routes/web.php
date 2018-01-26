@@ -31,6 +31,7 @@ Route::get('/AllItems','HomeController@allItems');
 Route::get('/FAQs','FAQController@index');
 Route::get('/Order','HomeController@order');
 Route::post('/ReviewStore', 'FeedbackController@review');
+Route::get('/website/package','HomeController@package');
 
 Route::get('/customer/login','HomeController@custLogin');
 Route::get('/customer/register','HomeController@custRegister');
