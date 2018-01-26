@@ -60,7 +60,7 @@
                 <li  style="display: inline-block"><a href="<?php echo e(url('/login')); ?>" style="color:white"><i class="fa fa-shopping-cart"></i> My Cart (0) items</a> | </li>
                 <?php if(Auth::guest()): ?>
                 <li  style="display: inline-block"><i class="fa fa-sign-in"></i> <a href="<?php echo e(url('/customer/login')); ?>" style="color:white"> Login </a> | <a href="<?php echo e(url('/customer/register')); ?>" style="color:white"> Register</a></li>
-                <?php elseif(Auth::check()): ?>
+                <?php elseif(Auth::check()&&count(Auth::user()->Employee)): ?>
                 <li  style="display: inline-block"><i class="fa fa-user"></i> <a href="<?php echo e(route('logout')); ?>" style="color:white"> Hi ADMIN </a></li>
                 <?php else: ?>
                 <li  style="display: inline-block"><i class="fa fa-user"></i> <a href="<?php echo e(route('logout')); ?>" style="color:white"> Hi <?php echo e(Auth::user()->Customer->firstName); ?> </a></li>

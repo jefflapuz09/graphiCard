@@ -60,7 +60,7 @@
                 <li  style="display: inline-block"><a href="{{ url('/login') }}" style="color:white"><i class="fa fa-shopping-cart"></i> My Cart (0) items</a> | </li>
                 @if(Auth::guest())
                 <li  style="display: inline-block"><i class="fa fa-sign-in"></i> <a href="{{ url('/customer/login') }}" style="color:white"> Login </a> | <a href="{{ url('/customer/register') }}" style="color:white"> Register</a></li>
-                @elseif(Auth::check())
+                @elseif(Auth::check()&&count(Auth::user()->Employee))
                 <li  style="display: inline-block"><i class="fa fa-user"></i> <a href="{{ route('logout') }}" style="color:white"> Hi ADMIN </a></li>
                 @else
                 <li  style="display: inline-block"><i class="fa fa-user"></i> <a href="{{ route('logout') }}" style="color:white"> Hi {{Auth::user()->Customer->firstName}} </a></li>

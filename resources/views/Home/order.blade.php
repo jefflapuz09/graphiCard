@@ -17,13 +17,15 @@
             <p class="lead text-primary">Product Specification</p>
             <div class="row">
                 <div class="col-sm-4">
-                    @foreach($item->Attributes as $attribute)
+                    @foreach($post->Attributes as $attribute)
                     {{$attribute->attributeName}}
-                    @endforeach
+                    @endforeach<br><br>
+                    <label class="control-label" for="att">Quantity:</label>
+                    <input type="number" class="form-control-a mt-3" style="" id="qty"> 
                 </div>
                 <div class="col-sm-8">
-                    <select class="select2"> 
-                    @foreach($item->Attributes as $attribute)
+                    <select class="select2" id="att"> 
+                    @foreach($post->Attributes as $attribute)
                     <?php $array = explode(',',$attribute->choiceDescription);?>
                     @foreach($array as $a)
                     <option> {{$a}} </option>
@@ -36,7 +38,7 @@
             <div class="mt-5">
                  <div class="form-group">
                 <label for="" class="">Order Description:</label>
-                <textarea class="form-control" rows="5" placeholder="Type your job description here. Such as what date do you need it?" name="description" id="desc"></textarea>
+                <textarea class="form-control" rows="5" id="jobDesc" placeholder="Type your job description here. Such as what date do you need it?" name="description"></textarea>
                 </div>
             </div>
             </div>
@@ -58,12 +60,10 @@
             <div class="card bg-faded">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        &emsp;<input type="radio" class="form-check-input" name="optionsRadios">
-                            Pick-up
+                        &emsp;<label name="optionsRadios"><input type="radio" class="form-check-input" name="optionsRadios">Pick-up</label>
                     </li>
                     <li class="list-group-item">
-                            &emsp;<input type="radio" class="form-check-input" name="optionsRadios" checked>
-                            Courier
+                        &emsp;<label name="optionsRadios"><input type="radio" class="form-check-input" name="optionsRadios" checked>Courier</label>
                     </li>
                 </ul>
             </div>
@@ -102,12 +102,47 @@
                     @endif
                 </div>
                 <div class="card col-sm-4">
-                    <button type="button" class="mt-5 btn btn-danger btn-lg">Add to Cart</button>
+                    <button type="button" id="modal" data-toggle="modal" data-target="#myModal" class="mt-5 btn btn-danger btn-lg">Add to Cart</button>
                </div>
             </div>
        </div>
     </div class="row">
 </div>
+
+{{--  modal  --}}
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Product Order</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                <p class="lead">
+                    Product Type: {{$post2->name}}<br>
+                    @foreach($post2->item as $item)Product Variant: {{$item->name}}@endforeach
+                    <br>
+                    @foreach($post2->Attributes as $attribute)
+                    {{$attribute->attributeName}}:
+                    @endforeach
+                    <span id="sizeName"></span><br>
+                    Quantity: <span id="quan"></span>
+                    <br><br>
+                    Job Order Description:<br>
+                    <span id="job"></span>
+                    <br>
+                    Delivery Option:<br> <span id="delivery"></span>
+                </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
     
 @endsection
 
@@ -131,6 +166,17 @@
                 theme: 'fontawesome-stars',
                 readonly: true
                 });
+
+                $('#modal').on('click',function(){
+                    var x = $('#att option:selected').text();
+                    $('#sizeName').text(x);
+                    var y = $("input[name='optionsRadios']:checked").parent('label').text();
+                    $('#delivery').text(y);
+                    var z = $('#jobDesc').val();
+                    $('#job').text(z);
+                    var a = $('#qty').val();
+                    $('#quan').text(a);
+                })
             });
     </script>
 @stop

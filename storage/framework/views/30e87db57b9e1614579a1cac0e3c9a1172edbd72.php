@@ -15,14 +15,16 @@
             <p class="lead text-primary">Product Specification</p>
             <div class="row">
                 <div class="col-sm-4">
-                    <?php $__currentLoopData = $item->Attributes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $post->Attributes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php echo e($attribute->attributeName); ?>
 
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><br><br>
+                    <label class="control-label" for="att">Quantity:</label>
+                    <input type="number" class="form-control-a mt-3" style="" id="qty"> 
                 </div>
                 <div class="col-sm-8">
-                    <select class="select2"> 
-                    <?php $__currentLoopData = $item->Attributes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <select class="select2" id="att"> 
+                    <?php $__currentLoopData = $post->Attributes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php $array = explode(',',$attribute->choiceDescription);?>
                     <?php $__currentLoopData = $array; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option> <?php echo e($a); ?> </option>
@@ -35,7 +37,7 @@
             <div class="mt-5">
                  <div class="form-group">
                 <label for="" class="">Order Description:</label>
-                <textarea class="form-control" rows="5" placeholder="Type your job description here. Such as what date do you need it?" name="description" id="desc"></textarea>
+                <textarea class="form-control" rows="5" id="jobDesc" placeholder="Type your job description here. Such as what date do you need it?" name="description"></textarea>
                 </div>
             </div>
             </div>
@@ -57,12 +59,10 @@
             <div class="card bg-faded">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        &emsp;<input type="radio" class="form-check-input" name="optionsRadios">
-                            Pick-up
+                        &emsp;<label name="optionsRadios"><input type="radio" class="form-check-input" name="optionsRadios">Pick-up</label>
                     </li>
                     <li class="list-group-item">
-                            &emsp;<input type="radio" class="form-check-input" name="optionsRadios" checked>
-                            Courier
+                        &emsp;<label name="optionsRadios"><input type="radio" class="form-check-input" name="optionsRadios" checked>Courier</label>
                     </li>
                 </ul>
             </div>
@@ -101,12 +101,47 @@
                     <?php endif; ?>
                 </div>
                 <div class="card col-sm-4">
-                    <button type="button" class="mt-5 btn btn-danger btn-lg">Add to Cart</button>
+                    <button type="button" id="modal" data-toggle="modal" data-target="#myModal" class="mt-5 btn btn-danger btn-lg">Add to Cart</button>
                </div>
             </div>
        </div>
     </div class="row">
 </div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Product Order</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                <p class="lead">
+                    Product Type: <?php echo e($post2->name); ?><br>
+                    <?php $__currentLoopData = $post2->item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>Product Variant: <?php echo e($item->name); ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <br>
+                    <?php $__currentLoopData = $post2->Attributes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php echo e($attribute->attributeName); ?>:
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <span id="sizeName"></span><br>
+                    Quantity: <span id="quan"></span>
+                    <br><br>
+                    Job Order Description:<br>
+                    <span id="job"></span>
+                    <br>
+                    Delivery Option:<br> <span id="delivery"></span>
+                </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
     
 <?php $__env->stopSection(); ?>
 
@@ -130,6 +165,17 @@
                 theme: 'fontawesome-stars',
                 readonly: true
                 });
+
+                $('#modal').on('click',function(){
+                    var x = $('#att option:selected').text();
+                    $('#sizeName').text(x);
+                    var y = $("input[name='optionsRadios']:checked").parent('label').text();
+                    $('#delivery').text(y);
+                    var z = $('#jobDesc').val();
+                    $('#job').text(z);
+                    var a = $('#qty').val();
+                    $('#quan').text(a);
+                })
             });
     </script>
 <?php $__env->stopSection(); ?>

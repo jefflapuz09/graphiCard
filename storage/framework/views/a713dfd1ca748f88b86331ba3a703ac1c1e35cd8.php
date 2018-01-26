@@ -3,7 +3,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contents'); ?>
-<div class="container-fluid" style="margin-top:100px; background:; padding:20px; background-image: url('<?php echo e(asset('img/grey-pattern.jpg')); ?>');">
+<div class="container-fluid" style="margin-top:100px; background:; padding:20px; background-image: url('<?php echo e(asset('img/bg-pattern2.png')); ?>');">
 
   <!-- <div class="row">
     <div class="col-md-4">
@@ -18,18 +18,21 @@
   <div class="row">
     <?php if(count($comp)!=0): ?>
     <div class="card-body rgba-grey-slight z-depth-2" >
-    <div class="col-md-8">
-      <h3 class="my-3"><b>About Us</b></h3> 
+    <div class="col-md-8" style="max-width:800px">
+      <h3 class="my-3" style="font-family: 'Lato', sans-serif; font-weight:bold; color:black"><b>About Us</b></h3> 
       <?php echo $comp->about ?>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
     </div>
     <?php else: ?>
-    <div class="col-md-8">
+    <div class="card-body rgba-grey-slight z-depth-2" >
+    <div class="col-md-8" style="max-width:800px">
         <h3 class="my-3">About Us</h3> 
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <h3 class="my-3">Our History</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
+    </div>
     <?php endif; ?>
     
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
@@ -37,7 +40,7 @@
       <div class="card-body red darken-4 z-depth-2" >
           <!-- Form contact -->
           <form method="post" action="<?php echo e(url('/InquirySend')); ?>">
-              <h2 class="text-center py-4 font-bold font-up white-text">Inquiry Form</h2>
+              <h2 class="text-center py-4" style="font-family: 'Oleo Script'; color:white">Inquiry Form</h2>
               <?php echo e(csrf_field()); ?>
 
               <div class="md-form">

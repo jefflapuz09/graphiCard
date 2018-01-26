@@ -33,7 +33,10 @@ class OrderController extends Controller
         $post = ServiceType::with(['item' => function($query) use($itemid) {
             $query->where('id', $itemid);},'post' => function($query) use($itemid) {
                 $query->where('itemId', $itemid);}])->find($id);
-        return view('Home.order',compact('post'));
+        $post2 = ServiceType::with(['item' => function($query) use($itemid) {
+            $query->where('id', $itemid);},'post' => function($query) use($itemid) {
+                $query->where('itemId', $itemid);}])->find($id);        
+        return view('Home.order',compact('post','post2'));
     }
     /**
      * Store a newly created resource in storage.
