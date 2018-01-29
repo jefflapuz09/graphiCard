@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePackageInclusionsTable extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreatePackageInclusionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('package_inclusions', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('packId')->unsigned();	
-            $table->foreign('packId')->references('id')->on('packages');
-            $table->integer('itemId')->unsigned();	
-            $table->foreign('itemId')->references('id')->on('service_items');
-            $table->integer('qty');
+            $table->integer('customerId')->unsigned();	
+            $table->foreign('customerId')->references('id')->on('customers');
+            $table->text('remarks')->nullable();	
+            $table->string('receivedBy')->nullable();
+            $table->decimal('price',15,2)->nullable();
+            $table->integer('status');
             $table->boolean('isActive')->default(1);
             $table->timestamps();
         });
@@ -33,6 +34,6 @@ class CreatePackageInclusionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('package_inclusions');
+        Schema::dropIfExists('orders');
     }
 }

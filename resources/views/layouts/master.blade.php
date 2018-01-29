@@ -65,7 +65,7 @@
                 <li  style="display: inline-block"><a href="{{ url('/login') }}" style="color:white"><i class="fa fa-user"></i> My Account </a> | </li>
                 @endif
 
-                <li  style="display: inline-block"><a href="{{ url('/') }}" style="color:white"><i class="fa fa-shopping-cart"></i> My Cart (0) items</a> | </li>
+                <li  style="display: inline-block"><a href="{{ url('/customer/cart/view') }}" style="color:white"><i class="fa fa-shopping-cart"></i> My Cart ({{Cart::count()}}) items</a> | </li>
 
                 @if(Auth::guest())
                 <li  style="display: inline-block"><i class="fa fa-sign-in"></i> <a href="{{ url('/customer/login') }}" style="color:white"> Login </a> | <a href="{{ url('/customer/register') }}" style="color:white"> Register</a></li>

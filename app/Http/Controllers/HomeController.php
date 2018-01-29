@@ -20,9 +20,12 @@ use App\userEmployee;
 use App\Package;
 use Validator;
 use Redirect;
+use App\Order;
+use App\OrderRequest;
 use Carbon\Carbon as Carbon;
 use Hash;
 use Illuminate\Validation\Rule;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class HomeController extends Controller
 {
@@ -388,5 +391,75 @@ class HomeController extends Controller
     {
         $post = Package::with('Inclusion')->where('isActive',1)->get();
         return view('Home.package',compact('post'));
+    }
+
+    public function cart(Request $request, $id, $itemid)
+    {
+        $post = ServiceType::with(['item' => function($query) use($itemid) {
+            $query->where('id', $itemid);},'post' => function($query) use($itemid) {
+                $query->where('itemId', $itemid);}])->find($id);
+        //Cart::add(['id'=>$ctr,'name'=>$variant,'qty'=>$qty,'price'=>'0']);
+        
+        foreach($post->item as $items)
+        {
+
+        }
+        
+        $array = array(['customerId'=>$request->custId, 'qty'=>$request->qty, 'remarks'=>$request->jobDesc]);
+        foreach($array as $a)
+        {
+            $remarks = session()->put('jobOrder',$a['remarks']);
+        }
+        
+        $jobDesc = $request->jobDesc;
+        $attributeName = $request->attributeName;
+        $choice = $request->choiceDesc;
+        Cart::add(['id'=>$items->id,'name'=>$items->name,'qty'=>$request->qty,'price'=>'0','options'=>['description'=>$jobDesc,'attributeName'=>$attributeName,'choice'=>$choice]]);
+        // return redirect('/customer/cart/view',compact('customerId','qty','remarks'));
+        return redirect('/customer/cart/view');
+    }
+
+    public function viewcart()
+    {
+
+        $post = Cart::content();
+        return view('Home.cart',compact('post'));
+    }
+
+    public function removecart($id)
+    {
+        $rowId = $id;
+        Cart::remove($rowId);
+        return redirect('/customer/cart/view');
+    }
+
+    public function checkout(Request $request)
+    {
+        $custId = $request->customerId;
+        $remarks = $request->remarks;
+        $qty = $request->qty;
+        $jobOrder = $request->description;
+        $item = $request->item;
+        $spec = $request->spec;
+
+        $data =  Order::create([
+            'customerId' => $custId,
+            'remarks' => $remarks,
+            'status' => 0
+        ]);
+        $index = 0;
+        foreach($item as $itemp)
+        {
+            OrderRequest::create([
+                'orderId' => $data->id,
+                'itemName' => $itemp,
+                'quantity' => $qty[$index],
+                'orderDescription' => $spec,
+                'remarks' => $jobOrder[$index]
+            ]);
+            $index++;
+        }
+
+        return redirect('/customer/cart/view');
     }
 }

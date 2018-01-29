@@ -12,12 +12,12 @@
              </div>
              <?php if($errors->any()): ?>
                  <script type="text/javascript">
-                     toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong")
+                     toastr.error(' <?php echo implode('', $errors->all(':message')) ?>', "There's something wrong!")
                  </script>      
              <?php endif; ?>  
              <?php if(session('error')): ?>
                  <script type="text/javascript">
-                     toastr.error(' <?php echo session('error'); ?>', "There's something wrong")
+                     toastr.error(' <?php echo session('error'); ?>', "There's something wrong!")
                  </script>
              <?php endif; ?> 
     <div class="row">

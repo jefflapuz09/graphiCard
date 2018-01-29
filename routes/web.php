@@ -33,6 +33,11 @@ Route::get('/Order','HomeController@order');
 Route::post('/ReviewStore', 'FeedbackController@review');
 Route::get('/website/package','HomeController@package');
 
+Route::post('/customer/cart/{id}/{itemid}','HomeController@cart');
+Route::get('/customer/cart/view','HomeController@viewcart');
+Route::get('/customer/cart/{id}/remove','HomeController@removecart');
+Route::post('/customer/cart/checkout','HomeController@checkout');
+
 Route::get('/customer/login','HomeController@custLogin');
 Route::get('/customer/register','HomeController@custRegister');
 Route::post('/customer/register/post','customerController@storeweb');

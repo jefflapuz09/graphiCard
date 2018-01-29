@@ -1,15 +1,29 @@
 <?php $__env->startSection('contents'); ?>
 
 <div class="container mt-5" >
+    <?php $__currentLoopData = $post->item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemq): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+ 
+    <form action="<?php echo e(url('/customer/cart/'.$post->id.'/'.$itemq->id)); ?>" method="post">
     <div class="col-sm-12 card bg-dark p-1 mb-0" style="margin-top:70px;">
         <p class="lead text-white mt-2 ml-5"><?php echo e($post->name); ?></p>
     </div>
     <hr class="colorgraph">
     <div class="row">
+            <?php echo e(csrf_field()); ?>
+
         <div class="col-sm-8 card mb-0" >
             <div class="m-3">
                 <?php $__currentLoopData = $post->item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <h5 class="mt-3"> Variant:  <?php echo e($item->name); ?> </h5>
+            <h5 class="mt-3"> Variant:</h5> 
+            <select class="form-control-a select2">
+                <?php $__currentLoopData = $variant; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $var): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>  
+                    <option value="<?php echo e($var->id); ?>" <?php if($var->id == $item->id): ?> selected="selected" <?php endif; ?>><?php echo e($var->name); ?></option>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </select>
+            <input type="hidden" name="variant" value="<?php echo e($item->id); ?>"/>
+            <input type="hidden" name="custId" value="<?php echo e(Auth::user()->Customer->id); ?>"/>
             <hr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <p class="lead text-primary">Product Specification</p>
@@ -18,16 +32,17 @@
                     <?php $__currentLoopData = $post->Attributes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php echo e($attribute->attributeName); ?>
 
+                    <input type="hidden" value="<?php echo e($attribute->attributeName); ?>" name="attributeName">
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><br><br>
                     <label class="control-label" for="att">Quantity:</label>
-                    <input type="number" class="form-control-a mt-3" style="" id="qty"> 
+                    <input type="number" required class="form-control-a mt-3" style="" id="qty" name="qty"> 
                 </div>
                 <div class="col-sm-8">
-                    <select class="select2" id="att"> 
+                    <select class="select2" id="att" name="choiceDesc"> 
                     <?php $__currentLoopData = $post->Attributes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php $array = explode(',',$attribute->choiceDescription);?>
                     <?php $__currentLoopData = $array; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option> <?php echo e($a); ?> </option>
+                    <option value="<?php echo e($a); ?>"> <?php echo e($a); ?> </option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                    
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -37,7 +52,7 @@
             <div class="mt-5">
                  <div class="form-group">
                 <label for="" class="">Order Description:</label>
-                <textarea class="form-control" rows="5" id="jobDesc" placeholder="Type your job description here. Such as what date do you need it?" name="description"></textarea>
+                <textarea class="form-control" required rows="5" id="jobDesc" placeholder="Type your job description here. Such as what date do you need it?" name="jobDesc"></textarea>
                 </div>
             </div>
             </div>
@@ -51,13 +66,11 @@
                                 <input type="radio" class="form-check-input" checked value="2" name="choice">Upload your own Design
                         </li>
                 </ul>
-            <form>
             <div class="form-group d-none" id="upload" style="margin-top:10px; border:1px solid black; padding:10px" >
                 <center><img class="img-responsive" id="pic" src="<?php echo e(URL::asset('img/grey-pattern.png')); ?>" style="max-width:300px; background-size: contain" /></center>
                 <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
                 <input type="file" class="form-control-file" name="image" onChange="readURL(this)" id="exampleInputFile" aria-describedby="fileHelp">
             </div>
-            </form>
             <div id="colorpickdiv">
                 <div class="container mt-5">
                     <input type="text" class="form-control-a jscolor"  id="colorpick" onkeypress="return runScript(this.jscolor,event)" onchange="update(this.jscolor)" value="7A0000" name="choiceDescription" placeholder="Separated by comma">
@@ -121,44 +134,49 @@
                </div>
             </div>
        </div>
-    </div class="row">
-</div>
+    </div>
 
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header" style="background:darkred;">
-          <h5 class="modal-title text-white" id="exampleModalLabel">Product Order</h5>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-                <hr class="colorgraph">
-                <p class="lead">
-                    Product Type: <?php echo e($post2->name); ?><br>
-                    <?php $__currentLoopData = $post2->item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>Product Variant: <?php echo e($item->name); ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    <br>
-                    <?php $__currentLoopData = $post2->Attributes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <?php echo e($attribute->attributeName); ?>:
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    <span id="sizeName"></span><br>
-                    Quantity: <span id="quan"></span>
-                    <br><br>
-                    Job Order Description:<br>
-                    <span id="job"></span>
-                    <br>
-                    Delivery Option:<br> <span id="delivery"></span>
-                </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="background:darkred;">
+              <h5 class="modal-title text-white" id="exampleModalLabel">Product Order</h5>
+              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <hr class="colorgraph">
+                    <p class="lead">
+                        Product Type: <?php echo e($post2->name); ?><br>
+                        <?php $__currentLoopData = $post2->item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>Product Variant: <?php echo e($item->name); ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <br>
+                        <?php $__currentLoopData = $post2->Attributes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php echo e($attribute->attributeName); ?>:
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <span id="sizeName"></span><br>
+                        Quantity: <span id="quan"></span>
+                        <br><br>
+                        Job Order Description:<br>
+                        <span id="job"></span>
+                        <br>
+                        Delivery Option:<br> <span id="delivery"></span>
+                    </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+      
+
+</form>
+</div>
+
+
     
 <?php $__env->stopSection(); ?>
 

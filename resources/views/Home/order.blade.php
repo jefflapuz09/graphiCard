@@ -3,15 +3,28 @@
 @section('contents')
 
 <div class="container mt-5" >
+    @foreach($post->item as $itemq)
+
+    @endforeach
+ 
+    <form action="{{ url('/customer/cart/'.$post->id.'/'.$itemq->id) }}" method="post">
     <div class="col-sm-12 card bg-dark p-1 mb-0" style="margin-top:70px;">
         <p class="lead text-white mt-2 ml-5">{{$post->name}}</p>
     </div>
     <hr class="colorgraph">
     <div class="row">
+            {{ csrf_field() }}
         <div class="col-sm-8 card mb-0" >
             <div class="m-3">
                 @foreach($post->item as $item)
-            <h5 class="mt-3"> Variant:  {{ $item->name }} </h5>
+            <h5 class="mt-3"> Variant:</h5> 
+            <select class="form-control-a select2">
+                @foreach($variant as $var)  
+                    <option value="{{$var->id}}" @if($var->id == $item->id) selected="selected" @endif>{{$var->name}}</option>
+                @endforeach
+            </select>
+            <input type="hidden" name="variant" value="{{$item->id}}"/>
+            <input type="hidden" name="custId" value="{{Auth::user()->Customer->id}}"/>
             <hr>
                 @endforeach
             <p class="lead text-primary">Product Specification</p>
@@ -19,16 +32,17 @@
                 <div class="col-sm-4">
                     @foreach($post->Attributes as $attribute)
                     {{$attribute->attributeName}}
+                    <input type="hidden" value="{{$attribute->attributeName}}" name="attributeName">
                     @endforeach<br><br>
                     <label class="control-label" for="att">Quantity:</label>
-                    <input type="number" class="form-control-a mt-3" style="" id="qty"> 
+                    <input type="number" required class="form-control-a mt-3" style="" id="qty" name="qty"> 
                 </div>
                 <div class="col-sm-8">
-                    <select class="select2" id="att"> 
+                    <select class="select2" id="att" name="choiceDesc"> 
                     @foreach($post->Attributes as $attribute)
                     <?php $array = explode(',',$attribute->choiceDescription);?>
                     @foreach($array as $a)
-                    <option> {{$a}} </option>
+                    <option value="{{$a}}"> {{$a}} </option>
                     @endforeach
                    
                     @endforeach
@@ -38,7 +52,7 @@
             <div class="mt-5">
                  <div class="form-group">
                 <label for="" class="">Order Description:</label>
-                <textarea class="form-control" rows="5" id="jobDesc" placeholder="Type your job description here. Such as what date do you need it?" name="description"></textarea>
+                <textarea class="form-control" required rows="5" id="jobDesc" placeholder="Type your job description here. Such as what date do you need it?" name="jobDesc"></textarea>
                 </div>
             </div>
             </div>
@@ -52,13 +66,11 @@
                                 <input type="radio" class="form-check-input" checked value="2" name="choice">Upload your own Design
                         </li>
                 </ul>
-            <form>
             <div class="form-group d-none" id="upload" style="margin-top:10px; border:1px solid black; padding:10px" >
                 <center><img class="img-responsive" id="pic" src="{{ URL::asset('img/grey-pattern.png')}}" style="max-width:300px; background-size: contain" /></center>
                 <b><label style="margin-top:20px;" for="exampleInputFile">Photo Upload</label></b>
                 <input type="file" class="form-control-file" name="image" onChange="readURL(this)" id="exampleInputFile" aria-describedby="fileHelp">
             </div>
-            </form>
             <div id="colorpickdiv">
                 <div class="container mt-5">
                     <input type="text" class="form-control-a jscolor"  id="colorpick" onkeypress="return runScript(this.jscolor,event)" onchange="update(this.jscolor)" value="7A0000" name="choiceDescription" placeholder="Separated by comma">
@@ -122,44 +134,49 @@
                </div>
             </div>
        </div>
-    </div class="row">
-</div>
+    </div>
 
 {{--  modal  --}}
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header" style="background:darkred;">
-          <h5 class="modal-title text-white" id="exampleModalLabel">Product Order</h5>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-                <hr class="colorgraph">
-                <p class="lead">
-                    Product Type: {{$post2->name}}<br>
-                    @foreach($post2->item as $item)Product Variant: {{$item->name}}@endforeach
-                    <br>
-                    @foreach($post2->Attributes as $attribute)
-                    {{$attribute->attributeName}}:
-                    @endforeach
-                    <span id="sizeName"></span><br>
-                    Quantity: <span id="quan"></span>
-                    <br><br>
-                    Job Order Description:<br>
-                    <span id="job"></span>
-                    <br>
-                    Delivery Option:<br> <span id="delivery"></span>
-                </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="background:darkred;">
+              <h5 class="modal-title text-white" id="exampleModalLabel">Product Order</h5>
+              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <hr class="colorgraph">
+                    <p class="lead">
+                        Product Type: {{$post2->name}}<br>
+                        @foreach($post2->item as $item)Product Variant: {{$item->name}}@endforeach
+                        <br>
+                        @foreach($post2->Attributes as $attribute)
+                        {{$attribute->attributeName}}:
+                        @endforeach
+                        <span id="sizeName"></span><br>
+                        Quantity: <span id="quan"></span>
+                        <br><br>
+                        Job Order Description:<br>
+                        <span id="job"></span>
+                        <br>
+                        Delivery Option:<br> <span id="delivery"></span>
+                    </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+      {{--  endofmodal  --}}
+
+</form>
+</div>
+
+
     
 @endsection
 
