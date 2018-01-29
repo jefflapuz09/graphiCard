@@ -728,18 +728,6 @@ padding-bottom: 1rem;
   margin:0 auto;
 }
 
-/*input[type="text"] {
-  margin-bottom: 0px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-input[type="password"] {
-  margin-bottom: 20px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}*/
-
 .colorgraph {
   height: 7px;
   border-top: 0;
@@ -794,4 +782,39 @@ input[type="password"] {
 .new-btn.disabled, .new-btn:disabled {
   color: #868e96;
   background-color: transparent;
+}
+
+.btn-a-1 {
+  color: #272626;
+  background-color: transparent;
+  background-image: none;
+  border-color: #272626;
+}
+
+.btn-a-1:hover {
+  color: white;
+  background-color: #f72028;
+  border-color: black;
+}
+
+.btn-a-1:focus, .btn-a-1.focus {
+  box-shadow: 0 0 0 0.2rem rgba(134, 142, 150, 0.5);
+}
+
+.btn-a-1.disabled, .btn-a-1:disabled {
+  color: #868e96;
+  background-color: transparent;
+}
+
+.crumb-link{
+  text-decoration: none;
+  color:black;
+  font-size: 9pt;
+  font-weight: bold;
+}
+
+.crumb-link a{
+  text-decoration: none;
+  color:black;
+  font-size: 9pt;
 }
