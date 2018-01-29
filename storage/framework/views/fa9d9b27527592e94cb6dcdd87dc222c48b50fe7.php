@@ -57,8 +57,16 @@
           <div class="col-md-6 col-sm-6">
             <div class="links  pull-right">
               <ul>
+                <?php if(Auth::guest()): ?>
+                <li  style="display: inline-block"><a href="<?php echo e(url('/customer/login')); ?>" style="color:white"><i class="fa fa-user"></i> My Account </a> | </li>
+                <?php elseif(Auth::check()&&count(Auth::user()->Employee)): ?>
                 <li  style="display: inline-block"><a href="<?php echo e(url('/login')); ?>" style="color:white"><i class="fa fa-user"></i> My Account </a> | </li>
-                <li  style="display: inline-block"><a href="<?php echo e(url('/login')); ?>" style="color:white"><i class="fa fa-shopping-cart"></i> My Cart (0) items</a> | </li>
+                <?php else: ?>
+                <li  style="display: inline-block"><a href="<?php echo e(url('/login')); ?>" style="color:white"><i class="fa fa-user"></i> My Account </a> | </li>
+                <?php endif; ?>
+
+                <li  style="display: inline-block"><a href="<?php echo e(url('/')); ?>" style="color:white"><i class="fa fa-shopping-cart"></i> My Cart (0) items</a> | </li>
+
                 <?php if(Auth::guest()): ?>
                 <li  style="display: inline-block"><i class="fa fa-sign-in"></i> <a href="<?php echo e(url('/customer/login')); ?>" style="color:white"> Login </a> | <a href="<?php echo e(url('/customer/register')); ?>" style="color:white"> Register</a></li>
                 <?php elseif(Auth::check()&&count(Auth::user()->Employee)): ?>
@@ -109,7 +117,7 @@
             </li>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo e(url('/about')); ?>"> Packages</a>
+              <a class="nav-link" href="<?php echo e(url('/website/package')); ?>"> Packages</a>
             </li>
             <li class="nav-item">   
               <li class="nav-item dropdown">

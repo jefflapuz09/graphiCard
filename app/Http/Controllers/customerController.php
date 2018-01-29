@@ -82,7 +82,8 @@ class customerController extends Controller
         $validator = Validator::make($request->all(),$rules,$messages);
         $validator->setAttributeNames($niceNames); 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            // return Redirect::back()->withErrors($validator)->withInput();
+            return Redirect::back()->withErrors("Fields with (*) are required.");
         }
         else{
             $cpass = $request->password_confirmation;
@@ -116,7 +117,7 @@ class customerController extends Controller
                     $errMess = $e->getMessage();
                     return Redirect::back()->withError($errMess);
                 }
-                return redirect('/customer/register')->withSuccess('Successfully inserted into the database.');
+                return redirect('/customer/login')->withSuccess('Successfully created account. You may now log in to your account.');
             }
             else
             {
@@ -161,7 +162,8 @@ class customerController extends Controller
         $validator = Validator::make($request->all(),$rules,$messages);
         $validator->setAttributeNames($niceNames); 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            // return Redirect::back()->withErrors($validator)->withInput();
+            return Redirect::back()->withErrors("Fields with (*) are required.");
         }
         else{
             $cpass = $request->password_confirmation;
@@ -195,7 +197,7 @@ class customerController extends Controller
                     $errMess = $e->getMessage();
                     return Redirect::back()->withError($errMess);
                 }
-                return redirect('/Customer')->withSuccess('Successfully inserted into the database.');
+                return redirect('/customer/login')->withSuccess('Successfully created account. You may now log in to your account.');
             }
             else
             {
