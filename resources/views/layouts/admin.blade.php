@@ -129,6 +129,12 @@
               <span class="nav-link-text">Post</span>
             </a>
           </li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Post">
+            <a class="nav-link" href="{{ url('/orders') }}">
+              <i class="fa fa-book"></i>
+              <span class="nav-link-text">Orders</span>
+            </a>
+          </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Customers">
             <a class="nav-link" href="{{ url('/Customer') }}">
               <i class="fa fa-users"></i>
