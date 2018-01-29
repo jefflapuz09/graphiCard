@@ -27,17 +27,15 @@
             <table id="example" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Date Inquired</th>
                             <th>Name</th>
                             <th>Subject</th>
-                            <th>Actions</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td><?php echo e($posts->id); ?></td>
                             <td><?php echo e(\Carbon\Carbon::parse($posts->created_at)->format('F m,Y')); ?></td>
                             <td><?php echo e($posts->name); ?></td>
                             <td><?php echo e($posts->subject); ?></td>

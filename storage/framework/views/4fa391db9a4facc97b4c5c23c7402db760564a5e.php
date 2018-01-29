@@ -233,7 +233,7 @@
                 New User
               </a>
             </div>
-            <table id="example" class="display" cellspacing="0" width="100%">
+            <table id="" class="display dtable" cellspacing="0" width="100%">
               <thead>
                 <th width="200px">Name</th>
                 <th>Email</th>
@@ -243,13 +243,19 @@
               <tbody>
                 <?php $__currentLoopData = $userinfo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
-                  <td><?php echo e($user->name); ?></td>
+                  <td><?php if(count($user->Employee)!=0): ?><?php echo e($user->Employee->firstName); ?> <?php echo e($user->Employee->middleNmae); ?> <?php echo e($user->Employee->lastName); ?>
+
+                      <?php elseif(count($user->Customer)!=0): ?> <?php echo e($user->Customer->firstName); ?> <?php echo e($user->Customer->middleNmae); ?> <?php echo e($user->Customer->lastName); ?>
+
+                    <?php endif; ?></td>
                   <td><?php echo e($user->email); ?></td>
                   <td>
                     <?php if($user->role==1): ?>
                     Administrator
                     <?php elseif($user->role==2): ?>
                     Contributor
+                    <?php else: ?> 
+                    Customer
                     <?php endif; ?>
                   </td>
                   <td>
@@ -352,22 +358,22 @@
                 New FAQs
               </a>
             </div>
-            <table id="example" class="display" cellspacing="0" width="100%">
+            <table id="FAQ" class="display dtable" cellspacing="0" width="100%">
               <thead>
                 <th width="200px">Question</th>
                 <th>Answer</th>
-                <th class="pull-right">Actions</th>
+                <th>Actions</th>
               </thead>
               <tbody>
                 <?php $__currentLoopData = $faqs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $f): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
                   <td><?php echo e($f->question); ?></td>
                   <td><?php echo  $f->answer ?></td>
-                  <td class="pull-right">
-                    <a href="<?php echo e(url('/UserEdit')); ?>" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
+                  <td class="">
+                    <a href="<?php echo e(url('/FAQUpdate/'.$f->id)); ?>" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
-                    <a href="<?php echo e(url('/UserDeactivate')); ?>"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
+                    <a href="<?php echo e(url('/FAQDeactivate/'.$f->id)); ?>"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
                       <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>    
                   </td>
@@ -377,7 +383,7 @@
               </tbody>
             </table>
             <div class="form-group pull-right">
-              <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/UserSoft')); ?>';" id="showDeactivated"> Show deactivated records</label>
+              <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/FAQSoft')); ?>';" id="showDeactivated"> Show deactivated records</label>
             </div>
           </div>
         </div>
@@ -389,6 +395,13 @@
 
 <script src="<?php echo e(url('vendor/tinymce/js/tinymce/tinymce.min.js')); ?>"></script>
 <script>
+    $(document).ready(function() {
+      $('.dtable').DataTable( {
+  
+        responsive: true
+    } );
+
+    });
 
   function updateForm(){
     var x = confirm("Are you sure you want to alter this record?");
