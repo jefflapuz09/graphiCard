@@ -188,6 +188,9 @@ Route::post('/PackageStore','PackageController@store');
 Route::post('/PackageEdit/{id}','PackageController@update');
 
 //order
+Route::get('/orders','OrderController@index');
+
+//Attribute
 Route::get('/Attribute','itemAttributesController@index');
 Route::get('/AttributeCreate','itemAttributesController@create');
 Route::get('/AttributeUpdate/{id}','itemAttributesController@edit');

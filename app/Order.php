@@ -16,4 +16,12 @@ class Order extends Model
         'status',
         'isActive'
     ];
+
+    public function Request(){
+        return $this->hasMany('App\OrderRequest','orderId');
+    }
+
+    public function Customer(){
+        return $this->belongsTo('App\Customer','customerId');
+    }
 }

@@ -31,7 +31,6 @@
                 <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Customer Name</th>
                                 <th>Items - Quantity</th>
                                 <th>Date Ordered</th>
@@ -41,21 +40,22 @@
                         </thead>
                         <tbody>
                         @foreach ($post as $posts)
-                            <!-- <tr>
-                                <td>{{ $posts->category }}</td>
-                                <td>{{ $posts->name }}</td>
-                                <td>{{ $posts->description }}</td>
-                                <td> 
-                                        <a href="{{ url('/ServiceTypeUpdate', $posts->id) }}" onclick="return updateForm()" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="{{ url('/ServiceTypeDeac', $posts->id) }}"  onclick="return deleteForm()" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deactivate record">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </a>
-                                 
+                            <tr>
+                                <td>{{$posts->Customer->firstName}} {{$posts->Customer->middleName}} {{$posts->Customer->lastName}}</td>
+                                <td>
+                                    @foreach($posts->Request as $request)
+                                        <li>{{$request->itemName}}({{$request->quantity}}pcs)</li>
+                                        <li>{{$request->orderDescription}}</li>
+                                        <br>
+                                    @endforeach
                                 </td>
+                                <td>{{ Carbon\Carbon::parse($posts->created_at)->diffForHumans() }}</td>
+                                <td>
+                                    @if($posts->status == 0)
+                                        Pending
+                                    @endif
+                                <td>
                             </tr>
-                 -->
                         @endforeach
                         </tbody>
                     </table>

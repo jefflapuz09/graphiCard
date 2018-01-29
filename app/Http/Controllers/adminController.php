@@ -8,7 +8,7 @@ use App\Advisory;
 use App\RatingItem;
 use App\Feedback;
 use App\Post;
-
+use App\Order;
 class adminController extends Controller
 {
     /**
@@ -27,6 +27,7 @@ class adminController extends Controller
 
     public function index()
     {
+        $order = Order::with('Request','Customer')->where('isActive',1)->get();
         $post =DB::table('inquiries')
         ->select('inquiries.*')
         ->where('inquiries.status',0)
@@ -36,7 +37,7 @@ class adminController extends Controller
         $countFeedback = Feedback::where('isPublish',0)->get();
         $countPost = Post::where('isDraft',0)->get();
         $adv =Advisory::where('isActive',1)->first();
-        return view('inquiries.dashboard',compact('post','adv','countRateItem','countFeedback','countPost'));
+        return view('inquiries.dashboard',compact('post','adv','countRateItem','countFeedback','countPost','order'));
     }
 
     /**

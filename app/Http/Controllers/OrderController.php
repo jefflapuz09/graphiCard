@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Cookie;
 use App\ServiceType;
 use App\ServiceItem;
+use App\Order;
+use App\OrderRequests;
 
 class OrderController extends Controller
 {
@@ -16,7 +18,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $post = Order::with('Request','Customer')->where('isActive',1)->get();
+        return view('Order.index',compact('post'));
     }
 
     /**

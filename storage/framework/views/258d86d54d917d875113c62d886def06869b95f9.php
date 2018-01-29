@@ -59,31 +59,27 @@
         </div>
         <div class="card-block">
             <div class="container mt-3">
-            <!-- <table id="example" class="display" cellspacing="0" style="" width="100%">
-            <thead>
-                <tr>
-                    <th>Date Inquired</th>
-                    <th>Name</th>
-                    <th>Subject</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $posts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tr>
-                    <td><?php echo e(\Carbon\Carbon::parse($posts->created_at)->format('F m,Y')); ?></td>
-                    <td><?php echo e($posts->name); ?></td>
-                    <td><?php echo e($posts->subject); ?></td>
-                    <td> 
-                        <a href="<?php echo e(url('/InquiryView',$posts->id)); ?>" type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="View Inquiry">
-                            <i class="fa fa-eye" aria-hidden="true"></i> View Inquiry
-                        </a>
-                    </td>
-                </tr>
-
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </tbody>
-        </table> -->
+            <table class="display dtable">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Date Ordered</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $__currentLoopData = $order; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ord): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <td><?php echo e($ord->Customer->firstName); ?> <?php echo e($ord->Customer->middleName); ?> <?php echo e($ord->Customer->lastName); ?></td>
+                    <td><?php echo e(Carbon\Carbon::parse($ord->created_at)->diffForHumans()); ?></td>
+                    <td>
+                        <?php if($ord->status == 0): ?>
+                            Pending
+                        <?php endif; ?>
+                    <td>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>
+            </table>
         </div>
         <div class="form-group pull-right mr-3">
             <label class="checkbox-inline"><input type="checkbox"  onclick="document.location='<?php echo e(url('/InquiryRead')); ?>';" id="showDeactivated"> Show read inquiries</label>
@@ -107,7 +103,7 @@
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body">
                     <div class="container mt-3">
-                    <table id="example" class="display" cellspacing="0" style="" width="100%">
+                    <table class="display dtable" cellspacing="0" style="" width="100%">
                     <thead>
                         <tr>
                             <th>Date Inquired</th>
@@ -192,7 +188,12 @@
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(url('vendor/tinymce/js/tinymce/tinymce.min.js')); ?>"></script>
 <script>
-
+    $(document).ready(function(){
+            table= $('.dtable').DataTable( {
+             "scrollX": true,
+             responsive: true
+            } );
+    });
 
     function changetype(id)
     {
