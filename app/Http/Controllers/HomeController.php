@@ -405,12 +405,6 @@ class HomeController extends Controller
 
         }
         
-        $array = array(['customerId'=>$request->custId, 'qty'=>$request->qty, 'remarks'=>$request->jobDesc]);
-        foreach($array as $a)
-        {
-            $remarks = session()->put('jobOrder',$a['remarks']);
-        }
-        
         $jobDesc = $request->jobDesc;
         $attributeName = $request->attributeName;
         $choice = $request->choiceDesc;
@@ -459,7 +453,7 @@ class HomeController extends Controller
             ]);
             $index++;
         }
-
+        Cart::destroy();
         return redirect('/customer/cart/view');
     }
 
