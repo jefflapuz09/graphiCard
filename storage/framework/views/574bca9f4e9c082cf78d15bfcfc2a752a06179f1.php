@@ -1,12 +1,10 @@
-@extends('layouts.admin')
-
-@section('styles')
+<?php $__env->startSection('styles'); ?>
 <style>
 
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container" style="margin-top:20px;">
     <div class="row">
         <div class="col-md-4">
@@ -15,29 +13,29 @@
         </div>
         <div class="col-md-4">
             <p class="lead m-0"> <b> STATUS : <big>
-                @if($post->status == 0)
+                <?php if($post->status == 0): ?>
                 <span style="color:red">PENDING</span>
-                @elseif($post->status == 1)
+                <?php elseif($post->status == 1): ?>
                 <span style="color:green">CONFIRMED</span>
-                @elseif($post->status == 2)
+                <?php elseif($post->status == 2): ?>
                 <span style="color:blue">FINISHED</span>
-                @else 
+                <?php else: ?> 
                 Released
-                @endif
+                <?php endif; ?>
             </big></b></p>
         </div>
         <div class="col-md-4">
             <div class="pull-right">
-                @if($post->status == 0)
+                <?php if($post->status == 0): ?>
                 <a href="" class="mr-0 btn btn-primary">
                     <i class="fa fa-paper-plane" aria-hidden="true"></i> Send Mail
                 </a>
-                @endif
-                @if($post->status <= 2)
-                <a href="{{ url('/OrderUpdate/'.$post->id) }}" class="m-2 ml-0 btn btn-primary">
+                <?php endif; ?>
+                <?php if($post->status <= 2): ?>
+                <a href="<?php echo e(url('/OrderUpdate/'.$post->id)); ?>" class="m-2 ml-0 btn btn-primary">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update
                 </a>
-                @endif
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -51,11 +49,11 @@
                         <h5 class="text-white pt-2 text-center">Customer Information</h5>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-left" style="font-size:15pt;padding:5px"><b>Name:   </b>{{$post->Customer->firstName}} {{$post->Customer->middleName}} {{$post->Customer->lastName}}</li>
-                        <li class="list-group-item text-left" style="font-size:15pt;padding:5px"><b>Gender:  </b>@if($post->Customer->gender == 1)Male @else Female @endif</li>
-                        <li class="list-group-item text-left" style="font-size:15pt;padding:5px"><b>Address: </b>{{$post->Customer->street}} {{$post->Customer->brgy}} {{$post->Customer->city}}</li>
-                        <li class="list-group-item text-left" style="font-size:15pt;padding:5px"><b>Contact Number: </b>{{$post->Customer->contactNumber}}</li>
-                        <li class="list-group-item text-left" style="font-size:15pt;padding:5px"><b>Email Address: </b>@foreach($post->Customer->User as $user) {{$user->email}} @endforeach</li>
+                        <li class="list-group-item text-left" style="font-size:15pt;padding:5px"><b>Name:   </b><?php echo e($post->Customer->firstName); ?> <?php echo e($post->Customer->middleName); ?> <?php echo e($post->Customer->lastName); ?></li>
+                        <li class="list-group-item text-left" style="font-size:15pt;padding:5px"><b>Gender:  </b><?php if($post->Customer->gender == 1): ?>Male <?php else: ?> Female <?php endif; ?></li>
+                        <li class="list-group-item text-left" style="font-size:15pt;padding:5px"><b>Address: </b><?php echo e($post->Customer->street); ?> <?php echo e($post->Customer->brgy); ?> <?php echo e($post->Customer->city); ?></li>
+                        <li class="list-group-item text-left" style="font-size:15pt;padding:5px"><b>Contact Number: </b><?php echo e($post->Customer->contactNumber); ?></li>
+                        <li class="list-group-item text-left" style="font-size:15pt;padding:5px"><b>Email Address: </b><?php $__currentLoopData = $post->Customer->User; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> <?php echo e($user->email); ?> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></li>
                     </ul>
                 </div>
             </div>
@@ -74,14 +72,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($post->Request as $request)
+                            <?php $__currentLoopData = $post->Request; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $request): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td>{{$request->itemName}}</td>
-                                <td>{{$request->quantity}}</td>
-                                <td>{{$request->orderDescription}}</td>
-                                <td>{{$request->remarks}}</td>
+                                <td><?php echo e($request->itemName); ?></td>
+                                <td><?php echo e($request->quantity); ?></td>
+                                <td><?php echo e($request->orderDescription); ?></td>
+                                <td><?php echo e($request->remarks); ?></td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
@@ -97,12 +95,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($post->Request as $request)
+                            <?php $__currentLoopData = $post->Request; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $request): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td>{{$request->itemName}}</td>
-                                <td>{{$request->quantity}}</td>
+                                <td><?php echo e($request->itemName); ?></td>
+                                <td><?php echo e($request->quantity); ?></td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
@@ -110,4 +108,5 @@
         </div>
     </div>
 </div><!--container-->
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

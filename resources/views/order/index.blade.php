@@ -61,10 +61,9 @@
                                         Released
                                     @endif
                                 </td>
-                                <td>
+                                <td align="center">
                                     @if($posts->status <= 3)
-                                        <a href="{{ url('/OrderView/'.$posts->id) }}" class="btn btn-primary">
-                                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                                        <a href="{{ url('/OrderView/'.$posts->id) }}" class="btn btn-success" title="Manage Order"><i class="fa fa-cogs" aria-hidden="true"></i> Manage
                                         </a>
                                     @endif
                                 </td>
