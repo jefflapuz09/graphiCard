@@ -32,6 +32,7 @@ Route::get('/FAQs','FAQController@index');
 Route::get('/Order','HomeController@order');
 Route::post('/ReviewStore', 'FeedbackController@review');
 Route::get('/website/package','HomeController@package');
+Route::get('/myaccount','HomeController@custDashboard');
 
 Route::post('/customer/cart/{id}/{itemid}','HomeController@cart');
 Route::get('/customer/cart/view','HomeController@viewcart');

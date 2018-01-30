@@ -462,4 +462,10 @@ class HomeController extends Controller
 
         return redirect('/customer/cart/view');
     }
+
+ public function custDashboard()
+    {
+        $post = Order::with('Request','Customer')->where('isActive',1)->get();
+        return view('Home.custDashboard',compact('post'));
+    }
 }
