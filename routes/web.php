@@ -189,6 +189,7 @@ Route::post('/PackageEdit/{id}','PackageController@update');
 
 //order
 Route::get('/orders','OrderController@index');
+Route::get('/OrderView/{id}','OrderController@edit');
 
 //Attribute
 Route::get('/Attribute','itemAttributesController@index');

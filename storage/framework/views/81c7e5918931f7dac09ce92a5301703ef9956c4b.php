@@ -52,7 +52,12 @@
                                     <?php if($posts->status == 0): ?>
                                         Pending
                                     <?php endif; ?>
+                                </td>
                                 <td>
+                                    <a href="<?php echo e(url('/OrderView/'.$posts->id)); ?>" class="btn btn-primary">
+                                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                                    </a>
+                                </td>
                             </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>

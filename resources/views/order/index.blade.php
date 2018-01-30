@@ -54,7 +54,12 @@
                                     @if($posts->status == 0)
                                         Pending
                                     @endif
+                                </td>
                                 <td>
+                                    <a href="{{ url('/OrderView/'.$posts->id) }}" class="btn btn-primary">
+                                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
