@@ -105,9 +105,15 @@
               <div class="col-sm-7">
                 <h1>Reviews</h1>
               </div>
+              @if(Auth::guest())
+              <div class="col-sm-5 mt-5">
+                  <small>You need to sign-in in order to give us a review.</small>
+              </div>
+              @else
               <div class="col-sm-5">
                 <a href="" data-toggle="modal" data-target="#myModal"><button class="mt-4 btn btn-primary pull-right" style="font-size:12pt; color:black; text-decoration:none;"><i class="fa fa-heart-o" aria-hidden="true"></i> Give us a Review! > </button></a>
               </div>
+              @endif
             </div>
 
 
@@ -204,7 +210,7 @@
           {{ csrf_field() }}
           <input type="hidden" name="itemId" value="{{$post->Item->id}}">
           <div class="form-group">
-            <label for="">Customer Name:</label><div class="pull-right"><button type="button" class="btn btn-success btn-sm mb-2 ml-2" data-toggle="modal" title="New Customer" data-dismiss="modal" data-target="#myModal2"><i class="fa fa-plus" aria-hidden="true"></i></button></div></br>
+            <label for="">Customer Name:</label>
             <select class="select2 form-control" name="customerId" style="width: 100%">
               @foreach($customer as $cust)
               <option value="{{ $cust->id }}">{{$cust->firstName}} {{$cust->middleName}} {{$cust->lastName}}</option>
@@ -234,76 +240,6 @@
       </div>
     </div>
 
-  </div>
-</div>
-
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Customer Form</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-6"> 
-            <form action="{{ url('/CustomerWebStore') }}" method="post">
-              {{ csrf_field() }}
-
-              <div class="form-group">
-                <label for="">First Name:</label>
-                <input type="text" placeholder="First Name" value=""  class="form-control" name="firstName" id="name">
-              </div>
-              <div class="form-group">
-                <label for="">Middle Name:</label>
-                <input type="text" placeholder="Middle Name" value=""  class="form-control" name="middleName" id="name">
-              </div>
-              <div class="form-group">
-                <label for="">Last Name:</label>
-                <input type="text" placeholder="Last Name" value=""  class="form-control" name="lastName" id="name">
-              </div>
-              <div class="form-group">
-                Gender: 
-                <label class="radio-inline">
-                  <input type="radio" value="1" checked name="gender">Male
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" value="2" name="gender">Female
-                </label>
-              </div>
-              <div class="form-group">
-                <label for="">Contact Number:</label>
-                <input type="text" placeholder="Contact Number" value="" class="form-control" name="contactNumber" id="name">
-              </div>
-            </div> 
-            <div class="col-lg-6" style="margin-top:0px;">
-              <div class="form-group">
-                <label for="">Email Address:</label>
-                <input type="text" placeholder="Email Address" value="" class="form-control" name="emailAddress" id="name">
-              </div>
-              <div class="form-group">
-                <label for="">Street No./Bldg No.:</label>
-                <input type="text" placeholder="Street No./Bldg No." value="" class="form-control" name="street" id="name">
-              </div>
-              <div class="form-group">
-                <label for="">Brgy No./Subd.:</label>
-                <input type="text" placeholder="Brgy No./Subd." value="" class="form-control" name="brgy" id="name">
-              </div>
-              <div class="form-group">
-                <label for="">City:</label>
-                <input type="text" placeholder="City" value="" class="form-control" name="city" id="name">
-              </div>
-              <div class="pull-right">
-                <button type="reset" class="btn btn-success">Clear</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 @stop

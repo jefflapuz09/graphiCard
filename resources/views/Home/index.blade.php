@@ -482,10 +482,6 @@
         });
 
         $('.meron').barrating('set', 5);
-
-
-
-
       });
     </script>  
 

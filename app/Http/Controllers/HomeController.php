@@ -457,12 +457,17 @@ class HomeController extends Controller
         return redirect('/customer/cart/view');
     }
 
- public function custDashboard()
+    public function custDashboard()
     {
         $custID = Auth::user()->Customer->id;
         $post = Order::with('Request','Customer')->where('customerId',$custID)->where('status',0)->get();
         //finish
         $post1 = Order::with('Request','Customer')->where('customerId',$custID)->where('status',1)->get();
         return view('Home.custDashboard',compact('post','post1'));
+    }
+
+    public function search()
+    {
+        return view('Home.search');
     }
 }

@@ -135,7 +135,7 @@
               <a class="nav-link" href="<?php echo e(url('/about')); ?>"> About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo e(url('/about')); ?>"><i class="fa fa-search" aria-hidden="true"> Search</i></a>
+              <a class="nav-link" href="<?php echo e(url('/Search')); ?>"><i class="fa fa-search" aria-hidden="true"> Search</i></a>
             </li>
           </ul>
         </div>
@@ -148,7 +148,7 @@
     </nav>
   </div>
 
-<?php echo $__env->yieldContent('contents'); ?>;
+<?php echo $__env->yieldContent('contents'); ?>
 <footer style="width:100%;background-color: black;padding:20px">
   <div class="col-md-12">
   <div class="row">

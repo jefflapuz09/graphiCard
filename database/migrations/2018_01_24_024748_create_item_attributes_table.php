@@ -19,7 +19,7 @@ class CreateItemAttributesTable extends Migration
             $table->integer('itemId')->unsigned();	
             $table->foreign('itemId')->references('id')->on('service_subcategory');
             $table->string('attributeName');
-            $table->string('choiceDescription');
+            $table->string('choiceDescription')->nullable();
             $table->boolean('isActive')->default(1);
             $table->timestamps();
         });

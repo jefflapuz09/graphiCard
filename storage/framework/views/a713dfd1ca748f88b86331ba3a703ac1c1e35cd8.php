@@ -69,7 +69,7 @@
                   <label for="form82" class="white-text">Your message</label>
               </div>
               <div class="text-center">
-                  <button type="submit" class="btn btn-danger btn-lg">Send</button>
+                  <button type="submit" class="btn btn-a-1 p-05" align="center"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Inquiry</button>
               </div>
           </form>
           <!-- Form contact -->
