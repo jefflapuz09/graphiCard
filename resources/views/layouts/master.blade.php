@@ -62,7 +62,7 @@
                 @elseif(Auth::check()&&count(Auth::user()->Employee))
                 <li  style="display: inline-block"><a href="{{ url('/login') }}" style="color:white"><i class="fa fa-user"></i> My Account </a> | </li>
                 @else
-                <li  style="display: inline-block"><a href="{{ url('/login') }}" style="color:white"><i class="fa fa-user"></i> My Account </a> | </li>
+                <li  style="display: inline-block"><a href="{{ url('/myaccount') }}" style="color:white"><i class="fa fa-user"></i> My Account </a> | </li>
                 @endif
 
                 <li  style="display: inline-block"><a href="{{ url('/customer/cart/view') }}" style="color:white"><i class="fa fa-shopping-cart"></i> My Cart ({{Cart::count()}}) items</a> | </li>
