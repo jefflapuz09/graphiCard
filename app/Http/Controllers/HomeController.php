@@ -459,7 +459,10 @@ class HomeController extends Controller
 
  public function custDashboard()
     {
-        $post = Order::with('Request','Customer')->where('isActive',1)->get();
-        return view('Home.custDashboard',compact('post'));
+        $custID = Auth::user()->Customer->id;
+        $post = Order::with('Request','Customer')->where('customerId',$custID)->where('status',0)->get();
+        //finish
+        $post1 = Order::with('Request','Customer')->where('customerId',$custID)->where('status',1)->get();
+        return view('Home.custDashboard',compact('post','post1'));
     }
 }

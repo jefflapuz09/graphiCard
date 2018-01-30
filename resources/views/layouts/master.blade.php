@@ -146,7 +146,7 @@
     </nav>
   </div>
 
-@yield('contents');
+@yield('contents')
 <footer style="width:100%;background-color: black;padding:20px">
   <div class="col-md-12">
   <div class="row">

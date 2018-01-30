@@ -148,7 +148,7 @@
     </nav>
   </div>
 
-<?php echo $__env->yieldContent('contents'); ?>;
+<?php echo $__env->yieldContent('contents'); ?>
 <footer style="width:100%;background-color: black;padding:20px">
   <div class="col-md-12">
   <div class="row">
