@@ -51,12 +51,20 @@
                                 <td>
                                     <?php if($posts->status == 0): ?>
                                         Pending
+                                    <?php elseif($posts->status == 1): ?>
+                                        Confirmed
+                                    <?php elseif($posts->status == 2): ?>
+                                        Finished
+                                    <?php else: ?> 
+                                        Released
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <a href="<?php echo e(url('/OrderView/'.$posts->id)); ?>" class="btn btn-primary">
-                                        <i class="fa fa-refresh" aria-hidden="true"></i>
-                                    </a>
+                                    <?php if($posts->status <= 3): ?>
+                                        <a href="<?php echo e(url('/OrderView/'.$posts->id)); ?>" class="btn btn-primary">
+                                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                                        </a>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -65,6 +65,15 @@ class OrderController extends Controller
         //
     }
 
+
+    public function statusupdate($id)
+    {
+        $post = Order::find($id);
+        $up = $post->status+1;
+
+        Order::find($id)->update(['status'=>$up]);
+        return redirect('/OrderView/'.$id);
+    }
     /**
      * Show the form for editing the specified resource.
      *

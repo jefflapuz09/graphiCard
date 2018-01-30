@@ -53,12 +53,20 @@
                                 <td>
                                     @if($posts->status == 0)
                                         Pending
+                                    @elseif($posts->status == 1)
+                                        Confirmed
+                                    @elseif($posts->status == 2)
+                                        Finished
+                                    @else 
+                                        Released
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ url('/OrderView/'.$posts->id) }}" class="btn btn-primary">
-                                        <i class="fa fa-refresh" aria-hidden="true"></i>
-                                    </a>
+                                    @if($posts->status <= 3)
+                                        <a href="{{ url('/OrderView/'.$posts->id) }}" class="btn btn-primary">
+                                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
