@@ -70,18 +70,28 @@
                 </thead>
                 <tbody>
                     <?php $__currentLoopData = $order; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ord): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <td><?php echo e($ord->Customer->firstName); ?> <?php echo e($ord->Customer->middleName); ?> <?php echo e($ord->Customer->lastName); ?></td>
-                    <td><?php echo e(Carbon\Carbon::parse($ord->created_at)->diffForHumans()); ?></td>
-                    <td>
-                        <?php if($ord->status == 0): ?>
-                            Pending
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-primary">
-                            <i class="fa fa-refresh" aria-hidden="true"></i>
-                        </a>
-                    </td>
+                        <tr>
+                            <td><?php echo e($ord->Customer->firstName); ?> <?php echo e($ord->Customer->middleName); ?> <?php echo e($ord->Customer->lastName); ?></td>
+                            <td><?php echo e(Carbon\Carbon::parse($ord->created_at)->diffForHumans()); ?></td>
+                            <td>
+                                <?php if($ord->status == 0): ?>
+                                    Pending
+                                <?php elseif($ord->status == 1): ?>
+                                    Confirmed
+                                <?php elseif($ord->status == 2): ?>
+                                    Finished
+                                <?php else: ?> 
+                                    Released
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php if($ord->status <= 2): ?>
+                                    <a href="#" class="btn btn-primary">
+                                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                                    </a>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>

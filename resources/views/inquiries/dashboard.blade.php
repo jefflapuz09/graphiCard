@@ -72,18 +72,28 @@
                 </thead>
                 <tbody>
                     @foreach($order as $ord)
-                    <td>{{$ord->Customer->firstName}} {{$ord->Customer->middleName}} {{$ord->Customer->lastName}}</td>
-                    <td>{{ Carbon\Carbon::parse($ord->created_at)->diffForHumans() }}</td>
-                    <td>
-                        @if($ord->status == 0)
-                            Pending
-                        @endif
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-primary">
-                            <i class="fa fa-refresh" aria-hidden="true"></i>
-                        </a>
-                    </td>
+                        <tr>
+                            <td>{{$ord->Customer->firstName}} {{$ord->Customer->middleName}} {{$ord->Customer->lastName}}</td>
+                            <td>{{ Carbon\Carbon::parse($ord->created_at)->diffForHumans() }}</td>
+                            <td>
+                                @if($ord->status == 0)
+                                    Pending
+                                @elseif($ord->status == 1)
+                                    Confirmed
+                                @elseif($ord->status == 2)
+                                    Finished
+                                @else 
+                                    Released
+                                @endif
+                            </td>
+                            <td>
+                                @if($ord->status <= 2)
+                                    <a href="#" class="btn btn-primary">
+                                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                                    </a>
+                                @endif
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>

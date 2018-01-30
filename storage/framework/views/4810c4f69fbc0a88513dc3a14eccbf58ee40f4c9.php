@@ -45,10 +45,10 @@
         <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         
         <input type="hidden" value="<?php echo e(Auth::user()->Customer->id); ?>" name="customerId">
-        <input type="text" value="<?php echo e($post2->options->attributeName); ?>:<?php echo e($posts->options->choice); ?>" name="spec">
-        <input type="text" value="<?php echo e($post2->options->description); ?>" name="description[]"> 
-        <input type="text" value="<?php echo e($post2->qty); ?>" name="qty[]"> 
-        <input type="text" value="<?php echo e($post2->name); ?>" name="item[]"> 
+        <input type="hidden" value="<?php echo e($post2->options->attributeName); ?>:<?php echo e($posts->options->choice); ?>" name="spec">
+        <input type="hidden" value="<?php echo e($post2->options->description); ?>" name="description[]"> 
+        <input type="hidden" value="<?php echo e($post2->qty); ?>" name="qty[]"> 
+        <input type="hidden" value="<?php echo e($post2->name); ?>" name="item[]"> 
 
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         

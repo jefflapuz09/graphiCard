@@ -62,7 +62,7 @@
                 <?php elseif(Auth::check()&&count(Auth::user()->Employee)): ?>
                 <li  style="display: inline-block"><a href="<?php echo e(url('/login')); ?>" style="color:white"><i class="fa fa-user"></i> My Account </a> | </li>
                 <?php else: ?>
-                <li  style="display: inline-block"><a href="<?php echo e(url('/login')); ?>" style="color:white"><i class="fa fa-user"></i> My Account </a> | </li>
+                <li  style="display: inline-block"><a href="<?php echo e(url('/myaccount')); ?>" style="color:white"><i class="fa fa-user"></i> My Account </a> | </li>
                 <?php endif; ?>
 
                 <li  style="display: inline-block"><a href="<?php echo e(url('/customer/cart/view')); ?>" style="color:white"><i class="fa fa-shopping-cart"></i> My Cart (<?php echo e(Cart::count()); ?>) items</a> | </li>
