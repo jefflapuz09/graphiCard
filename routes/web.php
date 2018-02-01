@@ -56,7 +56,16 @@ Route::get('/RestrictedAuth','Homecontroller@error2');
 
 Route::group(['middleware' => 'App\Http\Middleware\adminMiddleware'], function () {
     
+//bank
+Route::get('/Bank','BankController@index');
+Route::get('/BankCreate','BankController@create');
+Route::get('/BankUpdate/{id}','BankController@edit');
+Route::get('/BankDeac/{id}', 'BankController@destroy');
+Route::get('/BankSoft', 'BankController@soft');
+Route::get('/BankReactivate/{id}', 'BankController@reactivate');
 
+Route::post('/BankStore','BankController@store');
+Route::post('/BankEdit/{id}','BankController@update');
 
 //Service Category
 Route::get('/Category', 'categoryController@index');
