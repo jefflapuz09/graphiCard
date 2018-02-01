@@ -19,6 +19,7 @@ class CreateServiceItemsTable extends Migration
             $table->integer('subcategoryId')->unsigned();	
             $table->foreign('subcategoryId')->references('id')->on('service_subcategory');
             $table->string('name',70);
+            $table->decimal('price',15,2);
             $table->text('description')->nullable();
             $table->boolean('isActive')->default(1);
             $table->timestamps();

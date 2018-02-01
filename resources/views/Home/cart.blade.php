@@ -11,6 +11,7 @@
                             <th>Product</th>
                             <th>Specification</th>
                             <th>Quantity</th>
+                            <th>Price</th>
                             <th>Actions</th>
                           </tr>
                         </thead>
@@ -25,6 +26,7 @@
                                     <li>{{$posts->options->description}}</li>
                                 </td>
                                 <td><input type="number" value="{{$posts->qty}}" style="width:100px"/></td>
+                                <td><?php $ans = $posts->qty * $posts->price; ?>{{number_format($ans,2)}}</td>
                                 <td>
                                     <a href="{{ url('/customer/cart/'.$posts->rowId.'/remove') }}" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Remove from cart">
                                         <i class="fa fa-close" aria-hidden="true"></i>

@@ -408,7 +408,7 @@ class HomeController extends Controller
         $jobDesc = $request->jobDesc;
         $attributeName = $request->attributeName;
         $choice = $request->choiceDesc;
-        Cart::add(['id'=>$items->id,'name'=>$items->name,'qty'=>$request->qty,'price'=>'0','options'=>['description'=>$jobDesc,'attributeName'=>$attributeName,'choice'=>$choice]]);
+        Cart::add(['id'=>$items->id,'name'=>$items->name,'qty'=>$request->qty,'price'=>$items->price,'options'=>['description'=>$jobDesc,'attributeName'=>$attributeName,'choice'=>$choice]]);
         // return redirect('/customer/cart/view',compact('customerId','qty','remarks'));
         return redirect('/customer/cart/view');
     }
@@ -469,5 +469,25 @@ class HomeController extends Controller
     public function search()
     {
         return view('Home.search');
+    }
+
+    public function searchresult(Request $request)
+    {
+        $search = $request->search;
+        $sub = DB::table('service_subcategory as s')
+                ->join('posts as p','s.id','p.typeId')
+                ->select('s.name','p.id','p.typeId','p.itemId','p.image')
+                ->where('isDraft',1)
+                ->where('s.name','like',$search);
+
+        $it = DB::table('service_items as i')
+                ->join('posts as p','i.id','p.itemId')
+                ->select('i.name as item','p.id','p.typeId','p.itemId','p.image')
+                ->where('i.name',$search)
+                ->where('isDraft',1)
+                ->union($sub)
+                ->get();
+
+        return redirect('/Search')->with(['data'=>$it]);
     }
 }
