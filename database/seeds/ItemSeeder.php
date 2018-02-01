@@ -17,6 +17,7 @@ class ItemSeeder extends Seeder
             'categoryId' => 1,
             'description' => 'Sample description here.',
             'isActive' => 1,
+            'price' => '50.00',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -25,6 +26,7 @@ class ItemSeeder extends Seeder
             'categoryId' => 1,
             'description' => 'Sample description here.',
             'isActive' => 1,
+            'price' => '50.00',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -33,6 +35,7 @@ class ItemSeeder extends Seeder
             'categoryId' => 1,
             'description' => 'Sample description here.',
             'isActive' => 1,
+            'price' => '50.00',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

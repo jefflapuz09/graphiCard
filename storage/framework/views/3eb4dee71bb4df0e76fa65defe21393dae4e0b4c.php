@@ -50,6 +50,10 @@
             <input type="text" placeholder="Service Item Name" value="<?php echo e($post->name); ?>" class="form-control" name="name" id="name">
             </div>
             <div class="form-group">
+            <label for="">Price:</label>
+            <input type="number" placeholder="Price" value="<?php echo e($post->price); ?>" class="form-control" name="price" id="name">
+            </div>
+            <div class="form-group">
             <label for="">Description:</label>
             <textarea class="form-control" rows="5" placeholder="Description" name="description" id="desc"><?php echo e($post->description); ?></textarea>
             </div>

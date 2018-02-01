@@ -51,6 +51,10 @@
             <input type="text" placeholder=""  value="<?php echo e($cat->name); ?>" class="form-control" name="name" id="name">
             </div>
             <div class="form-group">
+            <label for="">Price:</label>
+            <input type="number" placeholder="Price" value="<?php echo e($cat->price); ?>" class="form-control" name="price" id="name">
+            </div>
+            <div class="form-group">
             <label for="">Description:</label>
                 <textarea class="form-control" rows="5" placeholder=""  name="description" id="desc"><?php echo e($cat->description); ?></textarea>
             </div>

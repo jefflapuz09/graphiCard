@@ -12,6 +12,7 @@ class ServiceType extends Model
         'name',
         'categoryId',
         'description',
+        'price',
         'isActive'
     ];
 

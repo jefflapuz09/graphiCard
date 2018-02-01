@@ -19,6 +19,7 @@ class CreateServiceTypesTable extends Migration
             $table->string('name', 50);
             $table->integer('categoryId')->unsigned();	
             $table->foreign('categoryId')->references('id')->on('service_categories');
+            $table->decimal('price',15,2);
             $table->text('description')->nullable();
             $table->boolean('isActive')->default(1);
             $table->timestamps();

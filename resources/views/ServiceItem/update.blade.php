@@ -51,6 +51,10 @@
             <input type="text" placeholder="Service Item Name" value="{{ $post->name }}" class="form-control" name="name" id="name">
             </div>
             <div class="form-group">
+            <label for="">Price:</label>
+            <input type="number" placeholder="Price" value="{{$post->price}}" class="form-control" name="price" id="name">
+            </div>
+            <div class="form-group">
             <label for="">Description:</label>
             <textarea class="form-control" rows="5" placeholder="Description" name="description" id="desc">{{ $post->description }}</textarea>
             </div>

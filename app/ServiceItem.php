@@ -12,6 +12,7 @@ class ServiceItem extends Model
         'name',
         'subcategoryId',
         'description',
+        'price',
         'isActive'
     ];
 

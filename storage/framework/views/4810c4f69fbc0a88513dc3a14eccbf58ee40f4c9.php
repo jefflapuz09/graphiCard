@@ -23,10 +23,10 @@
                                 <td>
                                     <li><?php echo e($posts->options->attributeName); ?></li>
                                     <li><?php echo e($posts->options->choice); ?></li>
-                                    <li><?php echo e($posts->options->description); ?></li>
+                                    <li><?php echo e($posts->options->description); ?></li> 
                                 </td>
                                 <td><input type="number" value="<?php echo e($posts->qty); ?>" style="width:100px"/></td>
-                                <td><?php $ans = $posts->qty * $posts->price; ?><?php echo e(number_format($ans,2)); ?></td>
+                                <td><?php $ans = $posts->qty * $posts->price; $ans2 = $ans + $posts->options->base_price * $posts->qty?><?php echo e(number_format($ans2,2)); ?></td>
                                 <td>
                                     <a href="<?php echo e(url('/customer/cart/'.$posts->rowId.'/remove')); ?>" type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Remove from cart">
                                         <i class="fa fa-close" aria-hidden="true"></i>
