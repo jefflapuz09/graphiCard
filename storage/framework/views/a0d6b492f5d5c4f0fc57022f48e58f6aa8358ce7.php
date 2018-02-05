@@ -135,7 +135,7 @@
               <a class="nav-link" href="<?php echo e(url('/about')); ?>"> About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo e(url('/about')); ?>"><i class="fa fa-search" aria-hidden="true"> Search</i></a>
+              <a class="nav-link" href="<?php echo e(url('/Search')); ?>"><i class="fa fa-search" aria-hidden="true"> Search</i></a>
             </li>
           </ul>
         </div>

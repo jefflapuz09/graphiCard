@@ -86,7 +86,7 @@
                 @endif
               </ul>
               <br>
-              <a href="" class="mt-2 btn btn-danger text-white">Order now</a>
+              <a href="{{ url('/cartPost/'.$item->typeId.'/'.$item->itemId) }}" class="mt-2 btn btn-danger text-white">Order now</a>
               @endif
             </div>
           </div>

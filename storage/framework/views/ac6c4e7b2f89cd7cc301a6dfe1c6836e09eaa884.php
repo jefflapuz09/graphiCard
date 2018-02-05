@@ -84,7 +84,7 @@
                 <?php endif; ?>
               </ul>
               <br>
-              <a href="" class="mt-2 btn btn-danger text-white">Order now</a>
+              <a href="<?php echo e(url('/cartPost/'.$item->typeId.'/'.$item->itemId)); ?>" class="mt-2 btn btn-danger text-white">Order now</a>
               <?php endif; ?>
             </div>
           </div>
