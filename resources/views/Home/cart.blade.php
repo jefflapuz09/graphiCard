@@ -39,18 +39,27 @@
         </div>
                 <div class="col-sm-12">
                     <div class="pull-right">
+                        @if(Auth::guest())
+                        <span style="color:red;">You need to be sign-in first in order for you to checkout.</span>
+                        <a href="#" style="pointer-events:none; opacity:0.75" data-toggle="modal" disabled data-target="#modal" class="btn btn-primary">Proceed to Checkout</a>
+                        @else 
                         <a href="#" data-toggle="modal" data-target="#modal" class="btn btn-primary">Proceed to Checkout</a>
+                        @endif
                     </div>
                 </div>
         {{--  Hidden Fields  --}}
         
         @foreach($post as $post2)
-        
+        @if(Auth::guest())
+
+        @else
         <input type="hidden" value="{{Auth::user()->Customer->id}}" name="customerId">
         <input type="hidden" value="{{$post2->options->attributeName}}:{{$posts->options->choice}}" name="spec">
         <input type="hidden" value="{{$post2->options->description}}" name="description[]"> 
         <input type="hidden" value="{{$post2->qty}}" name="qty[]"> 
         <input type="hidden" value="{{$post2->name}}" name="item[]"> 
+        <input type="hidden" value="{{$ans2}}" name="price"> 
+        @endif
 
         @endforeach
         {{--  modal  --}}
@@ -66,7 +75,11 @@
                     <div class="modal-body">
                       <hr class="colorgraph">
                       <h1>Order Inclusion</h1>
+                      @if(Auth::guest())
+                      
+                      @else 
                       Customer Name:  {{Auth::user()->Customer->firstName}} {{Auth::user()->Customer->middleName}} {{Auth::user()->Customer->lastName}}<Br><br>
+                      @endif
                       Product(/s): <br>
                       @foreach($post as $item)
                         {{$item->name}} ({{$item->qty}}) <br>

@@ -33,6 +33,7 @@ Route::get('/Order','HomeController@order');
 Route::post('/ReviewStore', 'FeedbackController@review');
 Route::get('/website/package','HomeController@package');
 Route::get('/myaccount','HomeController@custDashboard');
+Route::get('customer/payment','HomeController@payment');
 
 Route::get('/Search','HomeController@search');
 Route::post('/SearchResult','HomeController@searchresult');

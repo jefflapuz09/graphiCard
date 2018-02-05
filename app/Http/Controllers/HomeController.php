@@ -439,7 +439,8 @@ class HomeController extends Controller
         $data =  Order::create([
             'customerId' => $custId,
             'remarks' => $remarks,
-            'status' => 0
+            'status' => 0,
+            'price' => $request->price
         ]);
         $index = 0;
         foreach($item as $itemp)
@@ -489,5 +490,10 @@ class HomeController extends Controller
                 ->get();
 
         return redirect('/Search')->with(['data'=>$it]);
+    }
+
+    public function payment()
+    {
+        return view('Home.payment');
     }
 }

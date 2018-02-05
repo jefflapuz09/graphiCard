@@ -23,8 +23,12 @@
                     <option value="{{$var->id}}" @if($var->id == $item->id) selected="selected" @endif>{{$var->name}}</option>
                 @endforeach
             </select>
+            @if(Auth::guest())
+
+            @else
             <input type="hidden" name="variant" value="{{$item->id}}"/>
             <input type="hidden" name="custId" value="{{Auth::user()->Customer->id}}"/>
+            @endif
             <hr>
                 @endforeach
             <p class="lead text-primary">Product Specification</p>

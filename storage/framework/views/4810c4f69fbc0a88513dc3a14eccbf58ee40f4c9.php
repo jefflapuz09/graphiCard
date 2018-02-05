@@ -39,18 +39,27 @@
         </div>
                 <div class="col-sm-12">
                     <div class="pull-right">
+                        <?php if(Auth::guest()): ?>
+                        <span style="color:red;">You need to be sign-in first in order for you to checkout.</span>
+                        <a href="#" style="pointer-events:none; opacity:0.75" data-toggle="modal" disabled data-target="#modal" class="btn btn-primary">Proceed to Checkout</a>
+                        <?php else: ?> 
                         <a href="#" data-toggle="modal" data-target="#modal" class="btn btn-primary">Proceed to Checkout</a>
+                        <?php endif; ?>
                     </div>
                 </div>
         
         
         <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        
+        <?php if(Auth::guest()): ?>
+
+        <?php else: ?>
         <input type="hidden" value="<?php echo e(Auth::user()->Customer->id); ?>" name="customerId">
         <input type="hidden" value="<?php echo e($post2->options->attributeName); ?>:<?php echo e($posts->options->choice); ?>" name="spec">
         <input type="hidden" value="<?php echo e($post2->options->description); ?>" name="description[]"> 
         <input type="hidden" value="<?php echo e($post2->qty); ?>" name="qty[]"> 
         <input type="hidden" value="<?php echo e($post2->name); ?>" name="item[]"> 
+        <input type="hidden" value="<?php echo e($ans2); ?>" name="price"> 
+        <?php endif; ?>
 
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         
@@ -66,7 +75,11 @@
                     <div class="modal-body">
                       <hr class="colorgraph">
                       <h1>Order Inclusion</h1>
+                      <?php if(Auth::guest()): ?>
+                      
+                      <?php else: ?> 
                       Customer Name:  <?php echo e(Auth::user()->Customer->firstName); ?> <?php echo e(Auth::user()->Customer->middleName); ?> <?php echo e(Auth::user()->Customer->lastName); ?><Br><br>
+                      <?php endif; ?>
                       Product(/s): <br>
                       <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php echo e($item->name); ?> (<?php echo e($item->qty); ?>) <br>

@@ -22,8 +22,12 @@
                     <option value="<?php echo e($var->id); ?>" <?php if($var->id == $item->id): ?> selected="selected" <?php endif; ?>><?php echo e($var->name); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </select>
+            <?php if(Auth::guest()): ?>
+
+            <?php else: ?>
             <input type="hidden" name="variant" value="<?php echo e($item->id); ?>"/>
             <input type="hidden" name="custId" value="<?php echo e(Auth::user()->Customer->id); ?>"/>
+            <?php endif; ?>
             <hr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <p class="lead text-primary">Product Specification</p>
