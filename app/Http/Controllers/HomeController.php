@@ -408,7 +408,17 @@ class HomeController extends Controller
         $jobDesc = $request->jobDesc;
         $attributeName = $request->attributeName;
         $choice = $request->choiceDesc;
-        Cart::add(['id'=>$items->id,'name'=>$items->name,'qty'=>$request->qty,'price'=>$items->price,'options'=>['description'=>$jobDesc,'attributeName'=>$attributeName,'choice'=>$choice,'base_price'=>$items->Subcategory->price]]);
+        $index = 0;
+     
+        $at = "";
+        foreach($attributeName as $attribute)
+        {
+            $at = $at. ''. $attribute . '- ' .$choice[$index]. '</br>';
+            
+            $index++;
+        }
+        Cart::add(['id'=>$items->id,'name'=>$items->name,'qty'=>$request->qty,'price'=>$items->price,'options'=>['description'=>$jobDesc,'specification'=>$at,'base_price'=>$items->Subcategory->price]]);
+        
         // return redirect('/customer/cart/view',compact('customerId','qty','remarks'));
         return redirect('/customer/cart/view');
     }

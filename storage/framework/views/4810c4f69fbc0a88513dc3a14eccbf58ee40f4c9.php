@@ -21,8 +21,7 @@
 
                                 </td>
                                 <td>
-                                    <li><?php echo e($posts->options->attributeName); ?></li>
-                                    <li><?php echo e($posts->options->choice); ?></li>
+                                    <li><?php echo e($posts->options->specification); ?></li>
                                     <li><?php echo e($posts->options->description); ?></li> 
                                 </td>
                                 <td><input type="number" value="<?php echo e($posts->qty); ?>" style="width:100px"/></td>

@@ -45,11 +45,11 @@
                     <div class="row ml-3">
                         <div class="col-md-4">
                             <b>{{$attribute->attributeName}}</b>
-                            <input type="hidden" value="{{$attribute->attributeName}}" name="attributeName">
+                            <input type="hidden" value="{{$attribute->attributeName}}" name="attributeName[]">
                             <br><br>
                         </div>
                         <div class="col-md-8">
-                            <select id="att" name="choiceDesc">
+                            <select id="att" name="choiceDesc[]">
                                 <?php $array = explode(',',$attribute->choiceDescription);?>
                                 @foreach($array as $a)
                                 <option value="{{$a}}"> {{$a}} </option>

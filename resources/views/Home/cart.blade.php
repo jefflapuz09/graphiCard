@@ -21,8 +21,7 @@
                                 <td>{{$posts->name}}
                                 </td>
                                 <td>
-                                    <li>{{$posts->options->attributeName}}</li>
-                                    <li>{{$posts->options->choice}}</li>
+                                    <li>{{$posts->options->specification}}</li>
                                     <li>{{$posts->options->description}}</li> 
                                 </td>
                                 <td><input type="number" value="{{$posts->qty}}" style="width:100px"/></td>
