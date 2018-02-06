@@ -62,10 +62,10 @@
             <div class="col-sm-7">
                 <div class="card  text-center">
                     <div class="card-block p-2 mb-3" style="background:#f61919;">
-                        <h5 class="text-white pt-2 text-center">Order Inclusions</h5>
+                        <h5 class="text-white pt-2 text-left">Order Inclusions</h5>
                     </div>
                     <table class="table">
-                        <thead class="text-white" style="background:darkred;">
+                        <thead class="text-dark" style="color:black;">
                             <tr>
                                 <th>Product</th>
                                 <th>Quantity</th>
@@ -87,10 +87,10 @@
                 </div>
                 <div class="card  text-center">
                     <div class="card-block p-2 mb-3" style="background:#f61919;">
-                        <h5 class="text-white pt-2 text-center">Order Design</h5>
+                        <h5 class="text-white pt-2 text-left">Order Design</h5>
                     </div>
                     <table class="table">
-                        <thead class="text-white" style="background:darkred;">
+                        <thead class="text-dark" style="background:;">
                             <tr>
                                 <th>Product</th>
                                 <th>Image</th>

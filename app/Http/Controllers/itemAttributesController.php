@@ -42,7 +42,7 @@ class itemAttributesController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'itemId' => ['required','max:50','unique:item_attributes','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
+            'itemId' => ['required','max:50','regex:/^[^~`!@#*_={}|\;<>,?()$%&^]+$/'],
             'attributeName' => ['required','max:150'],
             'choiceDescription' => ['required','max:150']
         ];

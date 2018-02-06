@@ -231,6 +231,7 @@
         <li style="list-style-type: circle"><a style="color:white" href="<?php echo e(url('/FAQs')); ?>" style="color:;">Company Information</a></li>
         <li style="list-style-type: circle"><a style="color:white" href="<?php echo e(url('/Testimonial')); ?>" style="color:;">Terms and Conditions</a></li>
         <li style="list-style-type: circle"><a style="color:white" href="<?php echo e(url('/AllItems')); ?>" style="color:;">Privacy Policy</a></li>
+        <li style="list-style-type: circle"><a style="color:white" href="<?php echo e(url('/login')); ?>" style="color:;">Login as Admin</a></li>
         </ul>
         </div>
       </div>

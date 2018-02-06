@@ -229,6 +229,7 @@
         <li style="list-style-type: circle"><a style="color:white" href="{{ url('/FAQs') }}" style="color:;">Company Information</a></li>
         <li style="list-style-type: circle"><a style="color:white" href="{{ url('/Testimonial') }}" style="color:;">Terms and Conditions</a></li>
         <li style="list-style-type: circle"><a style="color:white" href="{{ url('/AllItems') }}" style="color:;">Privacy Policy</a></li>
+        <li style="list-style-type: circle"><a style="color:white" href="{{ url('/login') }}" style="color:;">Login as Admin</a></li>
         </ul>
         </div>
       </div>
