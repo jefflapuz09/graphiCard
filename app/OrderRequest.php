@@ -14,6 +14,7 @@ class OrderRequest extends Model
         'quantity',
         'itemName',
         'remarks',
-        'design'
+        'design',
+        'image'
     ];
 }

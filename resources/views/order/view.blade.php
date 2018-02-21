@@ -58,6 +58,13 @@
                         <li class="list-group-item text-left" style="font-size:15pt;padding:5px"><b>Email Address: </b>@foreach($post->Customer->User as $user) {{$user->email}} @endforeach</li>
                     </ul>
                 </div>
+                @if(count($post->request[0]->image))
+                <div class="card mt-2 mb-4">
+                    @foreach($post->request as $req)
+                    <img class="img-responsive col-md-12" src="{{ asset($req->image) }}" width="200px">
+                    @endforeach
+                </div>
+                @endif
             </div>
             <div class="col-sm-7">
                 <div class="card  text-center">

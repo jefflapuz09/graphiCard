@@ -22,6 +22,7 @@ class CreateOrderRequestsTable extends Migration
             $table->integer('quantity');
             $table->string('orderDescription');
             $table->text('remarks');
+            $table->string('image')->nullable();
             $table->string('design')->nullable();
             $table->timestamps();
         });

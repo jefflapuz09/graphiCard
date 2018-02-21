@@ -23,6 +23,7 @@
                                 <td>
                                     <li><?php echo e($posts->options->specification); ?></li>
                                     <li><?php echo e($posts->options->description); ?></li> 
+                                    <input type="text" value="<?php echo e($posts->options->image); ?>" name="pic">
                                 </td>
                                 <td><input type="number" value="<?php echo e($posts->qty); ?>" style="width:100px"/></td>
                                 <td><?php $ans = $posts->qty * $posts->price; $ans2 = $ans + $posts->options->base_price * $posts->qty?><?php echo e(number_format($ans2,2)); ?></td>
@@ -62,6 +63,8 @@
 
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         
+        
+        <?php if(count($post)!=0): ?>
         <div class="modal fade" id="modal">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -85,7 +88,8 @@
                         <?php echo e($item->options->attributeName); ?> <?php echo e($item->options->choice); ?> <br>
                         Job Order: <?php echo e($item->options->description); ?> <br><br>
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
+                     
+                      <img class="img-responsive" width="200px" src="<?php echo e(asset($item->options->image)); ?>">
                       <div class="form-group">
                         Remarks:
                         <textarea class="form-control" required rows="5" id="jobDesc" placeholder="Type your job description here. Such as what date do you need it?" name="remarks"></textarea>
@@ -100,8 +104,10 @@
                   </div>
                 </div>
               </div>
+              <?php endif; ?>
         
             </form>
     </div>
+
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

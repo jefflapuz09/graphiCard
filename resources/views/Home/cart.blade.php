@@ -23,6 +23,7 @@
                                 <td>
                                     <li>{{$posts->options->specification}}</li>
                                     <li>{{$posts->options->description}}</li> 
+                                    <input type="text" value="{{$posts->options->image}}" name="pic">
                                 </td>
                                 <td><input type="number" value="{{$posts->qty}}" style="width:100px"/></td>
                                 <td><?php $ans = $posts->qty * $posts->price; $ans2 = $ans + $posts->options->base_price * $posts->qty?>{{number_format($ans2,2)}}</td>
@@ -62,6 +63,8 @@
 
         @endforeach
         {{--  modal  --}}
+        
+        @if(count($post)!=0)
         <div class="modal fade" id="modal">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -85,7 +88,8 @@
                         {{$item->options->attributeName}} {{$item->options->choice}} <br>
                         Job Order: {{$item->options->description}} <br><br>
                       @endforeach
-
+                     
+                      <img class="img-responsive" width="200px" src="{{ asset($item->options->image) }}">
                       <div class="form-group">
                         Remarks:
                         <textarea class="form-control" required rows="5" id="jobDesc" placeholder="Type your job description here. Such as what date do you need it?" name="remarks"></textarea>
@@ -100,7 +104,9 @@
                   </div>
                 </div>
               </div>
+              @endif
         {{--  endofmodal  --}}
             </form>
     </div>
+
 @endsection

@@ -7,7 +7,7 @@
 
     @endforeach
 
-    <form action="{{ url('/customer/cart/'.$post->id.'/'.$itemq->id) }}" method="post">
+    <form action="{{ url('/customer/cart/'.$post->id.'/'.$itemq->id) }}" method="post" files="true" enctype="multipart/form-data">
         <div class="col-sm-12 p-1 mb-0" style="margin-top:70px;">
             <div class="mt-3">
                 <h3>{{$post->name}}</h3>
@@ -121,9 +121,9 @@
         <div class="container mt-5">
             <input type="text" class="form-control-a jscolor"  id="colorpick" onkeypress="return runScript(this.jscolor,event)" onchange="update(this.jscolor)" value="7A0000" name="choiceDescription" placeholder="Separated by comma">
             <div id="rect" class="mx-auto mt-3 mb-3" style="border:1px solid gray; width:500px; max-width:300px; height:100px;"></div>
-            <input type="text" class="form-control-a"  id="a" name="choiceDescription" >
-            <input type="text" class="form-control-a"  id="b" name="choiceDescription" >
-            <input type="text" class="form-control-a"  id="c" name="choiceDescription" >
+            <input type="text" class="form-control-a"  id="a" name="color[]" >
+            <input type="text" class="form-control-a"  id="b" name="color[]" >
+            <input type="text" class="form-control-a"  id="c" name="color[]" >
         </div>
     </div>
 </div>

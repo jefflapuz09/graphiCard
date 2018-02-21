@@ -409,15 +409,26 @@ class HomeController extends Controller
         $attributeName = $request->attributeName;
         $choice = $request->choiceDesc;
         $index = 0;
-     
+        
+        $file = $request->file('image');
+        $pic = "";
+        if($file == '' || $file == null){
+            $pic = "img/grey-pattern.png";
+        }else{
+            $date = date("Ymdhis");
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $pic = "img/".$date.'.'.$extension;
+            $request->file('image')->move("img",$pic);    
+            // $request->file('photo')->move(public_path("/uploads"), $newfilename);
+        }
+        
         $at = "";
         foreach($attributeName as $attribute)
         {
             $at = $at. ''. $attribute . '- ' .$choice[$index]. '</br>';
-            
             $index++;
         }
-        Cart::add(['id'=>$items->id,'name'=>$items->name,'qty'=>$request->qty,'price'=>$items->price,'options'=>['description'=>$jobDesc,'specification'=>$at,'base_price'=>$items->Subcategory->price]]);
+        Cart::add(['id'=>$items->id,'name'=>$items->name,'qty'=>$request->qty,'price'=>$items->price,'options'=>['description'=>$jobDesc,'specification'=>$at,'base_price'=>$items->Subcategory->price,'image'=>$pic]]);
         
         // return redirect('/customer/cart/view',compact('customerId','qty','remarks'));
         return redirect('/customer/cart/view');
@@ -445,7 +456,7 @@ class HomeController extends Controller
         $jobOrder = $request->description;
         $item = $request->item;
         $spec = $request->spec;
-
+    
         $data =  Order::create([
             'customerId' => $custId,
             'remarks' => $remarks,
@@ -460,7 +471,8 @@ class HomeController extends Controller
                 'itemName' => $itemp,
                 'quantity' => $qty[$index],
                 'orderDescription' => $spec,
-                'remarks' => $jobOrder[$index]
+                'remarks' => $jobOrder[$index],
+                'image' => $request->pic
             ]);
             $index++;
         }

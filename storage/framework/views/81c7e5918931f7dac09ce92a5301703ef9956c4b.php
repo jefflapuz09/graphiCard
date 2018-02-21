@@ -59,10 +59,9 @@
                                         Released
                                     <?php endif; ?>
                                 </td>
-                                <td>
+                                <td align="center">
                                     <?php if($posts->status <= 3): ?>
-                                        <a href="<?php echo e(url('/OrderView/'.$posts->id)); ?>" class="btn btn-primary">
-                                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                                        <a href="<?php echo e(url('/OrderView/'.$posts->id)); ?>" class="btn btn-success" title="Manage Order"><i class="fa fa-cogs" aria-hidden="true"></i> Manage
                                         </a>
                                     <?php endif; ?>
                                 </td>
