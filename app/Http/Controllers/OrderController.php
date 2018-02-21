@@ -8,6 +8,7 @@ use App\ServiceType;
 use App\ServiceItem;
 use App\Order;
 use App\OrderRequests;
+use App\Package;
 
 class OrderController extends Controller
 {
@@ -42,6 +43,12 @@ class OrderController extends Controller
             $query->where('id', $itemid);},'post' => function($query) use($itemid) {
                 $query->where('itemId', $itemid);}])->find($id);        
         return view('Home.order',compact('post','post2','variant'));
+    }
+
+    public function cartPack($id)
+    {
+        $post = Package::find($id);
+        return view('Home.packorder',compact('post'));
     }
     /**
      * Store a newly created resource in storage.

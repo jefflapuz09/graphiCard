@@ -434,6 +434,17 @@ class HomeController extends Controller
         return redirect('/customer/cart/view');
     }
 
+    public function cartPackage($id,Request $request)
+    {
+        $post = Package::find($id);
+
+        foreach($request->packItem as $item)
+        {
+            
+        }
+        Cart::add(['id'=>$post->id,'name'=>$item->name,'qty'=>$request->qty,'price'=>$post->price]);
+    }
+
     public function viewcart()
     {
 

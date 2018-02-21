@@ -49,7 +49,8 @@ Route::post('/customer/register/post','customerController@storeweb');
 Route::post('/customer/login/post','HomeController@custLog');
 
 Route::get('/cartPost/{id}/{itemid}','OrderController@addcart');
-
+Route::get('/cartPack/{id}','OrderController@cartPack');
+Route::post('/customer/cartPack/{id}','HomeController@cartPackage');
 
 //error
 Route::get('/Restricted','Homecontroller@error');
