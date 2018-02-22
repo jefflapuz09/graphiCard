@@ -279,7 +279,10 @@
   </div>
 
 </div>
-<?php if($user = Auth::user()): ?>
+<?php if(Auth::user()->role==3): ?>
+
+<?php elseif(Auth::guest()): ?>
+<?php else: ?>
 <div class="container-fluid" style="background:red; height:30px;">
   <div align="center" style="margin-top:px;color:white;">
     <?php if(count($comp) != 0 ): ?>
@@ -290,9 +293,6 @@
   </div>
 
 </div>
-
-<?php elseif(Auth::guest()): ?>
-
 <?php endif; ?>
 <!-- Bootstrap core JavaScript -->
 <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
