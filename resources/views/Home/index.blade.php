@@ -184,8 +184,9 @@
             <img class="img-responsive" style="max-width:100%; max-height:100%;" height="300px" src="{{ asset($post->image) }}" alt="">
           </a>
           <div class="portfolio-caption">
-
-
+          
+            <?php $price = $post->item->Subcategory->price + $post->Item->price; ?>
+            P{{number_format($price,2)}}
             @if(count($post->Item->RateItem)!=0)
             <?php
             $count = count($post->Item->RateItem);

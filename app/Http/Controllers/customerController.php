@@ -82,7 +82,7 @@ class customerController extends Controller
         $validator = Validator::make($request->all(),$rules,$messages);
         $validator->setAttributeNames($niceNames); 
         if ($validator->fails()) {
-            // return Redirect::back()->withErrors($validator)->withInput();
+             return Redirect::back()->withErrors($validator)->withInput();
             return Redirect::back()->withErrors("Fields with (*) are required.");
         }
         else{
@@ -162,8 +162,8 @@ class customerController extends Controller
         $validator = Validator::make($request->all(),$rules,$messages);
         $validator->setAttributeNames($niceNames); 
         if ($validator->fails()) {
-            // return Redirect::back()->withErrors($validator)->withInput();
-            return Redirect::back()->withErrors("Fields with (*) are required.");
+             return Redirect::back()->withErrors($validator)->withInput();
+            //return Redirect::back()->withErrors("Fields with (*) are required.");
         }
         else{
             $cpass = $request->password_confirmation;

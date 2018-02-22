@@ -35,6 +35,9 @@
               <img class="img-responsive" style="max-width:100%; max-height:100%;" height="200px" src="<?php echo e(asset($item->image)); ?>" alt="">
             </a>
             <div class="portfolio-caption">
+              <?php $price = $post->price + $item->item->price; ?>
+            P<?php echo e(number_format($price,2)); ?>
+
               <?php if(count($item->item->RateItem)!=0): ?>
               <?php
               $count = count($item->item->RateItem);
@@ -84,7 +87,7 @@
                 <?php endif; ?>
               </ul>
               <br>
-              <a href="" class="mt-2 btn btn-danger text-white">Order now</a>
+              <a href="<?php echo e(url('/cartPost/'.$item->typeId.'/'.$item->itemId)); ?>" class="mt-2 btn btn-danger text-white">Order now</a>
               <?php endif; ?>
             </div>
           </div>

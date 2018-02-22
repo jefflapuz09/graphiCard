@@ -104,7 +104,7 @@ class HomeController extends Controller
     public function item($id)
     {   
         
-        $mod = ServiceType::with(['item','post' => function($query) {
+        $mod = ServiceType::with(['item' => function($query) use($id) {$query->where('id',$id);},'post' => function($query) {
             $query->where('isDraft', 1);}])
             ->where('id',$id)->get();
 
